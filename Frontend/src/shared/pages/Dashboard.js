@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'antd';
+import Button from '../atoms/buttons';
 import NotificationContext from '../modules/notification/context';
 import ErrorContext from '../modules/error/context';
 
@@ -11,6 +11,7 @@ const Dashboard = () => {
     <React.Fragment>
       Click it to get notification
       <Button
+        type="primary"
         onClick={e => {
           e.preventDefault();
           notification.setNotification(
