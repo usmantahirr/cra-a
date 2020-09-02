@@ -1,0 +1,11 @@
+.custom-control {
+  background-color: #f4f8fb;
+  border-radius: 5px;
+  border: 0;
+  border-left: 5px solid $primary;
+  font-size: 0.9375rem;
+  padding: 14px;
+  &::placeholder {
+    color: $primary;
+  }
+}
