@@ -1,11 +1,9 @@
 import React from 'react';
+import Logger from '../../shared/modules/logger';
 
 const defaultAuthContext = {
   authenticate: (token, user) => {
-    // TODO REMOVE LINE BELOW
-    // IT WAS ADDED TO REMOVE ESLINT WARN OF UNUSED VAR
-    return token + user;
-    // console.log(token, user);
+    Logger.info(token, user);
   },
   checkAuthentication: () => true,
   isAuthenticated: false,

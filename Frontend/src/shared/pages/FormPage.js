@@ -40,7 +40,7 @@ const FormPage = () => {
         formOrientation="horizontal"
         layout={layout}
         tailLayout={tailLayout}
-      ></CustomForm>
+      />
     </React.Fragment>
   );
 };

@@ -5,7 +5,6 @@ export const LOGGING = {
   loglevel: 'error', // 1) error, 2) warn, 3) info
 };
 
-// export const LOGGED_IN_HOME = '/dashboard';
 export const AUTH_PAGE = '/account/login';
 export const APPLICATION_HOME = '/';
 export const LOGGED_IN_HOME = APPLICATION_HOME;
