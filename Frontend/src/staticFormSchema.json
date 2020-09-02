@@ -1,0 +1,250 @@
+[
+    {
+      "stepTitle": "User Details",
+      "formName": "step1",
+      "initialValues": {
+        "name": "FirstUser ",
+        "rememberMe": true
+      },
+      "sections": [
+        {
+          "fieldArray": [
+            {
+              "name": "dob",
+              "label": "Date of birth",
+              "type": "date",
+              "id": "F1"
+            },
+            {
+              "name": "city",
+              "label": "Select City",
+              "type": "select",
+              "id": "F2",
+              "options": [
+                {
+                  "value": 1,
+                  "text": "KHI",
+                  "id": "S111"
+                },
+                {
+                  "value": 2,
+                  "text": "ISB",
+                  "id": "S222"
+                }
+              ]
+            },
+            {
+              "name": "residentType",
+              "label": "Resident Type",
+              "type": "radio",
+              "id": "F3",
+              "options": [
+                {
+                  "value": "1",
+                  "text": "Permanent",
+                  "id":"ID1"
+                },
+                {
+                  "value": "2",
+                  "text": "Temporary",
+                  "id":"ID2"
+                }
+              ],
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please select resident type"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fieldArray": [
+            {
+              "name": "name",
+              "label": "Name",
+              "type": "text",
+              "id": "F11",
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please enter your name"
+                }
+              ]
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "type": "password",
+              "id": "F22",
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please enter a password"
+                }
+              ]
+            },
+            {
+              "name": "rememberMe",
+              "label": "Remember me",
+              "type": "checkbox",
+              "id": "F33"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stepTitle": "Travel Details",
+      "formName": "step2",
+      "initialValues": {
+        "name": "Second user details",
+        "fatherName": "Dad",
+        "rememberMe": true
+      },
+      "sections": [
+        {
+          "fieldArray": [
+            {
+              "name": "dob",
+              "label": "Date of birth",
+              "type": "date",
+              "id": "F111"
+            },
+            {
+              "name": "city",
+              "label": "Select City",
+              "type": "select",
+              "id": "F222",
+              "options": [
+                {
+                  "value": 1,
+                  "text": "KHI",
+                  "id": "S11"
+                },
+                {
+                  "value": 2,
+                  "text": "ISB",
+                  "id":"S22"
+                }
+              ]
+            },
+            {
+              "name": "residentType",
+              "label": "Resident Type",
+              "type": "radio",
+              "id": "F333",
+              "options": [
+                {
+                  "value": "1",
+                  "text": "Permanent",
+                  "id":"ID11"
+                },
+                {
+                  "value": "2",
+                  "text": "Temporary",
+                  "id":"ID22"
+                }
+              ],
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please select resident type"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fieldArray": [
+            {
+              "name": "name",
+              "label": "Name",
+              "type": "text",
+              "id": "F01",
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please enter your name"
+                }
+              ]
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "type": "password",
+              "id": "F02",
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please enter a password"
+                }
+              ]
+            },
+            {
+              "name": "rememberMe",
+              "label": "Remember me",
+              "type": "checkbox",
+              "id": "F03"
+            }
+          ]
+        },
+        {
+          "fieldArray": [
+            {
+              "name": "fatherName",
+              "label": "Father name",
+              "type": "text",
+              "id": "F04",
+              "rules": [
+                {
+                  "required": true,
+                  "message": "Please enter your name"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stepTitle": "Passport Details",
+      "formName": "step3",
+      "initialValues": {
+        "name": "Third user",
+        "rememberMe": false
+      },
+      "sections": [
+        {
+          "fieldArray": [
+            {
+              "name": "dob",
+              "label": "Date of birth",
+              "type": "date",
+              "id": "F05"
+            },
+            {
+              "name": "city",
+              "label": "Select City",
+              "type": "select",
+              "id": "F06",
+              "options": [
+                {
+                  "value": 1,
+                  "text": "KHI",
+                  "id":"S1"
+                },
+                {
+                  "value": 2,
+                  "text": "ISB",
+                  "id":"S2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
