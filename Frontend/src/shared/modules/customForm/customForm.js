@@ -22,7 +22,7 @@ function CustomForm(props) {
       <Steps current={currStep}>
         {formSchema &&
           formSchema.map(step => (
-            <Step title={step.stepTitle} subTitle="Left 00:00:08" description="This is a description." />
+            <Step key={step.id} title={step.stepTitle} subTitle="Left 00:00:08" description="This is a description." />
           ))}
       </Steps>
     );
@@ -37,7 +37,7 @@ function CustomForm(props) {
     // Form sections can be aligned horionztally or vertically
     // Add styling to this div to align sections
     // GD-TODO
-    return <div>{_renderFieldArray(section.fieldArray)}</div>;
+    return <div key={section.id}>{_renderFieldArray(section.fieldArray)}</div>;
   };
 
   const _renderFormButtons = layoutProps => {
@@ -58,6 +58,7 @@ function CustomForm(props) {
     const { layout, tailLayout } = props;
     return (
       <Form
+        key={`${step.id  }${  name}`}
         hidden={currIndex !== currStep}
         {...layout}
         name={name}

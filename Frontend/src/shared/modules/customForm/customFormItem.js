@@ -15,17 +15,17 @@ class CustomFormItem extends React.PureComponent {
 
     switch (fieldType) {
       case 'date':
-        return <CustomDatePicker />;
+        return <CustomDatePicker {...fieldProps} />;
       case 'select':
         return <CustomSelect {...fieldProps} />;
       case 'radio':
         return <CustomRadio {...fieldProps} />;
       case 'text':
-        return <CustomTextInput />;
+        return <CustomTextInput {...fieldProps} />;
       case 'password':
-        return <CustomPasswordInput />;
+        return <CustomPasswordInput {...fieldProps} />;
       case 'checkbox':
-        return <CustomCheckbox />;
+        return <CustomCheckbox {...fieldProps} />;
       default:
         return null;
     }

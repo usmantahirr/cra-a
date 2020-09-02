@@ -1,6 +1,7 @@
 [
     {
       "stepTitle": "User Details",
+      "id": "ST1",
       "formName": "step1",
       "initialValues": {
         "name": "FirstUser ",
@@ -57,7 +58,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "id": "SEC1"
         },
         {
           "fieldArray": [
@@ -91,12 +93,14 @@
               "type": "checkbox",
               "id": "F33"
             }
-          ]
+          ],
+          "id": "SEC2"
         }
       ]
     },
     {
       "stepTitle": "Travel Details",
+      "id": "ST2",
       "formName": "step2",
       "initialValues": {
         "name": "Second user details",
@@ -154,7 +158,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "id": "SEC11"
         },
         {
           "fieldArray": [
@@ -188,7 +193,8 @@
               "type": "checkbox",
               "id": "F03"
             }
-          ]
+          ],
+          "id": "SEC22"
         },
         {
           "fieldArray": [
@@ -204,12 +210,14 @@
                 }
               ]
             }
-          ]
+          ],
+          "id": "SEC33"
         }
       ]
     },
     {
       "stepTitle": "Passport Details",
+      "id": "ST3",
       "formName": "step3",
       "initialValues": {
         "name": "Third user",
@@ -242,7 +250,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "id":"SEC111"
         }
       ]
     }
