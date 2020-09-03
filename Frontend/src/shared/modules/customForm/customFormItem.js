@@ -7,7 +7,7 @@ import {
   CustomTextInput,
   CustomPasswordInput,
   CustomCheckbox,
-} from '../../atoms/Inputs';
+} from '../../atoms/inputs';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
