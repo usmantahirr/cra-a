@@ -1,0 +1,43 @@
+@use "src/styles/variables";
+
+.authContainer {
+  height: 100%;
+
+  .row {
+    height: 100%;
+  }
+
+  .salutationContainer {
+    background: url(/assets/img/loginbg.png) no-repeat center;
+    background-size: cover;
+  }
+
+  .subHeading {
+    color: #fff;
+    font-size: 32px;
+    line-height: 45px;
+    padding-left: 65px;
+    padding-top: 60px;
+    position: relative;
+
+    strong {
+      font-weight: 600;
+      font-size: 37px;
+      display: block;
+    }
+
+    &:after {
+      content: '';
+      width: 152px;
+      height: 5px;
+      position: absolute;
+      background-color: #62c3fd;
+      bottom: -20px;
+    }
+  }
+
+  .formContainer {
+    background-color: #fff;
+    border-top-right-radius: 20px;
+  }
+}

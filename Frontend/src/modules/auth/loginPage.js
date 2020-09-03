@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Row, Col, Image, Typography } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
-import './login.scss';
+
 import Button from '../../shared/atoms/buttons/index';
 import InputCustom from '../../shared/atoms/inputs/inputCustom';
 import CheckboxCustom from '../../shared/atoms/checkboxes/index';
