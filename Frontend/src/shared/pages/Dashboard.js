@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../atoms/buttons';
 import NotificationContext from '../modules/notification/context';
 import ErrorContext from '../modules/error/context';
@@ -33,6 +34,12 @@ const Dashboard = () => {
       >
         Show Error
       </Button>
+      <ul>
+        <li>
+          <Link to="/dynamic-form">New Registration</Link>
+        </li>
+        <li>{/* <Link to="/manageRegistration">Manage Registration</Link> */}</li>
+      </ul>
     </React.Fragment>
   );
 };
