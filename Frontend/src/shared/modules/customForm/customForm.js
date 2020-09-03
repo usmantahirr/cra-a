@@ -7,7 +7,7 @@ import CustomFormItem from './customFormItem';
 const { Step } = Steps;
 
 function CustomForm(props) {
-  const [formStep, setFormStep] = React.useState(0);
+  const [formStep, setFormStep] = React.useState(5);
 
   const goBack = () => {
     setFormStep(Math.max(0, formStep - 1));
@@ -18,14 +18,7 @@ function CustomForm(props) {
   };
 
   const _renderStepsHeader = (formSchema, currStep) => {
-    return (
-      <Steps current={currStep}>
-        {formSchema &&
-          formSchema.map(step => (
-            <Step key={step.id} title={step.stepTitle} subTitle="Left 00:00:08" description="This is a description." />
-          ))}
-      </Steps>
-    );
+    return <Steps current={currStep}>{formSchema && formSchema.map(step => <Step key={step.id} />)}</Steps>;
   };
 
   const _renderFieldArray = fieldArray => {
@@ -37,7 +30,12 @@ function CustomForm(props) {
     // Form sections can be aligned horionztally or vertically
     // Add styling to this div to align sections
     // GD-TODO
-    return <div key={section.id}>{_renderFieldArray(section.fieldArray)}</div>;
+    return (
+      <div key={section.id}>
+        <h3>{section.sectionTitle}</h3>
+        {_renderFieldArray(section.fieldArray)}
+      </div>
+    );
   };
 
   const _renderFormButtons = layoutProps => {
@@ -54,11 +52,11 @@ function CustomForm(props) {
 
   const _renderStepForm = (step, currStep, currIndex) => {
     const [form] = Form.useForm();
-    const { name, formOrientation, initialValues, onFinish, onFinishFailed } = step;
-    const { layout, tailLayout } = props;
+    const { name, formOrientation, initialValues } = step;
+    const { layout, tailLayout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
     return (
       <Form
-        key={`${step.id  }${  name}`}
+        key={`${step.id}${name}`}
         hidden={currIndex !== currStep}
         {...layout}
         name={name}
@@ -67,7 +65,10 @@ function CustomForm(props) {
         initialValues={initialValues}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        onValuesChange={onValuesChange}
+        onFieldsChange={onFieldsChange}
       >
+        <h1>{step.stepTitle}</h1>
         {step.sections && step.sections.map(section => _renderSection(section))}
         {_renderFormButtons(tailLayout)}
       </Form>
