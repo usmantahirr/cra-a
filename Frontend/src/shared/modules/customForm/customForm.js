@@ -7,7 +7,7 @@ import CustomFormItem from './customFormItem';
 const { Step } = Steps;
 
 function CustomForm(props) {
-  const [formStep, setFormStep] = React.useState(5);
+  const [formStep, setFormStep] = React.useState(0);
 
   const goBack = () => {
     setFormStep(Math.max(0, formStep - 1));
