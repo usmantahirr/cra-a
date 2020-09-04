@@ -6,17 +6,17 @@ import styles from './authPageTemplate.module.scss';
 
 const AuthPageTemplate = ({ children }) => {
   return (
-    <div className={styles.authContainer}>
+    <div className={styles.authcontainer}>
       <Row justify="center" className={styles.row}>
         <Col span={20}>
           <Row className={styles.row}>
-            <Col span={13} className={styles.formContainer}>
-              <Image src="/assets/img/logo.svg" className={styles.logo} />
+            <Col span={13} className={styles.formcontainer}>
+              <Image src="/assets/img/logo.svg" className="logobox" />
               {children}
             </Col>
-            <Col span={11} className={styles.salutationContainer}>
-              <div className={styles.salutationHolder}>
-                <h2 className={styles.subHeading}>
+            <Col span={11} className={styles.salutationcontainer}>
+              <div className={styles.salutationholder}>
+                <h2 className={styles.subheading}>
                   Welcome To&nbsp;
                   <strong>
                     Medical Test
