@@ -11,7 +11,7 @@ const AuthPageTemplate = ({ children }) => {
         <Col span={20}>
           <Row className={styles.row}>
             <Col span={13} className={styles.formcontainer}>
-              <Image src="/assets/img/logo.svg" className="logobox" />
+              <Image src="/assets/img/logo.png" className={styles.logobox} />
               {children}
             </Col>
             <Col span={11} className={styles.salutationcontainer}>

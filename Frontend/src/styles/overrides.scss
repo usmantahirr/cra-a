@@ -5,6 +5,7 @@ html {
 body {
   background: url(/assets/img/loginbg.png) no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,6 +28,7 @@ body {
     line-height: 18px;
     position: relative;
     margin-bottom: 45px;
+
     &:after {
       content: '';
       height: 2px;

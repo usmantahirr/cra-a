@@ -1,5 +1,6 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
+@import 'src/styles/utils';
 
 .authcontainer {
   height: 100%;
@@ -17,6 +18,7 @@
     padding-bottom: 30px;
     margin-bottom: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
 
     strong {
       font-weight: 600;
@@ -28,6 +30,7 @@
   .formcontainer {
     background: rgb(234, 242, 250);
     background: linear-gradient(90deg, rgba(234, 242, 250, 1) 0%, rgba(251, 253, 254, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    padding: 50px 80px;
   }
 
   .salutationcontainer {
@@ -46,9 +49,15 @@
   .logobox {
     display: block;
     text-align: center;
+    margin-bottom: 35px;
 
-    .ant-image-img {
+    img {
       margin: 0 auto;
+      @extend %img-fluid;
     }
+  }
+
+  input{
+    background-color: transparent;
   }
 }

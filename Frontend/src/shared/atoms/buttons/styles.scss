@@ -6,29 +6,43 @@
   font-weight: 600;
   border-radius: 2px;
   border: 0;
+
   &-primary {
     background: $primary;
     color: #fff;
-    &:hover {
+
+    &:hover,
+    &:focus {
       background-color: $primaryHover;
     }
   }
+
   &-secondary {
     background: $secondary;
     color: $primary;
-    &:hover {
+
+    &:hover,
+    &:focus {
       background-color: $secondaryHover;
       color: $primary;
     }
   }
+
   &-default {
     background: transparent;
     border: 1px solid $white;
     color: $white;
-    &:hover {
+
+    &:hover,
+    &:focus {
       background-color: $white;
       color: $primary;
       border-color: $white;
     }
+  }
+
+  &-lg {
+    font-size: 1.125rem;
+    padding: 22px 25px;
   }
 }
