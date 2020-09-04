@@ -1,3 +1,6 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 .authContainer {
   height: 100%;
 
@@ -5,36 +8,38 @@
     height: 100%;
   }
 
-  .salutationContainer {
-    background: url(/assets/img/loginbg.png) no-repeat center;
-    background-size: cover;
-  }
-
   .subHeading {
-    font-size: 32px;
-    line-height: 45px;
-    padding-left: 65px;
-    padding-top: 60px;
+    font-size: 19px;
+    line-height: 40px;
     position: relative;
+    font-weight: 600;
+    color: $white;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
     strong {
       font-weight: 600;
-      font-size: 37px;
+      font-size: 38px;
       display: block;
-    }
-
-    &:after {
-      content: '';
-      width: 152px;
-      height: 5px;
-      position: absolute;
-      background-color: #62c3fd;
-      bottom: -20px;
     }
   }
 
   .formContainer {
-    background-color: #fff;
-    border-top-right-radius: 20px;
+    background: rgb(234, 242, 250);
+    background: linear-gradient(90deg, rgba(234, 242, 250, 1) 0%, rgba(251, 253, 254, 1) 90%, rgba(255, 255, 255, 1) 100%);
+  }
+
+  .salutationContainer {
+    padding: 45px 0;
+
+    .salutationHolder {
+      padding: 40px;
+      background-color: rgba($blue-light, 0.69);
+      height: 100%;
+      @include flexbox();
+      @include align-content(center);
+      @include flex-wrap(wrap);
+    }
   }
 }

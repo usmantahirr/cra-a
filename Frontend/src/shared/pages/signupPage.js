@@ -2,7 +2,7 @@ import React from 'react';
 import AuthPageTemplate from '../templates/AuthPageTemplate';
 
 const Signup = () => {
-  return <AuthPageTemplate>Signup Page</AuthPageTemplate>;
+  return <AuthPageTemplate></AuthPageTemplate>;
 };
 
 export default Signup;

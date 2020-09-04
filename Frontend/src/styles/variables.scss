@@ -2,11 +2,16 @@
 // https://sass-lang.com/documentation/variables
 
 $blue: #00448F;
-$blue-light: #3E93F3;
+$blue-light: #0086D3;
+$blue-lighter: #3E93F3;
 $yellow: #F9BE2C;
+$yellowDark: #ebad14;
 $cloud: #e4eff7;
+$white: #fff;
+
 
 $primary: $blue;
 $primaryHover: $blue-light;
 $secondary: $yellow;
+$secondaryHover: $yellowDark;
 $primary-light: $cloud;
