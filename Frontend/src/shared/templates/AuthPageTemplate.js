@@ -2,9 +2,8 @@ import React from 'react';
 import { Row, Col } from 'antd';
 
 import styles from './authPageTemplate.module.scss';
-// import '../../modules/auth/login.scss';
 
-const AuthPageTemplate = () => {
+const AuthPageTemplate = ({ children }) => {
   return (
     <div className={styles.authContainer}>
       <Row className={styles.row}>
@@ -17,7 +16,9 @@ const AuthPageTemplate = () => {
             </strong>
           </h2>
         </Col>
-        <Col span={12} className={styles.formContainer}></Col>
+        <Col span={12} className={styles.formContainer}>
+          {children}
+        </Col>
       </Row>
     </div>
   );

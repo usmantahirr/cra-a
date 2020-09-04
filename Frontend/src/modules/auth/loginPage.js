@@ -35,10 +35,6 @@ const LoginPage = ({ handleSubmit }) => (
           <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
             {({ values, touched, errors, isSubmitting, handleSubmit: submit, handleChange }) => (
               <form onSubmit={submit}>
-                {/* <Form.Item required>
-              <Input placeholder="User ID" type="email" name="email" onChange={handleChange} value={values.email} prefix={<WifiOutlined />} />
-            </Form.Item> */}
-
                 <InputCustom
                   placeholder="User ID"
                   type="email"
