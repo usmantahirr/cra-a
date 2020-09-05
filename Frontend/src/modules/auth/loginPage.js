@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
-const LoginPage = ({ handleSubmit }) => (
+const LoginPage = ({ handleSubmit, t }) => (
   <div>
-    <h1>Login</h1>
+    <h1>{t('login')}</h1>
     <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
       {({ values, touched, errors, isSubmitting, handleSubmit: submit, handleChange }) => (
         <form onSubmit={submit}>

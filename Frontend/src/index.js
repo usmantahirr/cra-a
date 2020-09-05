@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import rootReducer from './rootReducer';
+import './i18n';
 
 import './index.scss';
 
