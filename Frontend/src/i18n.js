@@ -31,7 +31,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     backend: {
       // for all available options read the backend's repository readme file
       loadPath: 'https://asadhussain123.github.io/languages/{{lng}}.json',
