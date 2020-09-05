@@ -11,7 +11,7 @@ export const SignIn = userId => {
 export const Login = payload => {
   const objectToPost = payload;
   return async dispatch => {
-    // const response = await httpClient.post('url', payload);
+    // const response = await new httpClient().post('url', payload);
     // check response status
     // TODO We have to save things to local storage too.
     dispatch({
