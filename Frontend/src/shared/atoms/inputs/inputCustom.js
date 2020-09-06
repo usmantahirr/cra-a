@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 
-const InputCustom = ({ type, placeholder, name, className }) => (
-  <Form.Item className="">
-    <Input placeholder={placeholder} type={type} name={name} className={className} />
+const InputCustom = ({ label, type, placeholder, name }) => (
+  <Form.Item label={label} className="custom-item">
+    <Input placeholder={placeholder} type={type} name={name} className="custom-control" />
   </Form.Item>
 );
 

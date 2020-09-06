@@ -1,0 +1,49 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  background: url(/assets/img/loginbg.png) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9375rem;
+}
+
+
+.app-portal {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  height: 100%;
+}
+
+.ant-typography {
+  &.inner-heading {
+    font-size: 21px;
+    font-weight: 600;
+    color: $primary;
+    line-height: 18px;
+    position: relative;
+    margin-bottom: 45px;
+
+    &:after {
+      content: '';
+      height: 2px;
+      width: 58px;
+      position: absolute;
+      background-color: $secondary;
+      bottom: -15px;
+      left: 0;
+    }
+  }
+}
+
+
+.inner-heading {
+  font-size: 21px;
+  font-weight: 600;
+  color: $primary;
+}

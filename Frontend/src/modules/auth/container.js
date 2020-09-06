@@ -3,8 +3,9 @@ import { withRouter } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AuthContext } from './authContext';
-import LoginPage from './loginPage';
-import LoginAction from './redux/index';
+
+import LoginPage from '../../shared/pages/loginPage';
+import LoginAction from './redux';
 
 const AuthContainer = ({ history }) => {
   const dispatch = useDispatch();

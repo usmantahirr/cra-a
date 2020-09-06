@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Row, Col, Image, Typography } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
-import './login.scss';
+
 import Button from '../../shared/atoms/buttons/index';
 import InputCustom from '../../shared/atoms/inputs/inputCustom';
 import CheckboxCustom from '../../shared/atoms/checkboxes/index';
@@ -35,10 +35,6 @@ const LoginPage = ({ handleSubmit }) => (
           <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
             {({ values, touched, errors, isSubmitting, handleSubmit: submit, handleChange }) => (
               <form onSubmit={submit}>
-                {/* <Form.Item required>
-              <Input placeholder="User ID" type="email" name="email" onChange={handleChange} value={values.email} prefix={<WifiOutlined />} />
-            </Form.Item> */}
-
                 <InputCustom
                   placeholder="User ID"
                   type="email"
