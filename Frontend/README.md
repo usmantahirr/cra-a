@@ -11,4 +11,4 @@
 - [ ] storybooks support
 - [ ] API integration process
 - [ ] Prettier and ESLint support
-- [ ] Git hooks for prettier
+- [ ] Git hooks for prettiere

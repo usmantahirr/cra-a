@@ -1,23 +1,87 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import { Row, Col, Image, Typography } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+
+import Button from '../../shared/atoms/buttons/index';
+import InputCustom from '../../shared/atoms/inputs/inputCustom';
+import CheckboxCustom from '../../shared/atoms/checkboxes/index';
+
+const { Title } = Typography;
 
 const LoginPage = ({ handleSubmit, t }) => (
-  <div>
-    <h1>{t('login')}</h1>
-    <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
-      {({ values, touched, errors, isSubmitting, handleSubmit: submit, handleChange }) => (
-        <form onSubmit={submit}>
-          <input type="email" name="email" onChange={handleChange} value={values.email} />
-          {errors.email && touched.email && errors.email}
-          <input type="password" name="password" onChange={handleChange} value={values.password} />
-          {errors.password && touched.password && errors.password}
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </form>
-      )}
-    </Formik>
+  <div className="loginpage">
+    <Row>
+      <Col span={11} className="loginbg">
+        <h2 className="sub-heading">
+          Welcome To{' '}
+          <strong>
+            Medical Test
+            <br /> REGISTRATION Portal
+          </strong>
+        </h2>
+      </Col>
+      <Col span={12} className="loginform">
+        <div className="loginform-holder">
+          <a className="app-link" href="/" rel="noopener noreferrer" title="Pure Health">
+            <Image src="/assets/img/logo.svg" className="logo-holder" alt="Pure Health" />
+          </a>
+
+          <Title level={3} className="inner-heading">
+            {t('login')}
+          </Title>
+
+          <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
+            {({ values, touched, errors, isSubmitting, handleSubmit: submit, handleChange }) => (
+              <form onSubmit={submit}>
+                <InputCustom
+                  placeholder="User ID"
+                  type="email"
+                  onChange={handleChange}
+                  value={values.email}
+                  className="custom-control"
+                />
+                {errors.email && touched.email && errors.email}
+
+                {/* <input type="password" name="password" onChange={handleChange} value={values.password} /> */}
+                <InputCustom
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                  value={values.password}
+                  className="custom-control"
+                />
+                {errors.password && touched.password && errors.password}
+
+                <Row className="checkbox-options">
+                  <Col span={12} className="checbox-holder">
+                    <CheckboxCustom value="Remember me" className="custom-checbox small">
+                      Remember me
+                    </CheckboxCustom>
+                  </Col>
+                  <Col span={12} className="forgot-link">
+                    <a className="forgot-link" rel="noopener noreferrer" title="Forgot Password" href="/">
+                      Forgot password
+                    </a>
+                  </Col>
+                </Row>
+
+                <div className="loginbtn-holder">
+                  <Button type="secondary" htmlType="submit" disabled={isSubmitting} icon={<RightOutlined />}>
+                    Signin
+                  </Button>
+                  <Button type="primary" htmlType="submit" disabled={isSubmitting} icon={<RightOutlined />}>
+                    Signup
+                  </Button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
+      </Col>
+    </Row>
   </div>
 );
 

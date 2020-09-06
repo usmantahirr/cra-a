@@ -1,8 +1,9 @@
 import React from 'react';
+import Logger from '../../shared/modules/logger';
 
 const defaultAuthContext = {
   authenticate: (token, user) => {
-    console.log(token, user);
+    Logger.info(token, user);
   },
   checkAuthentication: () => true,
   isAuthenticated: false,

@@ -4,8 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { AuthContext } from './authContext';
-import LoginPage from './loginPage';
+// import LoginPage from './loginPage';
 import AuthRedux from './redux/index';
+
+import LoginPage from '../../shared/pages/loginPage';
+// import LoginAction from './redux';
 
 const AuthContainer = ({ history }) => {
   const [t] = useTranslation();
