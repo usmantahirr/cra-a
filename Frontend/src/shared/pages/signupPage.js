@@ -1,25 +1,103 @@
-import React from 'react';
-import { Form } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Modal } from 'antd';
 import Button from '../atoms/buttons/index';
 import InputCustom from '../atoms/inputs/inputCustom';
 import AuthPageTemplate from '../templates/AuthPageTemplate';
+import CustomTelInput from '../atoms/inputs/customTelInput';
 
-const Signup = () => {
+const Signup = ({
+  validationRules,
+  handleSubmit,
+  showOTPModal,
+  handleVerifySubmit,
+  verificationFormValidationRules,
+}) => {
+  const [registerForm] = Form.useForm();
+  const [otpForm] = Form.useForm();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    setModalVisible(showOTPModal);
+  }, [showOTPModal]);
+
+  const onFinish = values => {
+    handleSubmit(values);
+  };
+  const onFinishOTP = values => {
+    handleVerifySubmit(values);
+  };
   return (
     <AuthPageTemplate>
-      <Form className="transbg-form">
-        <InputCustom placeholder="First Name" type="text" value="fname" className="" />
-        <InputCustom placeholder="Last Name" type="text" value="lname" className="custom-control" />
-        <InputCustom placeholder="Email Address" type="email" value="email" className="custom-control" />
-        <InputCustom placeholder="Mobile Number" type="text" value="mobile" className="custom-control" />
-        <InputCustom placeholder="Password" type="password" value="password" className="custom-control" />
-        <InputCustom placeholder="Confirm Password" type="password" value="cpassword" className="custom-control" />
+      <Form className="transbg-form" form={registerForm} name="register" onFinish={onFinish}>
+        <InputCustom
+          placeholder="First Name"
+          type="text"
+          value="fname"
+          validators={validationRules.firstName}
+          className="custom-control"
+        />
+        <InputCustom
+          placeholder="Last Name"
+          type="text"
+          value="lname"
+          validators={validationRules.lastName}
+          className="custom-control"
+        />
+        <InputCustom
+          placeholder="Email Address"
+          type="email"
+          value="email"
+          validators={validationRules.email}
+          className="custom-control"
+        />
+        <Form.Item {...validationRules.mobile} className="custom-item">
+          <CustomTelInput />
+        </Form.Item>
+        <InputCustom
+          placeholder="Password"
+          type="password"
+          value="password"
+          validators={validationRules.password}
+          className="custom-control"
+        />
+        <InputCustom
+          placeholder="Confirm Password"
+          type="password"
+          value="cpassword"
+          validators={validationRules.confirmPassword}
+          className="custom-control"
+        />
         <Form.Item>
           <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
             Register
           </Button>
         </Form.Item>
       </Form>
+      <Modal centered visible={modalVisible} footer={null} onCancel={() => setModalVisible(false)}>
+        <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={onFinishOTP}>
+          <InputCustom
+            maxLength={6}
+            placeholder="OTP"
+            type="number"
+            value="otp"
+            validators={verificationFormValidationRules.otp}
+            className="custom-control"
+          />
+          <InputCustom
+            maxLength={6}
+            placeholder="Pin Number"
+            type="number"
+            value="pinNumber"
+            validators={verificationFormValidationRules.pinNumber}
+            className="custom-control"
+          />
+          <Form.Item>
+            <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+              Verify
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </AuthPageTemplate>
   );
 };
