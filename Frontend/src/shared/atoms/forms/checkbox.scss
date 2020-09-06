@@ -1,7 +1,7 @@
 .ant-checkbox-wrapper {
     .ant-checkbox-inner {
-        background-color: $primary-light;
-        border-color: $cloud-dark;
+        background-color: $primaryLight;
+        border-color: $cloudDark;
         width: 31px;
         height: 29px;
         border: 0;
@@ -21,7 +21,7 @@
             padding-left: 15px;
 
             a {
-                color: $blue-dark;
+                color: $blueDark;
                 text-decoration: underline;
 
                 &:hover {

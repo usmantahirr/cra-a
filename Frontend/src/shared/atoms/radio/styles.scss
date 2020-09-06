@@ -1,7 +1,7 @@
 .ant-radio-lg {
     .ant-radio-inner {
         height: 49px;
-        background-color: $primary-light;
+        background-color: $primaryLight;
         width: 50px;
         border-radius: 0;
         border: 0;
@@ -9,7 +9,7 @@
         &::after {
             position: absolute;
             display: table;
-            border: 2px solid $cloud-dark;
+            border: 2px solid $cloudDark;
             border-top: 0;
             border-left: 0;
             -webkit-transform: rotate(45deg) scale(1) translate(-50%, -50%);
