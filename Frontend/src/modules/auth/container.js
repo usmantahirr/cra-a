@@ -1,31 +1,22 @@
-import React, { useContext } from 'react';
+import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-
-import { useDispatch } from 'react-redux';
-import { AuthContext } from './authContext';
-
-import LoginPage from '../../shared/pages/loginPage';
-import { LoginAction } from './redux';
+import authService from './services/auth.service';
 
 const AuthContainer = ({ history }) => {
-  const dispatch = useDispatch();
-
-  const login = payload => dispatch(LoginAction(payload));
-  const authContext = useContext(AuthContext);
-
-  if (authContext.checkAuthentication()) {
-    // TODO: Redirection to current page;
-    history.push('/');
-  }
-
-  const handleSubmit = ({ email, password }) => {
-    if (email && password) {
-      const payload = { email, password };
-      login(payload);
-      authContext.authenticate('token', 'user');
+  useEffect(() => {
+    async function fetchToken() {
+      const token = await authService.fetchAccessToken();
+      if (token) {
+        const user = authService.getUser();
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', user);
+        history.push('/');
+      }
     }
-  };
-  return <LoginPage handleSubmit={handleSubmit} />;
+    fetchToken();
+  }, []);
+
+  return null;
 };
 
 export default withRouter(AuthContainer);
