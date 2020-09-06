@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { AuthContext } from './authContext';
 
 import LoginPage from '../../shared/pages/loginPage';
-import LoginAction from './redux';
+import { LoginAction } from './redux';
 
 const AuthContainer = ({ history }) => {
   const dispatch = useDispatch();
