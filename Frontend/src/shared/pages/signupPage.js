@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'antd';
 import Button from '../atoms/buttons/index';
-import InputCustom from '../atoms/inputs/inputCustom';
+import InputCustom from '../atoms/forms/input';
 import AuthPageTemplate from '../templates/AuthPageTemplate';
 
 const Signup = () => {

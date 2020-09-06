@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
+  color: #545B64;
 }
 
 
@@ -39,6 +40,10 @@ body {
       left: 0;
     }
   }
+}
+
+.ant-image-img{
+  @extend %img-fluid;
 }
 
 
