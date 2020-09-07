@@ -11,6 +11,13 @@
       {
         "fieldArray": [
           {
+            "name": "testNickName",
+            "placeholder": "Source Country",
+            "label": "Source Country",
+            "type": "customComponent",
+            "id": "Fasdasdas2a"
+          },
+          {
             "name": "sourceCountry",
             "placeholder": "Source Country",
             "label": "Source Country",
