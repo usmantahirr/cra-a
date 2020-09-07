@@ -38,7 +38,7 @@
 
     .salutationholder {
       padding: 40px;
-      background-color: rgba($blue-light, 0.69);
+      background-color: rgba($blueLight, 0.69);
       height: 100%;
       @include flexbox();
       @include align-content(center);

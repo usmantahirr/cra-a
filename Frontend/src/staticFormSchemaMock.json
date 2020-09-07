@@ -1,0 +1,561 @@
+[
+  {
+    "stepTitle": "Select Visa Type",
+    "id": "ST1",
+    "formName": "step1",
+    "initialValues": {
+      "name": "FirstUser ",
+      "rememberMe": true
+    },
+    "sections": [
+      {
+        "fieldArray": [
+          {
+            "name": "sourceCountry",
+            "placeholder": "Source Country",
+            "label": "Source Country",
+            "type": "select",
+            "id": "F2a",
+            "options": [
+              {
+                "value": 1,
+                "text": "PAK",
+                "id": "S111"
+              },
+              {
+                "value": 2,
+                "text": "UAE",
+                "id": "S222"
+              }
+            ]
+          },
+          {
+            "name": "city",
+            "label": "Source City",
+            "placeholder": "Source City",
+            "type": "select",
+            "id": "F2",
+            "options": [
+              {
+                "value": 1,
+                "text": "KHI",
+                "id": "S111"
+              },
+              {
+                "value": 2,
+                "text": "DXB",
+                "id": "S222"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "Source Location",
+        "id": "SEC1"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "destCountry",
+            "label": "Destination Country",
+            "placeholder": "Destination Country",
+            "type": "select",
+            "id": "F21",
+            "options": [
+              {
+                "value": 1001,
+                "text": "PAK",
+                "id": "DC1"
+              },
+              {
+                "value": 2,
+                "text": "UAE",
+                "id": "DC2"
+              }
+            ]
+          },
+          {
+            "name": "destCity",
+            "label": "Destination City",
+            "placeholder": "Destination City",
+            "type": "select",
+            "id": "F22",
+            "options": [
+              {
+                "value": 10,
+                "text": "KHI",
+                "id": "DC11"
+              },
+              {
+                "value": 2,
+                "text": "DXB",
+                "id": "DC22"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "Destination Location",
+        "id": "SEC2"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "passengerType",
+            "label": "Passenger Type",
+            "type": "radio",
+            "id": "pt",
+            "options": [
+              {
+                "value": "1",
+                "text": "Transit Visa",
+                "id": "PTO1"
+              },
+              {
+                "value": "2",
+                "text": "Visitor",
+                "id": "PTo2"
+              },
+              {
+                "value": "3",
+                "text": "UAE Resident",
+                "id": "PTo3"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select resident type"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S2"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "visaType",
+            "label": "Visa Type",
+            "type": "radio",
+            "id": "vt",
+            "options": [
+              {
+                "value": "1",
+                "text": "Pre-Approved Visa",
+                "id": "VTO1"
+              },
+              {
+                "value": "2",
+                "text": "On-Arrival",
+                "id": "VTO2"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select visa type"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S3"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Select Test Type",
+    "id": "ST2",
+    "formName": "step2",
+    "initialValues": {
+      "name": "Second user details",
+      "fatherName": "Dad",
+      "rememberMe": true
+    },
+    "sections": [
+      {
+        "fieldArray": [
+          {
+            "name": "tt_covid19",
+            "label": "COVID-19",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "cv19"
+          },
+          {
+            "name": "tt_hep_b_and_c",
+            "label": "HEP B AND C",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "HEPBANDC"
+          },
+          {
+            "name": "hiv",
+            "label": "HIV",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "hiv"
+          },
+          {
+            "name": "chest_xray",
+            "label": "CHEST X-RAY",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "chest_xray"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "SEC11"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Select Visa Issuing Emirate",
+    "id": "ST3",
+    "formName": "step3",
+    "initialValues": {
+      "name": "Second user details",
+      "fatherName": "Dad",
+      "rememberMe": true
+    },
+    "sections": [
+      {
+        "fieldArray": [
+          {
+            "name": "viet",
+            "label": "Visa Issing Emirate",
+            "type": "radio",
+            "id": "VIET",
+            "options": [
+              {
+                "value": "1",
+                "text": "Abu Dhabi",
+                "id": "VIET1"
+              },
+              {
+                "value": "2",
+                "text": "Dubai",
+                "id": "VIET2"
+              },
+              {
+                "value": "3",
+                "text": "Sharjah",
+                "id": "VIET3"
+              },
+              {
+                "value": "4",
+                "text": "Ajman",
+                "id": "VIET4"
+              },
+              {
+                "value": "5",
+                "text": "Umm al Quwain",
+                "id": "VIET5"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select type"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "SEC411"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Application Form",
+    "id": "ST4",
+    "formName": "step4",
+    "initialValues": {
+      "st4country": "Pakistan",
+      "st4city": "Karachi",
+      "st4VisaType": "Visit"
+    },
+    "sections": [
+      {
+        "fieldArray": [
+          { "name": "st4country", "label": "Country", "type": "text", "id": "st4f1" },
+          { "name": "st4city", "label": "City", "type": "text", "id": "st4f2" },
+          { "name": "st4VisaType", "label": "Visa Type", "type": "text", "id": "st4f3" }
+        ],
+        "sectionTitle": "",
+        "id": "ST4S1"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "surName",
+            "label": "Surname(As Per Passport)",
+            "placeholder": "Please Select",
+            "type": "select",
+            "id": "ST4S1F1",
+            "options": [
+              {
+                "value": 1001,
+                "text": "A",
+                "id": "ST4S1F1O1"
+              },
+              {
+                "value": 2,
+                "text": "B",
+                "id": "ST4S1FO2"
+              }
+            ]
+          },
+          { "name": "naspp", "label": "Name(As Per Passport)", "type": "text", "id": "ST4S1F2" },
+          { "name": "phonepp", "label": "Phone", "type": "text", "id": "ST4S1F3" },
+          { "name": "pn", "label": "Passport Number", "type": "text", "id": "ST4S1F4" }
+        ],
+        "sectionTitle": "",
+        "id": "ST4S2"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "dob",
+            "label": "Date Of Birth",
+            "placeholder": "Date Of Birth",
+            "type": "date",
+            "id": "ST4S3F1"
+          },
+          {
+            "name": "nationality",
+            "label": "Nationality",
+            "placeholder": "Nationality",
+            "type": "select",
+            "id": "ST4S3F2",
+            "options": [
+              {
+                "value": 1,
+                "text": "PAK",
+                "id": "ST4S3F2O1"
+              },
+              {
+                "value": 2,
+                "text": "UAE",
+                "id": "ST4S3F2O1"
+              }
+            ]
+          },
+          {
+            "name": "gender",
+            "label": "Gender",
+            "placeholder": "Gender",
+            "type": "select",
+            "id": "ST4S3F3A",
+            "options": [
+              {
+                "value": 1,
+                "text": "Male",
+                "id": "ST4S3F3O1"
+              },
+              {
+                "value": 2,
+                "text": "Female",
+                "id": "ST4S3F3O2"
+              }
+            ]
+          },
+          {
+            "name": "ppe",
+            "label": "Passport Expiry",
+            "type": "date",
+            "id": "ST4S3F3"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST4S3"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Upload Document",
+    "id": "ST5",
+    "formName": "step5",
+    "initialValues": {},
+    "sections": [
+      {
+        "fieldArray": [{ "name": "UPLOAD_IMAGE", "label": "UPLOAD_IMAGE", "type": "text", "id": "ST5S1F1" }],
+        "sectionTitle": "",
+        "id": "ST5S1"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Screening Facility",
+    "id": "ST6",
+    "formName": "step6",
+    "initialValues": {},
+    "sections": [
+      {
+        "fieldArray": [
+          { "name": "country", "label": "Country", "type": "text", "id": "ST6S1F1" },
+          { "name": "visaType", "label": "Visa Type", "type": "text", "id": "ST6S1F2A" },
+          {
+            "name": "city",
+            "label": "City",
+            "placeholder": "Please Select",
+            "type": "select",
+            "id": "ST6S1F2",
+            "options": [
+              {
+                "value": 1001,
+                "text": "KHI",
+                "id": "ST6S1F2O1"
+              },
+              {
+                "value": 2,
+                "text": "ISB",
+                "id": "ST6S1F2O2"
+              }
+            ]
+          },
+          {
+            "name": "lab",
+            "label": "Lab",
+            "placeholder": "Please Select",
+            "type": "select",
+            "id": "ST6S1F3",
+            "options": [
+              {
+                "value": 1001,
+                "text": "KHI",
+                "id": "ST6S1F3O1"
+              },
+              {
+                "value": 2,
+                "text": "ISB",
+                "id": "ST6S1F3O2"
+              }
+            ]
+          },
+          {
+            "name": "labType",
+            "label": "Lab Type",
+            "type": "radio",
+            "id": "ST6S1F5",
+            "options": [
+              {
+                "value": "1",
+                "text": "Value Added",
+                "id":"ST6S1F5O1"
+              },
+              {
+                "value": "2",
+                "text": "General",
+                "id":"ST6S1F5O2"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select lab type"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST6S1"
+      },
+      {
+        "fieldArray": [{ "name": "GOOGLE_MAPS", "label": "GOOGLE_MAPS", "type": "text", "id": "ST6S2F1" }],
+        "sectionTitle": "",
+        "id": "ST6S2"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "tt_covid19",
+            "label": "Biomed Diagnostics",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "ST6S3F1"
+          },
+          {
+            "name": "tt_covid19",
+            "label": "ESSA LAB",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "ST6S3F2"
+          },
+          {
+            "name": "tt_covid19",
+            "label": "DNA Solutions Ltd",
+            "type": "checkbox",
+            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "id": "ST6S3F3"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST6S3"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Payment",
+    "id": "ST7",
+    "formName": "step7",
+    "initialValues": {},
+    "sections": [
+      {
+        "fieldArray": [
+          {
+            "name": "payment",
+            "label": "Payment Type",
+            "placeholder": "Please Select",
+            "type": "select",
+            "id": "ST7S1F1",
+            "options": [
+              {
+                "value": 1001,
+                "text": "Cash",
+                "id": "ST7S1F101"
+              },
+              {
+                "value": 2,
+                "text": "Paypal",
+                "id": "ST7S1F102"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST7S1"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "cardType",
+            "label": "Card Type",
+            "placeholder": "Please Select",
+            "type": "select",
+            "id": "ST7S1F1",
+            "options": [
+              {
+                "value": 1001,
+                "text": "DEBIT",
+                "id": "ST7S2F101"
+              },
+              {
+                "value": 2,
+                "text": "CREDIT",
+                "id": "ST7S2F102"
+              }
+            ]
+          },
+          { "name": "cardNo", "label": "Card Number", "type": "text", "id": "ST7S2F2" },
+          { "name": "ced", "label": "Card Expiry", "type": "date", "id": "ST7S2F3" },
+          { "name": "cw", "label": "CVV", "type": "text", "id": "ST7S2F4" },
+          { "name": "postalCode", "label": "Postal Code", "type": "text", "id": "ST7S2F5" }
+        ],
+        "sectionTitle": "Payment By Card",
+        "id": "ST7S2"
+      }
+      
+    ]
+  }
+]
