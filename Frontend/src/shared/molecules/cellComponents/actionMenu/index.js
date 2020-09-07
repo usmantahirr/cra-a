@@ -5,7 +5,9 @@ import MenuType from './menuType';
 
 const ActionMenu = props => {
   const actionClick = (e, type) => {
-    props.actionParam(e, type, props.data);
+    if (props.actionParam) {
+      props.actionParam(e, type, props.data);
+    }
   };
 
   const menu = (
