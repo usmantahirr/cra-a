@@ -9,7 +9,7 @@ const AuthContainer = ({ history }) => {
       if (token) {
         const user = authService.getUser();
         localStorage.setItem('token', token);
-        localStorage.setItem('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
         history.push('/');
       }
     }

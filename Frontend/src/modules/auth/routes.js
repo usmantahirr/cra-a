@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { AUTH_PAGE } from '../../config';
+import { AUTH_PAGE, SIGNUP_PAGE } from '../../config';
 
 const AuthRoutes = [
   {
@@ -8,7 +8,7 @@ const AuthRoutes = [
   },
   {
     Component: lazy(() => import('./signupContainer')),
-    path: '/account/signup',
+    path: SIGNUP_PAGE,
   },
 ];
 
