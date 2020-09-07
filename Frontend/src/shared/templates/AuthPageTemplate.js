@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Image } from 'antd';
-import Button from '../atoms/buttons/index';
+import { Link } from 'react-router-dom';
 
 import styles from './authPageTemplate.module.scss';
 
@@ -23,9 +23,9 @@ const AuthPageTemplate = ({ children }) => {
                     <br /> REGISTRATION Portal
                   </strong>
                 </h2>
-                <Button type="default" htmlType="submit">
+                <Link to="/account/login" className="ant-btn ant-btn-link ant-btn-default">
                   Back to login
-                </Button>
+                </Link>
               </div>
             </Col>
           </Row>
