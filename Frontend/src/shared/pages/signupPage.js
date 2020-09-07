@@ -1,34 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Form, Modal } from 'antd';
 import Button from '../atoms/buttons/index';
 import InputCustom from '../atoms/forms/input';
 import AuthPageTemplate from '../templates/AuthPageTemplate';
 import CustomTelInput from '../atoms/inputs/customTelInput';
+import Timer from '../atoms/timer';
 
 const Signup = ({
   validationRules,
   handleSubmit,
   showOTPModal,
+  setShowOTPModal,
   handleVerifySubmit,
   verificationFormValidationRules,
 }) => {
   const [registerForm] = Form.useForm();
   const [otpForm] = Form.useForm();
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    setModalVisible(showOTPModal);
+    setShowOTPModal(showOTPModal);
   }, [showOTPModal]);
 
-  const onFinish = values => {
-    handleSubmit(values);
+  const resendOTPEvent = () => {
+    // console.log("***************Resend button pressed do stuff here *********************")
   };
-  const onFinishOTP = values => {
-    handleVerifySubmit(values);
+
+  const onOTPComplete = () => {
+    // console.log("completed")
   };
+
+  const resendPinEvent = () => {
+    // console.log("***************Resend button pressed do stuff here *********************")
+  };
+
+  const onPinComplete = () => {
+    // console.log("completed")
+  };
+
   return (
     <AuthPageTemplate>
-      <Form className="transbg-form" form={registerForm} name="register" onFinish={onFinish}>
+      <Form className="transbg-form" form={registerForm} name="register" onFinish={handleSubmit}>
         <InputCustom
           placeholder="First Name"
           type="text"
@@ -75,9 +86,10 @@ const Signup = ({
       </Form>
       <Modal
         centered
-        visible={modalVisible}
+        destroyOnClose
+        visible={showOTPModal}
         footer={null}
-        onCancel={() => setModalVisible(false)}
+        onCancel={() => setShowOTPModal(false)}
         className="custom-popup otp-popup"
         width={590}
       >
@@ -85,7 +97,7 @@ const Signup = ({
           Please Enter Your OTP Sent To Your Mobile Number And Pin Number Sent To Your Email Address
         </div>
         <div className="otp-form-holder">
-          <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={onFinishOTP}>
+          <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={handleVerifySubmit}>
             <InputCustom
               maxLength={6}
               placeholder="OTP"
@@ -94,6 +106,7 @@ const Signup = ({
               validators={verificationFormValidationRules.otp}
               className="custom-control"
             />
+            <Timer minutes={0.99} onComplete={onOTPComplete} resendEvent={resendOTPEvent} />
             <InputCustom
               maxLength={6}
               placeholder="Pin Number"
@@ -102,6 +115,7 @@ const Signup = ({
               validators={verificationFormValidationRules.pinNumber}
               className="custom-control"
             />
+            <Timer minutes={0.99} onComplete={onPinComplete} resendEvent={resendPinEvent} />
             <Form.Item>
               <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
                 Verify

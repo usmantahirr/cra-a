@@ -127,13 +127,12 @@ const SignupContainer = () => {
   const [showOTPModal, setShowOTPModal] = useState(false);
   const handleSubmit = values => {
     JSON.stringify(values);
-    // alert(JSON.stringify(values));
     setShowOTPModal(true);
   };
   const handleVerifySubmit = values => {
     JSON.stringify(values);
-    // alert(JSON.stringify(values));
   };
+
   return (
     <SignupPage
       validationRules={SIGNUP_FORM_VALIDATION_RULES}
@@ -141,6 +140,7 @@ const SignupContainer = () => {
       handleSubmit={handleSubmit}
       handleVerifySubmit={handleVerifySubmit}
       showOTPModal={showOTPModal}
+      setShowOTPModal={setShowOTPModal}
     />
   );
 };
