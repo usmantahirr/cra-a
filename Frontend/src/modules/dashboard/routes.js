@@ -11,7 +11,7 @@ const DashboardRoutes = [
     path: '/dynamic-form',
   },
   {
-    Component: lazy(() => import('../../shared/organisms/PHSGrid/index')),
+    Component: lazy(() => import('../../shared/organisms/grid/index')),
     path: '/grid',
   },
 ];

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import PHSGroupBox from '../../modules/PHSGroupCheckbox/index';
+import GroupBox from '../../modules/groupCheckbox/index';
 import StatusRendrer from '../../molecules/cellComponents/status/index';
 import ActionMenuRendrer from '../../molecules/cellComponents/actionMenu/index';
 
@@ -104,7 +104,7 @@ const GridView = () => {
         width: '100%',
       }}
     >
-      <PHSGroupBox {...selectedColumn} options={options} handleChange={handleFormGroupChange} />
+      <GroupBox {...selectedColumn} options={options} handleChange={handleFormGroupChange} />
 
       <AgGridReact
         gridOptions={state.gridOptions}

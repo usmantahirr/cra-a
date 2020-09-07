@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '../../atoms/PHSCheckbox/index';
+import Checkbox from '../../atoms/Checkbox/index';
 
 export default ({ options, ...props }) => (
   <div className="ant-checkbox-group" style={{ display: 'inline-block', marginRight: 10 }}>
