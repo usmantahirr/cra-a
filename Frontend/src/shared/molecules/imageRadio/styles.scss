@@ -1,0 +1,109 @@
+.image-selection {
+    .radio-holder {
+        position: relative;
+        height: 315px;
+        margin: 0 15px;
+
+        .ant-radio-inner {
+            position: absolute;
+            bottom: 30px;
+            top: auto;
+            width: 55px;
+            height: 51px;
+            background-color: rgba($lightGray, .61);
+            border-radius: 0;
+            border: 0;
+            left: 50%;
+            margin-left: -27.5px;
+
+            &::after {
+                position: absolute;
+                display: table;
+                border: 3px solid $white;
+                border-top: 0;
+                border-left: 0;
+                transform: rotate(45deg) scale(1) translate(-50%, -50%);
+                opacity: 1;
+                transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+                content: ' ';
+                border-radius: 0;
+                width: 12px;
+                height: 23px;
+                top: 50%;
+                left: 50%;
+                margin-top: -4px;
+                margin-left: -9px;
+                background-color: transparent;
+            }
+        }
+
+        .ant-radio-checked {
+            .ant-radio-inner {
+                margin-left: -77.5px;
+                background-color: $secondary;
+
+                &::before {
+                    content: "Select";
+                    position: absolute;
+                    left: 55px;
+                    height: 51px;
+                    line-height: 51px;
+                    width: 100px;
+                    padding-left: 15px;
+                    background-color: $secondary;
+                    color: $white;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+            }
+
+            &::after {
+                border-radius: 0;
+            }
+        }
+
+        .ant-radio {
+            @extend %position-fixed;
+            z-index: 5;
+        }
+
+        .ant-radio+* {
+            z-index: 2;
+            height: 315px;
+            position: absolute;
+            width: 100%;
+            padding: 0;
+        }
+
+        .radiocontent-holder {
+            z-index: 2;
+            height: 315px;
+
+            h5 {
+                @extend %position-center;
+                z-index: 5;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: $white;
+            }
+
+            .ant-image {
+                height: 315px;
+                width: 100%;
+                overflow: hidden;
+
+                .ant-image-img {
+                    @extend %position-center;
+                    height: 100%;
+                    max-width: none;
+                }
+
+                &::after {
+                    content: "";
+                    background-color: rgba($primary, .55);
+                    @extend %position-fixed;
+                }
+            }
+        }
+    }
+}

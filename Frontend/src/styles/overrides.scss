@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
+  color: #545B64;
 }
 
 
@@ -41,9 +42,52 @@ body {
   }
 }
 
+.ant-btn-link {
+  &.ant-btn {
+    line-height: 1.5715;
+    padding-top: 13px;
+  }
+}
+
+.ant-image-img {
+  @extend %img-fluid;
+}
+
 
 .inner-heading {
   font-size: 21px;
   font-weight: 600;
   color: $primary;
+}
+
+.otp-popup {
+  .ant-modal-body {
+    padding: 0;
+
+    .otp-text {
+      background: url(/assets/img/opt-bg.svg) no-repeat center bottom;
+      font-size: 1.375rem;
+      color: $primary;
+      font-weight: 600;
+      line-height: 34px;
+      text-align: center;
+      padding: 40px 80px 80px;
+      background-size: cover;
+    }
+
+    .otp-form-holder {
+      padding: 24px;
+    }
+  }
+}
+
+.custom-popup {
+  .ant-modal-close-x {
+    background: url(/assets/img/icon-close.svg) no-repeat center;
+    .anticon-close {
+      svg {
+        display: none;
+      }
+    }
+  }
 }

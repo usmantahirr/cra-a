@@ -7,7 +7,9 @@ import {
   CustomTextInput,
   CustomPasswordInput,
   CustomCheckbox,
-} from '../../atoms/inputs';
+} from '../../atoms/forms';
+
+import TestNickName from '../../molecules/relatedFormFields/testNickName';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -31,13 +33,32 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
+  _renderCustomComponent = fieldProps => {
+    const componentName = fieldProps.name || '';
+
+    switch (componentName) {
+      case 'countryCity':
+        return <CustomDatePicker {...fieldProps} />;
+      case 'testNickName':
+        return <TestNickName {...fieldProps} />;
+      default:
+        return null;
+    }
+  };
+
   render() {
     const { label, name, rules, type } = this.props;
+    const isCustomComponent = type === 'customComponent';
 
     return (
-      <Form.Item label={label} name={name} rules={rules} valuePropName={type === 'checkbox' ? 'checked' : 'value'}>
-        {this._renderField(this.props)}
-      </Form.Item>
+      <>
+        {!isCustomComponent && (
+          <Form.Item label={label} name={name} rules={rules} valuePropName={type === 'checkbox' ? 'checked' : 'value'}>
+            {this._renderField(this.props)}
+          </Form.Item>
+        )}
+        {isCustomComponent && this._renderCustomComponent(this.props)}
+      </>
     );
   }
 }

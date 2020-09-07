@@ -2,4 +2,7 @@
 @import "styles/index";
 
 @import "shared/atoms/buttons/styles";
-@import "shared/atoms/inputs/inputs";
+@import "shared/atoms/forms/input";
+@import "shared/atoms/forms/checkbox";
+@import "shared/atoms/radio/styles";
+@import "shared/molecules/imageRadio/styles";

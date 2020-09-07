@@ -1,0 +1,103 @@
+.custom-item {
+  margin-bottom: 17px;
+
+  .custom-control,
+  .intl-tel-input input[type='tel'] {
+    background-color: $white;
+    border-radius: 0;
+    border: 1px solid #c8c9ca;
+    font-size: 0.9375rem;
+    padding: 14px 25px;
+    width: 100%;
+
+    &::placeholder {
+      color: $primary;
+    }
+
+    &:focus {
+      border-color: #40a9ff;
+      -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      outline: 0;
+    }
+  }
+
+  .intl-tel-input {
+    width: 100%;
+
+    .selected-flag {
+      margin-left: 0;
+      padding-left: 25px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &.allow-dropdown {
+      .selected-flag {
+        width: 80px;
+      }
+    }
+
+    &.allow-dropdown {
+      input[type=tel] {
+        padding-left: 85px;
+      }
+    }
+
+    .flag-container {
+      .arrow {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        &.down,
+        &.up {
+          &:after {
+            content: "";
+            background-image: url(/assets/img/down-arrow.png);
+            width: 18px;
+            height: 11px;
+            display: block;
+          }
+        }
+
+        &.up {
+          &:after {
+            transform: rotate(180deg);
+          }
+        }
+
+      }
+    }
+  }
+
+  &.ant-form-item-has-error {
+
+    .custom-control,
+    .intl-tel-input input[type='tel'] {
+      &:focus {
+        border-color: #ff7875;
+        -webkit-box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+      }
+    }
+
+    .ant-form-item-explain,
+    .ant-form-item-split {
+      font-size: 0.75rem;
+    }
+  }
+
+}
+
+
+.transbg-form {
+  .custom-item {
+
+    .intl-tel-input.allow-dropdown input[type=tel],
+    .custom-control {
+      background-color: transparent;
+    }
+  }
+}
