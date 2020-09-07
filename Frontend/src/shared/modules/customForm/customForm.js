@@ -38,22 +38,23 @@ function CustomForm(props) {
     );
   };
 
-  const _renderFormButtons = layoutProps => {
+  const _renderFormButtons = (layoutProps, isLastStep, onAllStepsCompleted) => {
     return (
       <Form.Item {...layoutProps}>
-        <Button onClick={goBack}>Back</Button>
+        <Button onClick={goBack}>Prev</Button>
         <Button type="primary" htmlType="submit">
-          Submit
+          Save As Draft
         </Button>
         <Button onClick={goForward}>Next</Button>
+        {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
       </Form.Item>
     );
   };
 
-  const _renderStepForm = (step, currStep, currIndex) => {
+  const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
     const [form] = Form.useForm();
     const { name, formOrientation, initialValues } = step;
-    const { layout, tailLayout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
+    const { layout, tailLayout, onFinish, onFinishFailed, onValuesChange, onFieldsChange, onAllStepsCompleted } = props;
     return (
       <Form
         key={`${step.id}${name}`}
@@ -63,20 +64,22 @@ function CustomForm(props) {
         form={form}
         layout={formOrientation}
         initialValues={initialValues}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
+        onFinish={result => onFinish(result, currStep)}
+        onFinishFailed={result => onFinishFailed(result, currStep)}
         onValuesChange={onValuesChange}
         onFieldsChange={onFieldsChange}
       >
         <h1>{step.stepTitle}</h1>
         {step.sections && step.sections.map(section => _renderSection(section))}
-        {_renderFormButtons(tailLayout)}
+        {_renderFormButtons(tailLayout, currStep === stepsCount - 1, onAllStepsCompleted)}
       </Form>
     );
   };
 
   const _renderStepsBody = (formSchema, currStep) => {
-    return formSchema && formSchema.map((step, currIndex) => _renderStepForm(step, currStep, currIndex));
+    return (
+      formSchema && formSchema.map((step, currIndex) => _renderStepForm(step, formSchema.length, currStep, currIndex))
+    );
   };
 
   const { formSchema } = props;

@@ -21,14 +21,18 @@ const FormPage = () => {
     },
   };
 
-  const onFinish = values => {
-    return values;
-    // console.log('Success:', values);
+  const onAllStepsCompleted = values => {
+    console.log('Success:', values);
   };
 
-  const onFinishFailed = errorInfo => {
-    return errorInfo;
-    // console.log('Failed:', errorInfo);
+  const onFinish = (values, formIndex) => {
+    // return values;
+    console.log('Success:', values, formIndex);
+  };
+
+  const onFinishFailed = (errorInfo, formIndex) => {
+    // return errorInfo;
+    console.log('Failed:', errorInfo, formIndex);
   };
 
   const onValuesChange = (changedVal, allVal) => {
@@ -49,6 +53,7 @@ const FormPage = () => {
       <CustomForm
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        onAllStepsCompleted={onAllStepsCompleted}
         onValuesChange={onValuesChange}
         onFieldsChange={onFieldsChange}
         formSchema={formSchema}
