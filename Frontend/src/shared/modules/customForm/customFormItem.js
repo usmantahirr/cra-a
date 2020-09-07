@@ -9,6 +9,8 @@ import {
   CustomCheckbox,
 } from '../../atoms/inputs';
 
+import TestNickName from '../../molecules/relatedFormFields/testNickName';
+
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
     const fieldType = fieldProps.type || '';
@@ -38,7 +40,7 @@ class CustomFormItem extends React.PureComponent {
       case 'countryCity':
         return <CustomDatePicker {...fieldProps} />;
       case 'testNickName':
-        return <CustomSelect {...fieldProps} />;
+        return <TestNickName {...fieldProps} />;
       default:
         return null;
     }

@@ -21,11 +21,11 @@ function CustomForm(props) {
     return <Steps current={currStep}>{formSchema && formSchema.map(step => <Step key={step.id} />)}</Steps>;
   };
 
-  const _renderFieldArray = fieldArray => {
-    return fieldArray.map(field => <CustomFormItem key={field.id} {...field}></CustomFormItem>);
+  const _renderFieldArray = (fieldArray, form) => {
+    return fieldArray.map(field => <CustomFormItem key={field.id} {...field} form={form}></CustomFormItem>);
   };
 
-  const _renderSection = section => {
+  const _renderSection = (section, form) => {
     // Each div represents a form section
     // Form sections can be aligned horionztally or vertically
     // Add styling to this div to align sections
@@ -33,7 +33,7 @@ function CustomForm(props) {
     return (
       <div key={section.id}>
         <h3>{section.sectionTitle}</h3>
-        {_renderFieldArray(section.fieldArray)}
+        {_renderFieldArray(section.fieldArray, form)}
       </div>
     );
   };
@@ -70,7 +70,7 @@ function CustomForm(props) {
         onFieldsChange={onFieldsChange}
       >
         <h1>{step.stepTitle}</h1>
-        {step.sections && step.sections.map(section => _renderSection(section))}
+        {step.sections && step.sections.map(section => _renderSection(section, form))}
         {_renderFormButtons(tailLayout, currStep === stepsCount - 1, onAllStepsCompleted)}
       </Form>
     );

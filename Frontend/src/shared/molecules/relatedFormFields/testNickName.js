@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Checkbox } from 'antd';
 
 const formItemLayout = {
   labelCol: {
@@ -19,9 +19,10 @@ const formTailLayout = {
   },
 };
 
-const TestNickName = () => {
-  const [form] = Form.useForm();
+const TestNickName = props => {
+  const { form } = props;
   const [checkNick, setCheckNick] = useState(false);
+
   useEffect(() => {
     form.validateFields(['nickname']);
   }, [checkNick]);
@@ -30,17 +31,8 @@ const TestNickName = () => {
     setCheckNick(e.target.checked);
   };
 
-  const onCheck = async () => {
-    try {
-      const values = await form.validateFields();
-      console.log('Success:', values);
-    } catch (errorInfo) {
-      console.log('Failed:', errorInfo);
-    }
-  };
-
   return (
-    <Form form={form} name="dynamic_rule">
+    <>
       <Form.Item
         {...formItemLayout}
         name="username"
@@ -72,12 +64,7 @@ const TestNickName = () => {
           Nickname is required
         </Checkbox>
       </Form.Item>
-      <Form.Item {...formTailLayout}>
-        <Button type="primary" onClick={onCheck}>
-          Check
-        </Button>
-      </Form.Item>
-    </Form>
+    </>
   );
 };
 

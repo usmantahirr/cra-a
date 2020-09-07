@@ -22,17 +22,18 @@ const FormPage = () => {
   };
 
   const onAllStepsCompleted = values => {
-    console.log('Success:', values);
+    return values;
+    // console.log('Success:', values);
   };
 
   const onFinish = (values, formIndex) => {
-    // return values;
-    console.log('Success:', values, formIndex);
+    return { values, formIndex };
+    // console.log('Success:', values, formIndex);
   };
 
   const onFinishFailed = (errorInfo, formIndex) => {
-    // return errorInfo;
-    console.log('Failed:', errorInfo, formIndex);
+    return { errorInfo, formIndex };
+    // console.log('Failed:', errorInfo, formIndex);
   };
 
   const onValuesChange = (changedVal, allVal) => {
