@@ -51,7 +51,7 @@ const Signup = ({
           className="custom-control"
         />
         <Form.Item {...validationRules.mobile} className="custom-item">
-          <CustomTelInput />
+          <CustomTelInput className="custom-control" />
         </Form.Item>
         <InputCustom
           placeholder="Password"
@@ -73,30 +73,42 @@ const Signup = ({
           </Button>
         </Form.Item>
       </Form>
-      <Modal centered visible={modalVisible} footer={null} onCancel={() => setModalVisible(false)}>
-        <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={onFinishOTP}>
-          <InputCustom
-            maxLength={6}
-            placeholder="OTP"
-            type="number"
-            value="otp"
-            validators={verificationFormValidationRules.otp}
-            className="custom-control"
-          />
-          <InputCustom
-            maxLength={6}
-            placeholder="Pin Number"
-            type="number"
-            value="pinNumber"
-            validators={verificationFormValidationRules.pinNumber}
-            className="custom-control"
-          />
-          <Form.Item>
-            <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
-              Verify
-            </Button>
-          </Form.Item>
-        </Form>
+      <Modal
+        centered
+        visible={modalVisible}
+        footer={null}
+        onCancel={() => setModalVisible(false)}
+        className="custom-popup otp-popup"
+        width={590}
+      >
+        <div className="otp-text">
+          Please Enter Your OTP Sent To Your Mobile Number And Pin Number Sent To Your Email Address
+        </div>
+        <div className="otp-form-holder">
+          <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={onFinishOTP}>
+            <InputCustom
+              maxLength={6}
+              placeholder="OTP"
+              type="number"
+              value="otp"
+              validators={verificationFormValidationRules.otp}
+              className="custom-control"
+            />
+            <InputCustom
+              maxLength={6}
+              placeholder="Pin Number"
+              type="number"
+              value="pinNumber"
+              validators={verificationFormValidationRules.pinNumber}
+              className="custom-control"
+            />
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+                Verify
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </Modal>
     </AuthPageTemplate>
   );
