@@ -1,21 +1,15 @@
 import React from 'react';
 import { Layout } from 'antd';
-import Button from '../../atoms/buttons';
-import authService from '../../../modules/auth/services/auth.service';
+import StepCounter from '../../atoms/stepCounter';
+import NextStep from '../../atoms/nextStep';
 
 const { Header: AntHeader } = Layout;
 
-const Header = ({ title }) => {
-  const logout = () => {
-    localStorage.clear();
-    authService.logout();
-  };
+const Header = () => {
   return (
     <AntHeader>
-      {title}
-      <Button type="secondary" htmlType="button" onClick={logout}>
-        Logout
-      </Button>
+      <StepCounter title="Select Test Type" number={1} total={8} />
+      <NextStep nextStepTitle="Select Visa Issuing Emirate" />
     </AntHeader>
   );
 };

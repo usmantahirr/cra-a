@@ -1,15 +1,17 @@
 import React from 'react';
 
-import DualColumnTemplate from '../../shared/templates/DualColumnTemplate';
+import DashboardTemplate from '../../shared/templates/dashboardTemplate';
 import DashboardPage from '../../shared/pages/Dashboard';
 
-const Dashboard = () => (
-  <DualColumnTemplate>
-    {{
-      col1: <h1>Dual Column</h1>,
-      col2: <DashboardPage />,
-    }}
-  </DualColumnTemplate>
-);
+const Dashboard = () => {
+  // TODO: add call to check if patient is new or is registered already
+  // TODO: Add call to get schema
+
+  return (
+    <DashboardTemplate>
+      <DashboardPage />
+    </DashboardTemplate>
+  );
+};
 
 export default Dashboard;
