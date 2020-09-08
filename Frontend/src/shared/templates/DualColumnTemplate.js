@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Row, Col } from 'antd';
 import Header from '../molecules/header';
+import LanguageSwitcher from '../molecules/languageSwitcher/container';
 
 const { Content, Footer } = Layout;
 
@@ -10,6 +11,7 @@ const DualColumnTemplate = ({ children }) => (
     <Header title="Page Title" />
     <Content>
       <Row>
+        <LanguageSwitcher />
         <Col md={12}>{children.col1}</Col>
         <Col md={12}>{children.col2}</Col>
       </Row>
