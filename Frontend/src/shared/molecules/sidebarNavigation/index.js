@@ -6,7 +6,7 @@ const content = [
   {
     text: 'Medical Test Registration',
     icon: '/assets/icons/registration-icon',
-    link: '/',
+    link: '/register',
     isActive: true,
   },
   {
@@ -24,7 +24,7 @@ const content = [
   {
     text: 'More info on Covid',
     icon: '/assets/icons/covid-icon',
-    link: 'covid',
+    link: '/covid',
     isActive: false,
   },
 ];
@@ -33,7 +33,7 @@ const SidebarNavigation = () => {
   return (
     <div className={styles.sidebarNavigation}>
       {content.map(item => (
-        <SideNavItem isActive={item.isActive} text={item.text} iconSrc={item.icon} link={item.link} />
+        <SideNavItem key={item.link} isActive={item.isActive} text={item.text} iconSrc={item.icon} link={item.link} />
       ))}
     </div>
   );

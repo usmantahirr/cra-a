@@ -7,5 +7,5 @@ export const LOGGING = {
 
 export const AUTH_PAGE = '/account/login';
 export const SIGNUP_PAGE = '/account/signup';
-export const APPLICATION_HOME = '/';
+export const APPLICATION_HOME = '/register';
 export const LOGGED_IN_HOME = APPLICATION_HOME;
