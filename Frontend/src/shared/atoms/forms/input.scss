@@ -1,5 +1,6 @@
 .custom-item {
-  margin-bottom: 17px;
+  margin-bottom: 25px;
+  position: relative;
 
   .custom-control,
   .intl-tel-input input[type='tel'] {
@@ -10,14 +11,14 @@
     padding: 14px 25px;
     width: 100%;
 
-    &::placeholder {
+    &::placeholder,
+    .ant-input::placeholder {
       color: $primary;
     }
 
     &:focus {
-      border-color: #40a9ff;
-      -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      border-color: rgba($blueLighter, .5);
+      box-shadow: none;
       outline: 0;
     }
   }
@@ -78,15 +79,17 @@
     .intl-tel-input input[type='tel'] {
       &:focus {
         border-color: #ff7875;
-        -webkit-box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
-        box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
       }
     }
+  }
 
-    .ant-form-item-explain,
-    .ant-form-item-split {
-      font-size: 0.75rem;
-    }
+  .ant-form-item-explain,
+  .ant-form-item-split {
+    font-size: 0.75rem;
+    min-height: auto;
+    position: absolute;
+    bottom: -18px;
+    color: #ff4d4f;
   }
 
 }
@@ -98,6 +101,35 @@
     .intl-tel-input.allow-dropdown input[type=tel],
     .custom-control {
       background-color: transparent;
+    }
+  }
+}
+
+.otp-timer {
+  position: relative;
+
+  .errMsg,
+  .resend {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  .errMsg {
+    color: #F71111;
+  }
+
+  .resend {
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: $primary;
+
+    &:focus {
+      outline: 0;
     }
   }
 }
