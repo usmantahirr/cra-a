@@ -13,12 +13,13 @@ const Dashboard = props => {
   // const notification = useContext(NotificationContext);
   // const errorContext = useContext(ErrorContext);
   console.log('Page state', props);
+  const { goBack, goForward } = props;
 
   return (
     <DashboardTemplate>
       <Header />
       <Content>this is content</Content>
-      <Footer />
+      <Footer goBack={goBack} goForward={goForward} />
     </DashboardTemplate>
   );
 };

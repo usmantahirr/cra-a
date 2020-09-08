@@ -7,7 +7,7 @@ const Dashboard = () => {
 
   // eslint-disable-next-line global-require
   const formSchema = require('../../../src/staticFormSchemaMock.json');
-  const [pageState, setPageState] = React.useState({ prev: null, curr: null, next: null });
+  const [pageState, setPageState] = React.useState({ prev: null, curr: 0, next: null });
 
   const goForward = () => {
     // If can go forward
@@ -22,10 +22,10 @@ const Dashboard = () => {
   };
 
   const goBack = () => {
-    // If can go forward
+    // If can go backward
     if (pageState.curr !== 0) {
       const newState = {
-        prev: pageState.curr - 2 === 0 ? null : pageState.curr - 2,
+        prev: pageState.curr - 2 === -1 ? null : pageState.curr - 2,
         curr: pageState.curr - 1,
         next: pageState.curr,
       };
