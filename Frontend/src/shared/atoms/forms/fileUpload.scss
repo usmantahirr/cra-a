@@ -1,0 +1,117 @@
+.customUpload {
+    display: block;
+
+    .ant-upload-select {
+        display: block;
+        @include shadow(0 0 10px rgba(0, 0, 0, 0.4));
+
+        .ant-btn {
+            display: block;
+            width: 100%;
+            padding: 60px 30px;
+
+            .upload-img {
+                margin-bottom: 25px;
+            }
+
+            .upload-text {
+                margin-bottom: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: none;
+
+                &.text-gray {
+                    color: #808080;
+                }
+
+                &.text-lblue {
+                    color: #00448F;
+                }
+
+                &.text-blue {
+                    color: #001A57;
+                }
+            }
+
+        }
+    }
+
+    .ant-upload-list-text {
+        .ant-upload-list-item {
+            height: auto;
+
+            .ant-upload-list-item-info {
+                margin-right: 25px;
+                padding: 0;
+                width: 100px;
+
+                .ant-upload-list-item-card-actions {
+                    right: 15px;
+                    top: -10px;
+
+                    .ant-btn {
+                        width: 29px;
+                        height: 29px;
+                        border: 2px solid $white;
+                        border-radius: 50%;
+                        background-image: url(/assets/img/icon-cross.svg);
+                        background-color: red;
+                        background-repeat: no-repeat;
+                        background-position: center;
+
+                        .anticon-delete {
+                            width: 29px;
+                            height: 29px;
+
+                            &::before {
+                                content: "X";
+                            }
+
+                        }
+
+
+                        svg {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        >div {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .ant-upload-text-icon {
+            background-color: $white;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            border: 1px solid #E8E8E8;
+
+            .anticon-paper-clip {
+                background-image: url(/assets/img/icon-file.svg);
+                display: block;
+                width: 100px;
+                height: 100px;
+                background-repeat: no-repeat;
+                background-position: center;
+
+                svg {
+                    display: none;
+                }
+            }
+        }
+
+        .ant-upload-list-item-name {
+            white-space: normal;
+            display: block;
+            text-align: center;
+            overflow: visible;
+            word-break: break-word;
+            padding: 10px 0;
+            color: #808080;
+        }
+    }
+}

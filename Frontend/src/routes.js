@@ -4,6 +4,10 @@ import { Redirect, Route, Switch } from 'react-router';
 import { AuthContext } from './modules/auth/authContext';
 import AuthRoutes from './modules/auth/routes';
 import DashboardRoutes from './modules/dashboard/routes';
+import ManageApplicationRoutes from './modules/manageApplication/routes';
+import MoreOnCovidRoutes from './modules/moreOnCovid/routes';
+import FaqRoutes from './modules/faq/routes';
+
 import { AUTH_PAGE } from './config';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -30,6 +34,9 @@ const Routes = () => (
     <Switch>
       {AuthRoutes.map(renderRouteFromList())}
       {DashboardRoutes.map(renderRouteFromList(true))}
+      {ManageApplicationRoutes.map(renderRouteFromList(true))}
+      {MoreOnCovidRoutes.map(renderRouteFromList(true))}
+      {FaqRoutes.map(renderRouteFromList(true))}
     </Switch>
   </Suspense>
 );

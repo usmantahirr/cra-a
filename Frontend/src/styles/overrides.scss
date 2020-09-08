@@ -14,13 +14,6 @@ body {
   color: #545B64;
 }
 
-
-.app-portal {
-  padding-top: 45px;
-  padding-bottom: 45px;
-  height: 100%;
-}
-
 .ant-typography {
   &.inner-heading {
     font-size: 21px;
@@ -46,6 +39,47 @@ body {
   &.ant-btn {
     line-height: 1.5715;
     padding-top: 13px;
+  }
+}
+
+.ant-btn {
+  &-primary {
+    background: $primary;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: $primaryHover;
+    }
+  }
+
+  &-secondary {
+    background: $secondary;
+    color: $primary;
+
+    &:hover,
+    &:focus {
+      background-color: $secondaryHover;
+      color: $primary;
+    }
+  }
+
+  &-default {
+    background: transparent;
+    border: 1px solid $white;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $primary;
+      border-color: $white;
+    }
+  }
+
+  &-lg {
+    font-size: 1.125rem;
+    padding: 22px 25px;
   }
 }
 
@@ -90,4 +124,8 @@ body {
       }
     }
   }
+}
+
+.ant-badge-count {
+  background-color: $yellowDark;
 }

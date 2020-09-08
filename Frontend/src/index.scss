@@ -1,8 +1,9 @@
 @import '~antd/dist/antd.css';
 @import "styles/index";
 
-@import "shared/atoms/buttons/styles";
+@import "shared/atoms/sideNavItem/navActive";
 @import "shared/atoms/forms/input";
 @import "shared/atoms/forms/checkbox";
+@import "shared/atoms/forms/fileUpload";
 @import "shared/atoms/radio/styles";
 @import "shared/molecules/imageRadio/styles";

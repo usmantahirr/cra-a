@@ -1,21 +1,17 @@
 import React from 'react';
 import { Layout } from 'antd';
-import Button from '../../atoms/buttons';
-import MSALService from '../../../modules/auth/services/msal.service';
+import StepCounter from '../../atoms/stepCounter';
+import NextStep from '../../atoms/nextStep';
 
 const { Header: AntHeader } = Layout;
 
-const Header = ({ title }) => {
-  const logout = () => {
-    localStorage.clear();
-    MSALService.logout();
-  };
+const Header = props => {
+  const { formSchema, pageState } = props;
+
   return (
     <AntHeader>
-      {title}
-      <Button type="secondary" htmlType="button" onClick={logout}>
-        Logout
-      </Button>
+      <StepCounter title="Select Test Type" number={pageState.curr + 1} total={formSchema.length} />
+      <NextStep nextStepTitle="Select Visa Issuing Emirate" />
     </AntHeader>
   );
 };

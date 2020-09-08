@@ -89,36 +89,40 @@ const Signup = ({
         </div>
         <div className="otp-form-holder">
           <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={handleVerifySubmit}>
-            <InputCustom
-              maxLength={6}
-              placeholder="OTP"
-              type="number"
-              value="otp"
-              validators={verificationFormValidationRules.otp}
-              className="custom-control"
-            />
-            <Timer
-              minutes={0.1}
-              resendEvent={() => {
-                otpForm.resetFields(['otp']);
-                return resendOTPEvent();
-              }}
-            />
-            <InputCustom
-              maxLength={6}
-              placeholder="Pin Number"
-              type="number"
-              value="pinNumber"
-              validators={verificationFormValidationRules.pinNumber}
-              className="custom-control"
-            />
-            <Timer
-              minutes={0.1}
-              resendEvent={() => {
-                otpForm.resetFields(['pinNumber']);
-                return resendPinEvent();
-              }}
-            />
+            <div className="otp-timer">
+              <InputCustom
+                maxLength={6}
+                placeholder="OTP"
+                type="number"
+                value="otp"
+                validators={verificationFormValidationRules.otp}
+                className="custom-control"
+              />
+              <Timer
+                minutes={0.1}
+                resendEvent={() => {
+                  otpForm.resetFields(['otp']);
+                  return resendOTPEvent();
+                }}
+              />
+            </div>
+            <div className="otp-timer">
+              <InputCustom
+                maxLength={6}
+                placeholder="Pin Number"
+                type="number"
+                value="pinNumber"
+                validators={verificationFormValidationRules.pinNumber}
+                className="custom-control"
+              />
+              <Timer
+                minutes={0.1}
+                resendEvent={() => {
+                  otpForm.resetFields(['pinNumber']);
+                  return resendPinEvent();
+                }}
+              />
+            </div>
             <Form.Item>
               <Button loading={showVerifyLoader} type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
                 Verify

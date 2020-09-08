@@ -1,12 +1,16 @@
 ## Routes
 
 #### Auth:
-- `/login`
+- `/login` b2b redirection. This container will have redirect code
 - `/signup` (includes OTP to verify Phone and Email)
-- `/forgot`
+- `/forgot` (Question)
 
 #### Dashboard
-- `/dashboard` Has Medical Test Registration and Manage applications
+- `/dashboard` Will just be a container, and will redirect based on user details
+`(
+    If user test registration found and already have application, send to manage,
+    else apply for new one
+)`
 
 #### Medical Test Registration
 - `/register` This page will do everything based on steps, and it's data
