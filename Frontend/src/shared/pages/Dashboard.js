@@ -13,7 +13,7 @@ const { Content } = Layout;
 const Dashboard = props => {
   // const notification = useContext(NotificationContext);
   // const errorContext = useContext(ErrorContext);
-  const { goBack, goForward, mainFormSchema, pageState } = props;
+  const { goBack, goForward, formSchema, pageState } = props;
 
   const _renderFieldArray = (fieldArray, form) => {
     return fieldArray.map(field => <CustomFormItem key={field.id} {...field} form={form}></CustomFormItem>);
@@ -52,16 +52,14 @@ const Dashboard = props => {
     );
   };
 
-  const _renderStepsBody = (formSchema, currStep) => {
-    return (
-      formSchema && formSchema.map((step, currIndex) => _renderStepForm(step, formSchema.length, currStep, currIndex))
-    );
+  const _renderStepsBody = (schema, currStep) => {
+    return schema && schema.map((step, currIndex) => _renderStepForm(step, schema.length, currStep, currIndex));
   };
 
   return (
     <DashboardTemplate>
-      <Header pageState={pageState} formSchema={mainFormSchema} />
-      <Content>{_renderStepsBody(mainFormSchema, pageState.curr)}</Content>
+      <Header pageState={pageState} formSchema={formSchema} />
+      <Content>{_renderStepsBody(formSchema, pageState.curr)}</Content>
       <Footer goBack={goBack} goForward={goForward} />
     </DashboardTemplate>
   );
