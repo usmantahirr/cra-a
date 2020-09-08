@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../atoms/buttons';
+import { CustomUpload } from '../atoms/forms/index';
 import NotificationContext from '../modules/notification/context';
 import ErrorContext from '../modules/error/context';
 
@@ -10,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <React.Fragment>
-      Click it to get notification
+      Click it to get notification test
       <Button
         type="primary"
         onClick={e => {
@@ -40,6 +41,7 @@ const Dashboard = () => {
         </li>
         <li>{/* <Link to="/manageRegistration">Manage Registration</Link> */}</li>
       </ul>
+      <CustomUpload>Upload</CustomUpload>
     </React.Fragment>
   );
 };
