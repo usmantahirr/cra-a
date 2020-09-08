@@ -13,6 +13,10 @@ const Signup = ({
   setShowOTPModal,
   handleVerifySubmit,
   verificationFormValidationRules,
+  showLoader,
+  showVerifyLoader,
+  resendOTPEvent,
+  resendPinEvent,
 }) => {
   const [registerForm] = Form.useForm();
   const [otpForm] = Form.useForm();
@@ -20,22 +24,6 @@ const Signup = ({
   useEffect(() => {
     setShowOTPModal(showOTPModal);
   }, [showOTPModal]);
-
-  const resendOTPEvent = () => {
-    // console.log("***************Resend button pressed do stuff here *********************")
-  };
-
-  const onOTPComplete = () => {
-    // console.log("completed")
-  };
-
-  const resendPinEvent = () => {
-    // console.log("***************Resend button pressed do stuff here *********************")
-  };
-
-  const onPinComplete = () => {
-    // console.log("completed")
-  };
 
   return (
     <AuthPageTemplate>
@@ -79,7 +67,7 @@ const Signup = ({
           className="custom-control"
         />
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+          <Button loading={showLoader} type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
             Register
           </Button>
         </Form.Item>
@@ -89,7 +77,10 @@ const Signup = ({
         destroyOnClose
         visible={showOTPModal}
         footer={null}
-        onCancel={() => setShowOTPModal(false)}
+        onCancel={() => {
+          otpForm.resetFields();
+          setShowOTPModal(false);
+        }}
         className="custom-popup otp-popup"
         width={590}
       >
@@ -106,7 +97,13 @@ const Signup = ({
               validators={verificationFormValidationRules.otp}
               className="custom-control"
             />
-            <Timer minutes={0.99} onComplete={onOTPComplete} resendEvent={resendOTPEvent} />
+            <Timer
+              minutes={0.1}
+              resendEvent={() => {
+                otpForm.resetFields(['otp']);
+                return resendOTPEvent();
+              }}
+            />
             <InputCustom
               maxLength={6}
               placeholder="Pin Number"
@@ -115,9 +112,15 @@ const Signup = ({
               validators={verificationFormValidationRules.pinNumber}
               className="custom-control"
             />
-            <Timer minutes={0.99} onComplete={onPinComplete} resendEvent={resendPinEvent} />
+            <Timer
+              minutes={0.1}
+              resendEvent={() => {
+                otpForm.resetFields(['pinNumber']);
+                return resendPinEvent();
+              }}
+            />
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+              <Button loading={showVerifyLoader} type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
                 Verify
               </Button>
             </Form.Item>

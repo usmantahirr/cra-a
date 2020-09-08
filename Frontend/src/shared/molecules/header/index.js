@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout } from 'antd';
 import Button from '../../atoms/buttons';
-import authService from '../../../modules/auth/services/auth.service';
+import MSALService from '../../../modules/auth/services/msal.service';
 
 const { Header: AntHeader } = Layout;
 
 const Header = ({ title }) => {
   const logout = () => {
     localStorage.clear();
-    authService.logout();
+    MSALService.logout();
   };
   return (
     <AntHeader>

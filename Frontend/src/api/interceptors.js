@@ -28,6 +28,7 @@ export function successResponseHandler(response) {
   const { data } = response;
   const res = {
     data: data.data,
+    message: data.message,
   };
 
   if (data.pageNumber !== undefined) {
