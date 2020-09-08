@@ -99,7 +99,7 @@ const Signup = ({
                 className="custom-control"
               />
               <Timer
-                minutes={0.1}
+                minutes={1.99}
                 resendEvent={() => {
                   otpForm.resetFields(['otp']);
                   return resendOTPEvent();
@@ -116,7 +116,7 @@ const Signup = ({
                 className="custom-control"
               />
               <Timer
-                minutes={0.1}
+                minutes={1.99}
                 resendEvent={() => {
                   otpForm.resetFields(['pinNumber']);
                   return resendPinEvent();
