@@ -3,9 +3,8 @@ html {
 }
 
 body {
-  background: url(/assets/img/loginbg.png) no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
+  
+  background-color: rgba($primary , .65);
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,8 +15,6 @@ body {
 
 
 .app-portal {
-  padding-top: 45px;
-  padding-bottom: 45px;
   height: 100%;
 }
 
@@ -84,10 +81,16 @@ body {
 .custom-popup {
   .ant-modal-close-x {
     background: url(/assets/img/icon-close.svg) no-repeat center;
+
     .anticon-close {
       svg {
         display: none;
       }
     }
   }
+}
+
+.main-section {
+  height: 100%;
+  @extend %gradient-bg;
 }

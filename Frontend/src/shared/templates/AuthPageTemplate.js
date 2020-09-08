@@ -8,7 +8,7 @@ const AuthPageTemplate = ({ children }) => {
   return (
     <div className={styles.authcontainer}>
       <Row justify="center" className={styles.row}>
-        <Col span={20}>
+        <Col span={20} className={styles.mgrow}>
           <Row className={styles.row}>
             <Col span={13} className={styles.formcontainer}>
               <Image src="/assets/img/logo.png" className={styles.logobox} />

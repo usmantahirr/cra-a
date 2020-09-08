@@ -15,13 +15,26 @@ const GridView = ({
 }) => {
   return (
     <div
-      className="ag-theme-alpine"
+      className="ag-theme-alpine custom-table"
       style={{
         height: '100%',
         width: '100%',
       }}
     >
-      <GroupBox {...columnsSelected} options={columnsOptions} handleChange={handleFormGroupChange} />
+      <div className="">
+        <div className="">
+          <button type="button" className="ag-side-button-button">
+            <div className="ag-side-button-icon-wrapper">
+              <span className="ag-icon ag-icon-columns" unselectable="on"></span>
+              <span className="ag-side-button-label">Columns</span>
+            </div>
+          </button>
+        </div>
+        <div className="">
+          <GroupBox {...columnsSelected} options={columnsOptions} handleChange={handleFormGroupChange} />
+        </div>
+      </div>
+
       <AgGridReact
         gridOptions={gridOptions}
         rowData={rowDataSource}

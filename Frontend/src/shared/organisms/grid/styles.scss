@@ -1,0 +1,61 @@
+.custom-table {
+    &.ag-theme-alpine {
+
+        .ag-root-wrapper,
+        .ag-header,
+        .ag-row {
+            background-color: transparent;
+            border-color: rgba($gray, .26);
+            font-size: 0.8125rem;
+        }
+
+        .ag-header-row {
+            font-weight: 600;
+            color: $primary;
+
+            .ag-header-icon {
+                &.ag-header-cell-menu-button {
+                    opacity: 1 !important;
+
+                    .ag-icon-menu {
+                        background: url(/assets/img/icon-filter.svg) no-repeat;
+                        width: 14px;
+                        height: 15px;
+
+                        &::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ag-cell {
+            .anticon-more {
+                width: 18px;
+                height: 33px;
+                display: inline-block;
+                vertical-align: middle;
+                border-radius: 7px;
+                background: url(/assets/img/icon-tmenu.svg) no-repeat center #E2E2E2;
+
+                svg {
+                    display: none;
+                }
+            }
+        }
+
+        .ag-paging-panel {
+            background-color: rgba($white, .40);
+            justify-content: center;
+
+            >* {
+                color: #3B4550;
+            }
+        }
+
+
+
+    }
+
+}
