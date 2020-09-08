@@ -7,15 +7,7 @@ import CustomFormItem from './customFormItem';
 const { Step } = Steps;
 
 function CustomForm(props) {
-  const [formStep, setFormStep] = React.useState(0);
-
-  const goBack = () => {
-    setFormStep(Math.max(0, formStep - 1));
-  };
-
-  const goForward = () => {
-    setFormStep(Math.min(props.formSchema.length - 1, formStep + 1));
-  };
+  const { formStep, goBack } = props;
 
   const _renderStepsHeader = (formSchema, currStep) => {
     return <Steps current={currStep}>{formSchema && formSchema.map(step => <Step key={step.id} />)}</Steps>;
@@ -42,10 +34,9 @@ function CustomForm(props) {
     return (
       <Form.Item {...layoutProps}>
         <Button onClick={goBack}>Prev</Button>
-        <Button type="primary" htmlType="submit">
-          Save As Draft
-        </Button>
-        <Button onClick={goForward}>Next</Button>
+        <Button type="primary">Save As Draft</Button>
+        <Button htmlType="submit">Next</Button>
+        {/* <Button onClick={goForward}>Next</Button> */}
         {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
       </Form.Item>
     );
