@@ -1,17 +1,39 @@
 import React from 'react';
-
-import DashboardTemplate from '../../shared/templates/dashboardTemplate';
 import DashboardPage from '../../shared/pages/Dashboard';
 
 const Dashboard = () => {
   // TODO: add call to check if patient is new or is registered already
   // TODO: Add call to get schema
 
-  return (
-    <DashboardTemplate>
-      <DashboardPage />
-    </DashboardTemplate>
-  );
+  // eslint-disable-next-line global-require
+  const formSchema = require('../../../src/staticFormSchemaMock.json');
+  const [pageState, setPageState] = React.useState({ prev: null, curr: null, next: null });
+
+  const goForward = () => {
+    // If can go forward
+    if (pageState.curr !== formSchema.length - 1) {
+      const newState = {
+        prev: pageState.curr,
+        curr: pageState.curr + 1,
+        next: pageState.curr + 2 > formSchema.length - 1 ? null : pageState.curr + 2,
+      };
+      setPageState(newState);
+    }
+  };
+
+  const goBack = () => {
+    // If can go forward
+    if (pageState.curr !== 0) {
+      const newState = {
+        prev: pageState.curr - 2 === 0 ? null : pageState.curr - 2,
+        curr: pageState.curr - 1,
+        next: pageState.curr,
+      };
+      setPageState(newState);
+    }
+  };
+
+  return <DashboardPage pageState={pageState} goForward={goForward} goBack={goBack} />;
 };
 
 export default Dashboard;

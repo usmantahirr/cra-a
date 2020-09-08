@@ -1,48 +1,25 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../atoms/buttons';
-import { CustomUpload } from '../atoms/forms/index';
-import NotificationContext from '../modules/notification/context';
-import ErrorContext from '../modules/error/context';
+import React from 'react';
+// import React, { useContext } from 'react';
+import { Layout } from 'antd';
+// import NotificationContext from '../modules/notification/context';
+// import ErrorContext from '../modules/error/context';
+import DashboardTemplate from '../templates/dashboardTemplate';
+import Header from '../molecules/header';
+import Footer from '../molecules/footer';
 
-const Dashboard = () => {
-  const notification = useContext(NotificationContext);
-  const errorContext = useContext(ErrorContext);
+const { Content } = Layout;
+
+const Dashboard = props => {
+  // const notification = useContext(NotificationContext);
+  // const errorContext = useContext(ErrorContext);
+  console.log('Page state', props);
 
   return (
-    <React.Fragment>
-      Click it to get notification test
-      <Button
-        type="primary"
-        onClick={e => {
-          e.preventDefault();
-          notification.setNotification(
-            {
-              type: 'success',
-              message: 'This is message',
-            },
-            true
-          );
-        }}
-      >
-        Show Notification
-      </Button>
-      <Button
-        onClick={e => {
-          e.preventDefault();
-          errorContext.setError(new Error('Something happened'), true);
-        }}
-      >
-        Show Error
-      </Button>
-      <ul>
-        <li>
-          <Link to="/dynamic-form">New Registration</Link>
-        </li>
-        <li>{/* <Link to="/manageRegistration">Manage Registration</Link> */}</li>
-      </ul>
-      <CustomUpload>Upload</CustomUpload>
-    </React.Fragment>
+    <DashboardTemplate>
+      <Header />
+      <Content>this is content</Content>
+      <Footer />
+    </DashboardTemplate>
   );
 };
 
