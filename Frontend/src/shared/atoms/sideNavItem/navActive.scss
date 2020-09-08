@@ -1,0 +1,9 @@
+.sidebar-active-item {
+  color: $blueDarker;
+  background-color: $blueVeryLight;
+  border-right: 5px solid $yellowDark;
+
+  &-text {
+    color: $blueDarker !important;
+  }
+}
