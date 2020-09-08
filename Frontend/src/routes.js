@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import { AuthContext } from './modules/auth/authContext';
 import AuthRoutes from './modules/auth/routes';
 import DashboardRoutes from './modules/dashboard/routes';
+import { AUTH_PAGE } from './config';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
@@ -11,9 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       exact
-      render={props =>
-        authContext.checkAuthentication() ? <Component {...props} /> : <Redirect to="/account/login" />
-      }
+      render={props => (authContext.checkAuthentication() ? <Component {...props} /> : <Redirect to={AUTH_PAGE} />)}
     />
   );
 };

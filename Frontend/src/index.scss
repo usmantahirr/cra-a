@@ -1,49 +1,9 @@
 @import '~antd/dist/antd.css';
-@import 'src/theme';
+@import "styles/index";
 
-html{
-  font-size: 100%;
-}
-
-body {
-  background: rgb(0, 68, 143);
-  background: linear-gradient(90deg, rgba(0, 68, 143, 1) 0%, rgba(62, 147, 243, 1) 100%);
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 0.9375rem;
-}
-
-.app-portal {
-  padding-top: 45px;
-  height: 100%;
-}
-
-.ant-typography {
-  &.inner-heading {
-    font-size: 21px;
-    font-weight: 600;
-    color: $primary;
-    line-height: 18px;
-    position: relative;
-    margin-bottom: 45px;
-    &:after {
-      content: '';
-      height: 2px;
-      width: 58px;
-      position: absolute;
-      background-color: $secondary;
-      bottom: -15px;
-      left: 0;
-    }
-  }
-}
-
-.inner-heading {
-  font-size: 21px;
-  font-weight: 600;
-  color: $primary;
-}
-
-@import 'overrides';
+@import "shared/atoms/buttons/styles";
+@import "shared/atoms/forms/input";
+@import "shared/atoms/forms/checkbox";
+@import "shared/atoms/forms/fileUpload";
+@import "shared/atoms/radio/styles";
+@import "shared/molecules/imageRadio/styles";

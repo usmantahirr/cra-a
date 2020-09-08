@@ -1,10 +1,14 @@
 import { lazy } from 'react';
-import { AUTH_PAGE } from '../../config';
+import { AUTH_PAGE, SIGNUP_PAGE } from '../../config';
 
 const AuthRoutes = [
   {
     Component: lazy(() => import('./container')),
     path: AUTH_PAGE,
+  },
+  {
+    Component: lazy(() => import('./signupContainer')),
+    path: SIGNUP_PAGE,
   },
 ];
 

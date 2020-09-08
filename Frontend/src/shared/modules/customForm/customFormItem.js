@@ -7,7 +7,7 @@ import {
   CustomTextInput,
   CustomPasswordInput,
   CustomCheckbox,
-} from '../../atoms/inputs';
+} from '../../atoms/forms';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 
