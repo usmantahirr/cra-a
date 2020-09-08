@@ -12,7 +12,9 @@ const { Sider } = Layout;
 const Sidebar = () => {
   return (
     <Sider className={styles.sidebar}>
-      <Logo />
+      <div className={styles.logo}>
+        <Logo />
+      </div>
       <ProfileCard />
       <SidebarNavigation />
       <SidebarFooter />

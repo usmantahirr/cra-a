@@ -1,0 +1,44 @@
+.profileCard {
+  padding: 20px;
+  border-bottom: 1px solid $cloudDark;
+
+  .avatar {
+    text-align: center;
+    .img {
+      box-shadow: 0 0 0 7px $cloud;
+    }
+  }
+
+  .name {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .dropdownButton {
+    background: lightgrey;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    min-height: 20px;
+    vertical-align: text-bottom;
+
+    .caret {
+      vertical-align: text-top;
+    }
+  }
+
+  .avatarActions {
+    margin: 15px 0;
+    text-align: center;
+
+    .badge {
+      margin-right: 20px;
+    }
+
+    .actionButton {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
