@@ -1,4 +1,12 @@
 .sidebar {
-  padding: 10px;
-  border-top: 1px solid grey;
+  width: 250px !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  background: linear-gradient($uranianBlue, $white);
+
+  .logo {
+    padding: 25px 30px;
+    border-bottom: 1px solid $cloudDark;
+    height: 110px;
+  }
 }

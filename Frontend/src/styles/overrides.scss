@@ -3,19 +3,14 @@ html {
 }
 
 body {
-  
-  background-color: rgba($primary , .65);
+
+  background-color: rgba($primary, .65);
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   color: #545B64;
-}
-
-
-.app-portal {
-  height: 100%;
 }
 
 .ant-typography {
@@ -43,6 +38,47 @@ body {
   &.ant-btn {
     line-height: 1.5715;
     padding-top: 13px;
+  }
+}
+
+.ant-btn {
+  &-primary {
+    background: $primary;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: $primaryHover;
+    }
+  }
+
+  &-secondary {
+    background: $secondary;
+    color: $primary;
+
+    &:hover,
+    &:focus {
+      background-color: $secondaryHover;
+      color: $primary;
+    }
+  }
+
+  &-default {
+    background: transparent;
+    border: 1px solid $white;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $primary;
+      border-color: $white;
+    }
+  }
+
+  &-lg {
+    font-size: 1.125rem;
+    padding: 22px 25px;
   }
 }
 
@@ -93,4 +129,8 @@ body {
 .main-section {
   height: 100%;
   @extend %gradient-bg;
+}
+
+.ant-badge-count {
+  background-color: $yellowDark;
 }

@@ -5,10 +5,12 @@ import NextStep from '../../atoms/nextStep';
 
 const { Header: AntHeader } = Layout;
 
-const Header = () => {
+const Header = props => {
+  const { formSchema, pageState } = props;
+
   return (
     <AntHeader>
-      <StepCounter title="Select Test Type" number={1} total={8} />
+      <StepCounter title="Select Test Type" number={pageState.curr + 1} total={formSchema.length} />
       <NextStep nextStepTitle="Select Visa Issuing Emirate" />
     </AntHeader>
   );
