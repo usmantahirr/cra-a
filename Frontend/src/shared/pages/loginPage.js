@@ -1,7 +1,6 @@
 import React from 'react';
-import CustomCheckbox from '../atoms/forms/checkbox';
-import RadioButton from '../atoms/radio/radioButton';
-import RadioGroup from '../atoms/radio/radioGroup';
+import { CustomCheckbox, CustomUpload } from '../atoms/forms/index';
+import { RadioButton, RadioGroup } from '../atoms/radio/index';
 import ImageRadio from '../molecules/imageRadio/index';
 
 const imageOptions = [
@@ -28,6 +27,8 @@ const LoginPage = () => (
     <RadioGroup className="ant-radio-lg"></RadioGroup>
 
     <ImageRadio imageOptions={imageOptions} />
+
+    <CustomUpload>Upload</CustomUpload>
   </div>
 );
 

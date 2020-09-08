@@ -98,24 +98,28 @@ const Signup = ({
         </div>
         <div className="otp-form-holder">
           <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={handleVerifySubmit}>
-            <InputCustom
-              maxLength={6}
-              placeholder="OTP"
-              type="number"
-              value="otp"
-              validators={verificationFormValidationRules.otp}
-              className="custom-control"
-            />
-            <Timer minutes={0.99} onComplete={onOTPComplete} resendEvent={resendOTPEvent} />
-            <InputCustom
-              maxLength={6}
-              placeholder="Pin Number"
-              type="number"
-              value="pinNumber"
-              validators={verificationFormValidationRules.pinNumber}
-              className="custom-control"
-            />
-            <Timer minutes={0.99} onComplete={onPinComplete} resendEvent={resendPinEvent} />
+            <div className="otp-timer">
+              <InputCustom
+                maxLength={6}
+                placeholder="OTP"
+                type="number"
+                value="otp"
+                validators={verificationFormValidationRules.otp}
+                className="custom-control"
+              />
+              <Timer minutes={0.99} onComplete={onOTPComplete} resendEvent={resendOTPEvent} className="timer" />
+            </div>
+            <div className="otp-timer">
+              <InputCustom
+                maxLength={6}
+                placeholder="Pin Number"
+                type="number"
+                value="pinNumber"
+                validators={verificationFormValidationRules.pinNumber}
+                className="custom-control"
+              />
+              <Timer minutes={0.99} onComplete={onPinComplete} resendEvent={resendPinEvent} />
+            </div>
             <Form.Item>
               <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
                 Verify
