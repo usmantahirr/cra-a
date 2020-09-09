@@ -1,0 +1,22 @@
+.sideNavItem {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px 30px;
+
+  .icon {
+    margin-right: 10px;
+
+    img {
+      width: 28px;
+    }
+  }
+
+  .text {
+    color: $lightGray;
+    text-decoration: none;
+    text-align: left;
+    font-size: 14px;
+  }
+}

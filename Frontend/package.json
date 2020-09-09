@@ -12,6 +12,7 @@
     "ag-grid-react": "^23.2.1",
     "antd": "^4.6.2",
     "axios": "^0.20.0",
+    "classnames": "^2.2.6",
     "formik": "^2.1.5",
     "i18next": "^19.7.0",
     "i18next-http-backend": "^1.0.18",

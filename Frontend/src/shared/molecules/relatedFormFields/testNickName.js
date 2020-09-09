@@ -25,7 +25,7 @@ const TestNickName = props => {
 
   useEffect(() => {
     form.validateFields(['nickname']);
-  }, [checkNick]);
+  }, [checkNick, form]);
 
   const onCheckboxChange = e => {
     setCheckNick(e.target.checked);

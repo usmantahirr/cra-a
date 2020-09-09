@@ -4,6 +4,7 @@ import CustomForm from '../modules/customForm/customForm';
 const FormPage = () => {
   // eslint-disable-next-line global-require
   const formSchema = require('../../../src/staticFormSchemaMock.json');
+  // const [savedForms, setSavedForms] = React.useState([]);
 
   const layout = {
     labelCol: {
@@ -24,11 +25,16 @@ const FormPage = () => {
   const onAllStepsCompleted = values => {
     return values;
     // console.log('Success:', values);
+    // console.log('ALL FORMS = ', savedForms);
   };
 
   const onFinish = (values, formIndex) => {
     return { values, formIndex };
     // console.log('Success:', values, formIndex);
+    // const temp = savedForms;
+    // temp[formIndex] = values;
+    // setSavedForms(temp);
+    // setFormStep(Math.min(formSchema.length - 1, formStep + 1));
   };
 
   const onFinishFailed = (errorInfo, formIndex) => {
@@ -49,6 +55,11 @@ const FormPage = () => {
     // console.log('All fields:', allFields);
   };
 
+  const [formStep, setFormStep] = React.useState(0);
+  const goBack = () => {
+    setFormStep(Math.max(0, formStep - 1));
+  };
+
   return (
     <React.Fragment>
       <CustomForm
@@ -61,6 +72,9 @@ const FormPage = () => {
         formOrientation="horizontal"
         layout={layout}
         tailLayout={tailLayout}
+        formStep={formStep}
+        setFormStep={setFormStep}
+        goBack={goBack}
       />
     </React.Fragment>
   );
