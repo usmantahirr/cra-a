@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Select } from 'antd';
+import { Form } from 'antd';
 import service from '../../services/shared.service';
-
-const { Option } = Select;
+import CustomSelect from '../../atoms/forms/select';
 
 const formItemLayout = {
   labelCol: {
@@ -99,24 +98,15 @@ const CountryStateCity = props => {
           },
         ]}
       >
-        <Select
+        <CustomSelect
           showSearch
           allowClear
           placeholder={placeholder}
           optionFilterProp="children"
           onChange={onCountryChange}
           filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-        >
-          {countries &&
-            countries.length > 0 &&
-            countries.map(({ _id, name: label }) => {
-              return (
-                <Option key={_id} value={_id}>
-                  {label}
-                </Option>
-              );
-            })}
-        </Select>
+          options={countries.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+        />
       </Form.Item>
     );
   };
@@ -136,24 +126,15 @@ const CountryStateCity = props => {
             },
           ]}
         >
-          <Select
+          <CustomSelect
             showSearch
             allowClear
             placeholder={placeholder}
             optionFilterProp="children"
             onChange={onStateChange}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          >
-            {states &&
-              states.length &&
-              states.map(({ _id, name: label }) => {
-                return (
-                  <Option key={_id} value={_id}>
-                    {label}
-                  </Option>
-                );
-              })}
-          </Select>
+            options={states.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+          />
         </Form.Item>
       )
     );
@@ -173,24 +154,14 @@ const CountryStateCity = props => {
           },
         ]}
       >
-        <Select
+        <CustomSelect
           showSearch
           allowClear
           placeholder={placeholder}
           optionFilterProp="children"
-          // onChange={onCityChange}
           filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-        >
-          {cities &&
-            cities.length > 0 &&
-            cities.map(({ _id, name: label }) => {
-              return (
-                <Option key={_id} value={_id}>
-                  {label}
-                </Option>
-              );
-            })}
-        </Select>
+          options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+        />
       </Form.Item>
     );
   };
