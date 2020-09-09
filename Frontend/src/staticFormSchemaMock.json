@@ -22,7 +22,7 @@
               "placeholder": "Source City",
               "name": "sourceCity"
             },
-             "state": {
+            "state": {
               "placeholder": "Source State",
               "name": "sourceState"
             }
@@ -45,7 +45,7 @@
               "placeholder": "Destination City",
               "name": "destCity"
             },
-             "state": {
+            "state": {
               "placeholder": "Destination State",
               "name": "destState"
             }
@@ -60,6 +60,7 @@
             "name": "passengerType",
             "label": "Passenger Type",
             "type": "radio",
+
             "id": "pt",
             "options": [
               {
@@ -411,6 +412,19 @@
               {
                 "required": true,
                 "message": "Please select lab type"
+              }
+            ]
+          },
+          {
+            "name": "zipCode",
+            "label": "Zip Code",
+            "type": "text",
+            "id": "ST6S2F231231",
+            "hideField": [
+              {
+                "fieldName": "sourceCountry",
+                "fieldValue": "5f589189175c69424c936728",
+                "isEqualTo": true
               }
             ]
           }
