@@ -22,7 +22,7 @@ const Dashboard = props => {
   const _renderSection = (section, form) => {
     return (
       <div key={section.id}>
-        <h3>{section.sectionTitle}</h3>
+        {/* <h3>{section.sectionTitle}</h3> */}
         {_renderFieldArray(section.fieldArray, form)}
       </div>
     );
@@ -30,7 +30,7 @@ const Dashboard = props => {
 
   const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
     const [form] = Form.useForm();
-    const { name, formOrientation, initialValues } = step;
+    const { name, initialValues } = step;
     const { layout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
     return (
       <Form
@@ -39,7 +39,7 @@ const Dashboard = props => {
         {...layout}
         name={name}
         form={form}
-        layout={formOrientation}
+        layout="vertical"
         initialValues={initialValues}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
@@ -59,7 +59,7 @@ const Dashboard = props => {
   return (
     <DashboardTemplate>
       <Header pageState={pageState} formSchema={formSchema} />
-      <Content style={{ background: 'white' }}>{_renderStepsBody(formSchema, pageState.curr)}</Content>
+      <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
       <Footer goBack={goBack} goForward={goForward} />
     </DashboardTemplate>
   );

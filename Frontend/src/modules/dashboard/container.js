@@ -5,19 +5,10 @@ const Dashboard = () => {
   // TODO: add call to check if patient is new or is registered already
   // TODO: Add call to get schema
 
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-
   const tailLayout = {
     wrapperCol: {
-      offset: 8,
-      span: 16,
+      offset: 24,
+      span: 24,
     },
   };
 
@@ -69,7 +60,6 @@ const Dashboard = () => {
       goForward={goForward}
       goBack={goBack}
       formSchema={formSchema}
-      layout={layout}
       tailLayout={tailLayout}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}

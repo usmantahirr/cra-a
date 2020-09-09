@@ -59,13 +59,18 @@ class CustomFormItem extends React.PureComponent {
   };
 
   render() {
-    const { label, name, rules, type } = this.props;
+    const { name, rules, type } = this.props;
     const isCustomComponent = type === 'customComponent';
 
     return (
       <>
         {!isCustomComponent && (
-          <Form.Item label={label} name={name} rules={rules} valuePropName={type === 'checkbox' ? 'checked' : 'value'}>
+          <Form.Item
+            className="custom-item"
+            name={name}
+            rules={rules}
+            valuePropName={type === 'checkbox' ? 'checked' : 'value'}
+          >
             {this._renderField(this.props)}
           </Form.Item>
         )}
