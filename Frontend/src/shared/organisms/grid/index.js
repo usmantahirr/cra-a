@@ -25,7 +25,9 @@ const GridView = ({
         <div className="column-btnbox">
           <button type="button" className="ag-side-button-button">
             <div className="ag-side-button-icon-wrapper">
-              <span className="ag-icon ag-icon-columns" unselectable="on"></span>
+              <span className="ag-icon" unselectable="on">
+                <img src="/assets/img/icon-column.svg" alt="" />
+              </span>
               <span className="ag-side-button-label">Columns</span>
             </div>
           </button>
