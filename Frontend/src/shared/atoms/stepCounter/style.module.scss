@@ -1,18 +1,24 @@
 .stepCounter {
   color: white;
-  font-weight: bold;
-  border-right: 1px solid white;
   margin: 10px 0;
   padding: 10px 15px 10px 0;
+  font-size: 20px;
+
+  .counter {
+    border-right: 1px solid white;
+    display: inline;
+    margin: 0 20px;
+  }
 
   .count {
     background: #40a9ff;
-    padding: 10px;
+    padding: 7px 15px;
     border-radius: 50px;
-    margin: 10px;
+    margin: 0 20px 0 10px;
   }
 
   .text {
-    font-size: 15px;
+    font-size: 23px;
+    font-weight: bold;
   }
 }
