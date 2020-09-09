@@ -126,11 +126,6 @@ body {
   }
 }
 
-.main-section {
-  height: 100%;
-  @extend %gradient-bg;
-}
-
 .ant-badge-count {
   background-color: $yellowDark;
 }

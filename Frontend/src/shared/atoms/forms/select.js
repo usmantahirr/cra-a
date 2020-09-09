@@ -3,7 +3,7 @@ import { Select } from 'antd';
 
 function CustomSelect({ options, ...props }) {
   return (
-    <Select {...props}>
+    <Select {...props} className="custom-control">
       {options &&
         options.map(option => (
           <Select.Option key={option.id} value={option.value}>
