@@ -11,11 +11,6 @@
       {
         "fieldArray": [
           {
-            "name": "testNickName",
-            "type": "customComponent",
-            "id": "Fasdasdas2a"
-          },
-          {
             "name": "countryStateCity",
             "type": "customComponent",
             "id": "Fasdasdas2asaa",
@@ -127,52 +122,6 @@
     ]
   },
   {
-    "stepTitle": "Select Test Type",
-    "id": "ST2",
-    "formName": "step2",
-    "initialValues": {
-      "name": "Second user details",
-      "fatherName": "Dad",
-      "rememberMe": true
-    },
-    "sections": [
-      {
-        "fieldArray": [
-          {
-            "name": "tt_covid19",
-            "label": "COVID-19",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "cv19"
-          },
-          {
-            "name": "tt_hep_b_and_c",
-            "label": "HEP B AND C",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "HEPBANDC"
-          },
-          {
-            "name": "hiv",
-            "label": "HIV",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "hiv"
-          },
-          {
-            "name": "chest_xray",
-            "label": "CHEST X-RAY",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "chest_xray"
-          }
-        ],
-        "sectionTitle": "",
-        "id": "SEC11"
-      }
-    ]
-  },
-  {
     "stepTitle": "Select Visa Issuing Emirate",
     "id": "ST3",
     "formName": "step3",
@@ -187,32 +136,37 @@
           {
             "name": "viet",
             "label": "Visa Issing Emirate",
-            "type": "radio",
+            "type": "imageRadio",
             "id": "VIET",
             "options": [
               {
                 "value": "1",
                 "text": "Abu Dhabi",
+                "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
               {
                 "value": "2",
                 "text": "Dubai",
+                "src": "/assets/img/dubai.png",
                 "id": "VIET2"
               },
               {
                 "value": "3",
                 "text": "Sharjah",
+                "src": "/assets/img/abudhabi.png",
                 "id": "VIET3"
               },
               {
                 "value": "4",
                 "text": "Ajman",
+                "src": "/assets/img/dubai.png",
                 "id": "VIET4"
               },
               {
                 "value": "5",
                 "text": "Umm al Quwain",
+                "src": "/assets/img/abudhabi.png",
                 "id": "VIET5"
               }
             ],
@@ -372,14 +326,7 @@
     "initialValues": {},
     "sections": [
       {
-        "fieldArray": [
-          {
-            "name": "UPLOAD_IMAGE",
-            "label": "UPLOAD_IMAGE",
-            "type": "text",
-            "id": "ST5S1F1"
-          }
-        ],
+        "fieldArray": [{ "name": "fileUpload", "label": "UPLOAD_IMAGE", "type": "customComponent", "id": "ST5S1F1" }],
         "sectionTitle": "",
         "id": "ST5S1"
       }
