@@ -7,7 +7,15 @@ import styles from './style.module.scss';
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
-  const { formSchema, pageState } = props;
+  const { formSchema, pageState, pageHeader } = props;
+
+  if (pageHeader) {
+    return (
+      <AntHeader className={styles.header}>
+        <div className={styles.text}>Manage Application</div>
+      </AntHeader>
+    );
+  }
 
   return (
     <AntHeader className={styles.header}>

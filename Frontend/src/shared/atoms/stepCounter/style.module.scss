@@ -1,8 +1,15 @@
 .stepCounter {
   color: white;
+  font-weight: bold;
+  border-right: 1px solid white;
+  margin: 10px 0;
+  padding: 10px 15px 10px 0;
 
   .count {
     background: #40a9ff;
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px;
   }
 
   .text {
