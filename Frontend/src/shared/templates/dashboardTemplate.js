@@ -2,10 +2,12 @@ import React from 'react';
 import { Layout } from 'antd';
 import Sidebar from '../organisms/sidebar';
 
+import styles from './dashboardTemplate.module.scss';
+
 const DashboardTemplate = ({ children }) => (
-  <Layout>
+  <Layout className={styles.layout}>
     <Sidebar />
-    <Layout>{children}</Layout>
+    <Layout className={styles.layout}>{children}</Layout>
   </Layout>
 );
 
