@@ -4,3 +4,6 @@ export const AUTH_SEND_OTP = 'auth/send-otp';
 export const AUTH_RESEND_OTP = 'auth/resend-otp';
 export const AUTH_RESEND_PIN = 'auth/resend-pin';
 export const AUTH_VERIFY_OTP = 'auth/verify-otp';
+export const GET_COUNTRIES = 'country';
+export const GET_CITIES = 'city';
+export const GET_STATES = 'state';

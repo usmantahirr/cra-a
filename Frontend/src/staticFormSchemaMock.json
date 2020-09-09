@@ -16,42 +16,21 @@
             "id": "Fasdasdas2a"
           },
           {
-            "name": "sourceCountry",
-            "placeholder": "Source Country",
-            "label": "Source Country",
-            "type": "select",
-            "id": "F2a",
-            "options": [
-              {
-                "value": 1,
-                "text": "PAK",
-                "id": "S111"
-              },
-              {
-                "value": 2,
-                "text": "UAE",
-                "id": "S222"
-              }
-            ]
-          },
-          {
-            "name": "city",
-            "label": "Source City",
-            "placeholder": "Source City",
-            "type": "select",
-            "id": "F2",
-            "options": [
-              {
-                "value": 1,
-                "text": "KHI",
-                "id": "S111"
-              },
-              {
-                "value": 2,
-                "text": "DXB",
-                "id": "S222"
-              }
-            ]
+            "name": "countryStateCity",
+            "type": "customComponent",
+            "id": "Fasdasdas2asaa",
+            "country": {
+              "placeholder": "Source Country",
+              "name": "sourceCountry"
+            },
+            "city": {
+              "placeholder": "Source City",
+              "name": "sourceCity"
+            },
+             "state": {
+              "placeholder": "Source State",
+              "name": "sourceState"
+            }
           }
         ],
         "sectionTitle": "Source Location",
@@ -60,42 +39,21 @@
       {
         "fieldArray": [
           {
-            "name": "destCountry",
-            "label": "Destination Country",
-            "placeholder": "Destination Country",
-            "type": "select",
-            "id": "F21",
-            "options": [
-              {
-                "value": 1001,
-                "text": "PAK",
-                "id": "DC1"
-              },
-              {
-                "value": 2,
-                "text": "UAE",
-                "id": "DC2"
-              }
-            ]
-          },
-          {
-            "name": "destCity",
-            "label": "Destination City",
-            "placeholder": "Destination City",
-            "type": "select",
-            "id": "F22",
-            "options": [
-              {
-                "value": 10,
-                "text": "KHI",
-                "id": "DC11"
-              },
-              {
-                "value": 2,
-                "text": "DXB",
-                "id": "DC22"
-              }
-            ]
+            "name": "countryStateCity",
+            "type": "customComponent",
+            "id": "Fasdasdas2asaa",
+            "country": {
+              "placeholder": "Destination Country",
+              "name": "destCountry"
+            },
+            "city": {
+              "placeholder": "Destination City",
+              "name": "destCity"
+            },
+             "state": {
+              "placeholder": "Destination State",
+              "name": "destState"
+            }
           }
         ],
         "sectionTitle": "Destination Location",
@@ -283,9 +241,24 @@
     "sections": [
       {
         "fieldArray": [
-          { "name": "st4country", "label": "Country", "type": "text", "id": "st4f1" },
-          { "name": "st4city", "label": "City", "type": "text", "id": "st4f2" },
-          { "name": "st4VisaType", "label": "Visa Type", "type": "text", "id": "st4f3" }
+          {
+            "name": "st4country",
+            "label": "Country",
+            "type": "text",
+            "id": "st4f1"
+          },
+          {
+            "name": "st4city",
+            "label": "City",
+            "type": "text",
+            "id": "st4f2"
+          },
+          {
+            "name": "st4VisaType",
+            "label": "Visa Type",
+            "type": "text",
+            "id": "st4f3"
+          }
         ],
         "sectionTitle": "",
         "id": "ST4S1"
@@ -311,9 +284,24 @@
               }
             ]
           },
-          { "name": "naspp", "label": "Name(As Per Passport)", "type": "text", "id": "ST4S1F2" },
-          { "name": "phonepp", "label": "Phone", "type": "text", "id": "ST4S1F3" },
-          { "name": "pn", "label": "Passport Number", "type": "text", "id": "ST4S1F4" }
+          {
+            "name": "naspp",
+            "label": "Name(As Per Passport)",
+            "type": "text",
+            "id": "ST4S1F2"
+          },
+          {
+            "name": "phonepp",
+            "label": "Phone",
+            "type": "text",
+            "id": "ST4S1F3"
+          },
+          {
+            "name": "pn",
+            "label": "Passport Number",
+            "type": "text",
+            "id": "ST4S1F4"
+          }
         ],
         "sectionTitle": "",
         "id": "ST4S2"
@@ -384,7 +372,14 @@
     "initialValues": {},
     "sections": [
       {
-        "fieldArray": [{ "name": "UPLOAD_IMAGE", "label": "UPLOAD_IMAGE", "type": "text", "id": "ST5S1F1" }],
+        "fieldArray": [
+          {
+            "name": "UPLOAD_IMAGE",
+            "label": "UPLOAD_IMAGE",
+            "type": "text",
+            "id": "ST5S1F1"
+          }
+        ],
         "sectionTitle": "",
         "id": "ST5S1"
       }
@@ -398,8 +393,18 @@
     "sections": [
       {
         "fieldArray": [
-          { "name": "country", "label": "Country", "type": "text", "id": "ST6S1F1" },
-          { "name": "visaType", "label": "Visa Type", "type": "text", "id": "ST6S1F2A" },
+          {
+            "name": "country",
+            "label": "Country",
+            "type": "text",
+            "id": "ST6S1F1"
+          },
+          {
+            "name": "visaType",
+            "label": "Visa Type",
+            "type": "text",
+            "id": "ST6S1F2A"
+          },
           {
             "name": "city",
             "label": "City",
@@ -447,12 +452,12 @@
               {
                 "value": "1",
                 "text": "Value Added",
-                "id":"ST6S1F5O1"
+                "id": "ST6S1F5O1"
               },
               {
                 "value": "2",
                 "text": "General",
-                "id":"ST6S1F5O2"
+                "id": "ST6S1F5O2"
               }
             ],
             "rules": [
@@ -467,7 +472,14 @@
         "id": "ST6S1"
       },
       {
-        "fieldArray": [{ "name": "GOOGLE_MAPS", "label": "GOOGLE_MAPS", "type": "text", "id": "ST6S2F1" }],
+        "fieldArray": [
+          {
+            "name": "GOOGLE_MAPS",
+            "label": "GOOGLE_MAPS",
+            "type": "text",
+            "id": "ST6S2F1"
+          }
+        ],
         "sectionTitle": "",
         "id": "ST6S2"
       },
@@ -552,15 +564,34 @@
               }
             ]
           },
-          { "name": "cardNo", "label": "Card Number", "type": "text", "id": "ST7S2F2" },
-          { "name": "ced", "label": "Card Expiry", "type": "date", "id": "ST7S2F3" },
-          { "name": "cw", "label": "CVV", "type": "text", "id": "ST7S2F4" },
-          { "name": "postalCode", "label": "Postal Code", "type": "text", "id": "ST7S2F5" }
+          {
+            "name": "cardNo",
+            "label": "Card Number",
+            "type": "text",
+            "id": "ST7S2F2"
+          },
+          {
+            "name": "ced",
+            "label": "Card Expiry",
+            "type": "date",
+            "id": "ST7S2F3"
+          },
+          {
+            "name": "cw",
+            "label": "CVV",
+            "type": "text",
+            "id": "ST7S2F4"
+          },
+          {
+            "name": "postalCode",
+            "label": "Postal Code",
+            "type": "text",
+            "id": "ST7S2F5"
+          }
         ],
         "sectionTitle": "Payment By Card",
         "id": "ST7S2"
       }
-      
     ]
   }
 ]
