@@ -5,14 +5,16 @@ import ImageRadio from '../molecules/imageRadio/index';
 
 const imageOptions = [
   {
-    id: 1,
+    value: '1',
+    text: 'Abu Dhabi',
     src: '/assets/img/abudhabi.png',
-    title: 'Abu Dhabi',
+    id: 'VIET1',
   },
   {
-    id: 2,
+    value: '2',
+    text: 'Dubai',
     src: '/assets/img/dubai.png',
-    title: 'Dubai',
+    id: 'VIET2',
   },
 ];
 

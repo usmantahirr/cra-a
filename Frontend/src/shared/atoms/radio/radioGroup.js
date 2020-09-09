@@ -20,8 +20,9 @@ const options = [
 ];
 
 function RadioGroup({ ...props }) {
+  console.log(props);
   return (
-    <Radio.Group {...props}>
+    <Radio.Group {...props} className="ant-radio-lg">
       {options &&
         options.map(option => (
           <Radio key={option.id} value={option.value}>
