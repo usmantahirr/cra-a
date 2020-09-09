@@ -2,6 +2,10 @@
   margin-bottom: 25px;
   position: relative;
 
+  .ant-form-item-label{
+    color: $primary;
+  }
+
   .custom-control,
   .intl-tel-input input[type='tel'] {
     background-color: $white;

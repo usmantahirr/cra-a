@@ -1,11 +1,19 @@
 .stepCounter {
-  color: white;
+  float: left;
+  font-size: 18px;
+  color: $white;
+  font-weight: 600;
+  margin-top: 12px;
 
   .count {
-    background: #40a9ff;
+    background-color: #0086D3;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 10px;
   }
 
   .text {
-    font-size: 15px;
+    font-size: 21px;
   }
+
 }

@@ -1,13 +1,11 @@
 .nextStep {
-  color: white;
-  margin: 2rem;
-  padding: 3rem;
-  border-left: 1px solid white;
+  float: right;
+  padding: 10px 0 10px 25px;
+  border-left: 1px solid rgba($white, .5);
+  font-size: 12px;
 
-  .title {
-    font-size: 15px;
-  }
   .text {
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: 600;
   }
 }

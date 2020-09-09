@@ -3,9 +3,7 @@ html {
 }
 
 body {
-  background: url(/assets/img/loginbg.png) no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: rgba($primary , .7);
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
