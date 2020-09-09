@@ -53,3 +53,10 @@
         }
     }
 }
+
+.custom-item {
+    .ant-select {
+        padding: 0;
+        border: 0;
+    }
+}

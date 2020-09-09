@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form } from 'antd';
+import { Form, Row, Col } from 'antd';
 import service from '../../services/shared.service';
 import CustomSelect from '../../atoms/forms/select';
-
-const formItemLayout = {
-  labelCol: {
-    span: 4,
-  },
-  wrapperCol: {
-    span: 8,
-  },
-};
 
 const CountryStateCity = props => {
   const { form, country, city, state } = props;
@@ -87,42 +78,15 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Form.Item
-        {...formItemLayout}
-        name={name}
-        label={placeholder}
-        rules={[
-          {
-            required: true,
-            message: 'Please select your country',
-          },
-        ]}
-      >
-        <CustomSelect
-          showSearch
-          allowClear
-          placeholder={placeholder}
-          optionFilterProp="children"
-          onChange={onCountryChange}
-          filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          options={countries.map(c => ({ id: c._id, text: c.name, value: c._id }))}
-        />
-      </Form.Item>
-    );
-  };
-
-  const renderStates = () => {
-    const { name, placeholder } = state;
-    return (
-      showState && (
+      <Col span={12}>
         <Form.Item
-          {...formItemLayout}
+          className="custom-label"
           name={name}
           label={placeholder}
           rules={[
             {
               required: true,
-              message: 'Please select your state',
+              message: 'Please select your country',
             },
           ]}
         >
@@ -131,11 +95,42 @@ const CountryStateCity = props => {
             allowClear
             placeholder={placeholder}
             optionFilterProp="children"
-            onChange={onStateChange}
+            onChange={onCountryChange}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-            options={states.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+            options={countries.map(c => ({ id: c._id, text: c.name, value: c._id }))}
           />
         </Form.Item>
+      </Col>
+    );
+  };
+
+  const renderStates = () => {
+    const { name, placeholder } = state;
+    return (
+      showState && (
+        <Col span={12}>
+          <Form.Item
+            className="custom-label"
+            name={name}
+            label={placeholder}
+            rules={[
+              {
+                required: true,
+                message: 'Please select your state',
+              },
+            ]}
+          >
+            <CustomSelect
+              showSearch
+              allowClear
+              placeholder={placeholder}
+              optionFilterProp="children"
+              onChange={onStateChange}
+              filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+              options={states.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+            />
+          </Form.Item>
+        </Col>
       )
     );
   };
@@ -143,34 +138,38 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { name, placeholder } = city;
     return (
-      <Form.Item
-        {...formItemLayout}
-        name={name}
-        label={placeholder}
-        rules={[
-          {
-            required: true,
-            message: 'Please select your city',
-          },
-        ]}
-      >
-        <CustomSelect
-          showSearch
-          allowClear
-          placeholder={placeholder}
-          optionFilterProp="children"
-          filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-          options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
-        />
-      </Form.Item>
+      <Col span={12}>
+        <Form.Item
+          className="custom-label"
+          name={name}
+          label={placeholder}
+          rules={[
+            {
+              required: true,
+              message: 'Please select your city',
+            },
+          ]}
+        >
+          <CustomSelect
+            showSearch
+            allowClear
+            placeholder={placeholder}
+            optionFilterProp="children"
+            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+          />
+        </Form.Item>
+      </Col>
     );
   };
 
   return (
     <React.Fragment>
-      {renderCountries()}
-      {renderStates()}
-      {renderCities()}
+      <Row className="ant-row-padding">
+        {renderCountries()}
+        {renderStates()}
+        {renderCities()}
+      </Row>
     </React.Fragment>
   );
 };

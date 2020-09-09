@@ -19,8 +19,15 @@ const Header = props => {
 
   return (
     <AntHeader className={styles.header}>
-      <StepCounter title="Select Test Type" number={pageState.curr + 1} total={formSchema.length} />
-      <NextStep nextStepTitle="Select Visa Issuing Emirate" />
+      <div className={styles.headerbg}>
+        <StepCounter
+          title="Select Test Type"
+          number={pageState.curr + 1}
+          total={formSchema.length}
+          className={styles.stepcounter}
+        />
+        <NextStep nextStepTitle="Select Visa Issuing Emirate" className={styles.nextstep} />
+      </div>
     </AntHeader>
   );
 };

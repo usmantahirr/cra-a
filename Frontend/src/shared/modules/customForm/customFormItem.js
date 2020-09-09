@@ -109,6 +109,7 @@ class CustomFormItem extends React.PureComponent {
           <Form.Item
             hidden={this.isHidden(hideField, applicationFormData)}
             label={label}
+            className="custom-item"
             name={name}
             rules={rules}
             valuePropName={type === 'checkbox' ? 'checked' : 'value'}

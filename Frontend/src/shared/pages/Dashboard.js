@@ -1,11 +1,11 @@
 import React from 'react';
 // import React, { useContext } from 'react';
-import { Layout, Form, Button } from 'antd';
+import { Layout, Form } from 'antd';
 // import NotificationContext from '../modules/notification/context';
 // import ErrorContext from '../modules/error/context';
 import DashboardTemplate from '../templates/dashboardTemplate';
 import Header from '../molecules/header';
-// import Footer from '../molecules/footer';
+import Footer from '../molecules/footer';
 import CustomFormItem from '../modules/customForm/customFormItem';
 
 const { Content } = Layout;
@@ -24,28 +24,28 @@ const Dashboard = props => {
   const _renderSection = (section, form) => {
     return (
       <div key={section.id}>
-        <h3>{section.sectionTitle}</h3>
+        {/* <h3>{section.sectionTitle}</h3> */}
         {_renderFieldArray(section.fieldArray, form)}
       </div>
     );
   };
 
   const _renderFormButtons = isLastStep => {
-    const { onAllStepsCompleted, tailLayout } = props;
+    const { onAllStepsCompleted } = props;
     return (
-      <Form.Item {...tailLayout}>
-        <Button onClick={goBack}>Prev</Button>
-        <Button type="primary">Save As Draft</Button>
-        <Button htmlType="submit">Next</Button>
-        {/* <Button onClick={goForward}>Next</Button> */}
-        {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
-      </Form.Item>
+      // <Form.Item {...tailLayout}>
+      //   <Button onClick={goBack}>Prev</Button>
+      //   <Button type="primary">Save As Draft</Button>
+      //   <Button htmlType="submit">Next</Button>
+      //   {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
+      // </Form.Item>
+      <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />
     );
   };
 
   const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
     const [form] = Form.useForm();
-    const { name, formOrientation, initialValues } = step;
+    const { name, initialValues } = step;
     const { layout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
     return (
       <Form
@@ -54,7 +54,7 @@ const Dashboard = props => {
         {...layout}
         name={name}
         form={form}
-        layout={formOrientation}
+        layout="vertical"
         initialValues={initialValues}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
@@ -75,7 +75,7 @@ const Dashboard = props => {
   return (
     <DashboardTemplate>
       <Header pageState={pageState} formSchema={formSchema} />
-      <Content style={{ background: 'white' }}>{_renderStepsBody(formSchema, pageState.curr)}</Content>
+      <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
       {/* <Footer goBack={goBack} goForward={goForward} /> */}
     </DashboardTemplate>
   );

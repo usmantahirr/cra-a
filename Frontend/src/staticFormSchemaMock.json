@@ -58,7 +58,7 @@
         "fieldArray": [
           {
             "name": "passengerType",
-            "label": "Passenger Type",
+            "label": "",
             "type": "radio",
 
             "id": "pt",
@@ -94,7 +94,7 @@
         "fieldArray": [
           {
             "name": "visaType",
-            "label": "Visa Type",
+            "label": "",
             "type": "radio",
             "id": "vt",
             "options": [
