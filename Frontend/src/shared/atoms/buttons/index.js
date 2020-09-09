@@ -3,8 +3,8 @@ import { Button as AntButton } from 'antd';
 
 import styles from './styles.module.scss';
 
-const Button = ({ type, children, ...props }) => (
-  <AntButton className={styles.button} type={type} {...props}>
+const Button = ({ type, className, children, ...props }) => (
+  <AntButton className={className ? `${styles.button} ${className}` : styles.button} type={type} {...props}>
     {children}
   </AntButton>
 );

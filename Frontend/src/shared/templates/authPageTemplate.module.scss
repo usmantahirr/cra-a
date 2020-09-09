@@ -68,6 +68,17 @@ body {
     }
   }
 
+  .registerButton {
+    border: 1px solid $white;
+    color: $white;
+    background: transparent;
+
+    &:hover {
+      background: $white;
+      color: $blueDarker;
+    }
+  }
+
   input {
     background-color: transparent;
   }
