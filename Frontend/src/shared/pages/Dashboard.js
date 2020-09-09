@@ -59,7 +59,7 @@ const Dashboard = props => {
   return (
     <DashboardTemplate>
       <Header pageState={pageState} formSchema={formSchema} />
-      <Content>{_renderStepsBody(formSchema, pageState.curr)}</Content>
+      <Content style={{ background: 'white' }}>{_renderStepsBody(formSchema, pageState.curr)}</Content>
       <Footer goBack={goBack} goForward={goForward} />
     </DashboardTemplate>
   );

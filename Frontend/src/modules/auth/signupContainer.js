@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router';
 import SignupPage from '../../shared/pages/signupPage';
+import service from './services/auth.service';
+import NotificationContext from '../../shared/modules/notification/context';
+import { AUTH_PAGE } from '../../config';
 
 const SIGNUP_FORM_VALIDATION_RULES = {
   firstName: {
@@ -58,8 +62,9 @@ const SIGNUP_FORM_VALIDATION_RULES = {
         message: 'Please enter your password!',
       },
       {
-        pattern: new RegExp(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\S{6,}/g),
-        message: 'Password must contain atleast 6 characters, 1 upper case letter and 1 number.',
+        pattern: new RegExp(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])\S{8,}/g),
+        message:
+          'Password must contain atleast 8 characters, Atleast 1 upper case letter, Atleast 1 lower case letter, Atleast 1 special character and atleast 1 number.',
       },
     ],
   },
@@ -94,12 +99,12 @@ const VERIFICATION_FORM_VALIDATION_RULES = {
         message: 'Please enter OTP!',
       },
       {
-        min: 6,
-        message: 'OTP must be of minimum 6 digits!',
+        min: 5,
+        message: 'OTP must be of minimum 5 digits!',
       },
       {
-        max: 6,
-        message: 'OTP must be of maximum 6 digits!',
+        max: 5,
+        message: 'OTP must be of maximum 5 digits!',
       },
     ],
   },
@@ -112,25 +117,144 @@ const VERIFICATION_FORM_VALIDATION_RULES = {
         message: 'Please enter pin number!',
       },
       {
-        min: 6,
-        message: 'Pin number must be of minimum 6 digits!',
+        min: 5,
+        message: 'Pin number must be of minimum 5 digits!',
       },
       {
-        max: 6,
-        message: 'Pin number must be of maximum 6 digits!',
+        max: 5,
+        message: 'Pin number must be of maximum 5 digits!',
       },
     ],
   },
 };
 
-const SignupContainer = () => {
+const SignupContainer = ({ history }) => {
   const [showOTPModal, setShowOTPModal] = useState(false);
-  const handleSubmit = values => {
-    JSON.stringify(values);
-    setShowOTPModal(true);
+  const [showLoader, setShowLoader] = useState(false);
+  const [showVerifyLoader, setShowVerifyLoader] = useState(false);
+  const [user, setUser] = useState(null);
+  const notification = useContext(NotificationContext);
+
+  const handleSubmit = async values => {
+    setShowLoader(true);
+    const payload = {
+      email: values.email,
+      mobile_number: values.mobile,
+    };
+    try {
+      const { data, message } = await service.sendOTP(payload);
+      if (data && data.ref_id) {
+        setUser({ ...values, ref_id: data.ref_id });
+        notification.setNotification(
+          {
+            type: 'success',
+            message,
+          },
+          true
+        );
+      }
+      setShowLoader(false);
+      setShowOTPModal(true);
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+      setShowLoader(false);
+    }
   };
-  const handleVerifySubmit = values => {
-    JSON.stringify(values);
+
+  const handleVerifySubmit = async values => {
+    setShowVerifyLoader(true);
+    const payload = {
+      first_name: user.fname,
+      last_name: user.lname,
+      mobile_number: user.mobile,
+      email: user.email,
+      ref_id: user.ref_id,
+      otp: values.otp,
+      pin: values.pinNumber,
+      password: user.password,
+    };
+    try {
+      const { data, message } = await service.verifyOTP(payload);
+      if (data) {
+        notification.setNotification(
+          {
+            type: 'success',
+            message,
+          },
+          true
+        );
+        history.push(AUTH_PAGE);
+      }
+      setShowVerifyLoader(false);
+      setShowOTPModal(false);
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+      setShowVerifyLoader(false);
+    }
+  };
+
+  const resendOTPEvent = async () => {
+    const payload = {
+      ref_id: user.ref_id,
+    };
+    try {
+      const { data, message } = await service.resendOTP(payload);
+      if (data) {
+        notification.setNotification(
+          {
+            type: 'success',
+            message,
+          },
+          true
+        );
+      }
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+    }
+  };
+
+  const resendPinEvent = async () => {
+    const payload = {
+      ref_id: user.ref_id,
+    };
+    try {
+      const { data, message } = await service.resendPin(payload);
+      if (data) {
+        notification.setNotification(
+          {
+            type: 'success',
+            message,
+          },
+          true
+        );
+      }
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+    }
   };
 
   return (
@@ -141,8 +265,12 @@ const SignupContainer = () => {
       handleVerifySubmit={handleVerifySubmit}
       showOTPModal={showOTPModal}
       setShowOTPModal={setShowOTPModal}
+      showLoader={showLoader}
+      showVerifyLoader={showVerifyLoader}
+      resendOTPEvent={resendOTPEvent}
+      resendPinEvent={resendPinEvent}
     />
   );
 };
 
-export default SignupContainer;
+export default withRouter(SignupContainer);

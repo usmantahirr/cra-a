@@ -3,14 +3,14 @@ import { Avatar, Button as AntButton, Badge, Image, Menu, Dropdown } from 'antd'
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 
 import Logger from '../../modules/logger';
-import authService from '../../../modules/auth/services/auth.service';
+import MSALService from '../../../modules/auth/services/msal.service';
 
 import styles from './style.module.scss';
 
 const ProfileCard = () => {
   const logout = () => {
     localStorage.clear();
-    authService.logout();
+    MSALService.logout();
   };
 
   const menu = (

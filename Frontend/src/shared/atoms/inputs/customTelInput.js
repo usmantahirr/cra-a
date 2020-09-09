@@ -13,7 +13,7 @@ const CustomTelInput = ({ onChange }) => {
   const validateInput = (valid, value, countryObject, formattedValue) => {
     if (!valid && !value) {
       triggerChange(null);
-    } else if (valid && value) {
+    } else if (valid && value && formattedValue) {
       triggerChange(formattedValue.replace(/\s/g, ''));
     } else {
       triggerChange(false);
@@ -39,6 +39,20 @@ const CustomTelInput = ({ onChange }) => {
       onPhoneNumberChange={onNumberChange}
       onPhoneNumberBlur={onNumberBlur}
       onSelectFlag={onCountryChanged}
+      format
+      nationalMode={false}
+      telInputProps={{
+        onKeyPress: event => {
+          const regex = /^[+0-9]*$/;
+          if (event.charCode === 13) return true;
+          const test = new RegExp(regex).test(event.key);
+          if (!test) {
+            event.preventDefault();
+            return false;
+          }
+          return true;
+        },
+      }}
     />
   );
 };

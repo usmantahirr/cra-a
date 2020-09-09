@@ -59,7 +59,7 @@ class Timer extends React.Component {
     if (diff <= 0) {
       this.setState({ resend: true });
       const { onComplete } = this.props;
-      onComplete();
+      if (onComplete) onComplete();
       clearInterval(this.timerCount);
     }
   }
