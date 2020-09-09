@@ -25,10 +25,27 @@
                 border-right: 1px solid #babfc7;
                 border-left: 1px solid #babfc7;
                 @include shadow(-5px 0 7px -6px rgba(0, 0, 0, 0.4));
+
+                .column-title {
+                    background-color: rgba(226, 234, 242, .55);
+                    font-size: 17px;
+                    color: $primary;
+                    font-weight: 600;
+                    padding: 25px;
+                    margin: 0;
+                }
             }
 
             .column-btnbox {
+                width: 33px;
+
+                .ag-side-button-button {
+                    @include flexbox();
+                    height: 100%;
+                }
+
                 .ag-side-button-icon-wrapper {
+
                     .ag-icon {
                         img {
                             width: 10px;
@@ -37,7 +54,7 @@
                         }
                     }
 
-                    .ag-side-button-label{
+                    .ag-side-button-label {
                         color: $primary;
                     }
                 }

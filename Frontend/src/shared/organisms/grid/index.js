@@ -33,7 +33,13 @@ const GridView = ({
           </button>
         </div>
         <div className="column-options">
-          <GroupBox {...columnsSelected} options={columnsOptions} handleChange={handleFormGroupChange} />
+          <h5 className="column-title">Column Options</h5>
+          <GroupBox
+            {...columnsSelected}
+            options={columnsOptions}
+            handleChange={handleFormGroupChange}
+            className="small-buttons"
+          />
         </div>
       </div>
 
