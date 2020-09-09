@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import Sidebar from '../organisms/sidebar';
 
 const DashboardTemplate = ({ children }) => (
-  <Layout>
+  <Layout className="main-section">
     <Sidebar />
     <Layout>{children}</Layout>
   </Layout>
