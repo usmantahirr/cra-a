@@ -3,13 +3,13 @@
         position: relative;
 
         .custom-columns {
-            background: $white;
+            background: #f8fafc;
             @extend %position-fixed;
             left: auto;
             top: 50px;
             bottom: 49px;
             z-index: 1;
-            width: 30px;
+            width: 33px;
 
             .column-options,
             .column-btnbox {
@@ -19,11 +19,28 @@
             }
 
             .column-options {
-                width: 250px;
-                right: 31px;
-                background-color: #f8f8f8;
+                width: 400px;
+                right: 34px;
+                background-color: #F0F6FA;
                 border-right: 1px solid #babfc7;
                 border-left: 1px solid #babfc7;
+                @include shadow(-5px 0 7px -6px rgba(0, 0, 0, 0.4));
+            }
+
+            .column-btnbox {
+                .ag-side-button-icon-wrapper {
+                    .ag-icon {
+                        img {
+                            width: 10px;
+                            height: 11px;
+                            vertical-align: top;
+                        }
+                    }
+
+                    .ag-side-button-label{
+                        color: $primary;
+                    }
+                }
             }
 
         }
