@@ -10,6 +10,7 @@ import {
 } from '../../atoms/forms';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
+import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -41,6 +42,8 @@ class CustomFormItem extends React.PureComponent {
         return <CustomDatePicker {...fieldProps} />;
       case 'testNickName':
         return <TestNickName {...fieldProps} />;
+      case 'countryStateCity':
+        return <CountryStateCity {...fieldProps} />;
       default:
         return null;
     }
