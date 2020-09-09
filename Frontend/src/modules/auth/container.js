@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import MSALService from './services/msal.service';
+import { APPLICATION_HOME } from '../../config';
 
 const AuthContainer = ({ history }) => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const AuthContainer = ({ history }) => {
         const user = MSALService.getUser();
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        history.push('/');
+        history.push(APPLICATION_HOME);
       }
     }
     fetchToken();

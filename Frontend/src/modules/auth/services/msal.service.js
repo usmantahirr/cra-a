@@ -1,6 +1,6 @@
 import * as Msal from 'msal';
 import { msalConfig, loginRequest, tokenRequest, b2cPolicies } from '../config/msalConfig';
-// todo: code clean up
+
 class MSALService {
   accessToken = null;
 
@@ -10,15 +10,12 @@ class MSALService {
   }
 
   fetchAccessToken = () => {
-    const accessTokenRequest = {
-      scopes: ['https://asadsystemsltdb2c.onmicrosoft.com/api/demo.read'],
-    };
     return this.userAgentApplication
-      .acquireTokenSilent(accessTokenRequest)
+      .acquireTokenSilent(tokenRequest)
       .then(accessTokenResponse => accessTokenResponse.accessToken)
       .catch(error => {
         if (error.errorMessage.indexOf('interaction_required') !== -1) {
-          this.userAgentApplication.acquireTokenRedirect(accessTokenRequest);
+          this.userAgentApplication.acquireTokenRedirect(tokenRequest);
         } else {
           this.login();
         }
@@ -49,18 +46,15 @@ class MSALService {
     else if (
       response.tokenType === 'id_token' &&
       response.idToken.claims.acr &&
-      response.idToken.claims.acr !== b2cPolicies.names.signUpSignIn
+      response.idToken.claims.acr !== b2cPolicies.names.SignIn
     ) {
       this.userAgentApplication.logout();
     } else if (
       response.tokenType === 'id_token' &&
       response.idToken.claims.acr &&
-      response.idToken.claims.acr === b2cPolicies.names.signUpSignIn
+      response.idToken.claims.acr === b2cPolicies.names.SignIn
     ) {
       this.userAgentApplication.getAccount();
-      // if (this.userAgentApplication.getAccount()) {
-      //     // updateUI();
-      // }
     } else if (response.tokenType === 'access_token') {
       this.accessToken = response.accessToken;
     }
@@ -70,50 +64,8 @@ class MSALService {
     this.userAgentApplication.loginRedirect(loginRequest);
   }
 
-  // sign-out the user
   logout() {
-    // Removes all sessions, need to call AAD endpoint to do full logout
     this.userAgentApplication.logout();
-  }
-
-  // main method to get token with redirect flow
-  getTokenRedirect(request) {
-    return this.userAgentApplication
-      .acquireTokenSilent(request)
-      .then(response => {
-        if (response.accessToken) {
-          this.accessToken = response.accessToken;
-          if (this.accessToken) {
-            try {
-              // callApiWithAccessToken(apiConfig.webApi, this.accessToken);
-            } catch (err) {
-              // do something
-            }
-          }
-        }
-      })
-      .catch(error => {
-        // fallback to interaction when silent call fails
-        // return this.userAgentApplication.acquireTokenRedirect(request);
-        if (error.errorMessage.indexOf('interaction_required') !== -1) {
-          this.userAgentApplication.acquireTokenRedirect(tokenRequest);
-        } else {
-          this.login();
-        }
-      });
-  }
-
-  // calls the resource API with the token
-  passTokenToApi() {
-    if (!this.accessToken) {
-      this.getTokenRedirect(tokenRequest);
-    } else {
-      try {
-        // callApiWithAccessToken(apiConfig.webApi, this.accessToken);
-      } catch (err) {
-        // do something
-      }
-    }
   }
 }
 const service = new MSALService();
