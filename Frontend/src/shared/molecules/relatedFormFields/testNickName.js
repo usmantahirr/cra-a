@@ -3,19 +3,19 @@ import { Form, Input, Checkbox } from 'antd';
 
 const formItemLayout = {
   labelCol: {
-    span: 4,
+    span: 24,
   },
   wrapperCol: {
-    span: 8,
+    span: 24,
   },
 };
 const formTailLayout = {
   labelCol: {
-    span: 4,
+    span: 24,
   },
   wrapperCol: {
-    span: 8,
-    offset: 4,
+    span: 24,
+    offset: 24,
   },
 };
 

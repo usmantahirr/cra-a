@@ -54,4 +54,13 @@
             border-radius: 0;
         }
     }
+
+    &.ant-radio-center {
+        display: block;
+        text-align: center;
+
+        label {
+            margin: 0 15px;
+        }
+    }
 }

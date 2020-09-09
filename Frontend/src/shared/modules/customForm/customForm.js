@@ -60,7 +60,7 @@ function CustomForm(props) {
         onValuesChange={onValuesChange}
         onFieldsChange={onFieldsChange}
       >
-        <h1>{step.stepTitle}</h1>
+        <h1 className="test">{step.stepTitle}</h1>
         {step.sections && step.sections.map(section => _renderSection(section, form))}
         {_renderFormButtons(tailLayout, currStep === stepsCount - 1, onAllStepsCompleted)}
       </Form>

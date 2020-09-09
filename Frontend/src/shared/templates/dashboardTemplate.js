@@ -7,7 +7,7 @@ import styles from './dashboardTemplate.module.scss';
 const DashboardTemplate = ({ children }) => (
   <Layout className={styles.mainSection}>
     <Sidebar />
-    <Layout className={styles.mainSection}>{children}</Layout>
+    <Layout className={styles.layoutSection}>{children}</Layout>
   </Layout>
 );
 

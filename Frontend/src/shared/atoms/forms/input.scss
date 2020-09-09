@@ -16,11 +16,13 @@
     width: 100%;
 
     &::placeholder,
+    input::placeholder,
     .ant-input::placeholder {
       color: $primary;
     }
 
-    &:focus {
+    &:focus,
+    input:focus {
       border-color: rgba($blueLighter, .5);
       box-shadow: none;
       outline: 0;
