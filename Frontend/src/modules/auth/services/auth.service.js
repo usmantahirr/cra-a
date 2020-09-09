@@ -1,12 +1,12 @@
 import API, { contentType } from '../../../api';
-import { API_BASE_URL } from '../../../config';
+import { API_AUTH_BASE_URL } from '../../../config';
 import { AUTH_SEND_OTP, AUTH_RESEND_OTP, AUTH_VERIFY_OTP, AUTH_RESEND_PIN } from '../../../api/endpoints';
 
 class AuthService {
   constructor() {
     this.http = new API({
       headers: { contentType: contentType.json },
-      baseURL: API_BASE_URL,
+      baseURL: API_AUTH_BASE_URL,
     });
   }
 
