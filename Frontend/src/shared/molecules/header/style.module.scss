@@ -1,4 +1,14 @@
 .header {
   background: transparent;
   height: 110px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 }

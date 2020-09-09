@@ -13,6 +13,7 @@ import { RadioGroup } from '../../atoms/radio/index';
 import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
+import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -50,6 +51,8 @@ class CustomFormItem extends React.PureComponent {
         return <TestNickName {...fieldProps} />;
       case 'fileUpload':
         return <CustomUpload {...fieldProps} />;
+      case 'countryStateCity':
+        return <CountryStateCity {...fieldProps} />;
       default:
         return null;
     }

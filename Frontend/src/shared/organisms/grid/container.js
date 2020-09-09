@@ -17,8 +17,7 @@ const GridViewContainer = ({
   const showHideColumns = (columnName, isVisible) => {
     const columns = gridColumnApiRef.getAllColumns();
     const valueColumn = columns.filter(column => column.getColDef().headerName === columnName)[0];
-    const newState = isVisible;
-    gridColumnApiRef.setColumnVisible(valueColumn, newState);
+    gridColumnApiRef.setColumnVisible(valueColumn, isVisible);
     gridApiRef.sizeColumnsToFit();
   };
 
