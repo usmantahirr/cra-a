@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from '../../atoms/Checkbox/index';
 
 export default ({ options, ...props }) => (
-  <div className="ant-checkbox-group" style={{ display: 'inline-block', marginRight: 10 }}>
+  <div className="ant-checkbox-group ant-checkbox-list">
     {options.map(label => (
       <Checkbox
         key={label}
