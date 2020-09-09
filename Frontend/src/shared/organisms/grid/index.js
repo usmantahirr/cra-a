@@ -21,8 +21,8 @@ const GridView = ({
         width: '100%',
       }}
     >
-      <div className="">
-        <div className="">
+      <div className="custom-columns">
+        <div className="column-btnbox">
           <button type="button" className="ag-side-button-button">
             <div className="ag-side-button-icon-wrapper">
               <span className="ag-icon ag-icon-columns" unselectable="on"></span>
@@ -30,7 +30,7 @@ const GridView = ({
             </div>
           </button>
         </div>
-        <div className="">
+        <div className="column-options">
           <GroupBox {...columnsSelected} options={columnsOptions} handleChange={handleFormGroupChange} />
         </div>
       </div>

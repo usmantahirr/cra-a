@@ -1,5 +1,32 @@
 .custom-table {
     &.ag-theme-alpine {
+        position: relative;
+
+        .custom-columns {
+            background: $white;
+            @extend %position-fixed;
+            left: auto;
+            top: 50px;
+            bottom: 49px;
+            z-index: 1;
+            width: 30px;
+
+            .column-options,
+            .column-btnbox {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
+
+            .column-options {
+                width: 250px;
+                right: 31px;
+                background-color: #f8f8f8;
+                border-right: 1px solid #babfc7;
+                border-left: 1px solid #babfc7;
+            }
+
+        }
 
         .ag-root-wrapper,
         .ag-header,
