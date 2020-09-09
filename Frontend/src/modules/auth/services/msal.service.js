@@ -6,6 +6,7 @@ class MSALService {
 
   constructor() {
     this.userAgentApplication = new Msal.UserAgentApplication(msalConfig);
+    this.authRedirectCallBack = this.authRedirectCallBack.bind(this);
     this.userAgentApplication.handleRedirectCallback(this.authRedirectCallBack);
   }
 
@@ -34,7 +35,10 @@ class MSALService {
       if (error.errorMessage.indexOf('AADB2C90118') > -1) {
         try {
           // Password reset policy/authority
-          this.userAgentApplication.loginRedirect(b2cPolicies.authorities.forgotPassword);
+          this.userAgentApplication.loginRedirect({
+            authority:
+              'https://asadsystemsltdb2c.b2clogin.com/asadsystemsltdb2c.onmicrosoft.com/B2C_1_reset_password_b2c',
+          });
         } catch (err) {
           // do something
         }
@@ -45,16 +49,16 @@ class MSALService {
     // To learn more about b2c tokens, visit https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview
     else if (
       response.tokenType === 'id_token' &&
-      response.idToken.claims.acr &&
-      response.idToken.claims.acr !== b2cPolicies.names.SignIn
+      response.idToken.claims.tfp &&
+      response.idToken.claims.tfp !== b2cPolicies.names.SignIn
     ) {
       this.userAgentApplication.logout();
     } else if (
       response.tokenType === 'id_token' &&
-      response.idToken.claims.acr &&
-      response.idToken.claims.acr === b2cPolicies.names.SignIn
+      response.idToken.claims.tfp &&
+      response.idToken.claims.tfp === b2cPolicies.names.SignIn
     ) {
-      this.userAgentApplication.getAccount();
+      localStorage.setItem('id_token', response.idToken.rawIdToken);
     } else if (response.tokenType === 'access_token') {
       this.accessToken = response.accessToken;
     }

@@ -6,12 +6,17 @@ import { APPLICATION_HOME } from '../../config';
 const AuthContainer = ({ history }) => {
   useEffect(() => {
     async function fetchToken() {
-      const token = await MSALService.fetchAccessToken();
-      if (token) {
-        const user = MSALService.getUser();
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        history.push(APPLICATION_HOME);
+      const idToken = localStorage.getItem('id_token');
+      if (idToken) {
+        const accessToken = await MSALService.fetchAccessToken();
+        if (accessToken) {
+          const user = MSALService.getUser();
+          localStorage.setItem('token', accessToken);
+          localStorage.setItem('user', JSON.stringify(user));
+          history.push(APPLICATION_HOME);
+        }
+      } else {
+        MSALService.login();
       }
     }
     fetchToken();
