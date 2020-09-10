@@ -4,4 +4,5 @@ dotenv.config();
 export const environment = process.env.NODE_ENV;
 export const appConfig = {
   port: process.env.PORT || 3000,
+  appInsightsKey: process.env.APP_INSIGHTS_KEY || '',
 };
