@@ -78,7 +78,7 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Col span={12}>
+      <Col span={showState ? 8 : 12}>
         <Form.Item
           className="custom-item"
           name={name}
@@ -108,7 +108,7 @@ const CountryStateCity = props => {
     const { name, placeholder } = state;
     return (
       showState && (
-        <Col span={12}>
+        <Col span={8}>
           <Form.Item
             className="custom-item"
             name={name}
@@ -138,7 +138,7 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { name, placeholder } = city;
     return (
-      <Col span={12}>
+      <Col span={showState ? 8 : 12}>
         <Form.Item
           className="custom-item"
           name={name}
@@ -164,13 +164,11 @@ const CountryStateCity = props => {
   };
 
   return (
-    <React.Fragment>
-      <Row className="ant-row-padding">
-        {renderCountries()}
-        {renderStates()}
-        {renderCities()}
-      </Row>
-    </React.Fragment>
+    <Row className="ant-row-padding">
+      {renderCountries()}
+      {renderStates()}
+      {renderCities()}
+    </Row>
   );
 };
 

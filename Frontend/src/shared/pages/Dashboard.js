@@ -53,7 +53,7 @@ const Dashboard = props => {
         onFieldsChange={onFieldsChange}
         onValuesChange={onFormValueChanges}
       >
-        <h1>{step.stepTitle}</h1>
+        {/* <h1>{step.stepTitle}</h1> */}
         {step.sections && step.sections.map(section => _renderSection(section, form))}
         {_renderFormButtons(currStep === stepsCount - 1)}
       </Form>
