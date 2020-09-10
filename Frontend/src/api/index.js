@@ -3,7 +3,7 @@ import axios from 'axios';
 import { successResponseHandler, errorResponseHandler } from './interceptors';
 import { API_BASE_URL } from '../config';
 
-const contentType = {
+export const contentType = {
   json: 'application/json',
   multipart: 'multipart/form-data',
 };

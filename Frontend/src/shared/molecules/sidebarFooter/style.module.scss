@@ -1,0 +1,26 @@
+.sidebarFooter {
+  padding: 20px 30px;
+
+  form,
+  button {
+    width: 100%;
+  }
+
+
+  form {
+    >div {
+      margin-bottom: 14px;
+    }
+  }
+
+  button {
+    padding: 8px 25px;
+
+    span{
+      margin-left: 15px;
+      text-transform: none;
+    }
+  }
+
+
+}

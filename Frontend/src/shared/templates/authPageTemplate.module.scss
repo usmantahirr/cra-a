@@ -1,0 +1,81 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+@import 'src/styles/utils';
+
+.authcontainer {
+  height: 100%;
+  padding: 45px 0;
+
+  .row {
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    .mgrow{
+      margin-bottom: 45px;
+    }
+  }
+
+  .subheading {
+    font-size: 19px;
+    line-height: 40px;
+    position: relative;
+    font-weight: 600;
+    color: $white;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+
+    strong {
+      font-weight: 600;
+      font-size: 38px;
+      display: block;
+    }
+  }
+
+  .formcontainer {
+    background: rgb(234, 242, 250);
+    background: linear-gradient(90deg, rgba(234, 242, 250, 1) 0%, rgba(251, 253, 254, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    padding: 50px 80px;
+  }
+
+  .salutationcontainer {
+    padding: 45px 0;
+
+    .salutationholder {
+      padding: 40px;
+      background-color: rgba($blueLight, 0.69);
+      height: 100%;
+      @include flexbox();
+      @include align-content(center);
+      @include flex-wrap(wrap);
+    }
+  }
+
+  .logobox {
+    display: block;
+    text-align: center;
+    margin-bottom: 35px;
+
+    img {
+      margin: 0 auto;
+      @extend %img-fluid;
+    }
+  }
+
+  .registerButton {
+    border: 1px solid $white;
+    color: $white;
+    background: transparent;
+
+    &:hover {
+      background: $white;
+      color: $blueDarker;
+    }
+  }
+
+  input {
+    background-color: transparent;
+  }
+}

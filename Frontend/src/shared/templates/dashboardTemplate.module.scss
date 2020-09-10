@@ -1,0 +1,8 @@
+.mainSection {
+  background-color: rgba($primary, .65);
+  height: 100%;
+}
+
+.layoutSection {
+  @extend %gradient-bg;
+}

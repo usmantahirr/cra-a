@@ -1,0 +1,122 @@
+.custom-table {
+    &.ag-theme-alpine {
+        position: relative;
+
+        .custom-columns {
+            background: #f8fafc;
+            @extend %position-fixed;
+            left: auto;
+            top: 50px;
+            bottom: 49px;
+            z-index: 1;
+            width: 33px;
+
+            .column-options,
+            .column-btnbox {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+            }
+
+            .column-options {
+                width: 400px;
+                right: 34px;
+                background-color: #F0F6FA;
+                border-right: 1px solid #babfc7;
+                border-left: 1px solid #babfc7;
+                @include shadow(-5px 0 7px -6px rgba(0, 0, 0, 0.4));
+
+                .column-title {
+                    background-color: rgba(226, 234, 242, .55);
+                    font-size: 17px;
+                    color: $primary;
+                    font-weight: 600;
+                    padding: 25px;
+                    margin: 0;
+                }
+            }
+
+            .column-btnbox {
+                width: 33px;
+
+                .ag-side-button-button {
+                    @include flexbox();
+                    height: 100%;
+                }
+
+                .ag-side-button-icon-wrapper {
+
+                    .ag-icon {
+                        img {
+                            width: 10px;
+                            height: 11px;
+                            vertical-align: top;
+                        }
+                    }
+
+                    .ag-side-button-label {
+                        color: $primary;
+                    }
+                }
+            }
+
+        }
+
+        .ag-root-wrapper,
+        .ag-header,
+        .ag-row {
+            background-color: transparent;
+            border-color: rgba($gray, .26);
+            font-size: 0.8125rem;
+        }
+
+        .ag-header-row {
+            font-weight: 600;
+            color: $primary;
+
+            .ag-header-icon {
+                &.ag-header-cell-menu-button {
+                    opacity: 1 !important;
+
+                    .ag-icon-menu {
+                        background: url(/assets/img/icon-filter.svg) no-repeat;
+                        width: 14px;
+                        height: 15px;
+
+                        &::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ag-cell {
+            .anticon-more {
+                width: 18px;
+                height: 33px;
+                display: inline-block;
+                vertical-align: middle;
+                border-radius: 7px;
+                background: url(/assets/img/icon-tmenu.svg) no-repeat center #E2E2E2;
+
+                svg {
+                    display: none;
+                }
+            }
+        }
+
+        .ag-paging-panel {
+            background-color: rgba($white, .40);
+            justify-content: center;
+
+            >* {
+                color: #3B4550;
+            }
+        }
+
+
+
+    }
+
+}

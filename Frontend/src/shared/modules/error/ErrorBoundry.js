@@ -11,8 +11,6 @@ class ErrorBoundary extends React.Component {
     return { applicationError: true };
   }
 
-  static contextType = NotificationsContext;
-
   constructor(props) {
     super(props);
 
@@ -35,6 +33,8 @@ class ErrorBoundary extends React.Component {
     }
     this.setState({ error });
   }
+
+  static contextType = NotificationsContext;
 
   componentDidCatch(error, info) {
     // You can also log the error to an error reporting service

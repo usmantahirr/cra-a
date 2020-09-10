@@ -1,0 +1,163 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  background: url(/assets/img/loginbg.png) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.9375rem;
+  color: #545B64;
+}
+
+.app-portal {
+  height: 100%;
+}
+
+.ant-typography {
+  &.inner-heading {
+    font-size: 21px;
+    font-weight: 600;
+    color: $primary;
+    line-height: 18px;
+    position: relative;
+    margin-bottom: 45px;
+
+    &:after {
+      content: '';
+      height: 2px;
+      width: 58px;
+      position: absolute;
+      background-color: $secondary;
+      bottom: -15px;
+      left: 0;
+    }
+  }
+}
+
+.ant-btn-link {
+  &.ant-btn {
+    line-height: 1.5715;
+    padding-top: 13px;
+  }
+}
+
+.ant-btn {
+  border: 0;
+
+  &-primary {
+    background: $primary;
+    color: #fff;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $primaryHover;
+    }
+  }
+
+  &-secondary {
+    background: $secondary;
+    color: $primary;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $secondaryHover;
+      color: $primary;
+    }
+  }
+
+  &-default {
+    background: transparent;
+    border: 1px solid $primary;
+    color: $primary;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $primary;
+      color: $white;
+      border-color: $primary;
+    }
+  }
+
+  &-lg {
+    font-size: 1.125rem !important;
+    padding: 22px 25px !important;
+  }
+}
+
+.ant-image-img {
+  @extend %img-fluid;
+}
+
+
+.inner-heading {
+  font-size: 21px;
+  font-weight: 600;
+  color: $primary;
+}
+
+.otp-popup {
+  .ant-modal-body {
+    padding: 0;
+
+    .otp-text {
+      background: url(/assets/img/opt-bg.svg) no-repeat center bottom;
+      font-size: 1.375rem;
+      color: $primary;
+      font-weight: 600;
+      line-height: 34px;
+      text-align: center;
+      padding: 40px 80px 80px;
+      background-size: cover;
+    }
+
+    .otp-form-holder {
+      padding: 24px;
+    }
+  }
+}
+
+.custom-popup {
+  .ant-modal-close-x {
+    background: url(/assets/img/icon-close.svg) no-repeat center;
+
+    .anticon-close {
+      svg {
+        display: none;
+      }
+    }
+  }
+}
+
+.ant-badge-count {
+  background-color: $yellowDark;
+}
+
+.content-holder {
+  padding: 25px;
+}
+
+.ant-row-padding {
+  margin: 0 -15px;
+
+  >.ant-col {
+    padding: 0 15px;
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+.note-text {
+  text-align: center;
+  color: #327BB7;
+  font-weight: 600;
+}

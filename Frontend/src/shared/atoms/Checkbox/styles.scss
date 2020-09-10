@@ -1,0 +1,27 @@
+.ant-checkbox-list {
+    display: block;
+
+    .ant-checkbox-wrapper {
+        padding: 15px 25px;
+        border-bottom: 1px solid rgba($gray, .37);
+        font-weight: 600;
+
+        .ant-checkbox-inner {
+            width: 20px;
+            height: 20px;
+
+            &::after {
+                width: 5px;
+                height: 10px;
+                margin-top: -1px;
+                margin-left: -4px;
+            }
+        }
+
+        .ant-checkbox.ant-checkbox-checked {
+            .ant-checkbox-inner{
+                background-color: $primary;
+            }
+        }
+    }
+}

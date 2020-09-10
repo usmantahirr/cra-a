@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+  border-top: 1px solid rgba($gray, .25);
+
+  .antBtn {
+    margin-left: 18px;
+  }
+}

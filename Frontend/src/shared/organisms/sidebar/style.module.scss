@@ -1,0 +1,14 @@
+.sidebar {
+  width: 250px !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  @extend %gradient-full;
+  @include shadow(6px 1px 7px -6px rgba(0,0,0,0.2));
+
+  .logo {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba($gray , .27);
+    height: 100px;
+    text-align: center;
+  }
+}

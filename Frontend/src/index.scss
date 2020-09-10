@@ -1,17 +1,15 @@
 @import '~antd/dist/antd.css';
+@import '~react-custom-scroll/dist/customScroll.css';
+@import "styles/index";
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import "shared/atoms/sideNavItem/navActive";
+@import "shared/atoms/forms/input";
+@import "shared/atoms/forms/select";
+@import "shared/atoms/forms/checkbox";
+@import "shared/atoms/forms/fileUpload";
+@import "shared/atoms/radio/styles";
+@import "shared/atoms/checkbox/styles";
+@import "shared/molecules/imageRadio/styles";
+@import "shared/organisms/grid/styles";
+@import "shared/molecules/cellComponents/actionMenu/styles";
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-@import "overrides";

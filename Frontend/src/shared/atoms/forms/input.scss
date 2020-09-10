@@ -1,0 +1,162 @@
+.custom-item {
+  margin-bottom: 25px;
+  position: relative;
+
+  .ant-form-item-label {
+    color: $primary;
+  }
+
+  .custom-control,
+  .intl-tel-input input[type='tel'] {
+    background-color: $white;
+    border-radius: 0;
+    border: 1px solid #c8c9ca;
+    font-size: 0.9375rem;
+    padding: 14px 25px;
+    width: 100%;
+
+    &::placeholder,
+    input::placeholder,
+    .ant-input::placeholder {
+      color: $primary;
+    }
+
+    &:focus,
+    input:focus {
+      border-color: rgba($blueLighter, .5);
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  .intl-tel-input {
+    width: 100%;
+
+    .selected-flag {
+      margin-left: 0;
+      padding-left: 25px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &.allow-dropdown {
+      .selected-flag {
+        width: 80px;
+      }
+    }
+
+    &.allow-dropdown {
+      input[type=tel] {
+        padding-left: 85px;
+      }
+    }
+
+    .flag-container {
+      .arrow {
+        margin-left: 10px;
+        margin-right: 10px;
+
+        &.down,
+        &.up {
+          &:after {
+            content: "";
+            background-image: url(/assets/img/down-arrow.png);
+            width: 18px;
+            height: 11px;
+            display: block;
+          }
+        }
+
+        &.up {
+          &:after {
+            transform: rotate(180deg);
+          }
+        }
+
+      }
+    }
+  }
+
+  &.ant-form-item-has-error {
+
+    .custom-control,
+    .intl-tel-input input[type='tel'] {
+      &:focus {
+        border-color: #ff7875;
+      }
+    }
+  }
+
+  .ant-form-item-explain,
+  .ant-form-item-split {
+    font-size: 0.75rem;
+    min-height: auto;
+    position: absolute;
+    bottom: -18px;
+    color: #ff4d4f;
+  }
+
+  .ant-form-item-label {
+    >label {
+      color: $primary;
+
+      &.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
+        &::before {
+          content: none;
+        }
+
+        &::after {
+          display: inline-block;
+          margin-left: 4px;
+          color: #ff4d4f;
+          font-size: 14px;
+          font-family: SimSun, sans-serif;
+          line-height: 1;
+          content: '*';
+        }
+      }
+    }
+  }
+
+}
+
+
+.transbg-form {
+  .custom-item {
+    .intl-tel-input.allow-dropdown input[type=tel],
+    .custom-control {
+      background-color: transparent;
+    }
+  }
+}
+
+.otp-timer {
+  position: relative;
+
+  .errMsg,
+  .resend {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  .errMsg {
+    color: #F71111;
+  }
+
+  .resend {
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: $primary;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
