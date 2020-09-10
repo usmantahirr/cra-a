@@ -2,7 +2,7 @@ import React from 'react';
 import { Radio } from 'antd';
 
 function ImageRadio(props) {
-  const { options } = props;
+  const { options, ...restProps } = props;
 
   const listItems = options.map(radioOption => (
     <Radio
@@ -19,7 +19,11 @@ function ImageRadio(props) {
       </div>
     </Radio>
   ));
-  return <Radio.Group className="ant-row ant-row-padding image-selection">{listItems}</Radio.Group>;
+  return (
+    <Radio.Group {...restProps} className="ant-row ant-row-padding image-selection">
+      {listItems}
+    </Radio.Group>
+  );
 }
 
 export default ImageRadio;

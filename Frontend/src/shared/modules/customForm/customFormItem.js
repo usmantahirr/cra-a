@@ -58,23 +58,66 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
+  isHidden = (hideField, applicationFormData) => {
+    let hidden = false;
+    // const { hideField, applicationFormData } = this.props;
+
+    if (!hideField) {
+      return false;
+    }
+
+    hideField.forEach(field => {
+      const { fieldName } = field;
+      const { fieldValue } = field;
+
+      Object.keys(applicationFormData).forEach(form => {
+        if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
+          Object.keys(applicationFormData[form]).forEach(formField => {
+            if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
+              if (fieldName === formField && fieldValue === applicationFormData[form][formField]) {
+                hidden = true;
+              }
+            }
+          });
+        }
+      });
+
+      // for (const form in applicationFormData) {
+      //   if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
+      //     for (const formField in applicationFormData[form]) {
+      //       if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
+      //         if (fieldName === formField && fieldValue === applicationFormData[form][formField]) {
+      //           hidden = true;
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+    });
+
+    return hidden;
+  };
+
   render() {
-    const { name, rules, type } = this.props;
+    const { label, name, rules, type } = this.props;
+    const { hideField, applicationFormData, ...restOfProps } = this.props;
     const isCustomComponent = type === 'customComponent';
 
     return (
       <>
         {!isCustomComponent && (
           <Form.Item
+            hidden={this.isHidden(hideField, applicationFormData)}
+            label={label}
             className="custom-item"
             name={name}
             rules={rules}
             valuePropName={type === 'checkbox' ? 'checked' : 'value'}
           >
-            {this._renderField(this.props)}
+            {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent(this.props)}
+        {isCustomComponent && this._renderCustomComponent(restOfProps)}
       </>
     );
   }

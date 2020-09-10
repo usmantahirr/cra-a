@@ -13,10 +13,12 @@ const { Content } = Layout;
 const Dashboard = props => {
   // const notification = useContext(NotificationContext);
   // const errorContext = useContext(ErrorContext);
-  const { goBack, goForward, formSchema, pageState } = props;
+  const { goBack, formSchema, pageState, applicationFormData } = props;
 
   const _renderFieldArray = (fieldArray, form) => {
-    return fieldArray.map(field => <CustomFormItem key={field.id} {...field} form={form}></CustomFormItem>);
+    return fieldArray.map(field => (
+      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData}></CustomFormItem>
+    ));
   };
 
   const _renderSection = (section, form) => {
@@ -25,6 +27,19 @@ const Dashboard = props => {
         {/* <h3>{section.sectionTitle}</h3> */}
         {_renderFieldArray(section.fieldArray, form)}
       </div>
+    );
+  };
+
+  const _renderFormButtons = isLastStep => {
+    const { onAllStepsCompleted } = props;
+    return (
+      // <Form.Item {...tailLayout}>
+      //   <Button onClick={goBack}>Prev</Button>
+      //   <Button type="primary">Save As Draft</Button>
+      //   <Button htmlType="submit">Next</Button>
+      //   {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
+      // </Form.Item>
+      <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />
     );
   };
 
@@ -48,6 +63,7 @@ const Dashboard = props => {
       >
         <h1>{step.stepTitle}</h1>
         {step.sections && step.sections.map(section => _renderSection(section, form))}
+        {_renderFormButtons(currStep === stepsCount - 1)}
       </Form>
     );
   };
@@ -60,7 +76,7 @@ const Dashboard = props => {
     <DashboardTemplate>
       <Header pageState={pageState} formSchema={formSchema} />
       <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
-      <Footer goBack={goBack} goForward={goForward} />
+      {/* <Footer goBack={goBack} goForward={goForward} /> */}
     </DashboardTemplate>
   );
 };
