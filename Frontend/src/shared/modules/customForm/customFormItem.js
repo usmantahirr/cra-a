@@ -8,12 +8,14 @@ import {
   CustomPasswordInput,
   CustomCheckbox,
   CustomUpload,
+  CustomPlainTextInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
 import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
+import TermsAndConditions from '../../molecules/termsAndConditions';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -36,6 +38,8 @@ class CustomFormItem extends React.PureComponent {
         return <CustomPasswordInput {...fieldProps} />;
       case 'checkbox':
         return <CustomCheckbox {...fieldProps} />;
+      case 'plainText':
+        return <CustomPlainTextInput {...fieldProps} />;
       default:
         return null;
     }
@@ -53,6 +57,8 @@ class CustomFormItem extends React.PureComponent {
         return <CustomUpload {...fieldProps} />;
       case 'countryStateCity':
         return <CountryStateCity {...fieldProps} />;
+      case 'termsAndConditions':
+        return <TermsAndConditions {...fieldProps} />;
       default:
         return null;
     }

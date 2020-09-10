@@ -119,6 +119,28 @@
         ],
         "sectionTitle": "",
         "id": "S1S3"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "termsAndConditions",
+            "type": "customComponent",
+            "id": "Fasdasdas2asaaa"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S4"
+      },
+      {
+        "fieldArray": [
+          {
+            "type": "plainText",
+            "id": "Fasdasdas2aasaaa",
+            "text": "Please note that Debit/Credit card payment is required on this portal to proceed with a COVID-19 test at the lab."
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S5"
       }
     ]
   },
