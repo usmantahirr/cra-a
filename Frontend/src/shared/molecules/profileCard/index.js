@@ -36,7 +36,9 @@ const ProfileCard = () => {
 
   return (
     <div className={styles.profileCard}>
-      <div className={styles.avatar}>AS</div>
+      <div className={styles.initials}>
+        <div className={styles.inName}>AS</div>
+      </div>
       <div className={styles.name}>
         Ahmed Saeed Hashmi
         {/* <Dropdown overlay={menu} placement="bottomCenter">
@@ -54,8 +56,7 @@ const ProfileCard = () => {
         <AntButton className={styles.actionButton} shape="circle">
           <Image src="/assets/icons/cog-icon.png" alt="Settings" preview={false} />
         </AntButton>
-        <AntButton className={styles.actionButton} shape="circle"></AntButton>
-        <AntButton type="link" rel="noopener noreferrer" onClick={logout}>
+        <AntButton className={styles.actionButton} shape="circle" rel="noopener noreferrer" onClick={logout}>
           <Image src="/assets/icons/logout-icon.png" alt="Logout" preview={false} />
         </AntButton>
       </div>

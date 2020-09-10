@@ -1,8 +1,8 @@
 .ant-radio-lg {
     .ant-radio-inner {
-        height: 49px;
+        height: 43px;
         background-color: $primaryLight;
-        width: 50px;
+        width: 44px;
         border-radius: 0;
         border: 0;
 
@@ -32,11 +32,11 @@
     span.ant-radio+* {
         background-color: rgba($white, .72);
         color: $blue;
-        height: 49px;
+        height: 43px;
         min-width: 220px;
         display: inline-block;
         vertical-align: top;
-        line-height: 49px;
+        line-height: 43px;
         text-align: center;
     }
 
@@ -61,6 +61,9 @@
 
         label {
             margin: 0 15px;
+            height: 47px;
+            background: rgba($white, .72);
+            padding: 2px;
         }
     }
 }

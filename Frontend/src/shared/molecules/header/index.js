@@ -12,7 +12,7 @@ const Header = props => {
 
   if (pageHeader) {
     return (
-      <AntHeader className={styles.header}>
+      <AntHeader className={`${styles.header} ${styles.headerText}`}>
         <div className={styles.text}>Manage Application</div>
       </AntHeader>
     );
@@ -90,25 +90,25 @@ const Header = props => {
 
     return (
       <Row>
-        <Col>
-          <Row>Application ID:</Row>
-          <Row>12312312312</Row>
+        <Col span={4}>
+          <span>Application ID:</span>
+          <strong>12312312312</strong>
         </Col>
-        <Col>
-          <Row>Applicant Name:</Row>
-          <Row>AN</Row>
+        <Col span={4}>
+          <span>Applicant Name:</span>
+          <strong>aa</strong>
         </Col>
-        <Col>
-          <Row>Source:</Row>
-          <Row>SRC</Row>
+        <Col span={4}>
+          <span>Source:</span>
+          <strong>bbb</strong>
         </Col>
-        <Col>
-          <Row>Destination:</Row>
-          <Row>DST</Row>
+        <Col span={4}>
+          <span>Destination:</span>
+          <strong>cc</strong>
         </Col>
-        <Col>
-          <Row>Visa Type:</Row>
-          <Row>{_renderSelectedVisaType(newApplicationSummary.visaType)}</Row>
+        <Col span={4}>
+          <span>Visa Type:</span>
+          <strong>{_renderSelectedVisaType(newApplicationSummary.visaType)}</strong>
         </Col>
       </Row>
     );
@@ -134,7 +134,7 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      {_renderApplicationSummary()}
+      <div className={styles.appSummery}>{_renderApplicationSummary()}</div>
     </>
   );
 };

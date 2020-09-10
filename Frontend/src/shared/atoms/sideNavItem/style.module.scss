@@ -2,11 +2,15 @@
   background-color: transparent;
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  margin-bottom: 15px;
   padding: 10px 30px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .icon {
-    margin-right: 10px;
+    margin-right: 20px;
 
     img {
       width: 28px;
@@ -14,7 +18,7 @@
   }
 
   .text {
-    color: $lightGray;
+    color: #606060;
     text-decoration: none;
     text-align: left;
     font-size: 14px;
