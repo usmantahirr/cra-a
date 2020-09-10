@@ -74,8 +74,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
           {infoOpen && selectedPlace && (
             <InfoWindow anchor={markerMap[selectedPlace.id]}>
               <div>
-                <h3>{selectedPlace.id}</h3>
-                <div>This is your info window content</div>
+                <h3>{selectedPlace.name}</h3>
               </div>
             </InfoWindow>
           )}

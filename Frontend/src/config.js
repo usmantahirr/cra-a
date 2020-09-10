@@ -1,4 +1,5 @@
 export const API_BASE_URL = 'http://demo8279974.mockable.io/';
+export const API_BASE_URL2 = 'https://purehealthpoc.azurewebsites.net/api/';
 // export const API_AUTH_BASE_URL = 'https://purehealthuserregistration.azurewebsites.net/';
 export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
 // export const API_AUTH_BASE_URL = 'https://phuserregistration.azurewebsites.net/api/';
