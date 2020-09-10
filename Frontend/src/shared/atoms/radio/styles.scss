@@ -64,3 +64,35 @@
         }
     }
 }
+
+.ant-radio-round {
+    .ant-radio-wrapper {
+        border: 1px solid $primary;
+        border-radius: 30px;
+        font-size: 13px;
+        padding: 12px 15px;
+        min-width: 120px;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+
+        .ant-radio {
+            display: none;
+        }
+
+        span.ant-radio+* {
+            padding: 0;
+            display: block;
+            text-align: center;
+            color: $primary;
+        }
+
+        &:hover,
+        &.ant-radio-wrapper-checked {
+            background-color: $primary;
+
+            span.ant-radio+* {
+                color: $white;
+            }
+        }
+    }
+}
