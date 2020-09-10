@@ -184,6 +184,8 @@ const LabSelection = props => {
     });
   };
 
+  const onCardChange = () => {};
+
   return (
     <Fragment>
       <MapFilter
@@ -194,7 +196,7 @@ const LabSelection = props => {
         onServiceChange={onServiceChange}
         filterState={filterState}
       />
-      <CardRadio cartOptions={filterState.cityLabs} />
+      <CardRadio cartOptions={filterState.cityLabs} value={selectedLab} onCardChange={onCardChange} />
       <Map
         infoOpen={infoOpen}
         myPlaces={filterState.cityLabs}
