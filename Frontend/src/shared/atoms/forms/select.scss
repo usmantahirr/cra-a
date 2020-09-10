@@ -1,4 +1,6 @@
 .custom-control {
+    width: 100%;
+
     &.ant-select {
         .ant-select-selector {
             background-color: $white;
@@ -49,6 +51,34 @@
                 border-color: rgba($blueLighter, .5);
                 box-shadow: none;
                 outline: 0;
+            }
+        }
+    }
+
+    &-sm {
+        &.ant-select {
+            .ant-select-selector {
+                height: 33px;
+
+                .ant-select-selection-search {
+                    padding: 0;
+                    left: 12px;
+                    right: 12px;
+                }
+
+                .ant-select-selection-item {
+                    padding: 8px 12px;
+                    font-size: 0.75rem;
+                }
+            }
+
+            .ant-select-arrow {
+                height: 33px;
+                width: 33px;
+
+                .anticon {
+                    background-size: 10px;
+                }
             }
         }
     }

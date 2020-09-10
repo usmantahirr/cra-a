@@ -1,0 +1,101 @@
+.map-filter {
+    background-color: rgba($white, .72);
+    @include shadow(0 6px 12px -9px rgba(0, 0, 0, .1));
+    border-bottom: 1px solid rgba($gray, .1);
+    margin-bottom: 25px;
+
+    .ant-page-header-content {
+        padding: 0;
+
+        .ant-descriptions-small {
+            .ant-descriptions-row {
+                >td {
+                    padding-bottom: 0;
+                    padding-right: 30px;
+                }
+            }
+        }
+
+        .ant-descriptions-item-container {
+            flex-wrap: wrap;
+
+            .ant-descriptions-item-label,
+            .ant-descriptions-item-content {
+                width: 100%;
+            }
+
+            .ant-descriptions-item-label {
+                margin-bottom: 8px;
+            }
+
+            .ant-descriptions-item-content {
+                font-size: 0.8125rem;
+                color: $primary;
+                font-weight: 600;
+
+                .custom-control-sm {
+                    .ant-select-selector {
+                        .ant-select-selection-item {
+                            font-weight: normal;
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.card-section {
+    .ant-radio-withoutLable {
+        width: 100%;
+
+        .ant-radio-wrapper {
+            display: block;
+            margin: 0 0 25px;
+            background-color: rgba($white, .72);
+            position: relative;
+
+            @include shadow(0px 0px 12px -6px rgba(0, 0, 0, 0.75)) .ant-radio {
+                width: 33px;
+                height: 31px;
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                display: block;
+                top: auto;
+            }
+
+            span.ant-radio+* {
+                display: block;
+                padding: 0;
+            }
+
+            .ant-card {
+                background-color: transparent;
+                border: 0;
+
+                .ant-card-body {
+                    padding: 20px 15px 45px 15px;
+                }
+
+                .title,
+                .description {
+                    margin-bottom: 15px;
+                }
+
+                .title {
+                    font-size: 0.875rem;
+                    color: $primary;
+                    font-weight: 600;
+                }
+
+                .description {
+                    font-size: 0.75rem;
+                    @extend %text-ellipsis;
+                }
+            }
+        }
+    }
+}

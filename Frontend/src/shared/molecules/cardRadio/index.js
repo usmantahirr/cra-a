@@ -7,18 +7,21 @@ const CardRadio = props => {
   const listItems =
     cartOptions &&
     cartOptions.map(cardOption => (
-      <Radio id={cardOption.id} value={cardOption.id} key={cardOption.id} className="ant-col-6 radio-holder">
+      <Radio id={cardOption.id} value={cardOption.id} key={cardOption.id} className="">
         <div className="radiocontent-holder">
-          <h5>{cardOption.name}</h5>
-          <Card style={{ width: 300 }}>
-            <p>{cardOption.name}</p>
+          <Card>
+            <h5 className="title">{cardOption.name}</h5>
+            <p className="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.{' '}
+            </p>
           </Card>
         </div>
       </Radio>
     ));
 
   return (
-    <Radio.Group {...restProps} className="ant-row image-selection">
+    <Radio.Group {...restProps} className="ant-radio-withoutLable">
       {listItems}
     </Radio.Group>
   );

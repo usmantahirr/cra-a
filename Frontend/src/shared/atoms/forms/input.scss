@@ -111,7 +111,7 @@
           display: inline-block;
           margin-left: 4px;
           color: #ff4d4f;
-          font-size: 14px;
+          font-size: 0.875rem;
           font-family: SimSun, sans-serif;
           line-height: 1;
           content: '*';
@@ -125,6 +125,7 @@
 
 .transbg-form {
   .custom-item {
+
     .intl-tel-input.allow-dropdown input[type=tel],
     .custom-control {
       background-color: transparent;
@@ -142,7 +143,7 @@
     top: 15px;
     z-index: 1;
     background: #fff;
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .errMsg {
