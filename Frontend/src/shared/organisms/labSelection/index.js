@@ -162,7 +162,7 @@ const LabSelection = props => {
     const serviceTypes = labsResponse[0].services.map(data => {
       return { id: data._id, key: data._id, value: data._id, text: data.name };
     });
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         cities: citiesResponse,
@@ -176,7 +176,7 @@ const LabSelection = props => {
   };
 
   const onServiceChange = async selected => {
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         selectedService: selected,
