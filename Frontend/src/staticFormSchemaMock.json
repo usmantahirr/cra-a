@@ -57,12 +57,9 @@
       {
         "fieldArray": [
           {
-            "name": "passengerType",
-            "label": "",
-            "type": "radio",
-
-            "id": "pt",
-            "options": [
+            "name": "passengerAndVisaType",
+            "type": "customComponent",
+            "passengerOptions": [
               {
                 "value": "1",
                 "text": "Transit Visa",
@@ -79,25 +76,13 @@
                 "id": "PTo3"
               }
             ],
-            "rules": [
+            "passengerRules": [
               {
                 "required": true,
-                "message": "Please select resident type"
+                "message": "Please select passenger type"
               }
-            ]
-          }
-        ],
-        "sectionTitle": "",
-        "id": "S1S2"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "visaType",
-            "label": "",
-            "type": "radio",
-            "id": "vt",
-            "options": [
+            ],
+            "visaOptions": [
               {
                 "value": "1",
                 "text": "Pre-Approved Visa",
@@ -109,7 +94,7 @@
                 "id": "VTO2"
               }
             ],
-            "rules": [
+            "visaRules": [
               {
                 "required": true,
                 "message": "Please select visa type"
@@ -508,7 +493,7 @@
             "label": "Payment Type",
             "placeholder": "Please Select",
             "type": "select",
-            "id": "ST7S1F1",
+            "id": "ST7S1F1asdasdasd",
             "options": [
               {
                 "value": 1001,
