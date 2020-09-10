@@ -17,6 +17,7 @@ import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAndVisaType';
 import TermsAndConditions from '../../molecules/termsAndConditions';
+import LabSelection from '../../organisms/labSelection';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -62,6 +63,8 @@ class CustomFormItem extends React.PureComponent {
         return <PassengerAndVisaType {...fieldProps} />;
       case 'termsAndConditions':
         return <TermsAndConditions {...fieldProps} />;
+      case 'googleMapComponent':
+        return <LabSelection {...fieldProps} />;
       default:
         return null;
     }
