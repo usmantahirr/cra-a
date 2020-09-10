@@ -11,7 +11,7 @@ appInsights
   .setAutoCollectPerformance(true, true)
   .setAutoCollectExceptions(true)
   .setAutoCollectDependencies(true)
-  .setAutoCollectConsole(true, true)
+  .setAutoCollectConsole(true, false)
   .setUseDiskRetryCaching(true)
   .setSendLiveMetrics(false)
   .start();
@@ -19,7 +19,11 @@ const aIclient = appInsights.defaultClient;
 
 const options: winston.LoggerOptions = {
   transports: [
+    new winston.transports.Console({
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+    }),
     new AiTransport({
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
       client: aIclient,
     }),
   ],
