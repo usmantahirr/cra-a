@@ -3,6 +3,7 @@ import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
+import { loadVisaTypeOptions } from '../../../utilities';
 
 const { Header: AntHeader } = Layout;
 
@@ -23,29 +24,9 @@ const Header = props => {
       return visaTypeOptions;
     }
 
-    let step;
-    let section;
-    let field;
-    let fieldAttributes;
-    let fieldAttribute;
-    for (let fs = 0; fs < formSchema.length; fs += 1) {
-      step = formSchema[fs];
-      for (let s = 0; s < step.sections.length; s += 1) {
-        section = step.sections[s];
-        for (let fa = 0; fa < section.fieldArray.length; fa += 1) {
-          field = section.fieldArray[fa];
-          fieldAttributes = Object.keys(field);
-          for (let a = 0; a < fieldAttributes.length; a += 1) {
-            fieldAttribute = fieldAttributes[a];
-            if (fieldAttribute === 'name' && field[fieldAttribute] === 'passengerAndVisaType') {
-              setVisaTypeOptions(field.visaOptions);
-              return field.visaOptions;
-            }
-          }
-        }
-      }
-    }
-    return [];
+    const options = loadVisaTypeOptions(formSchema);
+    setVisaTypeOptions(options);
+    return options;
   };
 
   const _renderSelectedVisaType = visaTypeValue => {
