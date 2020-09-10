@@ -80,7 +80,7 @@ const CountryStateCity = props => {
     return (
       <Col span={12}>
         <Form.Item
-          className="custom-label"
+          className="custom-item"
           name={name}
           label={placeholder}
           rules={[
@@ -110,7 +110,7 @@ const CountryStateCity = props => {
       showState && (
         <Col span={12}>
           <Form.Item
-            className="custom-label"
+            className="custom-item"
             name={name}
             label={placeholder}
             rules={[
@@ -140,7 +140,7 @@ const CountryStateCity = props => {
     return (
       <Col span={12}>
         <Form.Item
-          className="custom-label"
+          className="custom-item"
           name={name}
           label={placeholder}
           rules={[
