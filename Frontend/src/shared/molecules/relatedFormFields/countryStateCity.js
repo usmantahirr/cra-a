@@ -85,7 +85,7 @@ const CountryStateCity = props => {
           label={placeholder}
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Please select your country',
             },
           ]}
@@ -115,7 +115,7 @@ const CountryStateCity = props => {
             label={placeholder}
             rules={[
               {
-                required: true,
+                required: false,
                 message: 'Please select your state',
               },
             ]}
@@ -145,7 +145,7 @@ const CountryStateCity = props => {
           label={placeholder}
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Please select your city',
             },
           ]}

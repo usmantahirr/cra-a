@@ -7,11 +7,8 @@ import styles from './style.module.scss';
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
+  const [visaTypeOptions, setVisaTypeOptions] = React.useState();
   const { formSchema, pageState, pageHeader } = props;
-  let applicantName;
-  let source;
-  let destination;
-  let visaType;
 
   if (pageHeader) {
     return (
@@ -21,24 +18,70 @@ const Header = props => {
     );
   }
 
+  const getVisaTypeOptions = () => {
+    if (visaTypeOptions) {
+      return visaTypeOptions;
+    }
+
+    let step;
+    let section;
+    let field;
+    let fieldAttributes;
+    let fieldAttribute;
+    for (let fs = 0; fs < formSchema.length; fs += 1) {
+      step = formSchema[fs];
+      for (let s = 0; s < step.sections.length; s += 1) {
+        section = step.sections[s];
+        for (let fa = 0; fa < section.fieldArray.length; fa += 1) {
+          field = section.fieldArray[fa];
+          fieldAttributes = Object.keys(field);
+          for (let a = 0; a < fieldAttributes.length; a += 1) {
+            fieldAttribute = fieldAttributes[a];
+            if (fieldAttribute === 'name' && field[fieldAttribute] === 'passengerAndVisaType') {
+              setVisaTypeOptions(field.visaOptions);
+              return field.visaOptions;
+            }
+          }
+        }
+      }
+    }
+    return [];
+  };
+
+  const _renderSelectedVisaType = visaTypeValue => {
+    if (!visaTypeValue) {
+      return null;
+    }
+
+    const options = getVisaTypeOptions() || {};
+    for (let i = 0; i < options.length; i += 1) {
+      if (options[i].value === visaTypeValue) {
+        return options[i].text;
+      }
+    }
+
+    return '';
+  };
+
   const _renderApplicationSummary = () => {
     const { applicationFormData } = props;
+    const newApplicationSummary = {};
 
     Object.keys(applicationFormData).forEach(form => {
       if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
         Object.keys(applicationFormData[form]).forEach(formField => {
           if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
             if (formField === 'applicantName') {
-              applicantName = applicationFormData[form][formField];
+              newApplicationSummary.applicantName = applicationFormData[form][formField];
             }
             if (formField === 'source') {
-              source = applicationFormData[form][formField];
+              newApplicationSummary.source = applicationFormData[form][formField];
             }
             if (formField === 'destination') {
-              destination = applicationFormData[form][formField];
+              newApplicationSummary.destination = applicationFormData[form][formField];
             }
             if (formField === 'visaType') {
-              visaType = applicationFormData[form][formField];
+              newApplicationSummary.visaType = applicationFormData[form][formField];
             }
           }
         });
@@ -53,19 +96,19 @@ const Header = props => {
         </Col>
         <Col>
           <Row>Applicant Name:</Row>
-          <Row>{applicantName}</Row>
+          <Row>AN</Row>
         </Col>
         <Col>
           <Row>Source:</Row>
-          <Row>{source}</Row>
+          <Row>SRC</Row>
         </Col>
         <Col>
           <Row>Destination:</Row>
-          <Row>{destination}</Row>
+          <Row>DST</Row>
         </Col>
         <Col>
           <Row>Visa Type:</Row>
-          <Row>{visaType}</Row>
+          <Row>{_renderSelectedVisaType(newApplicationSummary.visaType)}</Row>
         </Col>
       </Row>
     );
