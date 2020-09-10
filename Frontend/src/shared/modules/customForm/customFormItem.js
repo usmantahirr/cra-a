@@ -14,6 +14,7 @@ import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
+import LabSelection from '../../organisms/labSelection';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -53,6 +54,8 @@ class CustomFormItem extends React.PureComponent {
         return <CustomUpload {...fieldProps} />;
       case 'countryStateCity':
         return <CountryStateCity {...fieldProps} />;
+      case 'googleMapComponent':
+        return <LabSelection {...fieldProps} />;
       default:
         return null;
     }

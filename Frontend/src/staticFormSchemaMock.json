@@ -342,135 +342,16 @@
       {
         "fieldArray": [
           {
-            "name": "country",
-            "label": "Country",
-            "type": "text",
-            "id": "ST6S1F1"
-          },
-          {
-            "name": "visaType",
-            "label": "Visa Type",
-            "type": "text",
-            "id": "ST6S1F2A"
-          },
-          {
-            "name": "city",
-            "label": "City",
-            "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST6S1F2",
-            "options": [
-              {
-                "value": 1001,
-                "text": "KHI",
-                "id": "ST6S1F2O1"
-              },
-              {
-                "value": 2,
-                "text": "ISB",
-                "id": "ST6S1F2O2"
-              }
-            ]
-          },
-          {
-            "name": "lab",
-            "label": "Lab",
-            "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST6S1F3",
-            "options": [
-              {
-                "value": 1001,
-                "text": "KHI",
-                "id": "ST6S1F3O1"
-              },
-              {
-                "value": 2,
-                "text": "ISB",
-                "id": "ST6S1F3O2"
-              }
-            ]
-          },
-          {
-            "name": "labType",
-            "label": "Lab Type",
-            "type": "radio",
-            "id": "ST6S1F5",
-            "options": [
-              {
-                "value": "1",
-                "text": "Value Added",
-                "id": "ST6S1F5O1"
-              },
-              {
-                "value": "2",
-                "text": "General",
-                "id": "ST6S1F5O2"
-              }
-            ],
-            "rules": [
-              {
-                "required": true,
-                "message": "Please select lab type"
-              }
-            ]
-          },
-          {
-            "name": "zipCode",
-            "label": "Zip Code",
-            "type": "text",
-            "id": "ST6S2F231231",
-            "hideField": [
-              {
-                "fieldName": "sourceCountry",
-                "fieldValue": "5f589189175c69424c936728",
-                "isEqualTo": true
-              }
-            ]
-          }
-        ],
-        "sectionTitle": "",
-        "id": "ST6S1"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "GOOGLE_MAPS",
+            "name": "googleMapComponent",
             "label": "GOOGLE_MAPS",
-            "type": "text",
+            "type": "customComponent",
             "id": "ST6S2F1"
           }
         ],
         "sectionTitle": "",
         "id": "ST6S2"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "tt_covid19",
-            "label": "Biomed Diagnostics",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "ST6S3F1"
-          },
-          {
-            "name": "tt_covid19",
-            "label": "ESSA LAB",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "ST6S3F2"
-          },
-          {
-            "name": "tt_covid19",
-            "label": "DNA Solutions Ltd",
-            "type": "checkbox",
-            "checkboxText": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            "id": "ST6S3F3"
-          }
-        ],
-        "sectionTitle": "",
-        "id": "ST6S3"
       }
+     
     ]
   },
   {
