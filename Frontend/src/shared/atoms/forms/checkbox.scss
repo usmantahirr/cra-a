@@ -4,7 +4,7 @@
         border-color: $cloudDark;
         width: 31px;
         height: 29px;
-        border: 0;
+        border: 1px solid rgba($white , 72);
 
         &::after {
             width: 7px;

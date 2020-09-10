@@ -35,3 +35,22 @@
     align-items: center;
   }
 }
+
+.appSummery {
+  background-color: #F5F5F5;
+  padding: 20px 50px;
+  font-size: 0.8125rem;
+  @include shadow(0 6px 12px -9px rgba(0, 0, 0, .1));
+  border-bottom: 1px solid rgba($gray, .1);
+
+  span,
+  strong {
+    display: block;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $primary;
+    margin-top: 10px;
+  }
+}

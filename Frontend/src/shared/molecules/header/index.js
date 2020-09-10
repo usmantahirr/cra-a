@@ -47,25 +47,25 @@ const Header = props => {
 
     return (
       <Row>
-        <Col>
-          <Row>Application ID:</Row>
-          <Row>12312312312</Row>
+        <Col span={4}>
+          <span>Application ID:</span>
+          <strong>12312312312</strong>
         </Col>
-        <Col>
-          <Row>Applicant Name:</Row>
-          <Row>{applicantName}</Row>
+        <Col span={4}>
+          <span>Applicant Name:</span>
+          <strong>{applicantName}</strong>
         </Col>
-        <Col>
-          <Row>Source:</Row>
-          <Row>{source}</Row>
+        <Col span={4}>
+          <span>Source:</span>
+          <strong>{source}</strong>
         </Col>
-        <Col>
-          <Row>Destination:</Row>
-          <Row>{destination}</Row>
+        <Col span={4}>
+          <span>Destination:</span>
+          <strong>{destination}</strong>
         </Col>
-        <Col>
-          <Row>Visa Type:</Row>
-          <Row>{visaType}</Row>
+        <Col span={4}>
+          <span>Visa Type:</span>
+          <strong>{visaType}</strong>
         </Col>
       </Row>
     );
@@ -91,7 +91,7 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      {_renderApplicationSummary()}
+      <div className={styles.appSummery}>{_renderApplicationSummary()}</div>
     </>
   );
 };
