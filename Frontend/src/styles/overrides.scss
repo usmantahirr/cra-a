@@ -43,9 +43,12 @@ body {
 }
 
 .ant-btn {
+  border: 0;
+
   &-primary {
     background: $primary;
     color: #fff;
+    min-width: 140px;
 
     &:hover,
     &:focus {
@@ -56,6 +59,7 @@ body {
   &-secondary {
     background: $secondary;
     color: $primary;
+    min-width: 140px;
 
     &:hover,
     &:focus {
@@ -66,20 +70,21 @@ body {
 
   &-default {
     background: transparent;
-    border: 1px solid $white;
-    color: $white;
+    border: 1px solid $primary;
+    color: $primary;
+    min-width: 140px;
 
     &:hover,
     &:focus {
-      background-color: $white;
-      color: $primary;
-      border-color: $white;
+      background-color: $primary;
+      color: $white;
+      border-color: $primary;
     }
   }
 
   &-lg {
-    font-size: 1.125rem;
-    padding: 22px 25px;
+    font-size: 1.125rem !important;
+    padding: 22px 25px !important;
   }
 }
 
@@ -129,4 +134,16 @@ body {
 
 .ant-badge-count {
   background-color: $yellowDark;
+}
+
+.content-holder {
+  padding: 25px;
+}
+
+.ant-row-padding {
+  margin: 0 -15px;
+
+  >.ant-col {
+    padding: 0 15px;
+  }
 }

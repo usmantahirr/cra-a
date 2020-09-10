@@ -22,7 +22,7 @@
               "placeholder": "Source City",
               "name": "sourceCity"
             },
-             "state": {
+            "state": {
               "placeholder": "Source State",
               "name": "sourceState"
             }
@@ -45,7 +45,7 @@
               "placeholder": "Destination City",
               "name": "destCity"
             },
-             "state": {
+            "state": {
               "placeholder": "Destination State",
               "name": "destState"
             }
@@ -58,8 +58,9 @@
         "fieldArray": [
           {
             "name": "passengerType",
-            "label": "Passenger Type",
+            "label": "",
             "type": "radio",
+
             "id": "pt",
             "options": [
               {
@@ -93,7 +94,7 @@
         "fieldArray": [
           {
             "name": "visaType",
-            "label": "Visa Type",
+            "label": "",
             "type": "radio",
             "id": "vt",
             "options": [
@@ -118,6 +119,28 @@
         ],
         "sectionTitle": "",
         "id": "S1S3"
+      },
+      {
+        "fieldArray": [
+          {
+            "name": "termsAndConditions",
+            "type": "customComponent",
+            "id": "Fasdasdas2asaaa"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S4"
+      },
+      {
+        "fieldArray": [
+          {
+            "type": "plainText",
+            "id": "Fasdasdas2aasaaa",
+            "text": "Please note that Debit/Credit card payment is required on this portal to proceed with a COVID-19 test at the lab."
+          }
+        ],
+        "sectionTitle": "",
+        "id": "S1S5"
       }
     ]
   },
@@ -411,6 +434,19 @@
               {
                 "required": true,
                 "message": "Please select lab type"
+              }
+            ]
+          },
+          {
+            "name": "zipCode",
+            "label": "Zip Code",
+            "type": "text",
+            "id": "ST6S2F231231",
+            "hideField": [
+              {
+                "fieldName": "sourceCountry",
+                "fieldValue": "5f589189175c69424c936728",
+                "isEqualTo": true
               }
             ]
           }

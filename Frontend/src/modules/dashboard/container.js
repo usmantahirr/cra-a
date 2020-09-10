@@ -5,25 +5,17 @@ const Dashboard = () => {
   // TODO: add call to check if patient is new or is registered already
   // TODO: Add call to get schema
 
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-
   const tailLayout = {
     wrapperCol: {
-      offset: 8,
-      span: 16,
+      offset: 24,
+      span: 24,
     },
   };
 
   // eslint-disable-next-line global-require
   const formSchema = require('../../../src/staticFormSchemaMock.json');
   const [pageState, setPageState] = React.useState({ prev: null, curr: 0, next: null });
+  const [applicationFormData, setApplicationFormData] = React.useState({});
 
   const goForward = () => {
     // If can go forward
@@ -51,7 +43,13 @@ const Dashboard = () => {
 
   const onFinish = (values, formIndex) => {
     // return { values, formIndex };
-    console.log('Success:', values, formIndex);
+    // console.log('Success:', values, formIndex);
+    const newFormData = { ...applicationFormData };
+    newFormData[formIndex] = values;
+    console.log('Application form data = ', newFormData);
+    setApplicationFormData(newFormData);
+
+    goForward();
     // const temp = savedForms;
     // temp[formIndex] = values;
     // setSavedForms(temp);
@@ -63,16 +61,23 @@ const Dashboard = () => {
     console.log('Failed:', errorInfo, formIndex);
   };
 
+  const onAllStepsCompleted = values => {
+    // return values;
+    console.log('ALL STEPS COMPLETED:', values);
+    // console.log('ALL FORMS = ', savedForms);
+  };
+
   return (
     <DashboardPage
       pageState={pageState}
       goForward={goForward}
       goBack={goBack}
       formSchema={formSchema}
-      layout={layout}
       tailLayout={tailLayout}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      onAllStepsCompleted={onAllStepsCompleted}
+      applicationFormData={applicationFormData}
     />
   );
 };

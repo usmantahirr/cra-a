@@ -13,24 +13,39 @@ const { Content } = Layout;
 const Dashboard = props => {
   // const notification = useContext(NotificationContext);
   // const errorContext = useContext(ErrorContext);
-  const { goBack, goForward, formSchema, pageState } = props;
+  const { goBack, formSchema, pageState, applicationFormData } = props;
 
   const _renderFieldArray = (fieldArray, form) => {
-    return fieldArray.map(field => <CustomFormItem key={field.id} {...field} form={form}></CustomFormItem>);
+    return fieldArray.map(field => (
+      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData}></CustomFormItem>
+    ));
   };
 
   const _renderSection = (section, form) => {
     return (
       <div key={section.id}>
-        <h3>{section.sectionTitle}</h3>
+        {/* <h3>{section.sectionTitle}</h3> */}
         {_renderFieldArray(section.fieldArray, form)}
       </div>
     );
   };
 
+  const _renderFormButtons = isLastStep => {
+    const { onAllStepsCompleted } = props;
+    return (
+      // <Form.Item {...tailLayout}>
+      //   <Button onClick={goBack}>Prev</Button>
+      //   <Button type="primary">Save As Draft</Button>
+      //   <Button htmlType="submit">Next</Button>
+      //   {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
+      // </Form.Item>
+      <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />
+    );
+  };
+
   const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
     const [form] = Form.useForm();
-    const { name, formOrientation, initialValues } = step;
+    const { name, initialValues } = step;
     const { layout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
     return (
       <Form
@@ -39,15 +54,16 @@ const Dashboard = props => {
         {...layout}
         name={name}
         form={form}
-        layout={formOrientation}
+        layout="vertical"
         initialValues={initialValues}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
         onValuesChange={onValuesChange}
         onFieldsChange={onFieldsChange}
       >
-        <h1>{step.stepTitle}</h1>
+        {/* <h1>{step.stepTitle}</h1> */}
         {step.sections && step.sections.map(section => _renderSection(section, form))}
+        {_renderFormButtons(currStep === stepsCount - 1)}
       </Form>
     );
   };
@@ -59,8 +75,8 @@ const Dashboard = props => {
   return (
     <DashboardTemplate>
       <Header pageState={pageState} formSchema={formSchema} />
-      <Content style={{ background: 'white' }}>{_renderStepsBody(formSchema, pageState.curr)}</Content>
-      <Footer goBack={goBack} goForward={goForward} />
+      <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
+      {/* <Footer goBack={goBack} goForward={goForward} /> */}
     </DashboardTemplate>
   );
 };

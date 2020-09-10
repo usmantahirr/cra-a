@@ -5,9 +5,9 @@ import Sidebar from '../organisms/sidebar';
 import styles from './dashboardTemplate.module.scss';
 
 const DashboardTemplate = ({ children }) => (
-  <Layout className={styles.layout}>
+  <Layout className={styles.mainSection}>
     <Sidebar />
-    <Layout className={styles.layout}>{children}</Layout>
+    <Layout className={styles.layoutSection}>{children}</Layout>
   </Layout>
 );
 

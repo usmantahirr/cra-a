@@ -2,6 +2,10 @@
   margin-bottom: 25px;
   position: relative;
 
+  .ant-form-item-label {
+    color: $primary;
+  }
+
   .custom-control,
   .intl-tel-input input[type='tel'] {
     background-color: $white;
@@ -12,11 +16,13 @@
     width: 100%;
 
     &::placeholder,
+    input::placeholder,
     .ant-input::placeholder {
       color: $primary;
     }
 
-    &:focus {
+    &:focus,
+    input:focus {
       border-color: rgba($blueLighter, .5);
       box-shadow: none;
       outline: 0;
@@ -90,6 +96,28 @@
     position: absolute;
     bottom: -18px;
     color: #ff4d4f;
+  }
+
+  .ant-form-item-label {
+    >label {
+      color: $primary;
+
+      &.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
+        &::before {
+          content: none;
+        }
+
+        &::after {
+          display: inline-block;
+          margin-left: 4px;
+          color: #ff4d4f;
+          font-size: 14px;
+          font-family: SimSun, sans-serif;
+          line-height: 1;
+          content: '*';
+        }
+      }
+    }
   }
 
 }

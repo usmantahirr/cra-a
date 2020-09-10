@@ -8,7 +8,6 @@ const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const { formSchema, pageState, pageHeader } = props;
-
   if (pageHeader) {
     return (
       <AntHeader className={styles.header}>
@@ -17,10 +16,24 @@ const Header = props => {
     );
   }
 
+  const nextStepTitle = () => {
+    if (pageState.curr + 1 >= formSchema.length) {
+      return false;
+    }
+    return formSchema[pageState.curr] ? formSchema[pageState.curr + 1].stepTitle : '';
+  };
+
   return (
     <AntHeader className={styles.header}>
-      <StepCounter title="Select Test Type" number={pageState.curr + 1} total={formSchema.length} />
-      <NextStep nextStepTitle="Select Visa Issuing Emirate" />
+      <div className={styles.headerbg}>
+        <StepCounter
+          title={formSchema[pageState.curr] ? formSchema[pageState.curr].stepTitle : ''}
+          number={pageState.curr + 1}
+          total={formSchema.length}
+          className={styles.stepcounter}
+        />
+        {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
+      </div>
     </AntHeader>
   );
 };

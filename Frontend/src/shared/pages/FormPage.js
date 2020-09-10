@@ -6,15 +6,6 @@ const FormPage = () => {
   const formSchema = require('../../../src/staticFormSchemaMock.json');
   // const [savedForms, setSavedForms] = React.useState([]);
 
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-
   const tailLayout = {
     wrapperCol: {
       offset: 8,
@@ -70,7 +61,6 @@ const FormPage = () => {
         onFieldsChange={onFieldsChange}
         formSchema={formSchema}
         formOrientation="horizontal"
-        layout={layout}
         tailLayout={tailLayout}
         formStep={formStep}
         setFormStep={setFormStep}

@@ -2,7 +2,7 @@
     .radio-holder {
         position: relative;
         height: 315px;
-        margin: 0 15px;
+        margin: 0 0 30px;
 
         .ant-radio-inner {
             position: absolute;
@@ -35,8 +35,10 @@
                 margin-left: -9px;
                 background-color: transparent;
             }
+            
         }
 
+        &:hover,
         .ant-radio-checked {
             .ant-radio-inner {
                 margin-left: -77.5px;
@@ -64,6 +66,8 @@
 
         .ant-radio {
             @extend %position-fixed;
+            left: 15px;
+            right: 15px;
             z-index: 5;
         }
 
@@ -71,7 +75,8 @@
             z-index: 2;
             height: 315px;
             position: absolute;
-            width: 100%;
+            left: 15px;
+            right: 15px;
             padding: 0;
         }
 
