@@ -13,3 +13,5 @@ export const SIGNUP_PAGE = '/account/signup';
 export const APPLICATION_HOME = '/register';
 export const FORGOT_PASSWORD_PAGE = '/account/forgot-password';
 export const LOGGED_IN_HOME = APPLICATION_HOME;
+
+export const STATE_SKIP_BY_COUNTRY = 'USA';
