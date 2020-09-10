@@ -10,7 +10,7 @@ const Header = props => {
   const { formSchema, pageState, pageHeader } = props;
   if (pageHeader) {
     return (
-      <AntHeader className={styles.header}>
+      <AntHeader className={`${styles.header} ${styles.headerText}`}>
         <div className={styles.text}>Manage Application</div>
       </AntHeader>
     );
