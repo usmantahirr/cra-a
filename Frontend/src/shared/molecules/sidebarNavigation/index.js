@@ -24,8 +24,9 @@ const content = [
   {
     text: 'More info on Covid',
     icon: '/assets/icons/covid-icon',
-    link: '/covid',
+    link: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public',
     isActive: false,
+    external: true,
   },
 ];
 
@@ -33,7 +34,14 @@ const SidebarNavigation = () => {
   return (
     <div className={styles.sidebarNavigation}>
       {content.map(item => (
-        <SideNavItem key={item.link} isActive={item.isActive} text={item.text} iconSrc={item.icon} link={item.link} />
+        <SideNavItem
+          key={item.link}
+          isActive={item.isActive}
+          text={item.text}
+          iconSrc={item.icon}
+          link={item.link}
+          external={item.external}
+        />
       ))}
     </div>
   );
