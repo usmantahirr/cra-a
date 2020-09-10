@@ -67,6 +67,10 @@ const Dashboard = () => {
     // console.log('ALL FORMS = ', savedForms);
   };
 
+  const onFormValueChanges = values => {
+    console.log('FORM VAL CHANGED ', values);
+  };
+
   return (
     <DashboardPage
       pageState={pageState}
@@ -78,6 +82,7 @@ const Dashboard = () => {
       onFinishFailed={onFinishFailed}
       onAllStepsCompleted={onAllStepsCompleted}
       applicationFormData={applicationFormData}
+      onFormValueChanges={onFormValueChanges}
     />
   );
 };
