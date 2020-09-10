@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Form, Modal } from 'antd';
-import Button from '../atoms/buttons/index';
+
+import Button from '../atoms/buttons';
 import InputCustom from '../atoms/forms/input';
 import AuthPageTemplate from '../templates/AuthPageTemplate';
 import CustomTelInput from '../atoms/inputs/customTelInput';

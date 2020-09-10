@@ -10,16 +10,16 @@ class MapSerivces {
     });
   }
 
-  getStatesByCountry = param => {
-    return this.http.get(GET_STATES_BY_COUNTRY + param);
+  getStatesByCountry = id => {
+    return this.http.get(GET_STATES_BY_COUNTRY, id);
   };
 
-  getCitiesByState = param => {
-    return this.http.get(GET_CITIES_BY_STATE, param);
+  getCitiesByState = id => {
+    return this.http.get(GET_CITIES_BY_STATE, id);
   };
 
-  getLabsByCity = param => {
-    return this.http.get(GET_LABS_BY_CITY, param);
+  getLabsByCity = id => {
+    return this.http.get(GET_LABS_BY_CITY, id);
   };
 }
 export default new MapSerivces();

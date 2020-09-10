@@ -2,18 +2,14 @@
 @import 'src/styles/mixins';
 @import 'src/styles/utils';
 
-body {
-  background: url(/assets/img/loginbg.png) no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 .authcontainer {
   height: 100%;
   padding: 45px 0;
 
   .row {
     height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
 
     .mgrow{
       margin-bottom: 45px;
@@ -65,6 +61,17 @@ body {
     img {
       margin: 0 auto;
       @extend %img-fluid;
+    }
+  }
+
+  .registerButton {
+    border: 1px solid $white;
+    color: $white;
+    background: transparent;
+
+    &:hover {
+      background: $white;
+      color: $blueDarker;
     }
   }
 

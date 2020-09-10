@@ -1,3 +1,24 @@
-.ant-layout-header {
-  background: cornflowerblue;
+.header {
+  background: url(/assets/img/loginbg.png) no-repeat top right;
+  height: 100px;
+  overflow: hidden;
+  padding: 0;
+  line-height: normal;
+
+  .headerbg {
+    background-color: rgba($primary, .37);
+    padding: 25px;
+    height: 100px;
+    color: $white;
+
+    .counterLeft {
+      float: left;
+    }
+
+    .nextStep {
+      float: right;
+    }
+    
+  }
+
 }

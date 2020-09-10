@@ -1,10 +1,11 @@
 import React from 'react';
 import { Row, Col, Image } from 'antd';
-import { Link } from 'react-router-dom';
-
+import { useHistory } from 'react-router';
 import styles from './authPageTemplate.module.scss';
+import Button from '../atoms/buttons';
 
 const AuthPageTemplate = ({ children }) => {
+  const history = useHistory();
   return (
     <div className={styles.authcontainer}>
       <Row justify="center" className={styles.row}>
@@ -23,9 +24,9 @@ const AuthPageTemplate = ({ children }) => {
                     <br /> REGISTRATION Portal
                   </strong>
                 </h2>
-                <Link to="/account/login" className="ant-btn ant-btn-link ant-btn-default">
+                <Button className={styles.registerButton} onClick={() => history.push('/account/login')}>
                   Back to login
-                </Link>
+                </Button>
               </div>
             </Col>
           </Row>
