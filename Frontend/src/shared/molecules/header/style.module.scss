@@ -1,5 +1,6 @@
 .header {
   background: url(/assets/img/loginbg.png) no-repeat top right;
+  background-size: cover;
   height: 100px;
   overflow: hidden;
   padding: 0;
@@ -18,7 +19,7 @@
     .nextStep {
       float: right;
     }
-    
+
   }
 
 }

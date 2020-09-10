@@ -1,17 +1,30 @@
 .profileCard {
-  padding: 30px;
+  padding: 20px;
   border-bottom: 1px solid $cloudDark;
 
-  .avatar {
+  .initials {
     text-align: center;
-    .img {
-      box-shadow: 0 0 0 7px $cloud;
+
+    .inName {
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      color: $white;
+      font-weight: 600;
+      background-color: #28BDEA;
+      border-radius: 50%;
+      line-height: 50px;
+      border: 4px solid rgba($gray, .21);
+      margin: 0 auto;
+      @include shadow(0 13px 12px -9px rgba(0, 0, 0, .5));
     }
   }
 
   .name {
     text-align: center;
     margin: 10px 0;
+    color: $darkGray;
+    font-size: 17px;
   }
 
   .dropdownButton {
@@ -31,6 +44,8 @@
   .avatarActions {
     margin-top: 15px;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 
     .badge {
       margin-right: 20px;
@@ -39,6 +54,7 @@
     .actionButton {
       height: 40px;
       width: 40px;
+      border: 1px solid rgba($gray , .3);
     }
   }
 }
