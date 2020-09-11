@@ -1,8 +1,8 @@
 import {app} from './app';
 import {logger} from './util';
-import {CosmosProvider} from './providers';
+import {MongoProvider} from './providers';
 
-CosmosProvider.init()
+MongoProvider.init()
   .then(() => {
     logger.info('DB_CONNECTED', 'success');
   })

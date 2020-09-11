@@ -68,7 +68,8 @@ const Dashboard = () => {
   };
 
   const onFormValueChanges = values => {
-    console.log('FORM VAL CHANGED ', values);
+    return values;
+    // console.log('FORM VAL CHANGED ', values);
   };
 
   return (

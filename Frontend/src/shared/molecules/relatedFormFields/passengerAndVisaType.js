@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form } from 'antd';
 import { CustomRadio } from '../../atoms/forms';
+import RadioGroupRound from '../../atoms/radio/radioGroupRound';
 
 const PassengerAndVisaType = props => {
   //   console.log('PSVT props ', props);
@@ -23,7 +24,7 @@ const PassengerAndVisaType = props => {
       </Form.Item>
       {isVisitor() && (
         <Form.Item className="custom-item" name="visaType" rules={visaRules}>
-          <CustomRadio options={visaOptions} {...props} />
+          <RadioGroupRound options={visaOptions} {...props} />
         </Form.Item>
       )}
     </>
