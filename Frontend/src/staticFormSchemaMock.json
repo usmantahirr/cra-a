@@ -144,7 +144,7 @@
         "fieldArray": [
           {
             "name": "viet",
-            "label": "Visa Issing Emirate",
+            "label": "Visa Issuing Emirate",
             "type": "imageRadio",
             "id": "VIET",
             "options": [
@@ -182,7 +182,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "Please select type"
+                "message": "Please select visa issuing emirate"
               }
             ]
           }
@@ -226,7 +226,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "Please select type"
+                "message": "Please select date of birth"
               }
             ]
           },
@@ -239,7 +239,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "Please select type"
+                "message": "Please enter name as per passport"
               }
             ]
           }
@@ -270,7 +270,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "Please select type"
+                "message": "Please select nationality"
               }
             ]
           },
