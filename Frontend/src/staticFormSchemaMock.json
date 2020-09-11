@@ -205,22 +205,43 @@
       {
         "fieldArray": [
           {
-            "name": "st4country",
-            "label": "Country",
+            "name": "surName",
+            "label": "Surname (As Per Passport)",
+            "placeholder": "Surname (As Per Passport)",
             "type": "text",
-            "id": "st4f1"
+            "id": "ST4S1F1",
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select type"
+              }
+            ]
           },
           {
-            "name": "st4city",
-            "label": "City",
-            "type": "text",
-            "id": "st4f2"
+            "name": "dob",
+            "label": "Date Of Birth",
+            "placeholder": "Date Of Birth",
+            "type": "date",
+            "id": "ST4S3F1",
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select type"
+              }
+            ]
           },
           {
-            "name": "st4VisaType",
-            "label": "Visa Type",
+            "name": "nameOnPassport",
+            "label": "Name (As Per Passport)",
+            "placeholder": "Name (As Per Passport)",
             "type": "text",
-            "id": "st4f3"
+            "id": "ST4S1F1",
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select type"
+              }
+            ]
           }
         ],
         "sectionTitle": "",
@@ -229,41 +250,94 @@
       {
         "fieldArray": [
           {
-            "name": "surName",
-            "label": "Surname(As Per Passport)",
+            "name": "nationality",
+            "label": "Nationality",
             "placeholder": "Please Select",
             "type": "select",
             "id": "ST4S1F1",
             "options": [
               {
                 "value": 1001,
-                "text": "A",
+                "text": "UAE",
                 "id": "ST4S1F1O1"
               },
               {
                 "value": 2,
-                "text": "B",
+                "text": "PK",
                 "id": "ST4S1FO2"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select type"
               }
             ]
           },
           {
-            "name": "naspp",
-            "label": "Name(As Per Passport)",
-            "type": "text",
-            "id": "ST4S1F2"
-          },
-          {
-            "name": "phonepp",
-            "label": "Phone",
-            "type": "text",
-            "id": "ST4S1F3"
-          },
-          {
-            "name": "pn",
+            "name": "passportNumber",
             "label": "Passport Number",
-            "type": "text",
-            "id": "ST4S1F4"
+            "placeholder": "Passport Number",
+            "type": "number",
+            "id": "ST4S1F1",
+            "rules": [
+              {
+                "required": true,
+                "message": "Please enter passport number"
+              }
+            ]
+          },
+          {
+            "name": "passportExpiry",
+            "label": "Passport Expiry",
+            "placeholder": "Passport Expiry",
+            "type": "date",
+            "id": "ST4S3F1"
+          },
+          {
+            "name": "nationalIDNumber",
+            "label": "National ID Number",
+            "placeholder": "National ID Number",
+            "type": "number",
+            "id": "ST4S1F1",
+            "rules": [
+              {
+                "required": true,
+                "message": "Please enter national id number"
+              }
+            ]
+          },
+          {
+            "name": "nationalIDExpiry",
+            "label": "National ID Expiry",
+            "placeholder": "National ID Expiry",
+            "type": "date",
+            "id": "ST4S3F1"
+          },
+          {
+            "name": "gender",
+            "label": "Gender",
+            "placeholder": "Gender",
+            "type": "select",
+            "id": "ST4S1F1",
+            "options": [
+              {
+                "value": 1001,
+                "text": "MALE",
+                "id": "ST4S1F1O1"
+              },
+              {
+                "value": 2,
+                "text": "FEMALE",
+                "id": "ST4S1FO2"
+              }
+            ],
+            "rules": [
+              {
+                "required": true,
+                "message": "Please select gender"
+              }
+            ]
           }
         ],
         "sectionTitle": "",
@@ -272,69 +346,31 @@
       {
         "fieldArray": [
           {
-            "name": "dob",
-            "label": "Date Of Birth",
+            "name": "countryStateCityZip",
+            "label": "COUNTRY STATE CITY ZIP CODE",
             "placeholder": "Date Of Birth",
-            "type": "date",
-            "id": "ST4S3F1"
-          },
-          {
-            "name": "nationality",
-            "label": "Nationality",
-            "placeholder": "Nationality",
-            "type": "select",
-            "id": "ST4S3F2",
-            "options": [
-              {
-                "value": 1,
-                "text": "PAK",
-                "id": "ST4S3F2O1"
-              },
-              {
-                "value": 2,
-                "text": "UAE",
-                "id": "ST4S3F2O1"
-              }
-            ]
-          },
-          {
-            "name": "nationalIdNumber",
-            "label": "National ID Number",
-            "placeholder": "National ID Number",
             "type": "text",
-            "id": "ST4S3F2b"
-          },
+            "id": "ST4S3F1"
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST4S3"
+      },
+      {
+        "fieldArray": [
           {
-            "name": "nationalIdNumberExpiry",
-            "label": "National ID Number Expiry",
-            "placeholder": "National ID Number Expiry",
-            "type": "date",
-            "id": "ST4S3F2c"
-          },
-          {
-            "name": "gender",
-            "label": "Gender",
-            "placeholder": "Gender",
-            "type": "select",
-            "id": "ST4S3F3A",
-            "options": [
+            "name": "address",
+            "label": "Address",
+            "placeholder": "Address",
+            "type": "textArea",
+            "rows":6,
+            "id": "ST4S3F1",
+            "rules": [
               {
-                "value": 1,
-                "text": "Male",
-                "id": "ST4S3F3O1"
-              },
-              {
-                "value": 2,
-                "text": "Female",
-                "id": "ST4S3F3O2"
+                "required": true,
+                "message": "Please enter address"
               }
             ]
-          },
-          {
-            "name": "ppe",
-            "label": "Passport Expiry",
-            "type": "date",
-            "id": "ST4S3F3"
           }
         ],
         "sectionTitle": "",
@@ -385,7 +421,6 @@
         "sectionTitle": "",
         "id": "ST6S2"
       }
-     
     ]
   },
   {
@@ -403,49 +438,49 @@
             "fieldsToDisplay": [
               {
                 "label": "Full Name",
-                "name":"naspp",
+                "name": "naspp",
                 "order": 1,
                 "type": "text"
               },
               {
                 "label": "Date Of Birth",
-                "name":"dob",
+                "name": "dob",
                 "order": 2,
                 "type": "text"
               },
               {
                 "label": "Nationality",
-                "name":"nationality",
+                "name": "nationality",
                 "order": 3,
                 "type": "text"
               },
               {
                 "label": "National ID Number",
-                "name":"nationalIdNumber",
+                "name": "nationalIdNumber",
                 "order": 4,
                 "type": "text"
               },
               {
                 "label": "National ID Number Expiry",
-                "name":"nationalIdNumberExpiry",
+                "name": "nationalIdNumberExpiry",
                 "order": 5,
                 "type": "text"
               },
               {
                 "label": "Passport Number",
-                "name":"pn",
+                "name": "pn",
                 "order": 6,
                 "type": "text"
               },
               {
                 "label": "Passport Expiry",
-                "name":"ppe",
+                "name": "ppe",
                 "order": 7,
                 "type": "text"
               },
               {
                 "label": "Gender",
-                "name":"gender",
+                "name": "gender",
                 "order": 8,
                 "type": "text"
               }
