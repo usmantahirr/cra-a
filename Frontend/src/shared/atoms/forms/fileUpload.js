@@ -32,9 +32,16 @@ function CustomUpload({ name, ...props }) {
       updateFileList([...uploader.fileList]);
       return false;
     }
-    updateFileList(uploader.fileList);
     if (uploader.fileList.length > 0) {
       // TODO: Api integration
+      const uploadFile = uploader.fileList[0];
+      uploadFile.Lala = '000';
+      updateFileList([uploadFile]);
+    } else {
+      if (uploader.file && uploader.file.status === 'removed') {
+        // TODO
+      }
+      updateFileList([]);
     }
     return true;
   };

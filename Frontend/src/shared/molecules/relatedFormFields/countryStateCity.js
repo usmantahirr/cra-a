@@ -85,7 +85,7 @@ const CountryStateCity = props => {
           label={placeholder}
           rules={[
             {
-              required: false,
+              required: true,
               message: 'Please select your country',
             },
           ]}
@@ -115,7 +115,7 @@ const CountryStateCity = props => {
             label={placeholder}
             rules={[
               {
-                required: false,
+                required: true,
                 message: 'Please select your state',
               },
             ]}
@@ -136,18 +136,29 @@ const CountryStateCity = props => {
   };
 
   const renderCities = () => {
-    const { name, placeholder } = city;
+    const { placeholder, dependencies } = city;
     return (
       <Col span={showState ? 8 : 12}>
         <Form.Item
           className="custom-item"
-          name={name}
+          {...city}
           label={placeholder}
           rules={[
             {
-              required: false,
+              required: true,
               message: 'Please select your city',
             },
+            ({ getFieldValue }) => ({
+              validator(rule, value) {
+                if (!value || !dependencies) {
+                  return Promise.resolve();
+                }
+                if (!value || getFieldValue(dependencies[0]) !== value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('Source and desitination cannot be same'));
+              },
+            }),
           ]}
         >
           <CustomSelect

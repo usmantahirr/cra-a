@@ -43,7 +43,8 @@
             },
             "city": {
               "placeholder": "Destination City",
-              "name": "destCity"
+              "name": "destCity",
+              "dependencies": ["sourceCity"]
             },
             "state": {
               "placeholder": "Destination State",
