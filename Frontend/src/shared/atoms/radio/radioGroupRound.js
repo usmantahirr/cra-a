@@ -3,7 +3,7 @@ import React from 'react';
 
 function RadioGroupRound({ options, ...props }) {
   return (
-    <Radio.Group {...props} className="ant-radio-round">
+    <Radio.Group {...props} className="ant-radio-round ant-radio-center">
       {options &&
         options.map(option => (
           <Radio key={option.id} value={option.value}>
