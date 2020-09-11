@@ -4,7 +4,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import GroupBox from '../../modules/groupCheckbox/index';
 import Header from '../../molecules/header';
-
+// TODO: Move to modules
 const GridView = ({
   onGridReady,
   gridOptions,

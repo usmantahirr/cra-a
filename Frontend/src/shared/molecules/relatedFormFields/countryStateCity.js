@@ -78,14 +78,14 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Col span={12}>
+      <Col span={showState ? 8 : 12}>
         <Form.Item
-          className="custom-label"
+          className="custom-item"
           name={name}
           label={placeholder}
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Please select your country',
             },
           ]}
@@ -108,14 +108,14 @@ const CountryStateCity = props => {
     const { name, placeholder } = state;
     return (
       showState && (
-        <Col span={12}>
+        <Col span={8}>
           <Form.Item
-            className="custom-label"
+            className="custom-item"
             name={name}
             label={placeholder}
             rules={[
               {
-                required: true,
+                required: false,
                 message: 'Please select your state',
               },
             ]}
@@ -138,14 +138,14 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { name, placeholder } = city;
     return (
-      <Col span={12}>
+      <Col span={showState ? 8 : 12}>
         <Form.Item
-          className="custom-label"
+          className="custom-item"
           name={name}
           label={placeholder}
           rules={[
             {
-              required: true,
+              required: false,
               message: 'Please select your city',
             },
           ]}
@@ -164,13 +164,11 @@ const CountryStateCity = props => {
   };
 
   return (
-    <React.Fragment>
-      <Row className="ant-row-padding">
-        {renderCountries()}
-        {renderStates()}
-        {renderCities()}
-      </Row>
-    </React.Fragment>
+    <Row className="ant-row-padding">
+      {renderCountries()}
+      {renderStates()}
+      {renderCities()}
+    </Row>
   );
 };
 

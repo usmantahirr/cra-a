@@ -8,12 +8,15 @@ import {
   CustomPasswordInput,
   CustomCheckbox,
   CustomUpload,
+  CustomPlainTextInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
 import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
+import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAndVisaType';
+import TermsAndConditions from '../../molecules/termsAndConditions';
 import LabSelection from '../../organisms/labSelection';
 
 class CustomFormItem extends React.PureComponent {
@@ -37,6 +40,8 @@ class CustomFormItem extends React.PureComponent {
         return <CustomPasswordInput {...fieldProps} />;
       case 'checkbox':
         return <CustomCheckbox {...fieldProps} />;
+      case 'plainText':
+        return <CustomPlainTextInput {...fieldProps} />;
       default:
         return null;
     }
@@ -54,6 +59,10 @@ class CustomFormItem extends React.PureComponent {
         return <CustomUpload {...fieldProps} />;
       case 'countryStateCity':
         return <CountryStateCity {...fieldProps} />;
+      case 'passengerAndVisaType':
+        return <PassengerAndVisaType {...fieldProps} />;
+      case 'termsAndConditions':
+        return <TermsAndConditions {...fieldProps} />;
       case 'googleMapComponent':
         return <LabSelection {...fieldProps} />;
       default:
@@ -63,7 +72,6 @@ class CustomFormItem extends React.PureComponent {
 
   isHidden = (hideField, applicationFormData) => {
     let hidden = false;
-    // const { hideField, applicationFormData } = this.props;
 
     if (!hideField) {
       return false;
@@ -84,18 +92,6 @@ class CustomFormItem extends React.PureComponent {
           });
         }
       });
-
-      // for (const form in applicationFormData) {
-      //   if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
-      //     for (const formField in applicationFormData[form]) {
-      //       if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-      //         if (fieldName === formField && fieldValue === applicationFormData[form][formField]) {
-      //           hidden = true;
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
     });
 
     return hidden;

@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomScroll from 'react-custom-scroll';
 import SideNavItem from '../../atoms/sideNavItem';
 import styles from './style.module.scss';
 
@@ -24,17 +25,27 @@ const content = [
   {
     text: 'More info on Covid',
     icon: '/assets/icons/covid-icon',
-    link: '/covid',
+    link: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public',
     isActive: false,
+    external: true,
   },
 ];
 
 const SidebarNavigation = () => {
   return (
     <div className={styles.sidebarNavigation}>
-      {content.map(item => (
-        <SideNavItem key={item.link} isActive={item.isActive} text={item.text} iconSrc={item.icon} link={item.link} />
-      ))}
+      <CustomScroll heightRelativeToParent="100%" allowOuterScroll="true">
+        {content.map(item => (
+          <SideNavItem
+            key={item.link}
+            isActive={item.isActive}
+            text={item.text}
+            iconSrc={item.icon}
+            link={item.link}
+            external={item.external}
+          />
+        ))}
+      </CustomScroll>
     </div>
   );
 };

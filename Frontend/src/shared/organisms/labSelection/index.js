@@ -137,9 +137,7 @@ const LabSelection = props => {
   };
 
   const onServiceChange = async selected => {
-    // const filteretLabs = filterState.cityLabs.filter(x=>x.);
-
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         selectedService: selected,

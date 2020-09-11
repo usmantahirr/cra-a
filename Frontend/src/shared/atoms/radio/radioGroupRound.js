@@ -1,9 +1,9 @@
 import { Radio } from 'antd';
 import React from 'react';
 
-function RadioGroup({ options, ...props }) {
+function RadioGroupRound({ options, ...props }) {
   return (
-    <Radio.Group {...props} className="ant-radio-lg">
+    <Radio.Group {...props} className="ant-radio-round">
       {options &&
         options.map(option => (
           <Radio key={option.id} value={option.value}>
@@ -14,4 +14,4 @@ function RadioGroup({ options, ...props }) {
   );
 }
 
-export default RadioGroup;
+export default RadioGroupRound;

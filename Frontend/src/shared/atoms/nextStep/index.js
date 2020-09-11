@@ -4,8 +4,8 @@ import styles from './style.module.scss';
 
 const NextStep = ({ nextStepTitle }) => (
   <div className={styles.nextStep}>
-    <span className={styles.title}>Next Step</span>
-    <span className={styles.text}>{nextStepTitle}</span>
+    <div className={styles.title}>Next Step</div>
+    <div className={styles.text}>{nextStepTitle}</div>
   </div>
 );
 

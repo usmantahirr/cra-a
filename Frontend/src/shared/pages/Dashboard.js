@@ -32,21 +32,13 @@ const Dashboard = props => {
 
   const _renderFormButtons = isLastStep => {
     const { onAllStepsCompleted } = props;
-    return (
-      // <Form.Item {...tailLayout}>
-      //   <Button onClick={goBack}>Prev</Button>
-      //   <Button type="primary">Save As Draft</Button>
-      //   <Button htmlType="submit">Next</Button>
-      //   {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
-      // </Form.Item>
-      <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />
-    );
+    return <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />;
   };
 
   const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
     const [form] = Form.useForm();
     const { name, initialValues } = step;
-    const { layout, onFinish, onFinishFailed, onValuesChange, onFieldsChange } = props;
+    const { layout, onFinish, onFinishFailed, onFieldsChange, onFormValueChanges } = props;
     return (
       <Form
         key={`${step.id}${name}`}
@@ -58,10 +50,10 @@ const Dashboard = props => {
         initialValues={initialValues}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
-        onValuesChange={onValuesChange}
         onFieldsChange={onFieldsChange}
+        onValuesChange={onFormValueChanges}
       >
-        <h1>{step.stepTitle}</h1>
+        {/* <h1>{step.stepTitle}</h1> */}
         {step.sections && step.sections.map(section => _renderSection(section, form))}
         {_renderFormButtons(currStep === stepsCount - 1)}
       </Form>
@@ -74,9 +66,8 @@ const Dashboard = props => {
 
   return (
     <DashboardTemplate>
-      <Header pageState={pageState} formSchema={formSchema} />
+      <Header pageState={pageState} formSchema={formSchema} applicationFormData={applicationFormData} />
       <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
-      {/* <Footer goBack={goBack} goForward={goForward} /> */}
     </DashboardTemplate>
   );
 };
