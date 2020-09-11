@@ -35,11 +35,10 @@
                 margin-left: -9px;
                 background-color: transparent;
             }
-            
+
         }
 
-        &:hover,
-        .ant-radio-checked {
+        &:hover {
             .ant-radio-inner {
                 margin-left: -77.5px;
                 background-color: $secondary;
@@ -57,6 +56,16 @@
                     text-transform: uppercase;
                     font-weight: 600;
                 }
+            }
+
+            &::after {
+                border-radius: 0;
+            }
+        }
+
+        .ant-radio-checked {
+            .ant-radio-inner {
+                background-color: $secondary;
             }
 
             &::after {

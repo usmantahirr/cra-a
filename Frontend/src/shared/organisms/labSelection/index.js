@@ -1,9 +1,10 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import { Row, Col } from 'antd';
+import { stateResponseMapper, cityResponseMapper, labsResponseMapper, serviceTypesMapper } from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
-import { stateResponseMapper, cityResponseMapper, labsResponseMapper, serviceTypesMapper } from './mapper';
 
 const LabSelection = props => {
   const { applicationFormData } = props;
@@ -163,18 +164,24 @@ const LabSelection = props => {
         onServiceChange={onServiceChange}
         filterState={filterState}
       />
-      <CardRadio cartOptions={filterState.cityLabs} value={selectedLab.id || ''} onChange={onCardChange} />
-      {filterState.cityLabs.length ? (
-        <Map
-          infoOpen={infoOpen}
-          myPlaces={filterState.cityLabs}
-          zoom={zoom}
-          setSelectedPlace={setSelectedLab}
-          center={center}
-          selectedPlace={selectedLab}
-          markerClickHandler={markerClickHandler}
-        />
-      ) : null}
+      <div className="card-section">
+        <Row gutter={[32, 32]}>
+          <Col span={16}>
+            <Map
+              infoOpen={infoOpen}
+              myPlaces={filterState.cityLabs}
+              zoom={zoom}
+              setSelectedPlace={setSelectedLab}
+              center={center}
+              selectedPlace={selectedLab}
+              markerClickHandler={markerClickHandler}
+            />
+          </Col>
+          <Col span={8}>
+            <CardRadio cartOptions={filterState.cityLabs} value={selectedLab.id || ''} onChange={onCardChange} />
+          </Col>
+        </Row>
+      </div>
     </Fragment>
   ) : null;
 };

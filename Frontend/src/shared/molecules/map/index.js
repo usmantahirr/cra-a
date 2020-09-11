@@ -60,7 +60,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
           zoom={zoom}
           mapContainerStyle={{
             height: '70vh',
-            width: '50%',
+            width: '100%',
           }}
           onTilesLoaded={() => {
             fitBounds();

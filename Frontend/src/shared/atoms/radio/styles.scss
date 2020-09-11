@@ -72,7 +72,7 @@
     .ant-radio-wrapper {
         border: 1px solid $primary;
         border-radius: 30px;
-        font-size: 13px;
+        font-size: 0.8125rem;
         padding: 12px 15px;
         min-width: 120px;
         -webkit-transition: all 0.3s;
@@ -97,5 +97,83 @@
                 color: $white;
             }
         }
+    }
+}
+
+.ant-radio-withoutLable {
+    .ant-radio-wrapper {
+        .ant-radio-inner {
+            width: 33px;
+            height: 31px;
+            background-color: #D0D0D0;
+            border-radius: 0;
+            border: 0;
+
+            &:before {
+                max-width: 0;
+                transition: max-width .6s;
+            }
+
+            &::after {
+                position: absolute;
+                display: table;
+                border: 3px solid $white;
+                border-top: 0;
+                border-left: 0;
+                transform: rotate(45deg) scale(1) translate(-50%, -50%);
+                opacity: 1;
+                transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+                content: ' ';
+                border-radius: 0;
+                width: 8px;
+                height: 16px;
+                top: 50%;
+                left: 50%;
+                margin-top: -2px;
+                margin-left: -6px;
+                background-color: transparent;
+            }
+        }
+
+        &:hover {
+            .ant-radio-inner {
+                background-color: $secondary;
+
+                &::before {
+                    content: "Select";
+                    position: absolute;
+                    left: 33px;
+                    height: 31px;
+                    line-height: 31px;
+                    padding-left: 5px;
+                    padding-right: 20px;
+                    background-color: $secondary;
+                    color: $white;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 0.6875rem;
+                    max-width: 65px;
+                    transition: max-width 1s;
+                }
+            }
+
+            &::after {
+                border-radius: 0;
+            }
+        }
+
+        .ant-radio-checked {
+            .ant-radio-inner {
+                background-color: $secondary;
+            }
+        }
+    }
+
+}
+
+.ant-radio-group {
+    &.ant-radio-center {
+        display: block;
+        text-align: center;
     }
 }

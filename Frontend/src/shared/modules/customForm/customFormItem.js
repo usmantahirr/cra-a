@@ -17,6 +17,7 @@ import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAndVisaType';
 import TermsAndConditions from '../../molecules/termsAndConditions';
+import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
 import ImgRadioCarusol from '../../molecules/imgRadioCarusol';
 
@@ -64,6 +65,8 @@ class CustomFormItem extends React.PureComponent {
         return <PassengerAndVisaType {...fieldProps} />;
       case 'termsAndConditions':
         return <TermsAndConditions {...fieldProps} />;
+      case 'reviewApplication':
+        return <ReviewApplication {...fieldProps} />;
       case 'googleMapComponent':
         return <LabSelection {...fieldProps} />;
       default:
