@@ -135,6 +135,14 @@ const Header = props => {
     );
   }
 
+  const _renderApplicationId = () => {
+    return applicationSummaryData.applicationId || 'DUMMY_ID';
+  };
+
+  const _renderApplicantName = () => {
+    return applicationSummaryData.applicantName || '';
+  };
+
   const _renderSourceLocation = (srcCountry, srcState, srcCity) => {
     if (!srcCountry) {
       return null;
@@ -205,11 +213,11 @@ const Header = props => {
       <Row>
         <Col span={4}>
           <span>Application ID:</span>
-          <strong>12312312312</strong>
+          <strong>{_renderApplicationId()}</strong>
         </Col>
         <Col span={4}>
           <span>Applicant Name:</span>
-          <strong>aa</strong>
+          <strong>{_renderApplicantName()}</strong>
         </Col>
         <Col span={4}>
           <span>Source:</span>
