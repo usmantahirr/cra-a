@@ -30,25 +30,32 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
   };
   return (
     <Fragment>
-      <h1>Personal Information</h1>
-      <Card>
+      <h3 className="sub-heading">Personal Information</h3>
+      <Card className="card-holder">
         <Row>
           {fields &&
             fields.map(({ name, label }) => {
               return (
                 data[name] && (
-                  <Col span={6}>
-                    <p>{label}</p>
-                    <p>{formatData(data[name])}</p>
+                  <Col span={6} className="cardinfo-box">
+                    <p className="label">{label}</p>
+                    <p className="info">{formatData(data[name])}</p>
                   </Col>
                 )
               );
             })}
         </Row>
       </Card>
-      <h1>Payment Information</h1>
-      <Card>
-        <p>Screening Test (Inclusive of Tax)</p>
+      <h3 className="sub-heading">Payment Information</h3>
+      <Card className="card-holder card-holder-single">
+        <Row>
+          <Col span={12}>
+            <p className="label">Screening Test (Inclusive of Tax)</p>
+          </Col>
+          <Col span={12}>
+            <p className="info">410 AED (111.63 USD Approx) </p>
+          </Col>
+        </Row>
       </Card>
     </Fragment>
   );

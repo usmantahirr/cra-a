@@ -1,5 +1,6 @@
 .customUpload {
     display: block;
+    position: relative;
 
     .ant-upload-select {
         display: block;
@@ -37,16 +38,30 @@
     }
 
     .ant-upload-list-text {
+        &.ant-upload-list {
+            height: 0;
+        }
+
         .ant-upload-list-item {
             height: auto;
+            @extend %position-fixed;
+            background-color: $white;
+
+            &:hover {
+                .ant-upload-list-item-info {
+                    background-color: transparent;
+                }
+            }
 
             .ant-upload-list-item-info {
                 margin-right: 25px;
                 padding: 0;
                 width: 100px;
+                height: auto;
+                @extend %position-center;
 
                 .ant-upload-list-item-card-actions {
-                    right: 15px;
+                    right: -15px;
                     top: -10px;
 
                     .ant-btn {

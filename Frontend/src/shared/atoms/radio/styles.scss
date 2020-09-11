@@ -170,3 +170,10 @@
     }
 
 }
+
+.ant-radio-group {
+    &.ant-radio-center {
+        display: block;
+        text-align: center;
+    }
+}

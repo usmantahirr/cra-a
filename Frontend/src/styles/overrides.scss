@@ -103,6 +103,13 @@ body {
   color: $primary;
 }
 
+.sub-heading {
+  font-size: 1.0625rem;
+  color: $primary;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
 .otp-popup {
   .ant-modal-body {
     padding: 0;
@@ -160,4 +167,48 @@ body {
   text-align: center;
   color: #327BB7;
   font-weight: 600;
+}
+
+.card-holder {
+  background-color: rgba($white, .72);
+  @include shadow(0px 0px 12px -6px rgba(0, 0, 0, 0.75));
+  margin-bottom: 25px;
+
+  .ant-card-body {
+    padding: 50px 40px 0;
+
+    .cardinfo-box {
+      margin-bottom: 50px;
+    }
+  }
+
+
+  .label,
+  .info {
+    margin: 0;
+    font-size: 0.8125rem;
+  }
+
+  .label {
+    margin-bottom: 10px;
+  }
+
+  .info {
+    font-weight: 600;
+    color: $primary;
+  }
+
+  &-single {
+    .ant-card-body {
+      padding: 25px 40px;
+
+      .label {
+        margin-bottom: 0;
+      }
+
+      .info {
+        text-align: right;
+      }
+    }
+  }
 }
