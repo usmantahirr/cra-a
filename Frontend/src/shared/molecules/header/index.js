@@ -85,6 +85,9 @@ const Header = props => {
 
   useEffect(() => {
     const { applicationFormData } = props;
+    if (!applicationFormData) {
+      return;
+    }
     const newApplicationSummary = {};
     Object.keys(applicationFormData).forEach(form => {
       if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
