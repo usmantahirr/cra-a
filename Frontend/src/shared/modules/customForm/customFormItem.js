@@ -16,6 +16,7 @@ import ImageRadio from '../../molecules/imageRadio/index';
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 import TermsAndConditions from '../../molecules/termsAndConditions';
+import ReviewApplication from '../../organisms/reviewApplication';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -59,6 +60,8 @@ class CustomFormItem extends React.PureComponent {
         return <CountryStateCity {...fieldProps} />;
       case 'termsAndConditions':
         return <TermsAndConditions {...fieldProps} />;
+      case 'reviewApplication':
+        return <ReviewApplication {...fieldProps} />;
       default:
         return null;
     }
@@ -123,7 +126,7 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent(restOfProps)}
+        {isCustomComponent && this._renderCustomComponent({ applicationFormData, ...restOfProps })}
       </>
     );
   }

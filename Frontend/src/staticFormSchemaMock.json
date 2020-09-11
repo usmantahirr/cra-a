@@ -60,7 +60,6 @@
             "name": "passengerType",
             "label": "",
             "type": "radio",
-
             "id": "pt",
             "options": [
               {
@@ -312,6 +311,20 @@
             ]
           },
           {
+            "name": "nationalIdNumber",
+            "label": "National ID Number",
+            "placeholder": "National ID Number",
+            "type": "text",
+            "id": "ST4S3F2b"
+          },
+          {
+            "name": "nationalIdNumberExpiry",
+            "label": "National ID Number Expiry",
+            "placeholder": "National ID Number Expiry",
+            "type": "date",
+            "id": "ST4S3F2c"
+          },
+          {
             "name": "gender",
             "label": "Gender",
             "placeholder": "Gender",
@@ -349,7 +362,19 @@
     "initialValues": {},
     "sections": [
       {
-        "fieldArray": [{ "name": "fileUpload", "label": "UPLOAD_IMAGE", "type": "customComponent", "id": "ST5S1F1" }],
+        "fieldArray": [
+          {
+            "name": "fileUpload",
+            "label": "UPLOAD_IMAGE",
+            "type": "customComponent",
+            "id": "ST5S1F1"
+          },
+          {
+            "type": "plainText",
+            "id": "Fasdasdas2aasaaasada",
+            "text": "Allowed files: Passport to be uploaded with any document extension of *.pdf, *.png, *.jpg and *.jpeg (Max file size 20 MB)"
+          }
+        ],
         "sectionTitle": "",
         "id": "ST5S1"
       }
@@ -496,9 +521,78 @@
     ]
   },
   {
-    "stepTitle": "Payment",
+    "stepTitle": "Review Application",
     "id": "ST7",
     "formName": "step7",
+    "initialValues": {},
+    "sections": [
+      {
+        "fieldArray": [
+          {
+            "name": "reviewApplication",
+            "type": "customComponent",
+            "id": "Fasdasdas2asaaasdasda",
+            "fieldsToDisplay": [
+              {
+                "label": "Full Name",
+                "name":"naspp",
+                "order": 1,
+                "type": "text"
+              },
+              {
+                "label": "Date Of Birth",
+                "name":"dob",
+                "order": 2,
+                "type": "text"
+              },
+              {
+                "label": "Nationality",
+                "name":"nationality",
+                "order": 3,
+                "type": "text"
+              },
+              {
+                "label": "National ID Number",
+                "name":"nationalIdNumber",
+                "order": 4,
+                "type": "text"
+              },
+              {
+                "label": "National ID Number Expiry",
+                "name":"nationalIdNumberExpiry",
+                "order": 5,
+                "type": "text"
+              },
+              {
+                "label": "Passport Number",
+                "name":"pn",
+                "order": 6,
+                "type": "text"
+              },
+              {
+                "label": "Passport Expiry",
+                "name":"ppe",
+                "order": 7,
+                "type": "text"
+              },
+              {
+                "label": "Gender",
+                "name":"gender",
+                "order": 8,
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "sectionTitle": "",
+        "id": "ST7S1"
+      }
+    ]
+  },
+  {
+    "stepTitle": "Payment",
+    "id": "ST8",
+    "formName": "step8",
     "initialValues": {},
     "sections": [
       {
@@ -508,23 +602,23 @@
             "label": "Payment Type",
             "placeholder": "Please Select",
             "type": "select",
-            "id": "ST7S1F1",
+            "id": "ST8S1F1",
             "options": [
               {
                 "value": 1001,
                 "text": "Cash",
-                "id": "ST7S1F101"
+                "id": "ST8S1F101"
               },
               {
                 "value": 2,
                 "text": "Paypal",
-                "id": "ST7S1F102"
+                "id": "ST8S1F102"
               }
             ]
           }
         ],
         "sectionTitle": "",
-        "id": "ST7S1"
+        "id": "ST8S1"
       },
       {
         "fieldArray": [
@@ -533,17 +627,17 @@
             "label": "Card Type",
             "placeholder": "Please Select",
             "type": "select",
-            "id": "ST7S1F1",
+            "id": "ST8S1F1",
             "options": [
               {
                 "value": 1001,
                 "text": "DEBIT",
-                "id": "ST7S2F101"
+                "id": "ST8S2F101"
               },
               {
                 "value": 2,
                 "text": "CREDIT",
-                "id": "ST7S2F102"
+                "id": "ST8S2F102"
               }
             ]
           },
@@ -551,29 +645,29 @@
             "name": "cardNo",
             "label": "Card Number",
             "type": "text",
-            "id": "ST7S2F2"
+            "id": "ST8S2F2"
           },
           {
             "name": "ced",
             "label": "Card Expiry",
             "type": "date",
-            "id": "ST7S2F3"
+            "id": "ST8S2F3"
           },
           {
             "name": "cw",
             "label": "CVV",
             "type": "text",
-            "id": "ST7S2F4"
+            "id": "ST8S2F4"
           },
           {
             "name": "postalCode",
             "label": "Postal Code",
             "type": "text",
-            "id": "ST7S2F5"
+            "id": "ST8S2F5"
           }
         ],
         "sectionTitle": "Payment By Card",
-        "id": "ST7S2"
+        "id": "ST8S2"
       }
     ]
   }
