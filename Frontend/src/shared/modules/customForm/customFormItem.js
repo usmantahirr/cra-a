@@ -11,13 +11,14 @@ import {
   CustomPlainTextInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
-import ImageRadio from '../../molecules/imageRadio/index';
+// import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
 import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAndVisaType';
 import TermsAndConditions from '../../molecules/termsAndConditions';
 import LabSelection from '../../organisms/labSelection';
+import ImgRadioCarusol from '../../molecules/imgRadioCarusol';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -33,7 +34,7 @@ class CustomFormItem extends React.PureComponent {
       case 'radioGroup':
         return <RadioGroup {...fieldProps} />;
       case 'imageRadio':
-        return <ImageRadio {...fieldProps} />;
+        return <ImgRadioCarusol {...fieldProps} />;
       case 'text':
         return <CustomTextInput {...fieldProps} />;
       case 'password':
