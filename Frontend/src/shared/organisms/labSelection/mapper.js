@@ -1,11 +1,10 @@
-// eslint-disable-next-line
 export function stateResponseMapper(inputStates) {
   const states = inputStates.map(data => {
     return { id: data._id, key: data._id, value: data._id, text: data.name };
   });
   return (states && states.length && states) || [];
 }
-// eslint-disable-next-line
+
 export function cityResponseMapper(inputCities) {
   const cities = inputCities.map(data => {
     return { id: data._id, key: data._id, value: data._id, text: data.name };
@@ -13,7 +12,6 @@ export function cityResponseMapper(inputCities) {
   return (cities && cities.length && cities) || [];
 }
 
-// eslint-disable-next-line
 export function labsResponseMapper(inputLabs) {
   const labs = inputLabs.map(data => {
     return {
@@ -30,11 +28,21 @@ export function labsResponseMapper(inputLabs) {
   return (labs && labs.length && labs) || [];
 }
 
-export function serviceTypesMapper(services) {
-  const types =
-    services &&
-    services.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
-  return (types && types.length && types) || [];
+export function serviceTypesMapper(labs) {
+  const services = [];
+  labs.forEach(element => {
+    if (element.services && element.services.length) {
+      const result = element.services.map(data => {
+        return { id: data._id, key: data._id, value: data._id, text: data.name };
+      });
+      services.push(...result);
+    }
+  });
+  return services;
 }
+
+// export function filterLabsOntheBasisOfServiceType(labs) {
+// //  labs = [];
+
+// //   return services;
+// }

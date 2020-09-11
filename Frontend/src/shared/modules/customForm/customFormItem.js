@@ -120,7 +120,7 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent(restOfProps)}
+        {isCustomComponent && this._renderCustomComponent(this.props)}
       </>
     );
   }
