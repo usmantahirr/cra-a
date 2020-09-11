@@ -3,19 +3,21 @@ import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
+import { stateResponseMapper, cityResponseMapper, labsResponseMapper, serviceTypesMapper } from './mapper';
 
 const LabSelection = props => {
   const {
-    country = 'Pakistan',
+    countryCode = 'USA',
+    country = 'USA',
     visaType = 'Visit',
     countryId = '5f589189175c69424c936728',
     stateId = '5f58a1b58512ad44cccbf2d3',
     cityId = '5f58b1bf46e2f21ff4a105cf',
   } = props;
 
-  const [selectedLab, setSelectedLab] = useState(null);
+  const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
-  const [zoom, setZoom] = useState(5);
+  const [zoom, setZoom] = useState(15);
   const [infoOpen, setInfoOpen] = useState(false);
 
   const [filterState, setFilterState] = useState({
@@ -23,6 +25,9 @@ const LabSelection = props => {
     cities: [],
     cityLabs: [],
     serviceTypes: [],
+    selectedState: '',
+    selectedCity: '',
+    selectedService: '',
   });
 
   // map handlers
@@ -32,7 +37,7 @@ const LabSelection = props => {
 
     // Required so clicking a 2nd marker works as expected
     if (infoOpen) {
-      setInfoOpen(false);
+      // setInfoOpen(false);
     }
     setInfoOpen(true);
     // If you want to zoom in a little on marker click
@@ -45,35 +50,14 @@ const LabSelection = props => {
 
   useEffect(() => {
     async function Init() {
-      let { data: statesResponse } = await MapService.getStatesByCountry(countryId);
-      let { data: citiesResponse } = await MapService.getCitiesByState(stateId);
-      let { data: labsResponse } = await MapService.getLabsByCity(cityId);
+      let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
+      let { data: citiesResponse = [] } = await MapService.getCitiesByState(stateId);
+      let { data: labsResponse = [] } = await MapService.getLabsByCity(cityId);
 
-      statesResponse = statesResponse.map(data => {
-        return { id: data._id, key: data._id, value: data._id, text: data.name };
-      });
-
-      citiesResponse = citiesResponse.map(data => {
-        return { id: data._id, key: data._id, value: data._id, text: data.name };
-      });
-
-      labsResponse = labsResponse.map(data => {
-        return {
-          id: data._id,
-          name: data.name,
-          city: data.city,
-          services: data.services,
-          pos: {
-            lat: Number(data.latitude),
-            lng: Number(data.longitude),
-          },
-        };
-      });
-
-      const serviceTypes = labsResponse[0].services.map(data => {
-        return { id: data._id, key: data._id, value: data._id, text: data.name };
-      });
-
+      statesResponse = stateResponseMapper(statesResponse);
+      citiesResponse = cityResponseMapper(citiesResponse);
+      labsResponse = labsResponseMapper(labsResponse);
+      const serviceTypes = labsResponse[0] ? serviceTypesMapper(labsResponse[0].services) : [];
       const selectedService = serviceTypes.length > 0 ? serviceTypes[0].id : [];
 
       setFilterState({
@@ -85,98 +69,67 @@ const LabSelection = props => {
         selectedCity: cityId,
         selectedService,
       });
-      markerClickHandler(null, labsResponse[0]);
+
+      if (labsResponse[0]) {
+        markerClickHandler(null, labsResponse[0]);
+      }
     }
     Init();
   }, [countryId, stateId, cityId]);
 
   // dropdown handlers
-  const onStateChange = async () => {
-    let { data: statesResponse } = await MapService.getStatesByCountry(countryId);
-    let { data: citiesResponse } = await MapService.getCitiesByState(stateId);
-    let { data: labsResponse } = await MapService.getLabsByCity(cityId);
+  const onStateChange = async value => {
+    let { data: citiesResponse } = await MapService.getCitiesByState(value);
+    const firstCity = citiesResponse[0] ? citiesResponse[0]._id : '';
 
-    statesResponse = statesResponse.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
+    let { data: labsResponse = [] } = firstCity ? await MapService.getLabsByCity(firstCity) : {};
 
-    citiesResponse = citiesResponse.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
+    citiesResponse = cityResponseMapper(citiesResponse);
+    labsResponse = labsResponseMapper(labsResponse);
 
-    labsResponse = labsResponse.map(data => {
-      return {
-        id: data._id,
-        name: data.name,
-        city: data.city,
-        services: data.services,
-        pos: {
-          lat: Number(data.latitude),
-          lng: Number(data.longitude),
-        },
-      };
-    });
-
-    const serviceTypes = labsResponse[0].services.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
+    const firstLab = labsResponse[0] ? labsResponse[0].id : '';
+    const serviceTypes = firstLab ? serviceTypesMapper(labsResponse[0].services) : [];
 
     setFilterState(prevState => {
       // eslint-disable-next-line
       return {
         ...prevState,
-        states: statesResponse,
         cities: citiesResponse,
         cityLabs: labsResponse,
         serviceTypes,
-        selectedState: statesResponse[0].id,
-        selectedCity: citiesResponse[0].id,
-        selectedService: serviceTypes[0].id,
+        selectedState: value,
+        selectedCity: firstCity,
+        selectedService: serviceTypes && serviceTypes.length ? serviceTypes[0].id : '',
       };
     });
-
-    markerClickHandler(null, labsResponse[0]);
+    if (labsResponse[0]) {
+      markerClickHandler(null, labsResponse[0]);
+    }
   };
 
-  const onCityChange = async () => {
-    let { data: citiesResponse } = await MapService.getCitiesByState(stateId);
-    let { data: labsResponse } = await MapService.getLabsByCity(cityId);
+  const onCityChange = async value => {
+    let { data: labsResponse } = await MapService.getLabsByCity(value);
+    labsResponse = labsResponseMapper(labsResponse);
 
-    citiesResponse = citiesResponse.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
+    const firstLab = labsResponse[0] ? labsResponse[0].id : '';
+    const serviceTypes = firstLab ? serviceTypesMapper(labsResponse[0].services) : [];
 
-    labsResponse = labsResponse.map(data => {
-      return {
-        id: data._id,
-        name: data.name,
-        city: data.city,
-        services: data.services,
-        pos: {
-          lat: Number(data.latitude),
-          lng: Number(data.longitude),
-        },
-      };
-    });
-
-    const serviceTypes = labsResponse[0].services.map(data => {
-      return { id: data._id, key: data._id, value: data._id, text: data.name };
-    });
     setFilterState(function(prevState) {
       return {
         ...prevState,
-        cities: citiesResponse,
         cityLabs: labsResponse,
-        selectedCity: citiesResponse[0].id,
-        selectedService: serviceTypes[0].id,
+        selectedCity: value,
+        selectedService: serviceTypes && serviceTypes.length ? serviceTypes[0].id : '',
       };
     });
 
-    markerClickHandler(null, labsResponse[0]);
+    if (labsResponse[0]) {
+      markerClickHandler(null, labsResponse[0]);
+    }
   };
 
   const onServiceChange = async selected => {
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         selectedService: selected,
@@ -184,11 +137,17 @@ const LabSelection = props => {
     });
   };
 
-  const onCardChange = () => {};
+  const onCardChange = value => {
+    const labToSelect = filterState.cityLabs.filter(x => x.id === value.target.id);
+    if (labToSelect.length) {
+      markerClickHandler(null, labToSelect[0]);
+    }
+  };
 
   return (
     <Fragment>
       <MapFilter
+        countryCode={countryCode}
         country={country}
         visaType={visaType}
         onStateChange={onStateChange}
@@ -196,7 +155,7 @@ const LabSelection = props => {
         onServiceChange={onServiceChange}
         filterState={filterState}
       />
-      <CardRadio cartOptions={filterState.cityLabs} value={selectedLab} onCardChange={onCardChange} />
+      <CardRadio cartOptions={filterState.cityLabs} value={selectedLab.id || ''} onChange={onCardChange} />
       <Map
         infoOpen={infoOpen}
         myPlaces={filterState.cityLabs}

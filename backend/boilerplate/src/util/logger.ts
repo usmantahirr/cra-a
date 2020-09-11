@@ -1,9 +1,30 @@
 import winston from 'winston';
+import appInsights = require('applicationinsights');
+
+import {AiTransport} from './ai-transport';
+import {appConfig} from '../config';
+
+appInsights
+  .setup(appConfig.appInsightsKey)
+  .setAutoDependencyCorrelation(true)
+  .setAutoCollectRequests(true)
+  .setAutoCollectPerformance(true, true)
+  .setAutoCollectExceptions(true)
+  .setAutoCollectDependencies(true)
+  .setAutoCollectConsole(true, false)
+  .setUseDiskRetryCaching(true)
+  .setSendLiveMetrics(false)
+  .start();
+const aIclient = appInsights.defaultClient;
 
 const options: winston.LoggerOptions = {
   transports: [
     new winston.transports.Console({
       level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+    }),
+    new AiTransport({
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+      client: aIclient,
     }),
   ],
 };
@@ -34,6 +55,13 @@ class Logger {
   }
   error(code: string, message: unknown) {
     logMessage('error', code, message);
+  }
+  trackEvent(name: string, data: unknown) {
+    aIclient.trackEvent({
+      name,
+      time: new Date(),
+      properties: data,
+    });
   }
 }
 

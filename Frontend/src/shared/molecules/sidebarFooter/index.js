@@ -21,7 +21,6 @@ const SidebarFooter = () => {
         >
           <Form.Item>
             <CustomSelect
-              style={{ width: 182 }}
               name="language"
               options={[
                 {
@@ -41,7 +40,7 @@ const SidebarFooter = () => {
       </Row>
       <Row>
         <Button type="primary">
-          <Image src="/assets/icons/headphones.png" preview={false} /> &nbsp; Speak to us!
+          <Image src="/assets/icons/headphones.png" preview={false} /> Speak to us!
         </Button>
       </Row>
     </div>
