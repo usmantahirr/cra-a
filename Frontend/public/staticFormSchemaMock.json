@@ -72,19 +72,19 @@
             "type": "customComponent",
             "passengerOptions": [
               {
-                "value": "1",
-                "text": "Transit Visa",
+                "value": "Citizen",
+                "text": "Citizen",
                 "id": "PTO1"
               },
               {
-                "value": "2",
+                "value": "Visitor",
                 "text": "Visitor",
-                "id": "PTo2"
+                "id": "PTO2"
               },
               {
-                "value": "3",
+                "value": "UAE-Resident",
                 "text": "UAE Resident",
-                "id": "PTo3"
+                "id": "PTO3"
               }
             ],
             "passengerRules": [
@@ -95,12 +95,12 @@
             ],
             "visaOptions": [
               {
-                "value": "1",
+                "value": "Pre-Approved Visa",
                 "text": "Pre-Approved Visa",
                 "id": "VTO1"
               },
               {
-                "value": "2",
+                "value": "On-Arrival",
                 "text": "On-Arrival",
                 "id": "VTO2"
               }
