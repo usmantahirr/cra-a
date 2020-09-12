@@ -14,12 +14,10 @@ const ManageApplication = () => {
 
   useEffect(() => {
     async function Init() {
-      const { data } = await ManageApplicationSerivce.getManageApplications('5f5ca3ab77f8b329686f49d0');
-      let reponse = [];
-      if (data && data.application_data.length) {
-        reponse = data.application_data;
+      const { data } = await ManageApplicationSerivce.getManageApplications('asad12345');
+      if (data && data.length) {
+        gridReference.gridApiRef.setRowData(data);
       }
-      gridReference.gridApiRef.setRowData(reponse);
     }
     if (gridReference.gridApiRef) {
       Init();

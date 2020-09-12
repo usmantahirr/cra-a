@@ -56,7 +56,7 @@ export function filterBySubArray(labs, filterValue, arrayName = '', prop = '') {
 }
 
 const getFieldValues = (data, objectProp, prop) => {
-  if (!data && !data[0]) {
+  if (!data) {
     return '';
   }
   // eslint-disable-next-line

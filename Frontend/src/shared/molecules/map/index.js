@@ -90,7 +90,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
     );
   };
 
-  return isLoaded ? renderMap() : null;
+  return isLoaded && myPlaces.length ? renderMap() : null;
 };
 
 export default MapContainer;

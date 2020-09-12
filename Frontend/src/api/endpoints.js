@@ -11,4 +11,4 @@ export const GET_STATES_BY_COUNTRY = 'state';
 export const GET_CITIES_BY_STATE = 'city';
 export const GET_LABS_BY_CITY = 'lab';
 
-export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission';
+export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission/get-all';

@@ -60,8 +60,8 @@ const LabSelection = props => {
     async function Init() {
       let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
       const stateOrCountry = stateId || countryId;
-      let { data: citiesResponse = [] } = await MapService.getCitiesByState(stateOrCountry);
-      let { data: labsResponse = [] } = await MapService.getLabsByCity(cityId);
+      let { data: citiesResponse = [] } = stateOrCountry ? await MapService.getCitiesByState(stateOrCountry) : {};
+      let { data: labsResponse = [] } = cityId ? await MapService.getLabsByCity(cityId) : {};
 
       statesResponse = stateResponseMapper(statesResponse);
       citiesResponse = cityResponseMapper(citiesResponse);
@@ -84,6 +84,8 @@ const LabSelection = props => {
       }
       form.setFieldsValue({ labState: stateId });
       form.setFieldsValue({ labCity: cityId });
+      form.setFieldsValue({ labState: stateId });
+      form.setFieldsValue({ serviceType: '' });
     }
     Init();
   }, [countryId, stateId, cityId]);
@@ -174,7 +176,7 @@ const LabSelection = props => {
     }
   };
 
-  return countryId ? (
+  return countryId && cityId ? (
     <Fragment>
       <MapFilter
         countryCode={stateId}

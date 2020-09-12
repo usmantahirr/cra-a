@@ -78,6 +78,8 @@ export const columnDefs = actionParam => {
       cellRendererParams: {
         actionParam,
       },
+      suppressFilter: true,
+      suppressSorting: true,
     },
   ];
 };
