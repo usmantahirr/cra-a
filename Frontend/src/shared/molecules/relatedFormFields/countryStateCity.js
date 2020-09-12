@@ -144,7 +144,7 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { placeholder, dependencies } = city;
     return (
-      <Col span={showState ? 8 : 12}>
+      <Col span={12}>
         <Form.Item
           className="custom-item"
           {...city}
