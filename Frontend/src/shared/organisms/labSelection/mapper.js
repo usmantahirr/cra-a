@@ -56,17 +56,20 @@ export function filterBySubArray(labs, filterValue, arrayName = '', prop = '') {
 }
 
 const getFieldValues = (data, objectProp, prop) => {
+  if (!data && !data[0]) {
+    return '';
+  }
   // eslint-disable-next-line
-  return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
+  return data[0] ? (data[0][objectProp] ? data[0][objectProp][prop] || '' : '') : '';
 };
 
 export function parsePropData(props) {
   const { applicationFormData } = props;
   return {
-    country: getFieldValues(applicationFormData[0], 'sourceCountry', 'label'),
+    country: getFieldValues(applicationFormData, 'sourceCountry', 'label'),
     visaType: 'Visit',
-    countryId: getFieldValues(applicationFormData[0], 'sourceCountry', 'value'),
-    stateId: getFieldValues(applicationFormData[0], 'sourceState', 'value'),
-    cityId: getFieldValues(applicationFormData[0], 'sourceCity', 'value'),
+    countryId: getFieldValues(applicationFormData, 'sourceCountry', 'value'),
+    stateId: getFieldValues(applicationFormData, 'sourceState', 'value'),
+    cityId: getFieldValues(applicationFormData, 'sourceCity', 'value'),
   };
 }
