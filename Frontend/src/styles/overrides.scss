@@ -147,8 +147,9 @@ body {
   background-color: $yellowDark;
 }
 
-.content-holder {
+.content-scroll {
   padding: 25px;
+  height: calc(100vh - 290px);
 }
 
 .ant-row-padding {
@@ -211,4 +212,39 @@ body {
       }
     }
   }
+}
+
+.rcs-custom-scroll {
+  .rcs-outer-container {
+    position: relative;
+
+    .rcs-inner-container {
+      padding-right: 17px;
+    }
+
+    .rcs-positioning {
+      position: absolute;
+      right: 0;
+      height: 100%;
+
+      .rcs-custom-scrollbar {
+        opacity: 1;
+        background-color: rgba($blueScroll, .37);
+        padding: 0;
+
+        .rcs-inner-handle {
+          margin: 0;
+          border-radius: 0;
+          height: 100%;
+          background-color: rgba($blueScrollBar, .62);
+        }
+
+      }
+    }
+  }
+}
+
+.content-scrollbar {
+  height: calc(100vh - 151px);
+  padding: 25px;
 }
