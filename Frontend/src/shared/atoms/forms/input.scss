@@ -2,6 +2,17 @@
   margin-bottom: 25px;
   position: relative;
 
+  @media screen and (max-width: 1400px) {
+    font-size: 0.8125rem;
+    margin-bottom: 22px;
+
+    .note-text {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .ant-form-item-label {
     color: $primary;
   }
@@ -14,6 +25,26 @@
     font-size: 0.9375rem;
     padding: 14px 25px;
     width: 100%;
+    color: $primary;
+
+    input {
+      font-size: 0.9375rem;
+      color: $primary;
+
+      @media screen and (max-width: 1400px) {
+        font-size: 0.8125rem;
+      }
+    }
+
+    .ant-input-number-input {
+      padding: 1px 0;
+      height: auto;
+    }
+
+    @media screen and (max-width: 1400px) {
+      padding: 8px 15px;
+      font-size: 0.8125rem;
+    }
 
     &::placeholder,
     input::placeholder,
@@ -101,6 +132,10 @@
   .ant-form-item-label {
     >label {
       color: $primary;
+
+      @media screen and (max-width: 1400px) {
+        font-size: 0.8125rem;
+      }
 
       &.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
         &::before {

@@ -78,7 +78,7 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Col span={showState ? 8 : 12}>
+      <Col span={12}>
         <Form.Item
           className="custom-item"
           name={name}
@@ -108,29 +108,31 @@ const CountryStateCity = props => {
     const { name, placeholder } = state;
     return (
       showState && (
-        <Col span={8}>
-          <Form.Item
-            className="custom-item"
-            name={name}
-            label={placeholder}
-            rules={[
-              {
-                required: true,
-                message: 'Please select your state',
-              },
-            ]}
-          >
-            <CustomSelect
-              showSearch
-              allowClear
-              placeholder={placeholder}
-              optionFilterProp="children"
-              onChange={onStateChange}
-              filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-              options={states.map(c => ({ id: c._id, text: c.name, value: c._id }))}
-            />
-          </Form.Item>
-        </Col>
+        <>
+          <Col span={12}>
+            <Form.Item
+              className="custom-item"
+              name={name}
+              label={placeholder}
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select your state',
+                },
+              ]}
+            >
+              <CustomSelect
+                showSearch
+                allowClear
+                placeholder={placeholder}
+                optionFilterProp="children"
+                onChange={onStateChange}
+                filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                options={states.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+              />
+            </Form.Item>
+          </Col>
+        </>
       )
     );
   };
@@ -138,39 +140,41 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { placeholder, dependencies } = city;
     return (
-      <Col span={showState ? 8 : 12}>
-        <Form.Item
-          className="custom-item"
-          {...city}
-          label={placeholder}
-          rules={[
-            {
-              required: true,
-              message: 'Please select your city',
-            },
-            ({ getFieldValue }) => ({
-              validator(rule, value) {
-                if (!value || !dependencies) {
-                  return Promise.resolve();
-                }
-                if (!value || getFieldValue(dependencies[0]) !== value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(new Error('Source and desitination cannot be same'));
+      <>
+        <Col span={12}>
+          <Form.Item
+            className="custom-item"
+            {...city}
+            label={placeholder}
+            rules={[
+              {
+                required: true,
+                message: 'Please select your city',
               },
-            }),
-          ]}
-        >
-          <CustomSelect
-            showSearch
-            allowClear
-            placeholder={placeholder}
-            optionFilterProp="children"
-            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-            options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
-          />
-        </Form.Item>
-      </Col>
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (!value || !dependencies) {
+                    return Promise.resolve();
+                  }
+                  if (!value || getFieldValue(dependencies[0]) !== value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('Source and desitination cannot be same'));
+                },
+              }),
+            ]}
+          >
+            <CustomSelect
+              showSearch
+              allowClear
+              placeholder={placeholder}
+              optionFilterProp="children"
+              filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+              options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+            />
+          </Form.Item>
+        </Col>
+      </>
     );
   };
 

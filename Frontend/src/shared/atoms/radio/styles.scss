@@ -1,3 +1,9 @@
+.ant-form label {
+    @media screen and (max-width: 1400px) {
+        font-size: 0.8125rem;
+    }
+}
+
 .ant-radio-lg {
     .ant-radio-inner {
         height: 43px;
@@ -5,6 +11,11 @@
         width: 44px;
         border-radius: 0;
         border: 0;
+
+        @media screen and (max-width: 1400px) {
+            height: 38px;
+            width: 38px;
+        }
 
         &::after {
             position: absolute;
@@ -38,6 +49,13 @@
         vertical-align: top;
         line-height: 43px;
         text-align: center;
+
+        @media screen and (max-width: 1400px) {
+            height: 38px;
+            line-height: 38px;
+            min-width: 160px;
+            font-size: 0.8125rem;
+        }
     }
 
     .ant-radio-checked {
@@ -64,6 +82,10 @@
             height: 47px;
             background: rgba($white, .72);
             padding: 2px;
+
+            @media screen and (max-width: 1400px) {
+                height: 42px;
+            }
         }
     }
 }

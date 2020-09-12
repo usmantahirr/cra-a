@@ -222,7 +222,7 @@ const Header = props => {
           <span>Applicant Name:</span>
           <strong>{_renderApplicantName()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Source:</span>
           <strong>
             {_renderSourceLocation(
@@ -232,7 +232,7 @@ const Header = props => {
             )}
           </strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Destination:</span>
           <strong>
             {_renderDestinationLocation(
