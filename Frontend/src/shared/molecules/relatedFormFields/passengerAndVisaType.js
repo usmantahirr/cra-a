@@ -6,7 +6,7 @@ import RadioGroupRound from '../../atoms/radio/radioGroupRound';
 const PassengerAndVisaType = props => {
   //   console.log('PSVT props ', props);
   const { passengerRules, visaRules, passengerOptions, visaOptions } = props;
-  const [passengerType, setPassengerType] = useState(false);
+  const [passengerType, setPassengerType] = useState('');
 
   const onPassengerTypeChange = ({ target: { value } }) => {
     // console.log(value);
@@ -14,7 +14,7 @@ const PassengerAndVisaType = props => {
   };
 
   const isVisitor = () => {
-    return passengerType === '2';
+    return passengerType === 'Visitor';
   };
 
   return (
