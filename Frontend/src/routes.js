@@ -9,6 +9,7 @@ import MoreOnCovidRoutes from './modules/moreOnCovid/routes';
 import FaqRoutes from './modules/faq/routes';
 
 import { AUTH_PAGE } from './config';
+import CustomSpinner from './shared/atoms/spinner';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
@@ -30,7 +31,7 @@ const renderRouteFromList = isPrivate => (item, i) => {
 };
 
 const Routes = () => (
-  <Suspense fallback="loading">
+  <Suspense fallback={<CustomSpinner tip="loading..." />}>
     <Switch>
       {AuthRoutes.map(renderRouteFromList())}
       {DashboardRoutes.map(renderRouteFromList(true))}

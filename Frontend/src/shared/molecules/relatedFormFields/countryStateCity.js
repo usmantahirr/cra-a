@@ -154,11 +154,11 @@ const CountryStateCity = props => {
               message: 'Please select your city',
             },
             ({ getFieldValue }) => ({
-              validator(rule, value) {
+              validator(rule, { value }) {
                 if (!value || !dependencies) {
                   return Promise.resolve();
                 }
-                if (!value || getFieldValue(dependencies[0]) !== value) {
+                if (!value || (dependencies[0] && getFieldValue(dependencies[0]).value !== value)) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error('Source and desitination cannot be same'));

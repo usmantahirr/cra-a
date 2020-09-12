@@ -1,25 +1,13 @@
 import React, { Fragment } from 'react';
 import { Card, Col, Row } from 'antd';
 import * as moment from 'moment';
+import { mergeObjects } from '../../utilities';
 
 const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
-  const merge = objs => {
-    const target = {};
-    const merger = obj => {
-      Object.keys(obj).forEach(prop => {
-        target[prop] = obj[prop];
-      });
-    };
-    Object.keys(objs).forEach(key => {
-      merger(objs[key]);
-    });
-    return target;
-  };
-
   const data =
     Object.keys(applicationFormData).length === 0 && applicationFormData.constructor === Object
       ? {}
-      : merge(applicationFormData);
+      : mergeObjects(applicationFormData);
   const fields = fieldsToDisplay.sort((a, b) => a - b);
 
   const formatData = formData => {

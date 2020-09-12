@@ -3,7 +3,7 @@ import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
-import { loadVisaTypeOptions } from '../../../utilities';
+import { loadVisaTypeOptions } from '../../utilities';
 
 const { Header: AntHeader } = Layout;
 
