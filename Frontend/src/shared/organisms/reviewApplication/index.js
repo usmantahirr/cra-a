@@ -27,7 +27,7 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
                 data[name] && (
                   <Col span={6} className="cardinfo-box">
                     <p className="label">{label}</p>
-                    <p className="info">{formatData(data[name].value || formatData(data[name]))}</p>
+                    <p className="info">{formatData(data[name].label || formatData(data[name]))}</p>
                   </Col>
                 )
               );

@@ -22,7 +22,11 @@ const Footer = props => {
           Next
         </Button>
       )}
-      {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
+      {isLastStep && (
+        <Button type="primary" className={styles.antBtn} onClick={onAllStepsCompleted}>
+          Pay
+        </Button>
+      )}
     </AntFooter>
   );
 };
