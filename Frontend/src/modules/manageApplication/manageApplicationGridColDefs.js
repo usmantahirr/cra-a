@@ -29,47 +29,47 @@ export const columnDefs = actionParam => {
     {
       headerName: 'Service Type',
       field: 'service_type',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Source Country',
       field: 'source_country',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Source State',
       field: 'source_state',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Source City',
       field: 'source_city',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Destination Country',
       field: 'destination_country',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Destination City',
       field: 'destination_city',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Passport Number',
       field: 'passport_number',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'NIC Number',
       field: 'nic_number',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Gender',
       field: 'gender',
-      isHidden: true,
+      hide: true,
     },
     {
       headerName: 'Action',
