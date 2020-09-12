@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Form, Row, Col } from 'antd';
 import service from '../../services/shared.service';
 import CustomSelect from '../../atoms/forms/select';
+import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
-  const { form, country, city, state } = props;
+  const { form, country, city, state, zipCode } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -81,7 +82,7 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Col span={showState ? 8 : 12}>
+      <Col span={12}>
         <Form.Item
           className="custom-item"
           name={name}
@@ -112,7 +113,7 @@ const CountryStateCity = props => {
     const { name, placeholder } = state;
     return (
       showState && (
-        <Col span={8}>
+        <Col span={12}>
           <Form.Item
             className="custom-item"
             name={name}
@@ -140,10 +141,33 @@ const CountryStateCity = props => {
     );
   };
 
+  const renderZipCode = () => {
+    const { name, placeholder } = zipCode;
+    return (
+      showState && (
+        <Col span={12}>
+          <Form.Item
+            className="custom-item"
+            name={name}
+            label={placeholder}
+            rules={[
+              {
+                required: true,
+                message: 'Please select your zip code',
+              },
+            ]}
+          >
+            <CustomTextInput placeholder={placeholder} type="number" />
+          </Form.Item>
+        </Col>
+      )
+    );
+  };
+
   const renderCities = () => {
     const { placeholder, dependencies } = city;
     return (
-      <Col span={showState ? 8 : 12}>
+      <Col span={12}>
         <Form.Item
           className="custom-item"
           {...city}
@@ -184,6 +208,7 @@ const CountryStateCity = props => {
     <Row className="ant-row-padding">
       {renderCountries()}
       {renderStates()}
+      {renderZipCode()}
       {renderCities()}
     </Row>
   );

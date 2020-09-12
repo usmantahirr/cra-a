@@ -117,9 +117,9 @@ class CustomFormItem extends React.PureComponent {
 
     return (
       <>
-        {!isCustomComponent && (
+        {!isCustomComponent && !this.isHidden(hideField, applicationFormData) && (
           <Form.Item
-            hidden={this.isHidden(hideField, applicationFormData)}
+            // hidden={this.isHidden(hideField, applicationFormData)}
             label={label}
             className="custom-item"
             name={name}

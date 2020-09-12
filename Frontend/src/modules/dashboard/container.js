@@ -17,7 +17,6 @@ const Dashboard = () => {
   };
 
   // eslint-disable-next-line global-require
-  // const formSchema = require('../../../src/staticFormSchemaMock.json');
   const [pageState, setPageState] = React.useState({ prev: null, curr: 0, next: null });
   const [applicationFormData, setApplicationFormData] = React.useState({});
   const dispatch = useDispatch();

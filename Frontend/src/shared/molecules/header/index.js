@@ -167,7 +167,7 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      <div className={styles.appSummery}>{_renderApplicationSummary()}</div>
+      {pageState.curr !== 0 && <div className={styles.appSummery}>{_renderApplicationSummary()}</div>}
     </>
   );
 };
