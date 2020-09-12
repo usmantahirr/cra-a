@@ -1,7 +1,6 @@
 import React from 'react';
-import { PageHeader, Descriptions } from 'antd';
+import { PageHeader, Descriptions, Form } from 'antd';
 import { CustomSelectSmall } from '../../atoms/forms';
-import { STATE_SKIP_BY_COUNTRY } from '../../../config';
 
 // import styles from './style.module.scss';
 
@@ -10,7 +9,17 @@ const MapFilter = props => {
 
   const stateDropddown = (
     <Descriptions.Item label="State">
-      <CustomSelectSmall options={filterState.states} value={filterState.selectedState} onChange={onStateChange} />
+      <Form.Item
+        name="labState"
+        rules={[
+          {
+            required: true,
+            message: 'Please select state',
+          },
+        ]}
+      >
+        <CustomSelectSmall options={filterState.states} value={filterState.selectedState} onChange={onStateChange} />
+      </Form.Item>
     </Descriptions.Item>
   );
 
@@ -19,16 +28,36 @@ const MapFilter = props => {
       <Descriptions size="small" column={5}>
         <Descriptions.Item label="Country">{country}</Descriptions.Item>
         <Descriptions.Item label="Visa Type">{visaType}</Descriptions.Item>
-        {countryCode === STATE_SKIP_BY_COUNTRY ? stateDropddown : ''}
+        {countryCode ? stateDropddown : ''}
         <Descriptions.Item label="City">
-          <CustomSelectSmall options={filterState.cities} value={filterState.selectedCity} onChange={onCityChange} />
+          <Form.Item
+            name="labCity"
+            rules={[
+              {
+                required: true,
+                message: 'Please select city',
+              },
+            ]}
+          >
+            <CustomSelectSmall options={filterState.cities} value={filterState.selectedCity} onChange={onCityChange} />
+          </Form.Item>
         </Descriptions.Item>
-        <Descriptions.Item label="Lab Type" options={filterState.serviceTypes}>
-          <CustomSelectSmall
-            options={filterState.serviceTypes}
-            value={filterState.selectedService}
-            onChange={onServiceChange}
-          />
+        <Descriptions.Item label="Lab Type">
+          <Form.Item
+            name="serviceType"
+            rules={[
+              {
+                required: true,
+                message: 'Please select serivce type',
+              },
+            ]}
+          >
+            <CustomSelectSmall
+              options={filterState.serviceTypes}
+              value={filterState.selectedService}
+              onChange={onServiceChange}
+            />
+          </Form.Item>
         </Descriptions.Item>
       </Descriptions>
     </PageHeader>

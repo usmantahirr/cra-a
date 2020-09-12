@@ -54,3 +54,19 @@ export function filterBySubArray(labs, filterValue, arrayName = '', prop = '') {
   items = labs.filter(element => element[arrayName].some(subElement => subElement[prop] === filterValue));
   return items;
 }
+
+const getFieldValues = (data, objectProp, prop) => {
+  // eslint-disable-next-line
+  return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
+};
+
+export function parsePropData(props) {
+  const { applicationFormData } = props;
+  return {
+    country: getFieldValues(applicationFormData[0], 'sourceCountry', 'label'),
+    visaType: 'Visit',
+    countryId: getFieldValues(applicationFormData[0], 'sourceCountry', 'value'),
+    stateId: getFieldValues(applicationFormData[0], 'sourceState', 'value'),
+    cityId: getFieldValues(applicationFormData[0], 'sourceCity', 'value'),
+  };
+}

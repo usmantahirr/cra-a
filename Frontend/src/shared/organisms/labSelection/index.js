@@ -6,6 +6,7 @@ import {
   labsResponseMapper,
   serviceTypesMapper,
   filterBySubArray,
+  parsePropData,
 } from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
@@ -13,16 +14,13 @@ import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
 
 const LabSelection = props => {
-  const { applicationFormData } = props;
+  const { form } = props;
 
-  const {
-    countryCode = 'USA',
-    country = applicationFormData[0] ? applicationFormData[0].sourceCountry : '',
-    visaType = 'Visit',
-    countryId = applicationFormData[0] ? applicationFormData[0].sourceCountry : '',
-    stateId = applicationFormData[0] ? applicationFormData[0].sourceState : '',
-    cityId = applicationFormData[0] ? applicationFormData[0].sourceCity : '',
-  } = props;
+  const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
+
+  form.setFieldsValue({ labState: stateId });
+  form.setFieldsValue({ labCity: cityId });
+  // form.setFieldsValue({ "serviceType": stateId })
 
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
@@ -43,6 +41,7 @@ const LabSelection = props => {
   const markerClickHandler = (event, place) => {
     // Remember which place was clicked
     setSelectedLab(place);
+    form.setFieldsValue({ lab: place.id });
 
     // Required so clicking a 2nd marker works as expected
     if (infoOpen) {
@@ -63,7 +62,8 @@ const LabSelection = props => {
   useEffect(() => {
     async function Init() {
       let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
-      let { data: citiesResponse = [] } = await MapService.getCitiesByState(stateId);
+      const stateOrCountry = stateId || countryId;
+      let { data: citiesResponse = [] } = await MapService.getCitiesByState(stateOrCountry);
       let { data: labsResponse = [] } = await MapService.getLabsByCity(cityId);
 
       statesResponse = stateResponseMapper(statesResponse);
@@ -127,7 +127,7 @@ const LabSelection = props => {
     const firstLab = labsResponse[0] ? labsResponse[0].id : '';
     const serviceTypes = firstLab ? serviceTypesMapper(labsResponse) : [];
 
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         allLabs: labsResponse,
@@ -169,7 +169,7 @@ const LabSelection = props => {
   return countryId ? (
     <Fragment>
       <MapFilter
-        countryCode={countryCode}
+        countryCode={stateId}
         country={country}
         visaType={visaType}
         onStateChange={onStateChange}
