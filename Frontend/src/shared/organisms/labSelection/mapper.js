@@ -1,3 +1,9 @@
+function removeDuplicates(myArr, prop) {
+  return myArr.filter((obj, pos, arr) => {
+    return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+  });
+}
+
 export function stateResponseMapper(inputStates) {
   const states = inputStates.map(data => {
     return { id: data._id, key: data._id, value: data._id, text: data.name };
@@ -29,15 +35,17 @@ export function labsResponseMapper(inputLabs) {
 }
 
 export function serviceTypesMapper(labs) {
-  const services = [];
+  let services = [];
   labs.forEach(element => {
     if (element.services && element.services.length) {
       const result = element.services.map(data => {
         return { id: data._id, key: data._id, value: data._id, text: data.name };
       });
+
       services.push(...result);
     }
   });
+  services = removeDuplicates(services, 'id');
   return services;
 }
 
