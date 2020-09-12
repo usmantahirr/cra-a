@@ -28,7 +28,7 @@
             }
           }
         ],
-        "sectionTitle": "Source Location",
+        "sectionTitle": "",
         "id": "SEC1"
       },
       {
@@ -52,7 +52,7 @@
             }
           }
         ],
-        "sectionTitle": "Destination Location",
+        "sectionTitle": "",
         "id": "SEC2"
       },
       {
@@ -156,28 +156,40 @@
               },
               {
                 "value": "2",
-                "text": "Dubai",
+                "text": "Ajman",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET2"
               },
               {
                 "value": "3",
-                "text": "Sharjah",
+                "text": "Dubai",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET3"
               },
               {
                 "value": "4",
-                "text": "Ajman",
+                "text": "Fujairah",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET4"
               },
               {
                 "value": "5",
-                "text": "Umm al Quwain",
+                "text": "Ras al-Khaimah",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET5"
-              }
+              },
+              {
+                "value": "6",
+                "text": "Sharjah",
+                "src": "/assets/img/dubai.png",
+                "id": "VIET6"
+              },
+              {
+                "value": "7",
+                "text": "Umm al-Quwain",
+                "src": "/assets/img/abudhabi.png",
+                "id": "VIET7"
+              }              
             ],
             "rules": [
               {
@@ -203,179 +215,251 @@
     },
     "sections": [
       {
-        "fieldArray": [
+        "rowArray": [
           {
-            "name": "surName",
-            "label": "Surname (As Per Passport)",
-            "placeholder": "Surname (As Per Passport)",
-            "type": "text",
-            "id": "ST4S1F1",
-            "rules": [
+            "fieldArray": [
               {
-                "required": true,
-                "message": "Please select type"
-              }
-            ]
-          },
-          {
-            "name": "dob",
-            "label": "Date Of Birth",
-            "placeholder": "Date Of Birth",
-            "type": "date",
-            "id": "ST4S3F1",
-            "rules": [
-              {
-                "required": true,
-                "message": "Please select type"
-              }
-            ]
-          },
-          {
-            "name": "nameOnPassport",
-            "label": "Name (As Per Passport)",
-            "placeholder": "Name (As Per Passport)",
-            "type": "text",
-            "id": "ST4S1F1",
-            "rules": [
-              {
-                "required": true,
-                "message": "Please select type"
-              }
-            ]
-          }
-        ],
-        "sectionTitle": "",
-        "id": "ST4S1"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "nationality",
-            "label": "Nationality",
-            "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST4S1F1",
-            "options": [
-              {
-                "value": 1001,
-                "text": "UAE",
-                "id": "ST4S1F1O1"
+                "name": "name",
+                "label": "namePassport",
+                "placeholder": "namePassport",
+                "type": "text",
+                "id": "ST01F001",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "nameRequiredMessage"
+                  }
+                ]
               },
               {
-                "value": 2,
-                "text": "PK",
-                "id": "ST4S1FO2"
-              }
-            ],
-            "rules": [
-              {
-                "required": true,
-                "message": "Please select type"
-              }
-            ]
-          },
-          {
-            "name": "passportNumber",
-            "label": "Passport Number",
-            "placeholder": "Passport Number",
-            "type": "number",
-            "id": "ST4S1F1",
-            "rules": [
-              {
-                "required": true,
-                "message": "Please enter passport number"
+                "name": "surName",
+                "label": "surnamePassport",
+                "placeholder": "surnamePassport",
+                "type": "text",
+                "id": "ST01F002",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "surnameRequiredMessage"
+                  }
+                ]
               }
             ]
           },
           {
-            "name": "passportExpiry",
-            "label": "Passport Expiry",
-            "placeholder": "Passport Expiry",
-            "type": "date",
-            "id": "ST4S3F1"
-          },
-          {
-            "name": "nationalIDNumber",
-            "label": "National ID Number",
-            "placeholder": "National ID Number",
-            "type": "number",
-            "id": "ST4S1F1",
-            "rules": [
+            "fieldArray": [
               {
-                "required": true,
-                "message": "Please enter national id number"
-              }
-            ]
-          },
-          {
-            "name": "nationalIDExpiry",
-            "label": "National ID Expiry",
-            "placeholder": "National ID Expiry",
-            "type": "date",
-            "id": "ST4S3F1"
-          },
-          {
-            "name": "gender",
-            "label": "Gender",
-            "placeholder": "Gender",
-            "type": "select",
-            "id": "ST4S1F1",
-            "options": [
-              {
-                "value": 1001,
-                "text": "MALE",
-                "id": "ST4S1F1O1"
+                "name": "dob",
+                "label": "dob",
+                "placeholder": "dob",
+                "type": "date",
+                "id": "ST01F003",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "dobRequiredMessage"
+                  }
+                ]
               },
               {
-                "value": 2,
-                "text": "FEMALE",
-                "id": "ST4S1FO2"
-              }
-            ],
-            "rules": [
-              {
-                "required": true,
-                "message": "Please select gender"
+                "name": "nationality",
+                "label": "nationality",
+                "placeholder": "pleaseSelect",
+                "type": "select",
+                "id": "ST01F004",
+                "options": [
+                  {
+                    "value": 1001,
+                    "text": "UAE",
+                    "id": "ST01F004O001"
+                  },
+                  {
+                    "value": 2,
+                    "text": "PK",
+                    "id": "ST01F004O002"
+                  }
+                ],
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "nationalityRequiredMessage"
+                  }
+                ]
               }
             ]
-          }
-        ],
-        "sectionTitle": "",
-        "id": "ST4S2"
-      },
-      {
-        "fieldArray": [
+          },
           {
-            "name": "countryStateCityZip",
-            "label": "COUNTRY STATE CITY ZIP CODE",
-            "placeholder": "Date Of Birth",
-            "type": "text",
-            "id": "ST4S3F1"
+            "fieldArray": [
+              {
+                "name": "gender",
+                "label": "gender",
+                "placeholder": "gender",
+                "type": "select",
+                "id": "ST01F005",
+                "options": [
+                  {
+                    "value": 1001,
+                    "text": "MALE",
+                    "id": "ST01F005O001"
+                  },
+                  {
+                    "value": 2,
+                    "text": "FEMALE",
+                    "id": "ST01F005O002"
+                  }
+                ],
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "genderRequiredMessage"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fieldArray": [
+              {
+                "name": "nationalId",
+                "label": "nationalId",
+                "placeholder": "nationalId",
+                "type": "number",
+                "id": "ST01F006",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "nationalRequiredMessage"
+                  }
+                ],
+                "hideField": [
+                  {
+                    "fieldName": "passengerType",
+                    "fieldValue": "2",
+                    "isEqual": false
+                  }
+                ]
+              },
+              {
+                "name": "nationalIdExpiry",
+                "label": "nationalIdExpiry",
+                "placeholder": "nationalIdExpiry",
+                "type": "date",
+                "id": "ST01F007",
+                "hideField": [
+                  {
+                    "fieldName": "passengerType",
+                    "fieldValue": "2",
+                    "isEqual": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fieldArray": [
+              {
+                "name": "emiratesId",
+                "label": "emiratesId",
+                "placeholder": "emiratesId",
+                "type": "number",
+                "id": "ST01F008",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "emiratesRequiredMessage"
+                  }
+                ],
+                "hideField": [
+                  {
+                    "fieldName": "passengerType",
+                    "fieldValue": "2",
+                    "isEqual": true
+                  }
+                ]
+              },
+              {
+                "name": "emiratesIdExpiry",
+                "label": "emiratesIdExpiry",
+                "placeholder": "emiratesIdExpiry",
+                "type": "date",
+                "id": "ST01F009",
+                "hideField": [
+                  {
+                    "fieldName": "passengerType",
+                    "fieldValue": "2",
+                    "isEqual": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fieldArray": [
+              {
+                "name": "passportId",
+                "label": "passportId",
+                "placeholder": "passportId",
+                "type": "text",
+                "id": "ST01F010",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "passportRequiredMessage"
+                  }
+                ]
+              },
+              {
+                "name": "passportExpiry",
+                "label": "passportExpiry",
+                "placeholder": "passportExpiry",
+                "type": "date",
+                "id": "ST01F011"
+              }
+            ]
+          },
+          {
+            "fieldArray": [
+              {
+                "name": "countryStateCity",
+                "type": "customComponent",
+                "id": "ST01F012",
+                "country": {
+                  "placeholder": "sourceCountry",
+                  "name": "country"
+                },
+                "city": {
+                  "placeholder": "sourceCity",
+                  "name": "city"
+                },
+                "state": {
+                  "placeholder": "sourceState",
+                  "name": "state"
+                }
+              }
+            ]
+          },
+          {
+            "fieldArray": [
+              {
+                "name": "address",
+                "label": "Address",
+                "placeholder": "Address",
+                "type": "textArea",
+                "rows":6,
+                "id": "ST01F013",
+                "rules": [
+                  {
+                    "required": true,
+                    "message": "Please enter address"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "sectionTitle": "",
         "id": "ST4S3"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "address",
-            "label": "Address",
-            "placeholder": "Address",
-            "type": "textArea",
-            "rows":6,
-            "id": "ST4S3F1",
-            "rules": [
-              {
-                "required": true,
-                "message": "Please enter address"
-              }
-            ]
-          }
-        ],
-        "sectionTitle": "",
-        "id": "ST4S3"
-      }
+      }      
     ]
   },
   {
