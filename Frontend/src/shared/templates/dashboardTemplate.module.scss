@@ -5,4 +5,5 @@
 
 .layoutSection {
   @extend %gradient-bg;
+  overflow: hidden;
 }

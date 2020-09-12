@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../../shared/molecules/header';
+import CustomBreadcrumb from '../../shared/molecules/breadcrumb';
 import GridOptions from '../../shared/organisms/grid/gridOptions';
 import GridView from '../../shared/organisms/grid/container';
 import DashboardTemplate from '../../shared/templates/dashboardTemplate';
@@ -190,14 +192,18 @@ const ManageApplication = () => {
 
   return (
     <DashboardTemplate>
-      <GridView
-        gridApiRef={gridReference.gridApiRef}
-        gridColumnApiRef={gridReference.gridColumnApiRef}
-        gridOptions={gridOptions}
-        frameworkComponents={frameworkComponents}
-        rowDataSource={rowDataSource}
-        onGridReady={onGridReady}
-      />
+      <Header pageHeader />
+      <CustomBreadcrumb />
+      <div className="content-scrollbar">
+        <GridView
+          gridApiRef={gridReference.gridApiRef}
+          gridColumnApiRef={gridReference.gridColumnApiRef}
+          gridOptions={gridOptions}
+          frameworkComponents={frameworkComponents}
+          rowDataSource={rowDataSource}
+          onGridReady={onGridReady}
+        />
+      </div>
     </DashboardTemplate>
   );
 };

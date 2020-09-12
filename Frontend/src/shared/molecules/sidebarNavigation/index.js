@@ -34,7 +34,7 @@ const content = [
 const SidebarNavigation = () => {
   return (
     <div className={styles.sidebarNavigation}>
-      <CustomScroll heightRelativeToParent="100%" allowOuterScroll="true">
+      <CustomScroll heightRelativeToParent="100%">
         {content.map(item => (
           <SideNavItem
             key={item.link}

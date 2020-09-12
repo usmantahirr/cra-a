@@ -4,10 +4,11 @@
 
         .custom-columns {
             background: #f8fafc;
-            @extend %position-fixed;
+            position: absolute;
             left: auto;
             top: 50px;
             bottom: 49px;
+            right: 1px;
             z-index: 1;
             width: 33px;
 
@@ -19,7 +20,7 @@
             }
 
             .column-options {
-                width: 400px;
+                width: 300px;
                 right: 34px;
                 background-color: #F0F6FA;
                 border-right: 1px solid #babfc7;
@@ -98,10 +99,14 @@
                 display: inline-block;
                 vertical-align: middle;
                 border-radius: 7px;
-                background: url(/assets/img/icon-tmenu.svg) no-repeat center #E2E2E2;
+                background: url(/assets/img/icon-tmenu.svg) no-repeat center;
 
                 svg {
                     display: none;
+                }
+
+                &.ant-dropdown-open {
+                    background: url(/assets/img/icon-tmenu.svg) no-repeat center #E2E2E2;
                 }
             }
         }

@@ -9,6 +9,8 @@ import {
   CustomCheckbox,
   CustomUpload,
   CustomPlainTextInput,
+  CustomNumberInput,
+  CustomTextAreaInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
 // import ImageRadio from '../../molecules/imageRadio/index';
@@ -44,6 +46,10 @@ class CustomFormItem extends React.PureComponent {
         return <CustomCheckbox {...fieldProps} />;
       case 'plainText':
         return <CustomPlainTextInput {...fieldProps} />;
+      case 'number':
+        return <CustomNumberInput {...fieldProps} />;
+      case 'textArea':
+        return <CustomTextAreaInput {...fieldProps} />;
       default:
         return null;
     }

@@ -7,6 +7,8 @@ import CustomTextInput from './text';
 import CustomPasswordInput from './password';
 import CustomUpload from './fileUpload';
 import CustomPlainTextInput from './plainText';
+import CustomNumberInput from './number';
+import CustomTextAreaInput from './textArea';
 
 export {
   CustomDatePicker,
@@ -18,4 +20,6 @@ export {
   CustomCheckbox,
   CustomUpload,
   CustomPlainTextInput,
+  CustomNumberInput,
+  CustomTextAreaInput,
 };
