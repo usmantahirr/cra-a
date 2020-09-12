@@ -1,6 +1,6 @@
 import React from 'react';
 // import React, { useContext } from 'react';
-import { Layout, Form } from 'antd';
+import { Layout, Form, Row, Col } from 'antd';
 import CustomScroll from 'react-custom-scroll';
 // import NotificationContext from '../modules/notification/context';
 // import ErrorContext from '../modules/error/context';
@@ -16,17 +16,36 @@ const Dashboard = props => {
   // const errorContext = useContext(ErrorContext);
   const { goBack, formSchema, pageState, applicationFormData } = props;
 
-  const _renderFieldArray = (fieldArray, form) => {
+  const _renderFieldArray = (fieldArray, form, colSize) => {
+    if (colSize)
+      return fieldArray.map(field => (
+        <Col span={colSize}>
+          <CustomFormItem
+            key={field.id}
+            {...field}
+            form={form}
+            applicationFormData={applicationFormData}
+          ></CustomFormItem>
+        </Col>
+      ));
     return fieldArray.map(field => (
       <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData}></CustomFormItem>
     ));
   };
 
+  const _renderRowArray = (rowArray, form) => {
+    return rowArray.map(row => {
+      const colSize = 24 / row.fieldArray.length;
+      return <Row gutter={24}>{row.fieldArray && _renderFieldArray(row.fieldArray, form, colSize)}</Row>;
+    });
+  };
+
   const _renderSection = (section, form) => {
     return (
       <div key={section.id}>
-        {/* <h3>{section.sectionTitle}</h3> */}
-        {_renderFieldArray(section.fieldArray, form)}
+        <h3>{section.sectionTitle}</h3>
+        {(section.fieldArray && _renderFieldArray(section.fieldArray, form)) ||
+          (section.rowArray && _renderRowArray(section.rowArray, form))}
       </div>
     );
   };
