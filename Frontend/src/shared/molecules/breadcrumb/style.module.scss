@@ -1,0 +1,11 @@
+.breadcrumb {
+  background-color: transparent;
+  padding: 15px 25px;
+  border-bottom: 1px solid rgba($gray, .25);
+  font-size: 0.8125rem;
+  color: $primary;
+
+  .ant-breadcrumb-link {
+    color: $primary;
+  }
+}
