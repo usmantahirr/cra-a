@@ -11,8 +11,22 @@
             width: 100%;
             padding: 60px 30px;
 
+            @media screen and (max-width: 1400px) {
+                padding: 40px 30px;
+                margin-top: 30px;
+            }
+
             .upload-img {
                 margin-bottom: 25px;
+
+                @media screen and (max-width: 1400px) {
+                    margin-bottom: 15px;
+
+                    img {
+                        max-height: 70px;
+                    }
+
+                }
             }
 
             .upload-text {
@@ -20,6 +34,11 @@
                 font-size: 1.125rem;
                 font-weight: 600;
                 text-transform: none;
+
+                @media screen and (max-width: 1400px) {
+                    font-size: 1rem;
+                    margin-bottom: 5px;
+                }
 
                 &.text-gray {
                     color: #808080;

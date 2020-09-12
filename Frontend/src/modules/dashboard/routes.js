@@ -7,10 +7,6 @@ const DashboardRoutes = [
     path: APPLICATION_HOME,
   },
   {
-    Component: lazy(() => import('../../shared/pages/FormPage')),
-    path: '/dynamic-form',
-  },
-  {
     Component: lazy(() => import('../../shared/organisms/grid/index')),
     path: '/grid',
   },

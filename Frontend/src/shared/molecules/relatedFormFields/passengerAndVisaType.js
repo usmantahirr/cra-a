@@ -19,11 +19,11 @@ const PassengerAndVisaType = props => {
 
   return (
     <>
-      <Form.Item className="custom-item" name="passengerType" rules={passengerRules}>
+      <Form.Item className="custom-item align-center" name="passengerType" rules={passengerRules}>
         <CustomRadio options={passengerOptions} {...props} onChange={onPassengerTypeChange} />
       </Form.Item>
       {isVisitor() && (
-        <Form.Item className="custom-item" name="visaType" rules={visaRules}>
+        <Form.Item className="custom-item align-center" name="visaType" rules={visaRules}>
           <RadioGroupRound options={visaOptions} {...props} />
         </Form.Item>
       )}

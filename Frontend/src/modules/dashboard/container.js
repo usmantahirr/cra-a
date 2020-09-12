@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DashboardPage from '../../shared/pages/Dashboard';
 import { getJsonSchema } from './redux';
 import CustomSpinner from '../../shared/atoms/spinner';
+import dashboardService from './services/dashboard.service';
 
 const Dashboard = () => {
   // TODO: add call to check if patient is new or is registered already
@@ -16,12 +17,12 @@ const Dashboard = () => {
   };
 
   // eslint-disable-next-line global-require
-  // const formSchema = require('../../../src/staticFormSchemaMock.json');
   const [pageState, setPageState] = React.useState({ prev: null, curr: 0, next: null });
   const [applicationFormData, setApplicationFormData] = React.useState({});
   const dispatch = useDispatch();
   const fetchSchema = () => dispatch(getJsonSchema());
   const formSchema = useSelector(state => state.dashboard);
+  const [showLoader, setShowLoader] = React.useState(false);
 
   useEffect(() => {
     fetchSchema();
@@ -51,14 +52,17 @@ const Dashboard = () => {
     }
   };
 
-  const onFinish = (values, formIndex) => {
+  const onFinish = async (values, formIndex) => {
     // return { values, formIndex };
     // console.log('Success:', values, formIndex);
     const newFormData = { ...applicationFormData };
     newFormData[formIndex] = values;
     console.log('Application form data = ', newFormData);
     setApplicationFormData(newFormData);
-
+    setShowLoader(true);
+    const data = await dashboardService.saveDraft(newFormData);
+    console.log(data);
+    setShowLoader(false);
     goForward();
     // const temp = savedForms;
     // temp[formIndex] = values;
@@ -84,7 +88,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-      {formSchema && formSchema.length === 0 && <CustomSpinner tip="loading..." />}
+      {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner tip="loading..." />}
       {formSchema && formSchema.length > 0 && (
         <DashboardPage
           pageState={pageState}

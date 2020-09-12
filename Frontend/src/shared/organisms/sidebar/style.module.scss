@@ -3,12 +3,23 @@
   flex: 0 0 250px !important;
   max-width: 250px !important;
   @extend %gradient-full;
-  @include shadow(6px 1px 7px -6px rgba(0,0,0,0.2));
+  @include shadow(6px 1px 7px -6px rgba(0, 0, 0, 0.2));
+
+  @media screen and (max-width: 1400px) {
+    width: 220px !important;
+    flex: 0 0 220px !important;
+    max-width: 220px !important;
+  }
 
   .logo {
     padding: 15px 20px;
-    border-bottom: 1px solid rgba($gray , .27);
+    border-bottom: 1px solid rgba($gray, .27);
     height: 100px;
     text-align: center;
+
+    @media screen and (max-width: 1400px) {
+      height: 85px;
+      padding: 10px 20px;
+    }
   }
 }

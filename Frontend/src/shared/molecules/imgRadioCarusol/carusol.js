@@ -10,6 +10,7 @@ function ImgRadioCarusol(props) {
   let slider = useRef(null);
 
   const settings = {
+    centerPadding: '30px',
     dots: false,
     infinite: true,
     speed: 500,
@@ -56,12 +57,7 @@ function ImgRadioCarusol(props) {
       return {
         id: radioOption.id,
         listItem: (
-          <Radio
-            id={radioOption.id}
-            value={radioOption.value}
-            key={radioOption.id}
-            className="ant-col ant-col-6 radio-holder"
-          >
+          <Radio id={radioOption.id} value={radioOption.value} key={radioOption.id} className="radio-holder">
             <div className="radiocontent-holder">
               <h5>{radioOption.text}</h5>
               <div className="ant-image">
@@ -78,7 +74,7 @@ function ImgRadioCarusol(props) {
     if (listItems.length) {
       listItems.forEach(element => {
         const group = (
-          <Radio.Group key={element.id} {...restProps} className="ant-row ant-row-padding image-selection">
+          <Radio.Group key={element.id} {...restProps} className="image-selection">
             {element.listItem}
           </Radio.Group>
         );
@@ -90,7 +86,7 @@ function ImgRadioCarusol(props) {
 
   return (
     (listItems && (
-      <div>
+      <div className="slickSlider">
         <Carusol
           ref={c => {
             slider = c;
@@ -99,11 +95,11 @@ function ImgRadioCarusol(props) {
         >
           {listItems && getCarusolItems().map(item => <div key={item.id}>{item.group}</div>)}
         </Carusol>
-        <div style={{ textAlign: 'center' }}>
-          <Button className="button" onClick={previous}>
+        <div className="slickArrows">
+          <Button className="arrow arrow-left" onClick={previous}>
             Previous
           </Button>
-          <Button className="button" onClick={next}>
+          <Button className="arrow arrow-right" onClick={next}>
             Next
           </Button>
         </div>

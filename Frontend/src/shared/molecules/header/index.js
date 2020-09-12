@@ -131,11 +131,11 @@ const Header = props => {
           <span>Applicant Name:</span>
           <strong>{_renderApplicantName()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Source:</span>
           <strong>{_renderSourceLocation()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
@@ -167,7 +167,7 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      <div className={styles.appSummery}>{_renderApplicationSummary()}</div>
+      {pageState.curr !== 0 && <div className={styles.appSummery}>{_renderApplicationSummary()}</div>}
     </>
   );
 };

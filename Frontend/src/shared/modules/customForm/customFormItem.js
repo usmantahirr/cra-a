@@ -90,12 +90,15 @@ class CustomFormItem extends React.PureComponent {
     hideField.forEach(field => {
       const { fieldName } = field;
       const { fieldValue } = field;
+      const { isEqual } = field;
 
       Object.keys(applicationFormData).forEach(form => {
         if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
           Object.keys(applicationFormData[form]).forEach(formField => {
             if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-              if (fieldName === formField && fieldValue === applicationFormData[form][formField]) {
+              if (isEqual && fieldName === formField && fieldValue === applicationFormData[form][formField]) {
+                hidden = true;
+              } else if (!isEqual && fieldName === formField && fieldValue !== applicationFormData[form][formField]) {
                 hidden = true;
               }
             }
@@ -114,9 +117,9 @@ class CustomFormItem extends React.PureComponent {
 
     return (
       <>
-        {!isCustomComponent && (
+        {!isCustomComponent && !this.isHidden(hideField, applicationFormData) && (
           <Form.Item
-            hidden={this.isHidden(hideField, applicationFormData)}
+            // hidden={this.isHidden(hideField, applicationFormData)}
             label={label}
             className="custom-item"
             name={name}
