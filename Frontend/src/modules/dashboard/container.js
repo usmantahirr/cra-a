@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import DashboardPage from '../../shared/pages/Dashboard';
+import { getJsonSchema } from './redux';
+import CustomSpinner from '../../shared/atoms/spinner';
 
 const Dashboard = () => {
   // TODO: add call to check if patient is new or is registered already
@@ -13,9 +16,16 @@ const Dashboard = () => {
   };
 
   // eslint-disable-next-line global-require
-  const formSchema = require('../../../src/staticFormSchemaMock.json');
+  // const formSchema = require('../../../src/staticFormSchemaMock.json');
   const [pageState, setPageState] = React.useState({ prev: null, curr: 0, next: null });
   const [applicationFormData, setApplicationFormData] = React.useState({});
+  const dispatch = useDispatch();
+  const fetchSchema = () => dispatch(getJsonSchema());
+  const formSchema = useSelector(state => state.dashboard);
+
+  useEffect(() => {
+    fetchSchema();
+  }, []);
 
   const goForward = () => {
     // If can go forward
@@ -73,18 +83,23 @@ const Dashboard = () => {
   };
 
   return (
-    <DashboardPage
-      pageState={pageState}
-      goForward={goForward}
-      goBack={goBack}
-      formSchema={formSchema}
-      tailLayout={tailLayout}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      onAllStepsCompleted={onAllStepsCompleted}
-      applicationFormData={applicationFormData}
-      onFormValueChanges={onFormValueChanges}
-    />
+    <Fragment>
+      {formSchema && formSchema.length === 0 && <CustomSpinner tip="loading..." />}
+      {formSchema && formSchema.length > 0 && (
+        <DashboardPage
+          pageState={pageState}
+          goForward={goForward}
+          goBack={goBack}
+          formSchema={formSchema}
+          tailLayout={tailLayout}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          onAllStepsCompleted={onAllStepsCompleted}
+          applicationFormData={applicationFormData}
+          onFormValueChanges={onFormValueChanges}
+        />
+      )}
+    </Fragment>
   );
 };
 

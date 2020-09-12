@@ -15,7 +15,6 @@ import MapService from './labselectionService';
 
 const LabSelection = props => {
   const { form } = props;
-
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   form.setFieldsValue({ labState: stateId });

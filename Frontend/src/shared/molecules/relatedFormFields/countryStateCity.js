@@ -10,18 +10,21 @@ const CountryStateCity = props => {
   const [cities, setCities] = useState([]);
   const [showState, setShowState] = useState(false);
 
-  const fetchCoutries = async () => {
+  const fetchCountries = async () => {
     try {
       const { data } = await service.getCountries();
       if (data && data.length > 0) setCountries(data);
       else setCountries([]);
+      // form.setFieldsValue({
+      //   [country.name]: { value: '5f589189175c69424c936728' },
+      // });
     } catch (error) {
       setCountries([]);
     }
   };
 
   useEffect(() => {
-    fetchCoutries();
+    fetchCountries();
   }, []);
 
   const fetchStates = async id => {
@@ -44,7 +47,7 @@ const CountryStateCity = props => {
     }
   };
 
-  const onCountryChange = value => {
+  const onCountryChange = ({ value }) => {
     form.setFieldsValue({
       [state.name]: undefined,
       [city.name]: undefined,
@@ -65,7 +68,7 @@ const CountryStateCity = props => {
     }
   };
 
-  const onStateChange = value => {
+  const onStateChange = ({ value }) => {
     form.setFieldsValue({
       [city.name]: undefined,
     });
@@ -93,6 +96,7 @@ const CountryStateCity = props => {
           <CustomSelect
             showSearch
             allowClear
+            labelInValue
             placeholder={placeholder}
             optionFilterProp="children"
             onChange={onCountryChange}
@@ -123,6 +127,7 @@ const CountryStateCity = props => {
             <CustomSelect
               showSearch
               allowClear
+              labelInValue
               placeholder={placeholder}
               optionFilterProp="children"
               onChange={onStateChange}
@@ -149,11 +154,11 @@ const CountryStateCity = props => {
               message: 'Please select your city',
             },
             ({ getFieldValue }) => ({
-              validator(rule, value) {
+              validator(rule, { value }) {
                 if (!value || !dependencies) {
                   return Promise.resolve();
                 }
-                if (!value || getFieldValue(dependencies[0]) !== value) {
+                if (!value || (dependencies[0] && getFieldValue(dependencies[0]).value !== value)) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error('Source and desitination cannot be same'));
@@ -164,6 +169,7 @@ const CountryStateCity = props => {
           <CustomSelect
             showSearch
             allowClear
+            labelInValue
             placeholder={placeholder}
             optionFilterProp="children"
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}

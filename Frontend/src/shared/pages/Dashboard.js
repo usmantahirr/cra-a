@@ -37,7 +37,7 @@ const Dashboard = props => {
   };
 
   const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
-    const [form] = Form.useForm();
+    const [form] = Form.useForm(); // TODO: can cause issue
     const { name, initialValues } = step;
     const { layout, onFinish, onFinishFailed, onFieldsChange, onFormValueChanges } = props;
     return (

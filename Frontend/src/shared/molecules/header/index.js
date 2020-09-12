@@ -3,85 +3,14 @@ import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
-import { loadVisaTypeOptions } from '../../../utilities';
-import service from '../../services/shared.service';
+import { loadVisaTypeOptions } from '../../utilities';
 
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
-
   const [visaTypeOptions, setVisaTypeOptions] = React.useState();
-  const [countryOptions, setCountryOptions] = React.useState([]);
-  const [srcStateOptions, setSrcStateOptions] = React.useState([]);
-  const [destStateOptions, setDestStateOptions] = React.useState([]);
-  const [srcCityOptions, setSrcCityOptions] = React.useState([]);
-  const [destCityOptions, setDestCityOptions] = React.useState([]);
-
   const { formSchema, pageState, pageHeader } = props;
-
-  const fetchCoutries = async () => {
-    try {
-      const { data } = await service.getCountries();
-      if (data && data.length > 0) setCountryOptions(data);
-      else setCountryOptions([]);
-    } catch (error) {
-      return setCountryOptions([]);
-    }
-    return null;
-  };
-
-  const fetchStates = async (countryId, isSource) => {
-    if (!countryId) {
-      return;
-    }
-    try {
-      const { data } = await service.getStates(countryId);
-      if (data && data.length > 0) {
-        if (isSource) {
-          setSrcStateOptions(data);
-        } else {
-          setDestStateOptions(data);
-        }
-      } else if (isSource) {
-        setSrcStateOptions([]);
-      } else {
-        setDestStateOptions([]);
-      }
-    } catch (error) {
-      if (isSource) {
-        setSrcStateOptions([]);
-      } else {
-        setDestStateOptions([]);
-      }
-    }
-  };
-
-  const fetchCities = async (countryOrStateId, isSource) => {
-    if (!countryOrStateId) {
-      return;
-    }
-    try {
-      const { data } = await service.getCities(countryOrStateId);
-      if (data && data.length > 0) {
-        if (isSource) {
-          setSrcCityOptions(data);
-        } else {
-          setDestCityOptions(data);
-        }
-      } else if (isSource) {
-        setSrcCityOptions([]);
-      } else {
-        setDestCityOptions([]);
-      }
-    } catch (error) {
-      if (isSource) {
-        setSrcCityOptions([]);
-      } else {
-        setDestCityOptions([]);
-      }
-    }
-  };
 
   useEffect(() => {
     const { applicationFormData } = props;
@@ -122,12 +51,6 @@ const Header = props => {
       }
     });
     setApplicationSummaryData(newApplicationSummary);
-
-    fetchCoutries();
-    fetchStates(newApplicationSummary.sourceCountry, true);
-    fetchStates(newApplicationSummary.destCountry, false);
-    fetchCities(newApplicationSummary.sourceState || newApplicationSummary.sourceCountry, true);
-    fetchCities(newApplicationSummary.destState || newApplicationSummary.destCountry, false);
   }, [props]);
 
   if (pageHeader) {
@@ -146,44 +69,30 @@ const Header = props => {
     return applicationSummaryData.applicantName || '';
   };
 
-  const _renderSourceLocation = (srcCountry, srcState, srcCity) => {
-    if (!srcCountry) {
-      return null;
+  const _renderSourceLocation = () => {
+    const sourceArray = [];
+    if (applicationSummaryData) {
+      if (applicationSummaryData.sourceCountry && applicationSummaryData.sourceCountry.label)
+        sourceArray.push(applicationSummaryData.sourceCountry.label);
+      if (applicationSummaryData.sourceState && applicationSummaryData.sourceState.label)
+        sourceArray.push(applicationSummaryData.sourceState.label);
+      if (applicationSummaryData.sourceCity && applicationSummaryData.sourceCity.label)
+        sourceArray.push(applicationSummaryData.sourceCity.label);
     }
-
-    const selectedCountry = countryOptions.find(c => c._id === srcCountry) || {};
-    const countryLabel = selectedCountry.name || '';
-
-    let stateLabel = ', ';
-    if (selectedCountry.iso_code === 'USA') {
-      const selectedState = srcStateOptions.find(c => c._id === srcState) || {};
-      stateLabel += `${selectedState.name}, ` || '';
-    }
-
-    const selectedCity = srcCityOptions.find(c => c._id === srcCity) || {};
-    const cityLabel = selectedCity.name || '';
-
-    return countryLabel + stateLabel + cityLabel;
+    return sourceArray.join(', ');
   };
 
-  const _renderDestinationLocation = (destCountry, destState, destCity) => {
-    if (!destCountry) {
-      return null;
+  const _renderDestinationLocation = () => {
+    const destinationArray = [];
+    if (applicationSummaryData) {
+      if (applicationSummaryData.destCountry && applicationSummaryData.destCountry.label)
+        destinationArray.push(applicationSummaryData.destCountry.label);
+      if (applicationSummaryData.destState && applicationSummaryData.destState.label)
+        destinationArray.push(applicationSummaryData.destState.label);
+      if (applicationSummaryData.destCity && applicationSummaryData.destCity.label)
+        destinationArray.push(applicationSummaryData.destCity.label);
     }
-
-    const selectedCountry = countryOptions.find(c => c._id === destCountry) || {};
-    const countryLabel = selectedCountry.name || '';
-
-    let stateLabel = ', ';
-    if (selectedCountry.iso_code === 'USA') {
-      const selectedState = destStateOptions.find(c => c._id === destState) || {};
-      stateLabel += `${selectedState.name}, ` || '';
-    }
-
-    const selectedCity = destCityOptions.find(c => c._id === destCity) || {};
-    const cityLabel = selectedCity.name || '';
-
-    return countryLabel + stateLabel + cityLabel;
+    return destinationArray.join(', ');
   };
 
   const getVisaTypeOptions = () => {
@@ -224,23 +133,11 @@ const Header = props => {
         </Col>
         <Col span={4}>
           <span>Source:</span>
-          <strong>
-            {_renderSourceLocation(
-              applicationSummaryData.sourceCountry,
-              applicationSummaryData.sourceState,
-              applicationSummaryData.sourceCity
-            )}
-          </strong>
+          <strong>{_renderSourceLocation()}</strong>
         </Col>
         <Col span={4}>
           <span>Destination:</span>
-          <strong>
-            {_renderDestinationLocation(
-              applicationSummaryData.destCountry,
-              applicationSummaryData.destState,
-              applicationSummaryData.destCity
-            )}
-          </strong>
+          <strong>{_renderDestinationLocation()}</strong>
         </Col>
         <Col span={4}>
           <span>Visa Type:</span>
