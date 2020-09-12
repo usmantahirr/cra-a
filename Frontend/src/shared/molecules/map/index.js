@@ -2,6 +2,9 @@ import React, { useState, Fragment } from 'react';
 import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 
 const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerClickHandler }) => {
+  // Fit map bounds to contain all markers
+  const [places, setPlaces] = useState(null);
+
   // The things we need to track in state
   // eslint-disable-next-line
   const [mapRef, setMapRef] = useState(null);
@@ -17,20 +20,25 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
   // This could be a data-driven prop.
 
   // Iterate myPlaces to size, center, and zoom map to contain all markers
-  const fitBounds = map => {
-    const bounds = new window.google.maps.LatLngBounds();
-    myPlaces.map(place => {
-      bounds.extend(place.pos);
-      return place.id;
-    });
-    map.fitBounds(bounds);
+  const fitBounds = () => {
+    if (places !== myPlaces && myPlaces.length && window.google) {
+      setPlaces(myPlaces);
+      const bounds = new window.google.maps.LatLngBounds();
+      myPlaces.map(place => {
+        bounds.extend(place.pos);
+        return place.id;
+      });
+      if (mapRef) {
+        // setTimeout(() => {
+        mapRef.fitBounds(bounds);
+        // }, 1000);
+      }
+    }
   };
 
   const loadHandler = map => {
     // Store a reference to the google map instance in state
     setMapRef(map);
-    // Fit map bounds to contain all markers
-    fitBounds(map);
   };
 
   // We have to create a mapping of our places to actual Marker objects
@@ -44,13 +52,18 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
     return (
       <Fragment>
         <GoogleMap
+          // ref={map => map && map.fitBounds(bounds)}
           // Do stuff on map initial laod
+          options={{ mapTypeControl: false }}
           onLoad={loadHandler}
           center={center}
           zoom={zoom}
           mapContainerStyle={{
             height: '70vh',
             width: '100%',
+          }}
+          onTilesLoaded={() => {
+            fitBounds();
           }}
         >
           {myPlaces.map(place => (

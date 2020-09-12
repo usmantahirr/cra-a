@@ -1,6 +1,7 @@
 import React from 'react';
 // import React, { useContext } from 'react';
 import { Layout, Form } from 'antd';
+import CustomScroll from 'react-custom-scroll';
 // import NotificationContext from '../modules/notification/context';
 // import ErrorContext from '../modules/error/context';
 import DashboardTemplate from '../templates/dashboardTemplate';
@@ -54,7 +55,11 @@ const Dashboard = props => {
         onValuesChange={onFormValueChanges}
       >
         {/* <h1>{step.stepTitle}</h1> */}
-        {step.sections && step.sections.map(section => _renderSection(section, form))}
+        <div className="content-scroll">
+          <CustomScroll heightRelativeToParent="100%">
+            {step.sections && step.sections.map(section => _renderSection(section, form))}
+          </CustomScroll>
+        </div>
         {_renderFormButtons(currStep === stepsCount - 1)}
       </Form>
     );

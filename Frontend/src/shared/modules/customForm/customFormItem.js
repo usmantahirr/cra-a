@@ -13,7 +13,7 @@ import {
   CustomTextAreaInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
-import ImageRadio from '../../molecules/imageRadio/index';
+// import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
@@ -21,6 +21,7 @@ import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAnd
 import TermsAndConditions from '../../molecules/termsAndConditions';
 import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
+import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -36,7 +37,7 @@ class CustomFormItem extends React.PureComponent {
       case 'radioGroup':
         return <RadioGroup {...fieldProps} />;
       case 'imageRadio':
-        return <ImageRadio {...fieldProps} />;
+        return <ImgRadioCarusol {...fieldProps} />;
       case 'text':
         return <CustomTextInput {...fieldProps} />;
       case 'password':
@@ -125,7 +126,7 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent({ applicationFormData, ...restOfProps })}
+        {isCustomComponent && this._renderCustomComponent(this.props)}
       </>
     );
   }

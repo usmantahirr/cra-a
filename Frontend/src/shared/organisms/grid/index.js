@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import GroupBox from '../../modules/groupCheckbox/index';
-import Header from '../../molecules/header';
+
 // TODO: Move to modules
 const GridView = ({
   onGridReady,
@@ -17,13 +17,11 @@ const GridView = ({
   const [columnsVisible, setColumnsVisible] = useState(false);
   return (
     <>
-      <Header pageHeader />
       <div
         className="ag-theme-alpine custom-table"
         style={{
           height: '100%',
           width: '100%',
-          background: 'white',
         }}
       >
         <div className="custom-columns">
