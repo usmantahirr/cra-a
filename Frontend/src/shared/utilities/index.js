@@ -26,3 +26,16 @@ export function loadVisaTypeOptions(formSchema) {
 export function utilityFunction1(params) {
   return params + 1;
 }
+
+export function mergeObjects(objects) {
+  const target = {};
+  const merger = obj => {
+    Object.keys(obj).forEach(prop => {
+      target[prop] = obj[prop];
+    });
+  };
+  Object.keys(objects).forEach(key => {
+    merger(objects[key]);
+  });
+  return target;
+}

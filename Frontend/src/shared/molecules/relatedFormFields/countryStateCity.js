@@ -10,18 +10,21 @@ const CountryStateCity = props => {
   const [cities, setCities] = useState([]);
   const [showState, setShowState] = useState(false);
 
-  const fetchCoutries = async () => {
+  const fetchCountries = async () => {
     try {
       const { data } = await service.getCountries();
       if (data && data.length > 0) setCountries(data);
       else setCountries([]);
+      // form.setFieldsValue({
+      //   [country.name]: { value: '5f589189175c69424c936728' },
+      // });
     } catch (error) {
       setCountries([]);
     }
   };
 
   useEffect(() => {
-    fetchCoutries();
+    fetchCountries();
   }, []);
 
   const fetchStates = async id => {
@@ -44,7 +47,7 @@ const CountryStateCity = props => {
     }
   };
 
-  const onCountryChange = value => {
+  const onCountryChange = ({ value }) => {
     form.setFieldsValue({
       [state.name]: undefined,
       [city.name]: undefined,
@@ -65,7 +68,7 @@ const CountryStateCity = props => {
     }
   };
 
-  const onStateChange = value => {
+  const onStateChange = ({ value }) => {
     form.setFieldsValue({
       [city.name]: undefined,
     });
@@ -93,6 +96,7 @@ const CountryStateCity = props => {
           <CustomSelect
             showSearch
             allowClear
+            labelInValue
             placeholder={placeholder}
             optionFilterProp="children"
             onChange={onCountryChange}
@@ -140,41 +144,40 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { placeholder, dependencies } = city;
     return (
-      <>
-        <Col span={12}>
-          <Form.Item
-            className="custom-item"
-            {...city}
-            label={placeholder}
-            rules={[
-              {
-                required: true,
-                message: 'Please select your city',
+      <Col span={showState ? 8 : 12}>
+        <Form.Item
+          className="custom-item"
+          {...city}
+          label={placeholder}
+          rules={[
+            {
+              required: true,
+              message: 'Please select your city',
+            },
+            ({ getFieldValue }) => ({
+              validator(rule, { value }) {
+                if (!value || !dependencies) {
+                  return Promise.resolve();
+                }
+                if (!value || (dependencies[0] && getFieldValue(dependencies[0]).value !== value)) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('Source and desitination cannot be same'));
               },
-              ({ getFieldValue }) => ({
-                validator(rule, value) {
-                  if (!value || !dependencies) {
-                    return Promise.resolve();
-                  }
-                  if (!value || getFieldValue(dependencies[0]) !== value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error('Source and desitination cannot be same'));
-                },
-              }),
-            ]}
-          >
-            <CustomSelect
-              showSearch
-              allowClear
-              placeholder={placeholder}
-              optionFilterProp="children"
-              filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-              options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
-            />
-          </Form.Item>
-        </Col>
-      </>
+            }),
+          ]}
+        >
+          <CustomSelect
+            showSearch
+            allowClear
+            labelInValue
+            placeholder={placeholder}
+            optionFilterProp="children"
+            filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}
+          />
+        </Form.Item>
+      </Col>
     );
   };
 

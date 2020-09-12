@@ -8,14 +8,33 @@ import MapService from './labselectionService';
 
 const LabSelection = props => {
   const { applicationFormData } = props;
-
   const {
     countryCode = 'USA',
-    country = applicationFormData[0] ? applicationFormData[0].sourceCountry : '',
+    // eslint-disable-next-line no-nested-ternary
+    country = applicationFormData[0]
+      ? applicationFormData[0].sourceCountry
+        ? applicationFormData[0].sourceCountry.value
+        : applicationFormData[0].sourceCountry
+      : '',
     visaType = 'Visit',
-    countryId = applicationFormData[0] ? applicationFormData[0].sourceCountry : '',
-    stateId = applicationFormData[0] ? applicationFormData[0].sourceState : '',
-    cityId = applicationFormData[0] ? applicationFormData[0].sourceCity : '',
+    // eslint-disable-next-line no-nested-ternary
+    countryId = applicationFormData[0]
+      ? applicationFormData[0].sourceCountry
+        ? applicationFormData[0].sourceCountry.value
+        : applicationFormData[0].sourceCountry
+      : '',
+    // eslint-disable-next-line no-nested-ternary
+    stateId = applicationFormData[0]
+      ? applicationFormData[0].sourceState
+        ? applicationFormData[0].sourceState.value
+        : applicationFormData[0].sourceState
+      : '',
+    // eslint-disable-next-line no-nested-ternary
+    cityId = applicationFormData[0]
+      ? applicationFormData[0].sourceCity
+        ? applicationFormData[0].sourceCity.value
+        : applicationFormData[0].sourceCity
+      : '',
   } = props;
 
   const [selectedLab, setSelectedLab] = useState({});
