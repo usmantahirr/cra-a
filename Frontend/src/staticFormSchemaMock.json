@@ -438,7 +438,7 @@
             "fieldsToDisplay": [
               {
                 "label": "Full Name",
-                "name": "naspp",
+                "name": "nameOnPassport",
                 "order": 1,
                 "type": "text"
               },
@@ -456,25 +456,25 @@
               },
               {
                 "label": "National ID Number",
-                "name": "nationalIdNumber",
+                "name": "nationalIDNumber",
                 "order": 4,
                 "type": "text"
               },
               {
                 "label": "National ID Number Expiry",
-                "name": "nationalIdNumberExpiry",
+                "name": "nationalIDExpiry",
                 "order": 5,
                 "type": "text"
               },
               {
                 "label": "Passport Number",
-                "name": "pn",
+                "name": "passportNumber",
                 "order": 6,
                 "type": "text"
               },
               {
                 "label": "Passport Expiry",
-                "name": "ppe",
+                "name": "passportExpiry",
                 "order": 7,
                 "type": "text"
               },
