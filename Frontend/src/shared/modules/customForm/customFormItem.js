@@ -19,7 +19,7 @@ import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAnd
 import TermsAndConditions from '../../molecules/termsAndConditions';
 import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
-import ImgRadioCarusol from '../../molecules/imgRadioCarusol';
+import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {

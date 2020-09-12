@@ -1,45 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Radio } from 'antd';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 6,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 2,
-  },
-};
-
-const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
-  const {
-    carouselState: { currentSlide },
-  } = rest;
-  return (
-    // remember to give it position:absolute
-    <div className="carousel-button-group">
-      <Button className={currentSlide === 0 ? 'disable' : ''} value="previous" onClick={() => previous()}>
-        Previous
-      </Button>
-      <Button onClick={() => next()}> Next</Button>
-    </div>
-  );
-};
+import Carusol from 'react-slick';
 
 function ImgRadioCarusol(props) {
   const { options, ...restProps } = props;
+
+  let slider = useRef(null);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const next = () => {
+    slider.slickNext();
+  };
+  const previous = () => {
+    slider.slickPrev();
+  };
 
   const listItems =
     options &&
@@ -81,21 +62,24 @@ function ImgRadioCarusol(props) {
 
   return (
     (listItems && (
-      <Carousel
-        arrows={false}
-        renderButtonGroupOutside
-        customButtonGroup={<ButtonGroup />}
-        responsive={responsive}
-        // infinite={true}
-        keyBoardControl
-        customTransition="all .5"
-        transitionDuration={500}
-        // containerClass="carousel-container"
-        // itemClass="carousel-item-padding-40-px"
-      >
-        {listItems && getCarusolItems().map(item => <div key={item.id}>{item.group}</div>)}
-      </Carousel>
-      // </Fragment>
+      <div>
+        <Carusol
+          ref={c => {
+            slider = c;
+          }}
+          {...settings}
+        >
+          {listItems && getCarusolItems().map(item => <div key={item.id}>{item.group}</div>)}
+        </Carusol>
+        <div style={{ textAlign: 'center' }}>
+          <Button className="button" onClick={previous}>
+            Previous
+          </Button>
+          <Button className="button" onClick={next}>
+            Next
+          </Button>
+        </div>
+      </div>
     )) ||
     null
   );
