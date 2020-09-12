@@ -17,8 +17,6 @@ const LabSelection = props => {
   const { form } = props;
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
-  form.setFieldsValue({ labState: stateId });
-  form.setFieldsValue({ labCity: cityId });
   // form.setFieldsValue({ "serviceType": stateId })
 
   const [selectedLab, setSelectedLab] = useState({});
@@ -84,6 +82,8 @@ const LabSelection = props => {
       if (labsResponse[0]) {
         markerClickHandler(null, labsResponse[0]);
       }
+      form.setFieldsValue({ labState: stateId });
+      form.setFieldsValue({ labCity: cityId });
     }
     Init();
   }, [countryId, stateId, cityId]);
@@ -117,6 +117,9 @@ const LabSelection = props => {
     if (labsResponse[0]) {
       markerClickHandler(null, labsResponse[0]);
     }
+    form.setFieldsValue({ labState: value });
+    form.setFieldsValue({ labCity: firstCity });
+    form.setFieldsValue({ serviceType: '' });
   };
 
   const onCityChange = async value => {
@@ -140,6 +143,9 @@ const LabSelection = props => {
     if (labsResponse[0]) {
       markerClickHandler(null, labsResponse[0]);
     }
+
+    form.setFieldsValue({ labCity: value });
+    form.setFieldsValue({ serviceType: '' });
   };
 
   const onServiceChange = async selected => {
@@ -152,10 +158,13 @@ const LabSelection = props => {
         selectedService: selected,
       };
     });
+    const selectedExist = filteredLabs.filter(x => x.id === selectedLab.id);
+    const markSelected = selectedExist.length ? selectedExist[0] : filteredLabs[0] || null;
 
-    if (filteredLabs[0]) {
-      markerClickHandler(null, filteredLabs[0]);
+    if (markSelected) {
+      markerClickHandler(null, markSelected);
     }
+    form.setFieldsValue({ serviceType: selected });
   };
 
   const onCardChange = value => {
@@ -190,7 +199,11 @@ const LabSelection = props => {
             />
           </Col>
           <Col span={8}>
-            <CardRadio cartOptions={filterState.cityLabs} value={selectedLab.id || ''} onChange={onCardChange} />
+            <CardRadio
+              cartOptions={filterState.cityLabs}
+              value={(selectedLab && selectedLab.id) || ''}
+              onChange={onCardChange}
+            />
           </Col>
         </Row>
       </div>

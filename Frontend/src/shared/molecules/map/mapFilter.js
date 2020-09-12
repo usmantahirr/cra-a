@@ -43,15 +43,7 @@ const MapFilter = props => {
           </Form.Item>
         </Descriptions.Item>
         <Descriptions.Item label="Lab Type">
-          <Form.Item
-            name="serviceType"
-            rules={[
-              {
-                required: true,
-                message: 'Please select serivce type',
-              },
-            ]}
-          >
+          <Form.Item name="serviceType">
             <CustomSelectSmall
               options={filterState.serviceTypes}
               value={filterState.selectedService}
