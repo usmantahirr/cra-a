@@ -1,6 +1,12 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Row, Col } from 'antd';
-import { stateResponseMapper, cityResponseMapper, labsResponseMapper, serviceTypesMapper } from './mapper';
+import {
+  stateResponseMapper,
+  cityResponseMapper,
+  labsResponseMapper,
+  serviceTypesMapper,
+  filterBySubArray,
+} from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
@@ -138,12 +144,19 @@ const LabSelection = props => {
   };
 
   const onServiceChange = async selected => {
+    let filteredLabs = [];
     setFilterState(prevState => {
+      filteredLabs = filterBySubArray(prevState.allLabs, selected, 'services', '_id');
       return {
         ...prevState,
+        cityLabs: filteredLabs,
         selectedService: selected,
       };
     });
+
+    if (filteredLabs[0]) {
+      markerClickHandler(null, filteredLabs[0]);
+    }
   };
 
   const onCardChange = value => {

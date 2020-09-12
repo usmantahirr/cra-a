@@ -49,8 +49,8 @@ export function serviceTypesMapper(labs) {
   return services;
 }
 
-// export function filterLabsOntheBasisOfServiceType(labs) {
-// //  labs = [];
-
-// //   return services;
-// }
+export function filterBySubArray(labs, filterValue, arrayName = '', prop = '') {
+  let items = [];
+  items = labs.filter(element => element[arrayName].some(subElement => subElement[prop] === filterValue));
+  return items;
+}
