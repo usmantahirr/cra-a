@@ -25,7 +25,7 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
             fields.map(({ name, label }) => {
               return (
                 data[name] && (
-                  <Col span={6} className="cardinfo-box">
+                  <Col key={`${name}`} span={6} className="cardinfo-box">
                     <p className="label">{label}</p>
                     <p className="info">{formatData(data[name].label || formatData(data[name]))}</p>
                   </Col>

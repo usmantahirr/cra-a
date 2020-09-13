@@ -1,9 +1,7 @@
 import React from 'react';
-import { Spin } from 'antd';
 
-function CustomSpinner({ children, ...props }) {
-  // tip="Loading..."
-  return <Spin {...props}>{children}</Spin>;
+function CustomSpinner() {
+  return <div className="loader"></div>;
 }
 
 export default CustomSpinner;

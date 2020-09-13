@@ -31,7 +31,7 @@ const renderRouteFromList = isPrivate => (item, i) => {
 };
 
 const Routes = () => (
-  <Suspense fallback={<CustomSpinner tip="loading..." />}>
+  <Suspense fallback={<CustomSpinner />}>
     <Switch>
       {AuthRoutes.map(renderRouteFromList())}
       {DashboardRoutes.map(renderRouteFromList(true))}
