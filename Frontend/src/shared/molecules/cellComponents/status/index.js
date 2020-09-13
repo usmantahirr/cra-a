@@ -14,7 +14,7 @@ const Status = props => {
   const { data = null } = props;
   const code = data && data.test_result.toUpperCase().replace(' ', '_');
   const color = data && colorPicker[code];
-  return data ? <Badge color={color} text={data.testResult} /> : null;
+  return data ? <Badge color={color} text={data.test_result} /> : null;
 };
 
 export default Status;

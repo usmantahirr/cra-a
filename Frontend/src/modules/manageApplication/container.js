@@ -10,7 +10,7 @@ import ManageApplicationSerivce from './services/manage.service';
 const ManageApplication = () => {
   const [gridReference, setGridReference] = useState(initialState);
   // eslint-disable-next-line
-  const [rowDataSource, setRowDataSource] = useState([]);
+  // const [rowDataSource, setRowDataSource] = useState([]);
 
   useEffect(() => {
     async function Init() {
@@ -47,7 +47,7 @@ const ManageApplication = () => {
           gridColumnApiRef={gridReference.gridColumnApiRef}
           gridOptions={gridOptions}
           frameworkComponents={frameworkComponents}
-          rowDataSource={rowDataSource}
+          // rowDataSource={rowDataSource}
           onGridReady={onGridReady}
         />
       </div>
