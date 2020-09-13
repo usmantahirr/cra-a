@@ -49,8 +49,27 @@ export function serviceTypesMapper(labs) {
   return services;
 }
 
-// export function filterLabsOntheBasisOfServiceType(labs) {
-// //  labs = [];
+export function filterBySubArray(labs, filterValue, arrayName = '', prop = '') {
+  let items = [];
+  items = labs.filter(element => element[arrayName].some(subElement => subElement[prop] === filterValue));
+  return items;
+}
 
-// //   return services;
-// }
+const getFieldValues = (data, objectProp, prop) => {
+  if (!data) {
+    return '';
+  }
+  // eslint-disable-next-line
+  return data[0] ? (data[0][objectProp] ? data[0][objectProp][prop] || '' : '') : '';
+};
+
+export function parsePropData(props) {
+  const { applicationFormData } = props;
+  return {
+    country: getFieldValues(applicationFormData, 'sourceCountry', 'label'),
+    visaType: 'Visit',
+    countryId: getFieldValues(applicationFormData, 'sourceCountry', 'value'),
+    stateId: getFieldValues(applicationFormData, 'sourceState', 'value'),
+    cityId: getFieldValues(applicationFormData, 'sourceCity', 'value'),
+  };
+}
