@@ -18,7 +18,7 @@ const CountryStateCity = props => {
         if (isDesitination) {
           setCountries(
             data.filter(c => {
-              return c.is_destination === true;
+              return c.isDestination === true;
             })
           );
         } else {
