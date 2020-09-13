@@ -15,15 +15,15 @@
             "type": "customComponent",
             "id": "Fasdasdas2asaa",
             "country": {
-              "placeholder": "Source Country",
+              "placeholder": "sourceCountry",
               "name": "sourceCountry"
             },
             "city": {
-              "placeholder": "Source City",
+              "placeholder": "sourceCity",
               "name": "sourceCity"
             },
             "state": {
-              "placeholder": "Source State",
+              "placeholder": "sourceState",
               "name": "sourceState"
             },
             "zipCode": {
@@ -41,23 +41,24 @@
             "name": "countryStateCity",
             "type": "customComponent",
             "id": "Fasdasdas2asaa",
+            "isDesitination": true,
             "country": {
-              "placeholder": "Destination Country",
+              "placeholder": "destinationCountry",
               "name": "destCountry"
             },
             "city": {
-              "placeholder": "Destination City",
+              "placeholder": "destinationCity",
               "name": "destCity",
               "dependencies": [
                 "sourceCity"
               ]
             },
             "state": {
-              "placeholder": "Destination State",
+              "placeholder": "destinationState",
               "name": "destState"
             },
             "zipCode": {
-              "placeholder": "Destination Zip Code",
+              "placeholder": "destinationZipCode",
               "name": "destZipCode"
             }
           }
@@ -73,7 +74,7 @@
             "passengerOptions": [
               {
                 "value": "Citizen",
-                "text": "Citizen",
+                "text": "citizen",
                 "id": "PTO1"
               },
               {
@@ -83,24 +84,24 @@
               },
               {
                 "value": "UAE-Resident",
-                "text": "UAE Resident",
+                "text": "resident",
                 "id": "PTO3"
               }
             ],
             "passengerRules": [
               {
                 "required": true,
-                "message": "Please select passenger type"
+                "message": "passengerTypeRequired"
               }
             ],
             "visaOptions": [
               {
-                "value": "Pre-Approved Visa",
+                "value": "preApproved",
                 "text": "Pre-Approved Visa",
                 "id": "VTO1"
               },
               {
-                "value": "On-Arrival",
+                "value": "onArrival",
                 "text": "On-Arrival",
                 "id": "VTO2"
               }
@@ -108,7 +109,7 @@
             "visaRules": [
               {
                 "required": true,
-                "message": "Please select visa type"
+                "message": "visaTypeRequired"
               }
             ]
           }
@@ -132,7 +133,7 @@
           {
             "type": "plainText",
             "id": "Fasdasdas2aasaaa",
-            "text": "Please note that Debit/Credit card payment is required on this portal to proceed with a COVID-19 test at the lab."
+            "text": "cardText"
           }
         ],
         "sectionTitle": "",
@@ -154,13 +155,13 @@
         "fieldArray": [
           {
             "name": "viet",
-            "label": "Visa Issing Emirate",
+            "label": "visaIssuingEmirate",
             "type": "imageRadio",
             "id": "VIET",
             "options": [
               {
                 "value": "1",
-                "text": "Abu Dhabi",
+                "text": "abuDhabi",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
@@ -204,7 +205,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "Please select type"
+                "message": "selectEmirate"
               }
             ]
           }
@@ -427,19 +428,19 @@
                 "type": "customComponent",
                 "id": "ST01F012",
                 "country": {
-                  "placeholder": "Country",
+                  "placeholder": "country",
                   "name": "country"
                 },
                 "city": {
-                  "placeholder": "City",
+                  "placeholder": "city",
                   "name": "city"
                 },
                 "state": {
-                  "placeholder": "State",
+                  "placeholder": "state",
                   "name": "state"
                 },
                 "zipCode": {
-                  "placeholder": "Zip Code",
+                  "placeholder": "zipCode",
                   "name": "zipCode"
                 }
               }
@@ -449,15 +450,15 @@
             "fieldArray": [
               {
                 "name": "address",
-                "label": "Address",
-                "placeholder": "Address",
+                "label": "address",
+                "placeholder": "address",
                 "type": "textArea",
                 "rows": 6,
                 "id": "ST01F013",
                 "rules": [
                   {
                     "required": true,
-                    "message": "Please enter address"
+                    "message": "addressRequired"
                   }
                 ]
               }
@@ -486,7 +487,7 @@
           {
             "type": "plainText",
             "id": "Fasdasdas2aasaaasada",
-            "text": "Allowed files: Passport to be uploaded with any document extension of *.pdf, *.png, *.jpg and *.jpeg (Max file size 20 MB)"
+            "text": "fileUploadText"
           }
         ],
         "sectionTitle": "",
@@ -528,73 +529,73 @@
             "id": "Fasdasdas2asaaasdasda",
             "fieldsToDisplay": [
               {
-                "label": "Full Name",
+                "label": "namePassport",
                 "name": "name",
                 "order": 1,
                 "type": "text"
               },
               {
-                "label": "Date Of Birth",
+                "label": "dob",
                 "name": "dob",
                 "order": 2,
                 "type": "text"
               },
               {
-                "label": "Nationality",
+                "label": "nationality",
                 "name": "nationality",
                 "order": 3,
                 "type": "text"
               },
               {
-                "label": "National ID Number",
+                "label": "nationalId",
                 "name": "nationalId",
                 "order": 4,
                 "type": "text"
               },
               {
-                "label": "National ID Number Expiry",
+                "label": "nationalIdExpiry",
                 "name": "nationalIdExpiry",
                 "order": 5,
                 "type": "text"
               },
               {
-                "label": "Passport Number",
+                "label": "passportId",
                 "name": "passportId",
                 "order": 6,
                 "type": "text"
               },
               {
-                "label": "Passport Expiry",
+                "label": "passportExpiry",
                 "name": "passportExpiry",
                 "order": 7,
                 "type": "text"
               },
               {
-                "label": "Gender",
+                "label": "gender",
                 "name": "gender",
                 "order": 8,
                 "type": "text"
               }, 
               {
-                "label": "Country",
+                "label": "country",
                 "name": "country",
                 "order": 9,
                 "type": "text"
               },
               {
-                "label": "State",
+                "label": "state",
                 "name": "state",
                 "order": 10,
                 "type": "text"
               },
               {
-                "label": "Zip Code",
+                "label": "zipCode",
                 "name": "zipCode",
                 "order": 11,
                 "type": "text"
               },
               {
-                "label": "City",
+                "label": "city",
                 "name": "city",
                 "order": 12,
                 "type": "text"
