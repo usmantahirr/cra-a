@@ -52,20 +52,20 @@ const Dashboard = props => {
     return <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />;
   };
 
-  const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
+  const _renderStepForm = (step, stepsCount, currStep) => {
     const [form] = Form.useForm(); // TODO: can cause issue
-    const { name, initialValues } = step;
+    const { name } = step;
     const { layout, onFinish, onFinishFailed, onFieldsChange, onFormValueChanges } = props;
 
     return (
       <Form
         key={`${step.id}${name}`}
-        hidden={currIndex !== currStep}
+        // hidden={currIndex !== currStep}
         {...layout}
         name={name}
         form={form}
         layout="vertical"
-        initialValues={initialValues}
+        initialValues={applicationFormData}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
         onFieldsChange={onFieldsChange}
@@ -99,7 +99,12 @@ const Dashboard = props => {
   };
 
   const _renderStepsBody = (schema, currStep) => {
-    return schema && schema.map((step, currIndex) => _renderStepForm(step, schema.length, currStep, currIndex));
+    return (
+      schema &&
+      schema.map(
+        (step, currIndex) => currIndex === currStep && _renderStepForm(step, schema.length, currStep, currIndex)
+      )
+    );
   };
 
   return (
