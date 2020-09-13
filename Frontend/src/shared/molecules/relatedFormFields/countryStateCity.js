@@ -182,6 +182,12 @@ const CountryStateCity = props => {
                 if (!value || !dependencies) {
                   return Promise.resolve();
                 }
+                if (
+                  !value ||
+                  (dependencies[0] && (!getFieldValue(dependencies[0]) || !getFieldValue(dependencies[0]).value))
+                ) {
+                  return Promise.resolve();
+                }
                 if (!value || (dependencies[0] && getFieldValue(dependencies[0]).value !== value.value)) {
                   return Promise.resolve();
                 }

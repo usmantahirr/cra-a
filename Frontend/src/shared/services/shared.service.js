@@ -21,5 +21,9 @@ class SharedService {
   getStates = id => {
     return this.http.get(GET_STATES_BY_COUNTRY, id);
   };
+
+  getDataByUrl = url => {
+    return this.http.get(url);
+  };
 }
 export default new SharedService();

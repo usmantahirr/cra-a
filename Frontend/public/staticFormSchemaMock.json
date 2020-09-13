@@ -277,18 +277,7 @@
                 "placeholder": "pleaseSelect",
                 "type": "select",
                 "id": "ST01F004",
-                "options": [
-                  {
-                    "value": 1001,
-                    "text": "UAE",
-                    "id": "ST01F004O001"
-                  },
-                  {
-                    "value": 2,
-                    "text": "PK",
-                    "id": "ST01F004O002"
-                  }
-                ],
+                "url": "country",
                 "rules": [
                   {
                     "required": true,
