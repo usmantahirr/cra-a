@@ -177,6 +177,11 @@
     z-index: 1;
     background: #fff;
     font-size: 0.9375rem;
+
+    @media screen and (max-width: 1400px) {
+      top: 8px;
+      font-size: 0.8125rem;
+    }
   }
 
   .errMsg {
