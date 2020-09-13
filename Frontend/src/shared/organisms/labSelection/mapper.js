@@ -60,7 +60,7 @@ const getFieldValues = (data, objectProp, prop) => {
     return '';
   }
   // eslint-disable-next-line
-  return data[0] ? (data[0][objectProp] ? data[0][objectProp][prop] || '' : '') : '';
+  return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
 };
 
 export function parsePropData(props) {

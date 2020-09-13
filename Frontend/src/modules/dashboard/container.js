@@ -16,8 +16,7 @@ const tailLayout = {
     span: 24,
   },
 };
-
-// eslint-disable-next-line no-restricted-globals
+// eslint-disable-next-line
 const isDate = date => new Date(date) !== 'Invalid Date' && !isNaN(new Date(date));
 
 const Dashboard = () => {
@@ -156,6 +155,7 @@ const Dashboard = () => {
       {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner />}
       {!showLoader && formSchema && formSchema.length > 0 && (
         <DashboardPage
+          applicationId={applicationData.applicationId}
           pageState={pageState}
           goBack={goBack}
           formSchema={formSchema}
