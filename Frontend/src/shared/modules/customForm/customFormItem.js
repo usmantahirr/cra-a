@@ -92,17 +92,11 @@ class CustomFormItem extends React.PureComponent {
       const { fieldValue } = field;
       const { isEqual } = field;
 
-      Object.keys(applicationFormData).forEach(form => {
-        if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
-          Object.keys(applicationFormData[form]).forEach(formField => {
-            if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-              if (isEqual && fieldName === formField && fieldValue === applicationFormData[form][formField]) {
-                hidden = true;
-              } else if (!isEqual && fieldName === formField && fieldValue !== applicationFormData[form][formField]) {
-                hidden = true;
-              }
-            }
-          });
+      Object.keys(applicationFormData).forEach(formField => {
+        if (isEqual && fieldName === formField && fieldValue === applicationFormData[formField]) {
+          hidden = true;
+        } else if (!isEqual && fieldName === formField && fieldValue !== applicationFormData[formField]) {
+          hidden = true;
         }
       });
     });

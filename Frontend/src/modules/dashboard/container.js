@@ -17,7 +17,8 @@ const tailLayout = {
   },
 };
 
-const isDate = date => new Date(date) !== 'Invalid Date' && !Number.isNaN(new Date(date));
+// eslint-disable-next-line no-restricted-globals
+const isDate = date => new Date(date) !== 'Invalid Date' && !isNaN(new Date(date));
 
 const Dashboard = () => {
   const match = useRouteMatch();
@@ -114,13 +115,19 @@ const Dashboard = () => {
         setShowLoader(false);
         goForward(res._id);
       } else {
-        const res = await dashboardService.updateApplication(match.params.uid, {
+        await dashboardService.updateApplication(match.params.uid, {
           status: 'Drafted',
           application_data: formData,
           applicationId: applicationData.applicationId,
         });
         setApplicationFormData(formData);
-        setApplicationData(res);
+        setApplicationData(prev => ({
+          ...prev,
+          application_data: {
+            ...prev.applicationData,
+            ...formData,
+          },
+        }));
         setShowLoader(false);
         goForward(match.params.uid);
       }

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Layout, Row, Col } from 'antd';
+import * as moment from 'moment';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
@@ -16,14 +17,9 @@ const Header = props => {
       return;
     }
     const newApplicationSummary = {};
-    Object.keys(applicationFormData).forEach(form => {
-      if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
-        Object.keys(applicationFormData[form]).forEach(formField => {
-          if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-            newApplicationSummary[formField] = applicationFormData[form][formField];
-          }
-        });
-      }
+
+    Object.keys(applicationFormData).forEach(formField => {
+      newApplicationSummary[formField] = applicationFormData[formField];
     });
     setApplicationSummaryData(newApplicationSummary);
   }, [props]);
@@ -103,7 +99,11 @@ const Header = props => {
             return (
               <Col span={6}>
                 <span>{control}</span>
-                <strong>{applicationSummaryData[control]}</strong>
+                <strong>
+                  {moment.isMoment(applicationSummaryData[control])
+                    ? applicationSummaryData[control].toString()
+                    : applicationSummaryData[control]}
+                </strong>
               </Col>
             );
           return null;
