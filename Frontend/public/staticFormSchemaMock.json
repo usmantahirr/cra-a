@@ -1,7 +1,7 @@
 [
   {
     "stepTitle": "Select Visa Type",
-    "id": "ST1",
+    "id": "0",
     "formName": "step1",
     "initialValues": {
       "name": "FirstUser ",
@@ -142,7 +142,7 @@
   },
   {
     "stepTitle": "Select Visa Issuing Emirate",
-    "id": "ST3",
+    "id": "1",
     "formName": "step3",
     "initialValues": {
       "name": "Second user details",
@@ -216,7 +216,7 @@
   },
   {
     "stepTitle": "Application Form",
-    "id": "ST4",
+    "id": "2",
     "formName": "step4",
     "initialValues": {
       "st4country": "Pakistan",
@@ -471,7 +471,7 @@
   },
   {
     "stepTitle": "Upload Document",
-    "id": "ST5",
+    "id": "3",
     "formName": "step5",
     "initialValues": {},
     "sections": [
@@ -496,7 +496,7 @@
   },
   {
     "stepTitle": "Screening Facility",
-    "id": "ST6",
+    "id": "4",
     "formName": "step6",
     "initialValues": {},
     "sections": [
@@ -516,7 +516,7 @@
   },
   {
     "stepTitle": "Review Application",
-    "id": "ST7",
+    "id": "5",
     "formName": "step7",
     "initialValues": {},
     "sections": [
@@ -609,7 +609,7 @@
   },
   {
     "stepTitle": "Payment",
-    "id": "ST8",
+    "id": "6",
     "formName": "step8",
     "initialValues": {},
     "sections": [

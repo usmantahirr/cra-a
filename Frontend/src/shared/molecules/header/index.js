@@ -21,31 +21,6 @@ const Header = props => {
         Object.keys(applicationFormData[form]).forEach(formField => {
           if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
             newApplicationSummary[formField] = applicationFormData[form][formField];
-            // if (formField === 'applicantName') {
-            //   newApplicationSummary.applicantName = applicationFormData[form][formField];
-            // }
-            // if (formField === 'sourceCountry') {
-            //   newApplicationSummary.sourceCountry = applicationFormData[form][formField];
-            // }
-            // if (formField === 'sourceState') {
-            //   newApplicationSummary.sourceState = applicationFormData[form][formField];
-            // }
-            // if (formField === 'sourceCity') {
-            //   newApplicationSummary.sourceCity = applicationFormData[form][formField];
-            // }
-            // if (formField === 'destCountry') {
-            //   newApplicationSummary.destCountry = applicationFormData[form][formField];
-            // }
-            // if (formField === 'destState') {
-            //   newApplicationSummary.destState = applicationFormData[form][formField];
-            // }
-            // if (formField === 'destCity') {
-            //   newApplicationSummary.destCity = applicationFormData[form][formField];
-            // }
-            // if (formField === 'visaType') {
-            //   newApplicationSummary.visaType = applicationFormData[form][formField];
-            // }
-            // if(formField === )
           }
         });
       }
@@ -118,7 +93,6 @@ const Header = props => {
         </Col>
         <Col span={6}>
           <span>Visa Type:</span>
-          {/* <strong>{_renderSelectedVisaType(applicationSummaryData.visaType)}</strong> */}
           <strong>
             {applicationSummaryData.passengerType +
               (applicationSummaryData.visaType ? `, ${applicationSummaryData.visaType}` : '')}
