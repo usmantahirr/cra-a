@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouteMatch, useHistory } from 'react-router';
+import * as moment from 'moment';
 
 import DashboardPage from '../../shared/pages/Dashboard';
 import { getJsonSchema } from './redux';
@@ -15,6 +16,8 @@ const tailLayout = {
     span: 24,
   },
 };
+
+const isDate = date => new Date(date) !== 'Invalid Date' && !Number.isNaN(new Date(date));
 
 const Dashboard = () => {
   const match = useRouteMatch();
@@ -44,6 +47,12 @@ const Dashboard = () => {
         setShowLoader(true);
         try {
           const data = await dashboardService.getApplicationById(match.params.uid);
+
+          Object.keys(data.application_data).forEach(key => {
+            if (typeof data.application_data[key] === 'string' && isDate(data.application_data[key])) {
+              data.application_data[key] = moment(data.application_data[key]);
+            }
+          });
           setApplicationData(data);
           setApplicationFormData(data.application_data);
           setShowLoader(false);
