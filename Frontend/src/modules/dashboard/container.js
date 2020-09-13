@@ -88,7 +88,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-      {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner tip="loading..." />}
+      {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner />}
       {formSchema && formSchema.length > 0 && (
         <DashboardPage
           pageState={pageState}
