@@ -17,16 +17,11 @@ const Dashboard = props => {
     if (colSize)
       return fieldArray.map(field => (
         <Col span={colSize}>
-          <CustomFormItem
-            key={field.id}
-            {...field}
-            form={form}
-            applicationFormData={applicationFormData}
-          ></CustomFormItem>
+          <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
         </Col>
       ));
     return fieldArray.map(field => (
-      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData}></CustomFormItem>
+      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
     ));
   };
 
@@ -60,7 +55,6 @@ const Dashboard = props => {
     return (
       <Form
         key={`${step.id}${name}`}
-        // hidden={currIndex !== currStep}
         {...layout}
         name={name}
         form={form}
