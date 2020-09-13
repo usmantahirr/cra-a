@@ -74,7 +74,8 @@ const Dashboard = props => {
         onValuesChange={onFormValueChanges}
       >
         {/* <h1>{step.stepTitle}</h1> */}
-        <div className="content-scroll">
+
+        <div className={`content-scroll ${currStep === 0 ? 'contentNSummeryScroll' : ' '}`}>
           <CustomScroll heightRelativeToParent="100%">
             {step.sections && step.sections.map(section => _renderSection(section, form))}
           </CustomScroll>
