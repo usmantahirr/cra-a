@@ -11,7 +11,7 @@
     max-width: 1400px;
     margin: 0 auto;
 
-    .mgrow{
+    .mgrow {
       margin-bottom: 45px;
     }
   }
@@ -38,10 +38,21 @@
     background: rgb(234, 242, 250);
     background: linear-gradient(90deg, rgba(234, 242, 250, 1) 0%, rgba(251, 253, 254, 1) 90%, rgba(255, 255, 255, 1) 100%);
     padding: 50px 80px;
+
+    @media screen and (max-width: 767px) {
+      padding: 25px 15px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
   }
 
   .salutationcontainer {
     padding: 45px 0;
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
 
     .salutationholder {
       padding: 40px;
@@ -61,6 +72,11 @@
     img {
       margin: 0 auto;
       @extend %img-fluid;
+
+      @media screen and (max-width: 767px) {
+        max-height: 60px;
+      }
+
     }
   }
 
