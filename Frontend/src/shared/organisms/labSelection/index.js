@@ -1,41 +1,23 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Row, Col } from 'antd';
-import { stateResponseMapper, cityResponseMapper, labsResponseMapper, serviceTypesMapper } from './mapper';
+import {
+  stateResponseMapper,
+  cityResponseMapper,
+  labsResponseMapper,
+  serviceTypesMapper,
+  filterBySubArray,
+  parsePropData,
+} from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
 
 const LabSelection = props => {
-  const { applicationFormData } = props;
-  const {
-    countryCode = 'USA',
-    // eslint-disable-next-line no-nested-ternary
-    country = applicationFormData[0]
-      ? applicationFormData[0].sourceCountry
-        ? applicationFormData[0].sourceCountry.value
-        : applicationFormData[0].sourceCountry
-      : '',
-    visaType = 'Visit',
-    // eslint-disable-next-line no-nested-ternary
-    countryId = applicationFormData[0]
-      ? applicationFormData[0].sourceCountry
-        ? applicationFormData[0].sourceCountry.value
-        : applicationFormData[0].sourceCountry
-      : '',
-    // eslint-disable-next-line no-nested-ternary
-    stateId = applicationFormData[0]
-      ? applicationFormData[0].sourceState
-        ? applicationFormData[0].sourceState.value
-        : applicationFormData[0].sourceState
-      : '',
-    // eslint-disable-next-line no-nested-ternary
-    cityId = applicationFormData[0]
-      ? applicationFormData[0].sourceCity
-        ? applicationFormData[0].sourceCity.value
-        : applicationFormData[0].sourceCity
-      : '',
-  } = props;
+  const { form } = props;
+  const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
+
+  // form.setFieldsValue({ "serviceType": stateId })
 
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
@@ -56,6 +38,7 @@ const LabSelection = props => {
   const markerClickHandler = (event, place) => {
     // Remember which place was clicked
     setSelectedLab(place);
+    form.setFieldsValue({ lab: place.id });
 
     // Required so clicking a 2nd marker works as expected
     if (infoOpen) {
@@ -76,8 +59,9 @@ const LabSelection = props => {
   useEffect(() => {
     async function Init() {
       let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
-      let { data: citiesResponse = [] } = await MapService.getCitiesByState(stateId);
-      let { data: labsResponse = [] } = await MapService.getLabsByCity(cityId);
+      const stateOrCountry = stateId || countryId;
+      let { data: citiesResponse = [] } = stateOrCountry ? await MapService.getCitiesByState(stateOrCountry) : {};
+      let { data: labsResponse = [] } = cityId ? await MapService.getLabsByCity(cityId) : {};
 
       statesResponse = stateResponseMapper(statesResponse);
       citiesResponse = cityResponseMapper(citiesResponse);
@@ -98,6 +82,10 @@ const LabSelection = props => {
       if (labsResponse[0]) {
         markerClickHandler(null, labsResponse[0]);
       }
+      form.setFieldsValue({ labState: stateId });
+      form.setFieldsValue({ labCity: cityId });
+      form.setFieldsValue({ labState: stateId });
+      form.setFieldsValue({ serviceType: '' });
     }
     Init();
   }, [countryId, stateId, cityId]);
@@ -131,6 +119,9 @@ const LabSelection = props => {
     if (labsResponse[0]) {
       markerClickHandler(null, labsResponse[0]);
     }
+    form.setFieldsValue({ labState: value });
+    form.setFieldsValue({ labCity: firstCity });
+    form.setFieldsValue({ serviceType: '' });
   };
 
   const onCityChange = async value => {
@@ -140,7 +131,7 @@ const LabSelection = props => {
     const firstLab = labsResponse[0] ? labsResponse[0].id : '';
     const serviceTypes = firstLab ? serviceTypesMapper(labsResponse) : [];
 
-    setFilterState(function(prevState) {
+    setFilterState(prevState => {
       return {
         ...prevState,
         allLabs: labsResponse,
@@ -154,15 +145,28 @@ const LabSelection = props => {
     if (labsResponse[0]) {
       markerClickHandler(null, labsResponse[0]);
     }
+
+    form.setFieldsValue({ labCity: value });
+    form.setFieldsValue({ serviceType: '' });
   };
 
   const onServiceChange = async selected => {
+    let filteredLabs = [];
     setFilterState(prevState => {
+      filteredLabs = filterBySubArray(prevState.allLabs, selected, 'services', '_id');
       return {
         ...prevState,
+        cityLabs: filteredLabs,
         selectedService: selected,
       };
     });
+    const selectedExist = filteredLabs.filter(x => x.id === selectedLab.id);
+    const markSelected = selectedExist.length ? selectedExist[0] : filteredLabs[0] || null;
+
+    if (markSelected) {
+      markerClickHandler(null, markSelected);
+    }
+    form.setFieldsValue({ serviceType: selected });
   };
 
   const onCardChange = value => {
@@ -172,10 +176,10 @@ const LabSelection = props => {
     }
   };
 
-  return countryId ? (
+  return countryId && cityId ? (
     <Fragment>
       <MapFilter
-        countryCode={countryCode}
+        countryCode={stateId}
         country={country}
         visaType={visaType}
         onStateChange={onStateChange}
@@ -197,7 +201,11 @@ const LabSelection = props => {
             />
           </Col>
           <Col span={8}>
-            <CardRadio cartOptions={filterState.cityLabs} value={selectedLab.id || ''} onChange={onCardChange} />
+            <CardRadio
+              cartOptions={filterState.cityLabs}
+              value={(selectedLab && selectedLab.id) || ''}
+              onChange={onCardChange}
+            />
           </Col>
         </Row>
       </div>
