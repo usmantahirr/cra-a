@@ -5,7 +5,7 @@ import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
-  const { form, country, city, state, zipCode } = props;
+  const { form, country, city, state, zipCode, isDesitination } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -14,8 +14,17 @@ const CountryStateCity = props => {
   const fetchCountries = async () => {
     try {
       const { data } = await service.getCountries();
-      if (data && data.length > 0) setCountries(data);
-      else setCountries([]);
+      if (data && data.length > 0) {
+        if (isDesitination) {
+          setCountries(
+            data.filter(c => {
+              return c.is_destination === true;
+            })
+          );
+        } else {
+          setCountries(data);
+        }
+      } else setCountries([]);
       // form.setFieldsValue({
       //   [country.name]: { value: '5f589189175c69424c936728' },
       // });
