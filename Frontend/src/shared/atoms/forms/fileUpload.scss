@@ -1,10 +1,12 @@
 .customUpload {
     display: block;
     position: relative;
+    width: 80%;
+    margin: 0 auto;
 
     .ant-upload-select {
         display: block;
-        @include shadow(0 0 10px rgba(0, 0, 0, 0.4));
+        @include shadow(0 0 10px rgba(0, 0, 0, 0.1));
 
         .ant-btn {
             display: block;
