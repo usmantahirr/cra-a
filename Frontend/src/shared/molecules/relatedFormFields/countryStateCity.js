@@ -48,6 +48,16 @@ const CountryStateCity = props => {
     }
   };
 
+  const fetchCitiesByState = async id => {
+    try {
+      const { data } = await service.getCityByState(id);
+      if (data && data.length > 0) setCities(data);
+      else setCities([]);
+    } catch (error) {
+      setCities([]);
+    }
+  };
+
   const onCountryChange = e => {
     form.setFieldsValue({
       [state.name]: undefined,
@@ -57,7 +67,7 @@ const CountryStateCity = props => {
     setCities([]);
     if (e && e.value) {
       const selected = countries.find(c => c._id === e.value);
-      if (selected && selected.iso_code === 'USA') {
+      if (selected && selected.isoCode === 'US') {
         setShowState(true);
         fetchStates(e.value);
       } else {
@@ -75,7 +85,7 @@ const CountryStateCity = props => {
     });
     setCities([]);
     if (e && e.value) {
-      fetchCities(e.value);
+      fetchCitiesByState(e.value);
     }
   };
 

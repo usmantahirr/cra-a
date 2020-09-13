@@ -1,6 +1,6 @@
 import API, { contentType } from '../../api';
 import { API_BASE_URL } from '../../config';
-import { GET_COUNTRIES, GET_CITIES_BY_STATE, GET_STATES_BY_COUNTRY } from '../../api/endpoints';
+import { GET_COUNTRIES } from '../../api/endpoints';
 
 class SharedService {
   constructor() {
@@ -15,11 +15,15 @@ class SharedService {
   };
 
   getCities = id => {
-    return this.http.get(GET_CITIES_BY_STATE, id);
+    return this.http.get(`country/${id}/cities`);
   };
 
   getStates = id => {
-    return this.http.get(GET_STATES_BY_COUNTRY, id);
+    return this.http.get(`country/${id}/states`);
+  };
+
+  getCityByState = id => {
+    return this.http.get(`state/${id}/cities`);
   };
 
   getDataByUrl = url => {
