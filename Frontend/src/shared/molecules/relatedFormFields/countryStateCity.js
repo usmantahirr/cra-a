@@ -48,34 +48,34 @@ const CountryStateCity = props => {
     }
   };
 
-  const onCountryChange = ({ value }) => {
+  const onCountryChange = e => {
     form.setFieldsValue({
       [state.name]: undefined,
       [city.name]: undefined,
     });
     setStates([]);
     setCities([]);
-    if (value) {
-      const selected = countries.find(c => c._id === value);
+    if (e && e.value) {
+      const selected = countries.find(c => c._id === e.value);
       if (selected && selected.iso_code === 'USA') {
         setShowState(true);
-        fetchStates(value);
+        fetchStates(e.value);
       } else {
         setShowState(false);
-        fetchCities(value);
+        fetchCities(e.value);
       }
     } else {
       setShowState(false);
     }
   };
 
-  const onStateChange = ({ value }) => {
+  const onStateChange = e => {
     form.setFieldsValue({
       [city.name]: undefined,
     });
     setCities([]);
-    if (value) {
-      fetchCities(value);
+    if (e && e.value) {
+      fetchCities(e.value);
     }
   };
 
