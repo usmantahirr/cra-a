@@ -11,7 +11,7 @@ import CustomFormItem from '../modules/customForm/customFormItem';
 const { Content } = Layout;
 
 const Dashboard = props => {
-  const { goBack, formSchema, pageState, applicationFormData } = props;
+  const { goBack, formSchema, pageState, applicationFormData, applicationId } = props;
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
     if (colSize)
@@ -103,7 +103,12 @@ const Dashboard = props => {
 
   return (
     <DashboardTemplate>
-      <Header pageState={pageState} formSchema={formSchema} applicationFormData={applicationFormData} />
+      <Header
+        pageState={pageState}
+        formSchema={formSchema}
+        applicationFormData={applicationFormData}
+        applicationId={applicationId}
+      />
       <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
     </DashboardTemplate>
   );

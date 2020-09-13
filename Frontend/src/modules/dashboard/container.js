@@ -16,8 +16,8 @@ const tailLayout = {
     span: 24,
   },
 };
-
-const isDate = date => new Date(date) !== 'Invalid Date' && !Number.isNaN(new Date(date));
+// eslint-disable-next-line
+const isDate = date => new Date(date) !== 'Invalid Date' && !isNaN(new Date(date));
 
 const Dashboard = () => {
   const match = useRouteMatch();
@@ -114,13 +114,19 @@ const Dashboard = () => {
         setShowLoader(false);
         goForward(res._id);
       } else {
-        const res = await dashboardService.updateApplication(match.params.uid, {
+        await dashboardService.updateApplication(match.params.uid, {
           status: 'Drafted',
           application_data: formData,
           applicationId: applicationData.applicationId,
         });
         setApplicationFormData(formData);
-        setApplicationData(res);
+        setApplicationData(prev => ({
+          ...prev,
+          application_data: {
+            ...prev.applicationData,
+            ...formData,
+          },
+        }));
         setShowLoader(false);
         goForward(match.params.uid);
       }
@@ -149,6 +155,7 @@ const Dashboard = () => {
       {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner />}
       {!showLoader && formSchema && formSchema.length > 0 && (
         <DashboardPage
+          applicationId={applicationData.applicationId}
           pageState={pageState}
           goBack={goBack}
           formSchema={formSchema}
