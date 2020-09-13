@@ -23,7 +23,7 @@ export function labsResponseMapper(inputLabs) {
     return {
       id: data._id,
       name: data.name,
-      city: data.city,
+      // city: data.city,
       services: data.services,
       pos: {
         lat: Number(data.latitude),
@@ -72,4 +72,36 @@ export function parsePropData(props) {
     stateId: getFieldValues(applicationFormData, 'sourceState', 'value'),
     cityId: getFieldValues(applicationFormData, 'sourceCity', 'value'),
   };
+}
+
+export function getState(states, selectedState) {
+  if (states.length) {
+    return states.filter(x => x.id === selectedState)[0];
+  }
+  return undefined;
+}
+
+export function getCity(cities, selectedCity) {
+  if (cities.length) {
+    return cities.filter(x => x.id === selectedCity)[0];
+  }
+  return undefined;
+}
+
+export function getLab(labs, selectedLab) {
+  if (labs.length) {
+    return labs.filter(x => x.id === selectedLab)[0];
+  }
+  return undefined;
+}
+
+export function getServiceType(servicTypes, selectedServiceType) {
+  if (servicTypes.length) {
+    return servicTypes.filter(x => x.id === selectedServiceType);
+  }
+  return undefined;
+}
+
+export function getCardOptionObject(place) {
+  return place.id;
 }
