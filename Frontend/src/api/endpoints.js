@@ -13,3 +13,7 @@ export const GET_LABS_BY_CITY = 'lab';
 export const FILE_UPLOAD = 'file-upload/provide-links';
 
 export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission/get-all';
+
+export const PAYMENT_INTERNATIONAL = 'payment';
+
+export const APPLICATION = 'application-submission';

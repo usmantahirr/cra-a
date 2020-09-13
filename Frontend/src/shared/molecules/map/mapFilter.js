@@ -18,7 +18,12 @@ const MapFilter = props => {
           },
         ]}
       >
-        <CustomSelectSmall options={filterState.states} value={filterState.selectedState} onChange={onStateChange} />
+        <CustomSelectSmall
+          labelInValue
+          options={filterState.states}
+          value={filterState.selectedState}
+          onChange={onStateChange}
+        />
       </Form.Item>
     </Descriptions.Item>
   );
@@ -39,12 +44,18 @@ const MapFilter = props => {
               },
             ]}
           >
-            <CustomSelectSmall options={filterState.cities} value={filterState.selectedCity} onChange={onCityChange} />
+            <CustomSelectSmall
+              labelInValue
+              options={filterState.cities}
+              value={filterState.selectedCity}
+              onChange={onCityChange}
+            />
           </Form.Item>
         </Descriptions.Item>
         <Descriptions.Item label="Lab Type">
           <Form.Item name="serviceType">
             <CustomSelectSmall
+              labelInValue
               options={filterState.serviceTypes}
               value={filterState.selectedService}
               onChange={onServiceChange}

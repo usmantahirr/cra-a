@@ -16,3 +16,16 @@ export const APPLICATION_HOME = '/register';
 export const LOGGED_IN_HOME = APPLICATION_HOME;
 
 export const STATE_SKIP_BY_COUNTRY = 'USA';
+
+export const APPLICATION_STATUS_TYPES = {
+  DRAFTED: 'Drafted',
+  SUBMITTED: 'Submitted',
+};
+
+export const TEST_RESULT_TYPES = {
+  NEGATIVE: 'Negative',
+  REPEAT_SAMPLE: 'Repeat Sample',
+  POSITIVE: 'Positive',
+  BORDER_LINE: 'Border Line',
+  IN_CONCLUSIVE: 'In-conclusive',
+};

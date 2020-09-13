@@ -7,6 +7,9 @@ import {
   serviceTypesMapper,
   filterBySubArray,
   parsePropData,
+  getState,
+  getCity,
+  getCardOptionObject,
 } from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
@@ -38,8 +41,8 @@ const LabSelection = props => {
   const markerClickHandler = (event, place) => {
     // Remember which place was clicked
     setSelectedLab(place);
-    form.setFieldsValue({ lab: place.id });
 
+    form.setFieldsValue({ lab: getCardOptionObject(place) });
     // Required so clicking a 2nd marker works as expected
     if (infoOpen) {
       setInfoOpen(false);
@@ -82,17 +85,17 @@ const LabSelection = props => {
       if (labsResponse[0]) {
         markerClickHandler(null, labsResponse[0]);
       }
-      form.setFieldsValue({ labState: stateId });
-      form.setFieldsValue({ labCity: cityId });
-      form.setFieldsValue({ labState: stateId });
-      form.setFieldsValue({ serviceType: '' });
+
+      form.setFieldsValue({ labState: getState(statesResponse, stateId) });
+      form.setFieldsValue({ labCity: getCity(citiesResponse, cityId) });
+      form.setFieldsValue({ serviceType: undefined });
     }
     Init();
   }, [countryId, stateId, cityId]);
 
   // dropdown handlers
   const onStateChange = async value => {
-    let { data: citiesResponse } = await MapService.getCitiesByState(value);
+    let { data: citiesResponse } = await MapService.getCitiesByState(value.key);
     const firstCity = citiesResponse[0] ? citiesResponse[0]._id : '';
 
     let { data: labsResponse = [] } = firstCity ? await MapService.getLabsByCity(firstCity) : {};
@@ -111,7 +114,7 @@ const LabSelection = props => {
         cities: citiesResponse,
         cityLabs: labsResponse,
         serviceTypes,
-        selectedState: value,
+        selectedState: value.key,
         selectedCity: firstCity,
         selectedService: '',
       };
@@ -120,12 +123,12 @@ const LabSelection = props => {
       markerClickHandler(null, labsResponse[0]);
     }
     form.setFieldsValue({ labState: value });
-    form.setFieldsValue({ labCity: firstCity });
+    form.setFieldsValue({ labCity: getCity(citiesResponse, firstCity) });
     form.setFieldsValue({ serviceType: '' });
   };
 
   const onCityChange = async value => {
-    let { data: labsResponse } = await MapService.getLabsByCity(value);
+    let { data: labsResponse } = await MapService.getLabsByCity(value.key);
     labsResponse = labsResponseMapper(labsResponse);
 
     const firstLab = labsResponse[0] ? labsResponse[0].id : '';
@@ -136,7 +139,7 @@ const LabSelection = props => {
         ...prevState,
         allLabs: labsResponse,
         cityLabs: labsResponse,
-        selectedCity: value,
+        selectedCity: value.key,
         selectedService: '',
         serviceTypes,
       };
@@ -153,11 +156,11 @@ const LabSelection = props => {
   const onServiceChange = async selected => {
     let filteredLabs = [];
     setFilterState(prevState => {
-      filteredLabs = filterBySubArray(prevState.allLabs, selected, 'services', '_id');
+      filteredLabs = filterBySubArray(prevState.allLabs, selected.key, 'services', '_id');
       return {
         ...prevState,
         cityLabs: filteredLabs,
-        selectedService: selected,
+        selectedService: selected.key,
       };
     });
     const selectedExist = filteredLabs.filter(x => x.id === selectedLab.id);
@@ -194,7 +197,6 @@ const LabSelection = props => {
               infoOpen={infoOpen}
               myPlaces={filterState.cityLabs}
               zoom={zoom}
-              setSelectedPlace={setSelectedLab}
               center={center}
               selectedPlace={selectedLab}
               markerClickHandler={markerClickHandler}

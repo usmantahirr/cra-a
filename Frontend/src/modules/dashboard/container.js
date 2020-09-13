@@ -17,9 +17,6 @@ const tailLayout = {
 };
 
 const Dashboard = () => {
-  // TODO: add call to check if patient is new or is registered already
-  // TODO: Add call to get schema
-
   const match = useRouteMatch();
   const history = useHistory();
   const dispatch = useDispatch();
