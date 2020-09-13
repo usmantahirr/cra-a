@@ -20,11 +20,11 @@ export const columnDefs = actionParam => {
     {
       headerName: 'Test Result',
       field: 'test_result',
+      cellRenderer: 'StatusRendrer',
     },
     {
       headerName: 'Application Status',
       field: 'application_status',
-      cellRenderer: 'StatusRendrer',
     },
     {
       headerName: 'Service Type',
@@ -77,6 +77,7 @@ export const columnDefs = actionParam => {
       cellRenderer: 'ActionMenuRendrer',
       cellRendererParams: {
         actionParam,
+        propertyToCompare: 'application_status',
       },
       suppressFilter: true,
       suppressSorting: true,

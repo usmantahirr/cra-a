@@ -14,7 +14,9 @@ const ManageApplication = () => {
 
   useEffect(() => {
     async function Init() {
-      const { data } = await ManageApplicationSerivce.getManageApplications('asad12345');
+      // NEED REFECTOR
+      const user = JSON.parse(localStorage.getItem('user')).accountIdentifier;
+      const { data } = await ManageApplicationSerivce.getManageApplications(user);
       if (data && data.length) {
         gridReference.gridApiRef.setRowData(data);
       }

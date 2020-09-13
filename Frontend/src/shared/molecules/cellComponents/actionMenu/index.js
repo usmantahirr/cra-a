@@ -1,105 +1,47 @@
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { MoreOutlined } from '@ant-design/icons';
-import MenuType from './menuType';
+import { getMenuList } from './actionMenuConfig';
 
 const ActionMenu = props => {
+  const { data = null } = props;
   const actionClick = (e, type) => {
     if (props.actionParam) {
       props.actionParam(e, type, props.data);
     }
   };
 
-  const menu = (
-    <Menu className="custom-dropdown">
-      <Menu.Item key="status">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.status)}
-          onKeyDown={e => actionClick(e, MenuType.status)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-track.svg" alt="" />
-          </i>
-          <span>Track Status</span>
-        </button>
-      </Menu.Item>
+  const menueItem = status => {
+    const menuList = getMenuList(status);
+    return (
+      menuList &&
+      menuList.map(item => {
+        return (
+          <Menu.Item key={item.id}>
+            <button
+              type="button"
+              onClick={e => actionClick(e, item.cmd)}
+              onKeyDown={e => actionClick(e, item.cmd)}
+              className="ant-btn-dropown"
+            >
+              <i>
+                <img src={item.icon} alt="" />
+              </i>
+              <span>{item.label}</span>
+            </button>
+          </Menu.Item>
+        );
+      })
+    );
+  };
 
-      <Menu.Item key="status2">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.clear)}
-          onKeyDown={e => actionClick(e, MenuType.clear)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-change.svg" alt="" />
-          </i>
-          <span>Change Information</span>
-        </button>
-      </Menu.Item>
+  const menu = <Menu className="custom-dropdown">{data && menueItem(data.application_status)}</Menu>;
 
-      <Menu.Item key="status3">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.zinda)}
-          onKeyDown={e => actionClick(e, MenuType.zinda)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-reapply.svg" alt="" />
-          </i>
-          <span>Reapply</span>
-        </button>
-      </Menu.Item>
-      <Menu.Item key="status4">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.zinda)}
-          onKeyDown={e => actionClick(e, MenuType.zinda)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-refund.svg" alt="" />
-          </i>
-          <span>Refund</span>
-        </button>
-      </Menu.Item>
-      <Menu.Item key="status5">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.zinda)}
-          onKeyDown={e => actionClick(e, MenuType.zinda)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-lab.svg" alt="" />
-          </i>
-          <span>Change Lab</span>
-        </button>
-      </Menu.Item>
-      <Menu.Item key="status5">
-        <button
-          type="button"
-          onClick={e => actionClick(e, MenuType.zinda)}
-          onKeyDown={e => actionClick(e, MenuType.zinda)}
-          className="ant-btn-dropown"
-        >
-          <i>
-            <img src="/assets/img/icon-download.svg" alt="" />
-          </i>
-          <span>Download Invoice</span>
-        </button>
-      </Menu.Item>
-    </Menu>
-  );
-
-  return (
+  return data && data.application_status && getMenuList(data.application_status) ? (
     <Dropdown overlay={menu} trigger={['click']}>
       <MoreOutlined />
     </Dropdown>
-  );
+  ) : null;
 };
 
 export default ActionMenu;
