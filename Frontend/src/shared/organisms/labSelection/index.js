@@ -62,8 +62,9 @@ const LabSelection = props => {
   useEffect(() => {
     async function Init() {
       let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
-      const stateOrCountry = stateId || countryId;
-      let { data: citiesResponse = [] } = stateOrCountry ? await MapService.getCitiesByState(stateOrCountry) : {};
+      let { data: citiesResponse = [] } = stateId
+        ? await MapService.getCitiesByState(stateId)
+        : await MapService.getCitiesByCountry(countryId);
       let { data: labsResponse = [] } = cityId ? await MapService.getLabsByCity(cityId) : {};
 
       statesResponse = stateResponseMapper(statesResponse);

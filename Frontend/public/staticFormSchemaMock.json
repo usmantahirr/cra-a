@@ -15,15 +15,15 @@
             "type": "customComponent",
             "id": "Fasdasdas2asaa",
             "country": {
-              "placeholder": "sourceCountry",
+              "placeholder": "Source Country",
               "name": "sourceCountry"
             },
             "city": {
-              "placeholder": "sourceCity",
+              "placeholder": "Source City",
               "name": "sourceCity"
             },
             "state": {
-              "placeholder": "sourceState",
+              "placeholder": "Source State",
               "name": "sourceState"
             },
             "zipCode": {
@@ -43,22 +43,22 @@
             "id": "Fasdasdas2asaa",
             "isDesitination": true,
             "country": {
-              "placeholder": "destinationCountry",
+              "placeholder": "Destination Country",
               "name": "destCountry"
             },
             "city": {
-              "placeholder": "destinationCity",
+              "placeholder": "Destination City",
               "name": "destCity",
               "dependencies": [
                 "sourceCity"
               ]
             },
             "state": {
-              "placeholder": "destinationState",
+              "placeholder": "Destination State",
               "name": "destState"
             },
             "zipCode": {
-              "placeholder": "destinationZipCode",
+              "placeholder": "Destination Zip Code",
               "name": "destZipCode"
             }
           }
@@ -74,7 +74,7 @@
             "passengerOptions": [
               {
                 "value": "Citizen",
-                "text": "citizen",
+                "text": "Citizen",
                 "id": "PTO1"
               },
               {
@@ -84,7 +84,7 @@
               },
               {
                 "value": "UAE-Resident",
-                "text": "resident",
+                "text": "UAE-Resident",
                 "id": "PTO3"
               }
             ],
@@ -96,12 +96,12 @@
             ],
             "visaOptions": [
               {
-                "value": "preApproved",
+                "value": "Pre-Approved Visa",
                 "text": "Pre-Approved Visa",
                 "id": "VTO1"
               },
               {
-                "value": "onArrival",
+                "value": "On-Arrival",
                 "text": "On-Arrival",
                 "id": "VTO2"
               }
@@ -133,7 +133,7 @@
           {
             "type": "plainText",
             "id": "Fasdasdas2aasaaa",
-            "text": "cardText"
+            "text": "Please note that Debit/Credit card payment is required on this portal to proceed with a COVID-19 test at the lab."
           }
         ],
         "sectionTitle": "",
@@ -155,13 +155,13 @@
         "fieldArray": [
           {
             "name": "viet",
-            "label": "visaIssuingEmirate",
+            "label": "Select Visa Issuing Emirate",
             "type": "imageRadio",
             "id": "VIET",
             "options": [
               {
                 "value": "1",
-                "text": "abuDhabi",
+                "text": "Abu Dhabi",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
@@ -205,7 +205,7 @@
             "rules": [
               {
                 "required": true,
-                "message": "selectEmirate"
+                "message": "Please select Visa Issuing Emirate"
               }
             ]
           }
@@ -231,27 +231,27 @@
             "fieldArray": [
               {
                 "name": "name",
-                "label": "namePassport",
-                "placeholder": "namePassport",
+                "label": "Name (As Per Passport)",
+                "placeholder": "Name (As Per Passport)",
                 "type": "text",
                 "id": "ST01F001",
                 "rules": [
                   {
                     "required": true,
-                    "message": "nameRequiredMessage"
+                    "message": "Please enter Name (As Per Passport)"
                   }
                 ]
               },
               {
                 "name": "surName",
-                "label": "surnamePassport",
-                "placeholder": "surnamePassport",
+                "label": "Surname (As Per Passport)",
+                "placeholder": "Surname (As Per Passport)",
                 "type": "text",
                 "id": "ST01F002",
                 "rules": [
                   {
                     "required": true,
-                    "message": "surnameRequiredMessage"
+                    "message": "Please enter Surname (As Per Passport)"
                   }
                 ]
               }
@@ -261,29 +261,29 @@
             "fieldArray": [
               {
                 "name": "dob",
-                "label": "dob",
-                "placeholder": "dob",
+                "label": "Date Of Birth",
+                "placeholder": "Date Of Birth",
                 "type": "date",
                 "id": "ST01F003",
                 "disableDates": "GreaterThanToday",
                 "rules": [
                   {
                     "required": true,
-                    "message": "dobRequiredMessage"
+                    "message": "Please enter Date Of Birth"
                   }
                 ]
               },
               {
                 "name": "nationality",
-                "label": "nationality",
-                "placeholder": "pleaseSelect",
+                "label": "Nationality",
+                "placeholder": "Please Select",
                 "type": "select",
                 "id": "ST01F004",
                 "url": "country",
                 "rules": [
                   {
                     "required": true,
-                    "message": "nationalityRequiredMessage"
+                    "message": "Please select Nationality"
                   }
                 ]
               }
@@ -293,8 +293,8 @@
             "fieldArray": [
               {
                 "name": "gender",
-                "label": "gender",
-                "placeholder": "gender",
+                "label": "Gender",
+                "placeholder": "Gender",
                 "type": "select",
                 "id": "ST01F005",
                 "options": [
@@ -312,7 +312,7 @@
                 "rules": [
                   {
                     "required": true,
-                    "message": "genderRequiredMessage"
+                    "message": "Please select Gender"
                   }
                 ]
               }
@@ -322,14 +322,14 @@
             "fieldArray": [
               {
                 "name": "nationalId",
-                "label": "nationalId",
-                "placeholder": "nationalId",
+                "label": "National ID Number",
+                "placeholder": "National ID Number",
                 "type": "number",
                 "id": "ST01F006",
                 "rules": [
                   {
                     "required": true,
-                    "message": "nationalRequiredMessage"
+                    "message": "Please enter National Id"
                   }
                 ],
                 "hideField": [
@@ -342,8 +342,8 @@
               },
               {
                 "name": "nationalIdExpiry",
-                "label": "nationalIdExpiry",
-                "placeholder": "nationalIdExpiry",
+                "label": "National Id Expiry",
+                "placeholder": "National Id Expiry",
                 "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F007",
@@ -361,14 +361,14 @@
             "fieldArray": [
               {
                 "name": "emiratesId",
-                "label": "emiratesId",
-                "placeholder": "emiratesId",
+                "label": "Emirates Id",
+                "placeholder": "Emirates Id",
                 "type": "number",
                 "id": "ST01F008",
                 "rules": [
                   {
                     "required": true,
-                    "message": "emiratesRequiredMessage"
+                    "message": "Please enter Emirates Id"
                   }
                 ],
                 "hideField": [
@@ -381,8 +381,8 @@
               },
               {
                 "name": "emiratesIdExpiry",
-                "label": "emiratesIdExpiry",
-                "placeholder": "emiratesIdExpiry",
+                "label": "Emirates Id Expiry",
+                "placeholder": "Emirates Id Expiry",
                 "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F009",
@@ -400,21 +400,21 @@
             "fieldArray": [
               {
                 "name": "passportId",
-                "label": "passportId",
-                "placeholder": "passportId",
+                "label": "Passport Number",
+                "placeholder": "Passport Number",
                 "type": "text",
                 "id": "ST01F010",
                 "rules": [
                   {
                     "required": true,
-                    "message": "passportRequiredMessage"
+                    "message": "Please enter Passport Number"
                   }
                 ]
               },
               {
                 "name": "passportExpiry",
-                "label": "passportExpiry",
-                "placeholder": "passportExpiry",
+                "label": "Passport Number Expiry",
+                "placeholder": "Passport Number Expiry",
                 "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F011"
@@ -428,19 +428,19 @@
                 "type": "customComponent",
                 "id": "ST01F012",
                 "country": {
-                  "placeholder": "country",
+                  "placeholder": "Country",
                   "name": "country"
                 },
                 "city": {
-                  "placeholder": "city",
+                  "placeholder": "City",
                   "name": "city"
                 },
                 "state": {
-                  "placeholder": "state",
+                  "placeholder": "State",
                   "name": "state"
                 },
                 "zipCode": {
-                  "placeholder": "zipCode",
+                  "placeholder": "Zip Code",
                   "name": "zipCode"
                 }
               }
@@ -450,15 +450,15 @@
             "fieldArray": [
               {
                 "name": "address",
-                "label": "address",
-                "placeholder": "address",
+                "label": "Address",
+                "placeholder": "Address",
                 "type": "textArea",
                 "rows": 6,
                 "id": "ST01F013",
                 "rules": [
                   {
                     "required": true,
-                    "message": "addressRequired"
+                    "message": "Please enter Address"
                   }
                 ]
               }
@@ -487,7 +487,7 @@
           {
             "type": "plainText",
             "id": "Fasdasdas2aasaaasada",
-            "text": "fileUploadText"
+            "text": "Allowed files: Passport to be uploaded with any document extension of *.pdf, *.png, *.jpg and *.jpeg (Max file size 20 MB)"
           }
         ],
         "sectionTitle": "",
@@ -529,73 +529,73 @@
             "id": "Fasdasdas2asaaasdasda",
             "fieldsToDisplay": [
               {
-                "label": "namePassport",
+                "label": "Name (As Per Passport)",
                 "name": "name",
                 "order": 1,
                 "type": "text"
               },
               {
-                "label": "dob",
+                "label": "Date Of Birth",
                 "name": "dob",
                 "order": 2,
                 "type": "text"
               },
               {
-                "label": "nationality",
+                "label": "Nationality",
                 "name": "nationality",
                 "order": 3,
                 "type": "text"
               },
               {
-                "label": "nationalId",
+                "label": "National ID Number",
                 "name": "nationalId",
                 "order": 4,
                 "type": "text"
               },
               {
-                "label": "nationalIdExpiry",
+                "label": "National Id Expiry",
                 "name": "nationalIdExpiry",
                 "order": 5,
                 "type": "text"
               },
               {
-                "label": "passportId",
+                "label": "Passport Number",
                 "name": "passportId",
                 "order": 6,
                 "type": "text"
               },
               {
-                "label": "passportExpiry",
+                "label": "Passport Number Expiry",
                 "name": "passportExpiry",
                 "order": 7,
                 "type": "text"
               },
               {
-                "label": "gender",
+                "label": "Gender",
                 "name": "gender",
                 "order": 8,
                 "type": "text"
               }, 
               {
-                "label": "country",
+                "label": "Country",
                 "name": "country",
                 "order": 9,
                 "type": "text"
               },
               {
-                "label": "state",
+                "label": "State",
                 "name": "state",
                 "order": 10,
                 "type": "text"
               },
               {
-                "label": "zipCode",
+                "label": "Zip Code",
                 "name": "zipCode",
                 "order": 11,
                 "type": "text"
               },
               {
-                "label": "city",
+                "label": "City",
                 "name": "city",
                 "order": 12,
                 "type": "text"

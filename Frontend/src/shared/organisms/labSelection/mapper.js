@@ -19,15 +19,15 @@ export function cityResponseMapper(inputCities) {
 }
 
 export function labsResponseMapper(inputLabs) {
-  const labs = inputLabs.map(data => {
+  const labs = inputLabs.labs.map(data => {
     return {
       id: data._id,
       name: data.name,
       // city: data.city,
-      services: data.services,
+      services: data.serviceTypes,
       pos: {
         lat: Number(data.latitude),
-        lng: Number(data.longitude),
+        lng: Number(data.logitude),
       },
     };
   });
