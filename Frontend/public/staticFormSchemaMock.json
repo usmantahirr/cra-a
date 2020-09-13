@@ -167,37 +167,37 @@
               {
                 "value": "2",
                 "text": "Ajman",
-                "src": "/assets/img/dubai.png",
+                "src": "/assets/img/ajman.png",
                 "id": "VIET2"
               },
               {
                 "value": "3",
                 "text": "Dubai",
-                "src": "/assets/img/abudhabi.png",
+                "src": "/assets/img/dubai.png",
                 "id": "VIET3"
               },
               {
                 "value": "4",
                 "text": "Fujairah",
-                "src": "/assets/img/dubai.png",
+                "src": "/assets/img/fujairah.png",
                 "id": "VIET4"
               },
               {
                 "value": "5",
                 "text": "Ras al-Khaimah",
-                "src": "/assets/img/abudhabi.png",
+                "src": "/assets/img/rasalkhiamh.png",
                 "id": "VIET5"
               },
               {
                 "value": "6",
                 "text": "Sharjah",
-                "src": "/assets/img/dubai.png",
+                "src": "/assets/img/sharjah.png",
                 "id": "VIET6"
               },
               {
                 "value": "7",
                 "text": "Umm al-Quwain",
-                "src": "/assets/img/abudhabi.png",
+                "src": "/assets/img/ummulqawaain.png",
                 "id": "VIET7"
               }
             ],
@@ -264,6 +264,7 @@
                 "placeholder": "dob",
                 "type": "date",
                 "id": "ST01F003",
+                "disableDates": "GreaterThanToday",
                 "rules": [
                   {
                     "required": true,
@@ -342,6 +343,7 @@
                 "name": "nationalIdExpiry",
                 "label": "nationalIdExpiry",
                 "placeholder": "nationalIdExpiry",
+                "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F007",
                 "hideField": [
@@ -380,6 +382,7 @@
                 "name": "emiratesIdExpiry",
                 "label": "emiratesIdExpiry",
                 "placeholder": "emiratesIdExpiry",
+                "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F009",
                 "hideField": [
@@ -411,6 +414,7 @@
                 "name": "passportExpiry",
                 "label": "passportExpiry",
                 "placeholder": "passportExpiry",
+                "disableDates": "LesserThanToday",
                 "type": "date",
                 "id": "ST01F011"
               }

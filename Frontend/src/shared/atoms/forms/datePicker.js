@@ -1,11 +1,15 @@
-import { DatePicker } from 'antd';
 import React from 'react';
+import { DatePicker } from 'antd';
+import * as moment from 'moment';
 
-function CustomDatePicker({ ...props }) {
-  return <DatePicker {...props} className="custom-control" />;
-  //   <Form.Item label={label} {...validators} className="custom-item">
-  //   <Input placeholder={placeholder} type={type} name={name} />
-  // </Form.Item>
+function CustomDatePicker({ disableDates, ...props }) {
+  const disabledDate = current => {
+    if (disableDates && disableDates === 'GreaterThanToday') return current && current > moment().startOf('day');
+    if (disableDates && disableDates === 'LesserThanToday') return current && current < moment().startOf('day');
+    return false;
+  };
+
+  return <DatePicker disabledDate={disabledDate} {...props} className="custom-control" />;
 }
 
 export default CustomDatePicker;
