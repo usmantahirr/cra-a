@@ -10,9 +10,9 @@ const GridViewContainer = ({
   gridColumnApiRef,
 }) => {
   const [columnsSelected, setColumnsSelected] = useState(
-    Object.fromEntries(gridOptions.columnDefs.map(x => [x.headerName, true]))
+    Object.fromEntries(gridOptions.columnDefs.map(x => [x.headerName, false]))
   );
-  const columnsOptions = gridOptions.columnDefs.map(x => x.headerName);
+  const columnsOptions = gridOptions.columnDefs.filter(x => x.hide).map(x => x.headerName);
 
   const showHideColumns = (columnName, isVisible) => {
     const columns = gridColumnApiRef.getAllColumns();
