@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Upload, message } from 'antd';
 
 import Button from '../buttons';
+import uploadService from '../../../modules/dashboard/services/upload.service';
 
 function CustomUpload({ name, ...props }) {
   const [fileList, updateFileList] = useState([]);
@@ -13,7 +14,7 @@ function CustomUpload({ name, ...props }) {
     return allowedExtensions.every(a => extension.toLowerCase() !== a);
   };
 
-  const onFileChange = uploader => {
+  const onFileChange = async uploader => {
     if (uploader.fileList.length > 1) {
       message.error(`Only one file can be uploaded`);
       uploader.fileList.pop();
@@ -33,10 +34,20 @@ function CustomUpload({ name, ...props }) {
       return false;
     }
     if (uploader.fileList.length > 0) {
-      // TODO: Api integration
       const uploadFile = uploader.fileList[0];
-      uploadFile.Lala = '000';
-      updateFileList([uploadFile]);
+      const payload = {
+        fileNames: [uploadFile.name],
+      };
+      try {
+        const containerResponse = await uploadService.createContainer(payload);
+        if (containerResponse && containerResponse.data) {
+          const container = containerResponse.data[0];
+          await uploadService.uploadFile(uploadFile, container.sharedAccessLink);
+          updateFileList([uploadFile]);
+        }
+      } catch (error) {
+        // catch error
+      }
     } else {
       if (uploader.file && uploader.file.status === 'removed') {
         // TODO

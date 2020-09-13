@@ -10,6 +10,7 @@ export const GET_COUNTRIES = 'country';
 export const GET_STATES_BY_COUNTRY = 'state';
 export const GET_CITIES_BY_STATE = 'city';
 export const GET_LABS_BY_CITY = 'lab';
+export const FILE_UPLOAD = 'file-upload/provide-links';
 
 export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission/get-all';
 
