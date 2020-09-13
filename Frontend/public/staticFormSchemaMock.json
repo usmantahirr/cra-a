@@ -344,7 +344,7 @@
                 "hideField": [
                   {
                     "fieldName": "passengerType",
-                    "fieldValue": "2",
+                    "fieldValue": "Visitor",
                     "isEqual": false
                   }
                 ]
@@ -358,7 +358,7 @@
                 "hideField": [
                   {
                     "fieldName": "passengerType",
-                    "fieldValue": "2",
+                    "fieldValue": "Visitor",
                     "isEqual": false
                   }
                 ]
@@ -382,7 +382,7 @@
                 "hideField": [
                   {
                     "fieldName": "passengerType",
-                    "fieldValue": "2",
+                    "fieldValue": "Visitor",
                     "isEqual": true
                   }
                 ]
@@ -396,7 +396,7 @@
                 "hideField": [
                   {
                     "fieldName": "passengerType",
-                    "fieldValue": "2",
+                    "fieldValue": "Visitor",
                     "isEqual": true
                   }
                 ]
