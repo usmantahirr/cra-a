@@ -1,10 +1,7 @@
 import React from 'react';
-// import React, { useContext } from 'react';
 import { Layout, Form, Row, Col, Modal } from 'antd';
 
 import CustomScroll from 'react-custom-scroll';
-// import NotificationContext from '../modules/notification/context';
-// import ErrorContext from '../modules/error/context';
 import Button from '../atoms/buttons';
 import DashboardTemplate from '../templates/dashboardTemplate';
 import Header from '../molecules/header';
@@ -14,8 +11,6 @@ import CustomFormItem from '../modules/customForm/customFormItem';
 const { Content } = Layout;
 
 const Dashboard = props => {
-  // const notification = useContext(NotificationContext);
-  // const errorContext = useContext(ErrorContext);
   const { goBack, formSchema, pageState, applicationFormData } = props;
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
@@ -76,8 +71,6 @@ const Dashboard = props => {
         onFieldsChange={onFieldsChange}
         onValuesChange={onFormValueChanges}
       >
-        {/* <h1>{step.stepTitle}</h1> */}
-
         <div className={`content-scroll ${currStep === 0 ? 'contentNSummeryScroll' : ' '}`}>
           <CustomScroll heightRelativeToParent="100%">
             {step.sections && step.sections.map(section => _renderSection(section, form))}
