@@ -8,11 +8,11 @@ const DashboardRoutes = [
   },
   {
     Component: lazy(() => import('./container')),
-    path: `${APPLICATION_HOME}/:applicationId`,
+    path: `${APPLICATION_HOME}/:uid`,
   },
   {
     Component: lazy(() => import('./container')),
-    path: `${APPLICATION_HOME}/:applicationId/:stepId`,
+    path: `${APPLICATION_HOME}/:uid/:stepId`,
   },
 ];
 

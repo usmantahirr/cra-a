@@ -26,18 +26,36 @@ const Dashboard = () => {
 
   const [pageState, setPageState] = useState({
     prev: null,
-    curr: match.params && match.params.applicationId && match.params.stepId ? parseInt(match.params.stepId, 10) : 0,
+    curr: match.params && match.params.uid && match.params.stepId ? parseInt(match.params.stepId, 10) : 0,
     next: null,
   });
   const [applicationFormData, setApplicationFormData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
-  const [applicationId, setApplicationId] = useState(
-    match.params && match.params.applicationId ? match.params.applicationId : null
-  );
+
+  const [applicationData, setApplicationData] = useState({});
 
   useEffect(() => {
     fetchSchema();
   }, []);
+
+  useEffect(() => {
+    async function fetchApplication() {
+      if (match.params && match.params.uid) {
+        setShowLoader(true);
+        try {
+          const data = await dashboardService.getApplicationById(match.params.uid);
+          setApplicationData(data);
+          setApplicationFormData(data.application_data);
+          setShowLoader(false);
+        } catch (e) {
+          errorContext.setError(e, true);
+          setShowLoader(false);
+        }
+      }
+    }
+
+    fetchApplication();
+  }, [match.params.uid]);
 
   const goForward = appId => {
     if (pageState.curr !== formSchema.length - 1) {
@@ -61,25 +79,45 @@ const Dashboard = () => {
         next: pageState.curr,
       };
 
-      if (applicationId) {
+      if (match.params.uid) {
         setPageState(newState);
-        history.push(`/register/${applicationId}/${newState.curr}`);
+        history.push(`/register/${match.params.uid}/${newState.curr}`);
       }
     }
   };
 
-  const onFinish = async (values, formIndex) => {
-    const newFormData = { ...applicationFormData };
-    newFormData[formIndex] = values;
-    setApplicationFormData(newFormData);
+  const onFinish = async values => {
+    const formData = { ...applicationFormData, ...values };
     setShowLoader(true);
 
     try {
-      const data = await dashboardService.saveDraft(newFormData);
-      setApplicationId(data.applicationId);
-      goForward(data.applicationId);
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      // If Application doesn't exist
+      if (!applicationData._id) {
+        const res = await dashboardService.createApplication({
+          user_id: user.accountIdentifier,
+          status: 'Drafted',
+          application_data: formData,
+        });
+        setApplicationFormData(formData);
+        setApplicationData(res);
+        setShowLoader(false);
+        goForward(res._id);
+      } else {
+        const res = await dashboardService.updateApplication(match.params.uid, {
+          status: 'Drafted',
+          application_data: formData,
+          applicationId: applicationData.applicationId,
+        });
+        setApplicationFormData(formData);
+        setApplicationData(res);
+        setShowLoader(false);
+        goForward(match.params.uid);
+      }
     } catch (e) {
-      errorContext.setError(e);
+      setShowLoader(false);
+      errorContext.setError(e, true);
     }
 
     setShowLoader(false);
@@ -97,15 +135,12 @@ const Dashboard = () => {
     return values;
   };
 
-  Logger.info(pageState);
-
   return (
     <Fragment>
       {(showLoader || (formSchema && formSchema.length === 0)) && <CustomSpinner />}
-      {formSchema && formSchema.length > 0 && (
+      {!showLoader && formSchema && formSchema.length > 0 && (
         <DashboardPage
           pageState={pageState}
-          goForward={goForward}
           goBack={goBack}
           formSchema={formSchema}
           tailLayout={tailLayout}
