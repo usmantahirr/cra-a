@@ -79,11 +79,11 @@ const Header = props => {
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Source:</span>
           <strong>{_renderSourceLocation()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>

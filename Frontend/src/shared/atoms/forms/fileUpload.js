@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Upload, message } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,10 +6,15 @@ import Button from '../buttons';
 import uploadService from '../../../modules/dashboard/services/upload.service';
 import CustomSpinner from '../spinner';
 
-function CustomUpload({ name, ...props }) {
+function CustomUpload({ name, applicationFormData, ...props }) {
   const [fileList, updateFileList] = useState([]);
   const [loading, setLoading] = useState(false);
   const allowedExtensions = ['pdf', 'png', 'jpeg', 'jpg'];
+
+  useEffect(() => {
+    if (applicationFormData.fileUpload && applicationFormData.fileUpload.fileList)
+      updateFileList([...applicationFormData.fileUpload.fileList]);
+  }, []);
 
   const allowedFileExtension = fileName => {
     const splittedArray = fileName.split('.');
