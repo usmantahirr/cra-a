@@ -1,9 +1,11 @@
 import React from 'react';
 // import React, { useContext } from 'react';
-import { Layout, Form, Row, Col } from 'antd';
+import { Layout, Form, Row, Col, Modal } from 'antd';
+
 import CustomScroll from 'react-custom-scroll';
 // import NotificationContext from '../modules/notification/context';
 // import ErrorContext from '../modules/error/context';
+import Button from '../atoms/buttons';
 import DashboardTemplate from '../templates/dashboardTemplate';
 import Header from '../molecules/header';
 import Footer from '../molecules/footer';
@@ -59,6 +61,7 @@ const Dashboard = props => {
     const [form] = Form.useForm(); // TODO: can cause issue
     const { name, initialValues } = step;
     const { layout, onFinish, onFinishFailed, onFieldsChange, onFormValueChanges } = props;
+
     return (
       <Form
         key={`${step.id}${name}`}
@@ -81,6 +84,23 @@ const Dashboard = props => {
           </CustomScroll>
         </div>
         {_renderFormButtons(currStep === stepsCount - 1)}
+
+        <Modal centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
+          <div className="custompopup-text">Submitted Successfully For Test</div>
+          <div className="custom-content-holder">
+            <div className="text-holder">
+              <h3 className="title">Medical Test REGISTRATION Application NO. 59065</h3>
+              <p>
+                Kindly visit the selected facility to proceed with the test. a copy of the application has been emailed
+                to you on your email address. acd@yahoo.com and downloaded on your system. please bring a copy of your
+                application to the appointment.
+              </p>
+            </div>
+            <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+              Go back to home page
+            </Button>
+          </div>
+        </Modal>
       </Form>
     );
   };

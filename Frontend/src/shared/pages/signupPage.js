@@ -85,10 +85,10 @@ const Signup = ({
         className="custom-popup otp-popup"
         width={590}
       >
-        <div className="otp-text">
+        <div className="custompopup-text">
           Please Enter Your OTP Sent To Your Mobile Number And Pin Number Sent To Your Email Address
         </div>
-        <div className="otp-form-holder">
+        <div className="custom-content-holder">
           <Form className="transbg-form" form={otpForm} name="verifyOTP" onFinish={handleVerifySubmit}>
             <div className="otp-timer">
               <InputCustom

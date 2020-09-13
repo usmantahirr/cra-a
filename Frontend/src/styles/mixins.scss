@@ -112,3 +112,42 @@
   -ms-align-self: $align;
   align-self: $align;
 }
+
+
+@mixin for-size($size) {
+  @if $size==phone-only {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @else if $size==phone-sm {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @else if $size==tablet-portrait-up {
+    @media (min-width: 576px) {
+      @content;
+    }
+  }
+
+  @else if $size==tablet-only {
+    @media (min-width: 768px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $size==desktop {
+    @media (min-width: 1400px) {
+      @content;
+    }
+  }
+
+  @else if $size==desktop-lg {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  }
+}
