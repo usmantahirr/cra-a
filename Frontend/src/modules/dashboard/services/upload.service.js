@@ -11,7 +11,7 @@ class UploadService {
     });
   }
 
-  createContainer = payload => {
+  createBlob = payload => {
     return this.http.post(FILE_UPLOAD, payload);
   };
 
@@ -22,9 +22,7 @@ class UploadService {
         'Content-Type': 'application/octet-stream',
       },
     };
-    const formData = new FormData();
-    formData.append('file', payload);
-    return axios.post(url, formData, options);
+    return axios.put(url, payload, options);
   };
 }
 export default new UploadService();
