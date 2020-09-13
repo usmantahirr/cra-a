@@ -3,13 +3,11 @@ import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
-import { loadVisaTypeOptions } from '../../utilities';
 
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
-  const [visaTypeOptions, setVisaTypeOptions] = React.useState();
   const { formSchema, pageState, pageHeader } = props;
 
   useEffect(() => {
@@ -22,30 +20,32 @@ const Header = props => {
       if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
         Object.keys(applicationFormData[form]).forEach(formField => {
           if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-            if (formField === 'applicantName') {
-              newApplicationSummary.applicantName = applicationFormData[form][formField];
-            }
-            if (formField === 'sourceCountry') {
-              newApplicationSummary.sourceCountry = applicationFormData[form][formField];
-            }
-            if (formField === 'sourceState') {
-              newApplicationSummary.sourceState = applicationFormData[form][formField];
-            }
-            if (formField === 'sourceCity') {
-              newApplicationSummary.sourceCity = applicationFormData[form][formField];
-            }
-            if (formField === 'destCountry') {
-              newApplicationSummary.destCountry = applicationFormData[form][formField];
-            }
-            if (formField === 'destState') {
-              newApplicationSummary.destState = applicationFormData[form][formField];
-            }
-            if (formField === 'destCity') {
-              newApplicationSummary.destCity = applicationFormData[form][formField];
-            }
-            if (formField === 'visaType') {
-              newApplicationSummary.visaType = applicationFormData[form][formField];
-            }
+            newApplicationSummary[formField] = applicationFormData[form][formField];
+            // if (formField === 'applicantName') {
+            //   newApplicationSummary.applicantName = applicationFormData[form][formField];
+            // }
+            // if (formField === 'sourceCountry') {
+            //   newApplicationSummary.sourceCountry = applicationFormData[form][formField];
+            // }
+            // if (formField === 'sourceState') {
+            //   newApplicationSummary.sourceState = applicationFormData[form][formField];
+            // }
+            // if (formField === 'sourceCity') {
+            //   newApplicationSummary.sourceCity = applicationFormData[form][formField];
+            // }
+            // if (formField === 'destCountry') {
+            //   newApplicationSummary.destCountry = applicationFormData[form][formField];
+            // }
+            // if (formField === 'destState') {
+            //   newApplicationSummary.destState = applicationFormData[form][formField];
+            // }
+            // if (formField === 'destCity') {
+            //   newApplicationSummary.destCity = applicationFormData[form][formField];
+            // }
+            // if (formField === 'visaType') {
+            //   newApplicationSummary.visaType = applicationFormData[form][formField];
+            // }
+            // if(formField === )
           }
         });
       }
@@ -63,10 +63,6 @@ const Header = props => {
 
   const _renderApplicationId = () => {
     return applicationSummaryData.applicationId || 'DUMMY_ID';
-  };
-
-  const _renderApplicantName = () => {
-    return applicationSummaryData.applicantName || '';
   };
 
   const _renderSourceLocation = () => {
@@ -95,41 +91,22 @@ const Header = props => {
     return destinationArray.join(', ');
   };
 
-  const getVisaTypeOptions = () => {
-    if (visaTypeOptions) {
-      return visaTypeOptions;
-    }
-
-    const options = loadVisaTypeOptions(formSchema);
-    setVisaTypeOptions(options);
-    return options;
-  };
-
-  const _renderSelectedVisaType = visaTypeValue => {
-    if (!visaTypeValue) {
-      return null;
-    }
-
-    const options = getVisaTypeOptions() || [];
-    for (let i = 0; i < options.length; i += 1) {
-      if (options[i].value === visaTypeValue) {
-        return options[i].text;
-      }
-    }
-
-    return '';
-  };
-
   const _renderApplicationSummary = () => {
+    const scopeArray = [
+      'name',
+      'passportId',
+      'labCountryName',
+      'labStateName',
+      'labCityName',
+      'labServiceType',
+      'labName',
+    ];
+
     return (
       <Row>
-        <Col span={4}>
+        <Col span={6}>
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
-        </Col>
-        <Col span={4}>
-          <span>Applicant Name:</span>
-          <strong>{_renderApplicantName()}</strong>
         </Col>
         <Col span={6}>
           <span>Source:</span>
@@ -139,10 +116,24 @@ const Header = props => {
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Visa Type:</span>
-          <strong>{_renderSelectedVisaType(applicationSummaryData.visaType)}</strong>
+          {/* <strong>{_renderSelectedVisaType(applicationSummaryData.visaType)}</strong> */}
+          <strong>
+            {applicationSummaryData.passengerType +
+              (applicationSummaryData.visaType ? `, ${applicationSummaryData.visaType}` : '')}
+          </strong>
         </Col>
+        {scopeArray.map(control => {
+          if (applicationSummaryData[control])
+            return (
+              <Col span={6}>
+                <span>{control}</span>
+                <strong>{applicationSummaryData[control]}</strong>
+              </Col>
+            );
+          return null;
+        })}
       </Row>
     );
   };
