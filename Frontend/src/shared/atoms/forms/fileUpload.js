@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Upload, message } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -84,7 +84,7 @@ function CustomUpload({ name, applicationFormData, ...props }) {
   };
 
   return (
-    <Fragment>
+    <div style={{ textAlign: 'center' }}>
       {loading && <CustomSpinner />}
       {
         <Form.Item
@@ -119,7 +119,7 @@ function CustomUpload({ name, applicationFormData, ...props }) {
           </Upload>
         </Form.Item>
       }
-    </Fragment>
+    </div>
   );
 }
 
