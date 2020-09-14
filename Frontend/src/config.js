@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://purehealthpoc.azurewebsites.net/api/';
+export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
 export const API_BASE_URL2 = 'https://purehealthpoc.azurewebsites.net/api/';
 export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
 // export const API_AUTH_BASE_URL = 'https://purehealthuserregistration.azurewebsites.net/';

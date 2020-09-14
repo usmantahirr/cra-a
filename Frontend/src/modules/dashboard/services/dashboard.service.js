@@ -19,7 +19,7 @@ class DashboardService {
   getApplicationById = id =>
     this.api
       .get(APPLICATION, id)
-      .then(res => res)
+      .then(res => res.data)
       .catch(e => {
         throw e;
       });
@@ -27,7 +27,7 @@ class DashboardService {
   createApplication = body =>
     this.api
       .post(APPLICATION, body)
-      .then(res => res)
+      .then(res => res.data)
       .catch(e => {
         throw e;
       });
@@ -35,7 +35,7 @@ class DashboardService {
   updateApplication = (uid, body) =>
     this.api
       .put(APPLICATION, body, uid)
-      .then(res => res)
+      .then(res => res.data)
       .catch(e => {
         throw e;
       });

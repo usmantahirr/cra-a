@@ -7,25 +7,21 @@ import styles from './style.module.scss';
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
-  const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
-  const { formSchema, pageState, pageHeader } = props;
+  // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
+  const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
 
   useEffect(() => {
-    const { applicationFormData } = props;
-    if (!applicationFormData) {
-      return;
-    }
-    const newApplicationSummary = {};
-    Object.keys(applicationFormData).forEach(form => {
-      if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
-        Object.keys(applicationFormData[form]).forEach(formField => {
-          if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-            newApplicationSummary[formField] = applicationFormData[form][formField];
-          }
-        });
-      }
-    });
-    setApplicationSummaryData(newApplicationSummary);
+    // const newApplicationSummary = {};
+    // Object.keys(applicationFormData).forEach(form => {
+    //   if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
+    //     Object.keys(applicationFormData[form]).forEach(formField => {
+    //       if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
+    //         newApplicationSummary[formField] = applicationFormData[form][formField];
+    //       }
+    //     });
+    //   }
+    // });
+    // setApplicationSummaryData(newApplicationSummary);
   }, [props]);
 
   if (pageHeader) {
@@ -37,49 +33,49 @@ const Header = props => {
   }
 
   const _renderApplicationId = () => {
-    return applicationSummaryData.applicationId || 'DUMMY_ID';
+    return applicationId;
   };
 
   const _renderSourceLocation = () => {
     const sourceArray = [];
-    if (applicationSummaryData) {
-      if (applicationSummaryData.sourceCountry && applicationSummaryData.sourceCountry.label)
-        sourceArray.push(applicationSummaryData.sourceCountry.label);
-      if (applicationSummaryData.sourceState && applicationSummaryData.sourceState.label)
-        sourceArray.push(applicationSummaryData.sourceState.label);
-      if (applicationSummaryData.sourceCity && applicationSummaryData.sourceCity.label)
-        sourceArray.push(applicationSummaryData.sourceCity.label);
+    if (applicationFormData) {
+      if (applicationFormData.sourceCountry && applicationFormData.sourceCountry.label)
+        sourceArray.push(applicationFormData.sourceCountry.label);
+      if (applicationFormData.sourceState && applicationFormData.sourceState.label)
+        sourceArray.push(applicationFormData.sourceState.label);
+      if (applicationFormData.sourceCity && applicationFormData.sourceCity.label)
+        sourceArray.push(applicationFormData.sourceCity.label);
     }
     return sourceArray.join(', ');
   };
 
   const _renderDestinationLocation = () => {
     const destinationArray = [];
-    if (applicationSummaryData) {
-      if (applicationSummaryData.destCountry && applicationSummaryData.destCountry.label)
-        destinationArray.push(applicationSummaryData.destCountry.label);
-      if (applicationSummaryData.destState && applicationSummaryData.destState.label)
-        destinationArray.push(applicationSummaryData.destState.label);
-      if (applicationSummaryData.destCity && applicationSummaryData.destCity.label)
-        destinationArray.push(applicationSummaryData.destCity.label);
+    if (applicationFormData) {
+      if (applicationFormData.destCountry && applicationFormData.destCountry.label)
+        destinationArray.push(applicationFormData.destCountry.label);
+      if (applicationFormData.destState && applicationFormData.destState.label)
+        destinationArray.push(applicationFormData.destState.label);
+      if (applicationFormData.destCity && applicationFormData.destCity.label)
+        destinationArray.push(applicationFormData.destCity.label);
     }
     return destinationArray.join(', ');
   };
 
   const _renderApplicationSummary = () => {
-    const scopeArray = [
-      'name',
-      'passportId',
-      'labCountryName',
-      'labStateName',
-      'labCityName',
-      'labServiceType',
-      'labName',
-    ];
+    // const scopeArray = [
+    //   'name',
+    //   'passportId',
+    //   'labCountryName',
+    //   'labStateName',
+    //   'labCityName',
+    //   'labServiceType',
+    //   'labName',
+    // ];
 
     return (
       <Row>
-        <Col span={6}>
+        <Col span={4}>
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
@@ -91,23 +87,35 @@ const Header = props => {
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
-        <Col span={6}>
+        <Col span={4}>
           <span>Visa Type:</span>
           <strong>
-            {applicationSummaryData.passengerType +
-              (applicationSummaryData.visaType ? `, ${applicationSummaryData.visaType}` : '')}
+            {applicationFormData.passengerType +
+              (applicationFormData.visaType ? `, ${applicationFormData.visaType}` : '')}
           </strong>
         </Col>
-        {scopeArray.map(control => {
-          if (applicationSummaryData[control])
+        <Col span={4}>
+          <span>Applicant Name:</span>
+          <strong>{applicationFormData.name}</strong>
+        </Col>
+        {/* {scopeArray.map(control => {
+          if (applicationFormData[control])
             return (
               <Col span={6}>
                 <span>{control}</span>
-                <strong>{applicationSummaryData[control]}</strong>
+<<<<<<< HEAD
+                <strong>
+                  {moment.isMoment(applicationSummaryData[control])
+                    ? applicationSummaryData[control].toString()
+                    : applicationSummaryData[control]}
+                </strong>
+=======
+                <strong>{applicationFormData[control]}</strong>
+>>>>>>> 459e6b97457a616eadfd05cc476868a9da088050
               </Col>
             );
           return null;
-        })}
+        })} */}
       </Row>
     );
   };

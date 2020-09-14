@@ -11,22 +11,17 @@ import CustomFormItem from '../modules/customForm/customFormItem';
 const { Content } = Layout;
 
 const Dashboard = props => {
-  const { goBack, formSchema, pageState, applicationFormData } = props;
+  const { goBack, formSchema, pageState, applicationFormData, applicationId } = props;
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
     if (colSize)
       return fieldArray.map(field => (
         <Col span={colSize}>
-          <CustomFormItem
-            key={field.id}
-            {...field}
-            form={form}
-            applicationFormData={applicationFormData}
-          ></CustomFormItem>
+          <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
         </Col>
       ));
     return fieldArray.map(field => (
-      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData}></CustomFormItem>
+      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
     ));
   };
 
@@ -52,20 +47,19 @@ const Dashboard = props => {
     return <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />;
   };
 
-  const _renderStepForm = (step, stepsCount, currStep, currIndex) => {
+  const _renderStepForm = (step, stepsCount, currStep) => {
     const [form] = Form.useForm(); // TODO: can cause issue
-    const { name, initialValues } = step;
+    const { name } = step;
     const { layout, onFinish, onFinishFailed, onFieldsChange, onFormValueChanges } = props;
 
     return (
       <Form
         key={`${step.id}${name}`}
-        hidden={currIndex !== currStep}
         {...layout}
         name={name}
         form={form}
         layout="vertical"
-        initialValues={initialValues}
+        initialValues={applicationFormData}
         onFinish={result => onFinish(result, currStep)}
         onFinishFailed={result => onFinishFailed(result, currStep)}
         onFieldsChange={onFieldsChange}
@@ -99,12 +93,22 @@ const Dashboard = props => {
   };
 
   const _renderStepsBody = (schema, currStep) => {
-    return schema && schema.map((step, currIndex) => _renderStepForm(step, schema.length, currStep, currIndex));
+    return (
+      schema &&
+      schema.map(
+        (step, currIndex) => currIndex === currStep && _renderStepForm(step, schema.length, currStep, currIndex)
+      )
+    );
   };
 
   return (
     <DashboardTemplate>
-      <Header pageState={pageState} formSchema={formSchema} applicationFormData={applicationFormData} />
+      <Header
+        pageState={pageState}
+        formSchema={formSchema}
+        applicationFormData={applicationFormData}
+        applicationId={applicationId}
+      />
       <Content className="content-holder">{_renderStepsBody(formSchema, pageState.curr)}</Content>
     </DashboardTemplate>
   );

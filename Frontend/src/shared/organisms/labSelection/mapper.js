@@ -19,15 +19,15 @@ export function cityResponseMapper(inputCities) {
 }
 
 export function labsResponseMapper(inputLabs) {
-  const labs = inputLabs.map(data => {
+  const labs = inputLabs.labs.map(data => {
     return {
       id: data._id,
       name: data.name,
       // city: data.city,
-      services: data.services,
+      services: data.serviceTypes,
       pos: {
         lat: Number(data.latitude),
-        lng: Number(data.longitude),
+        lng: Number(data.logitude),
       },
     };
   });
@@ -60,7 +60,7 @@ const getFieldValues = (data, objectProp, prop) => {
     return '';
   }
   // eslint-disable-next-line
-  return data[0] ? (data[0][objectProp] ? data[0][objectProp][prop] || '' : '') : '';
+  return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
 };
 
 export function parsePropData(props) {

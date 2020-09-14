@@ -1,25 +1,28 @@
 import API, { contentType } from '../../../api';
-import { API_BASE_URL2 } from '../../../config';
-import { GET_STATES_BY_COUNTRY, GET_CITIES_BY_STATE, GET_LABS_BY_CITY } from '../../../api/endpoints';
+import { API_BASE_URL } from '../../../config';
 
 class MapSerivces {
   constructor() {
     this.http = new API({
       headers: { contentType: contentType.json },
-      baseURL: API_BASE_URL2,
+      baseURL: API_BASE_URL,
     });
   }
 
   getStatesByCountry = id => {
-    return this.http.get(GET_STATES_BY_COUNTRY, id);
+    return this.http.get(`country/${id}/states`);
   };
 
   getCitiesByState = id => {
-    return this.http.get(GET_CITIES_BY_STATE, id);
+    return this.http.get(`state/${id}/cities`);
+  };
+
+  getCitiesByCountry = id => {
+    return this.http.get(`country/${id}/cities`);
   };
 
   getLabsByCity = id => {
-    return this.http.get(GET_LABS_BY_CITY, id);
+    return this.http.get(`city/${id}/labs`);
   };
 }
 export default new MapSerivces();

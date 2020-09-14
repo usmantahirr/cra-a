@@ -5,7 +5,7 @@ import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
-  const { form, country, city, state, zipCode } = props;
+  const { form, country, city, state, zipCode, isDesitination } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -14,8 +14,17 @@ const CountryStateCity = props => {
   const fetchCountries = async () => {
     try {
       const { data } = await service.getCountries();
-      if (data && data.length > 0) setCountries(data);
-      else setCountries([]);
+      if (data && data.length > 0) {
+        if (isDesitination) {
+          setCountries(
+            data.filter(c => {
+              return c.isDestination === true;
+            })
+          );
+        } else {
+          setCountries(data);
+        }
+      } else setCountries([]);
       // form.setFieldsValue({
       //   [country.name]: { value: '5f589189175c69424c936728' },
       // });
@@ -48,6 +57,16 @@ const CountryStateCity = props => {
     }
   };
 
+  const fetchCitiesByState = async id => {
+    try {
+      const { data } = await service.getCityByState(id);
+      if (data && data.length > 0) setCities(data);
+      else setCities([]);
+    } catch (error) {
+      setCities([]);
+    }
+  };
+
   const onCountryChange = e => {
     form.setFieldsValue({
       [state.name]: undefined,
@@ -57,7 +76,7 @@ const CountryStateCity = props => {
     setCities([]);
     if (e && e.value) {
       const selected = countries.find(c => c._id === e.value);
-      if (selected && selected.iso_code === 'USA') {
+      if (selected && selected.isoCode === 'US') {
         setShowState(true);
         fetchStates(e.value);
       } else {
@@ -75,7 +94,7 @@ const CountryStateCity = props => {
     });
     setCities([]);
     if (e && e.value) {
-      fetchCities(e.value);
+      fetchCitiesByState(e.value);
     }
   };
 
