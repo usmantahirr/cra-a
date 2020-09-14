@@ -126,7 +126,7 @@ const CountryStateCity = props => {
     return () => {
       setComponentMounted(false);
     };
-  }, []);
+  }, [componentMounted]);
 
   const onCountryChange = e => {
     form.setFieldsValue({
