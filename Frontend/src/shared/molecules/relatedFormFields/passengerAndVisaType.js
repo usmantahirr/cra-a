@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from 'antd';
 import { CustomRadio } from '../../atoms/forms';
 import RadioGroupRound from '../../atoms/radio/radioGroupRound';
 
 const PassengerAndVisaType = props => {
   //   console.log('PSVT props ', props);
-  const { passengerRules, visaRules, passengerOptions, visaOptions } = props;
   const [passengerType, setPassengerType] = useState('');
+  const { passengerRules, visaRules, passengerOptions, visaOptions } = props;
+
+  useEffect(() => {
+    if (props.applicationFormData.passengerType === 'Visitor') {
+      setPassengerType('Visitor');
+    }
+  }, []);
 
   const onPassengerTypeChange = ({ target: { value } }) => {
     // console.log(value);
