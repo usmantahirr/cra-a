@@ -6,6 +6,7 @@ import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
   const { form, country, city, state, zipCode, isDesitination } = props;
+  const [componentMounted, setComponentMounted] = useState(false);
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -71,6 +72,7 @@ const CountryStateCity = props => {
   };
 
   useEffect(() => {
+    setComponentMounted(true);
     async function fetchInitialLists() {
       const countryList = await fetchCountries();
 
@@ -117,7 +119,13 @@ const CountryStateCity = props => {
       }
     }
 
-    fetchInitialLists();
+    if (componentMounted) {
+      fetchInitialLists();
+    }
+
+    return () => {
+      setComponentMounted(false);
+    };
   }, []);
 
   const onCountryChange = e => {
