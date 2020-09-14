@@ -28,3 +28,5 @@ export const TEST_RESULT_TYPES = {
   BORDER_LINE: 'Border Line',
   IN_CONCLUSIVE: 'In-conclusive',
 };
+
+export const MAP_KEY = 'AIzaSyC5wzEBHV_vzzybukHvJDqp0XsglftJvUY';

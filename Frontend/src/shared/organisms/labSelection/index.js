@@ -18,6 +18,7 @@ import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
+import CustomSpinner from '../../atoms/spinner';
 
 const LabSelection = props => {
   const { form, applicationFormData } = props;
@@ -65,7 +66,7 @@ const LabSelection = props => {
   useEffect(() => {
     async function Init() {
       const formState = getFormField('labState', applicationFormData);
-      const currentState = formState ? formState.text : stateId;
+      const currentState = formState ? formState.value : stateId;
       let { data: statesResponse = [] } = currentState ? await MapService.getStatesByCountry(countryId) : {};
 
       // cities by country
@@ -75,7 +76,7 @@ const LabSelection = props => {
 
       // labs by city
       const currentCityState = getFormField('labCity', applicationFormData);
-      const currentCity = currentCityState ? currentCityState.text : cityId;
+      const currentCity = currentCityState ? currentCityState.value : cityId;
 
       let { data: labsResponse = [] } = currentCity ? await MapService.getLabsByCity(currentCity) : { labs: [] };
 
@@ -170,7 +171,7 @@ const LabSelection = props => {
     form.setFieldsValue({ labCity: value });
     form.setFieldsValue({ serviceType: '' });
   };
-
+  // eslint-disable-next-line
   const onServiceChange = async selected => {
     let filteredLabs = [];
     setFilterState(prevState => {
@@ -199,13 +200,14 @@ const LabSelection = props => {
 
   return countryId && cityId ? (
     <Fragment>
+      {filterState && filterState.cityLabs.length === 0 ? <CustomSpinner /> : ''}
       <MapFilter
         countryCode={stateId}
         country={country}
         visaType={visaType}
         onStateChange={onStateChange}
         onCityChange={onCityChange}
-        onServiceChange={onServiceChange}
+        // onServiceChange={onServiceChange}
         filterState={filterState}
       />
       <div className="card-section">
