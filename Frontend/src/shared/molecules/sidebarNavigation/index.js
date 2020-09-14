@@ -5,13 +5,13 @@ import styles from './style.module.scss';
 
 const content = [
   {
-    text: 'Medical Test Registration',
+    text: 'New Applicaiton',
     icon: '/assets/icons/registration-icon',
     link: '/register',
     isActive: true,
   },
   {
-    text: 'Manage Application',
+    text: 'Manage Applications',
     icon: '/assets/icons/manage-application-icon',
     link: '/manage-application',
     isActive: false,
@@ -19,8 +19,9 @@ const content = [
   {
     text: 'Frequently Asked Questions',
     icon: '/assets/icons/faq-icon',
-    link: '/faq',
+    link: 'https://screening.purehealth.ae/sapi/images/I_PH_Covid_Testing_FAQs.pdf',
     isActive: false,
+    external: true,
   },
   {
     text: 'More info on Covid',
