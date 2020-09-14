@@ -90,7 +90,7 @@ export function getCity(cities, selectedCity) {
 
 export function getLab(labs, selectedLab) {
   if (labs.length) {
-    return labs.filter(x => x.id === selectedLab)[0];
+    return labs.find(x => x.id === selectedLab);
   }
   return undefined;
 }
@@ -104,4 +104,8 @@ export function getServiceType(servicTypes, selectedServiceType) {
 
 export function getCardOptionObject(place) {
   return place.id;
+}
+
+export function getFormField(local, formData) {
+  return formData[local];
 }
