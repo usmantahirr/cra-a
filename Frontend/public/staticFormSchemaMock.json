@@ -575,7 +575,7 @@
                 "name": "gender",
                 "order": 8,
                 "type": "text"
-              }, 
+              },
               {
                 "label": "Country",
                 "name": "country",
@@ -617,76 +617,15 @@
       {
         "fieldArray": [
           {
-            "name": "payment",
+            "name": "paymentModule",
             "label": "Payment Type",
             "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST7S1F1asdasdasd",
-            "options": [
-              {
-                "value": 1001,
-                "text": "Cash",
-                "id": "ST8S1F101"
-              },
-              {
-                "value": 2,
-                "text": "Paypal",
-                "id": "ST8S1F102"
-              }
-            ]
+            "type": "customComponent",
+            "id": "ST8Payment"
           }
         ],
         "sectionTitle": "",
-        "id": "ST8S1"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "cardType",
-            "label": "Card Type",
-            "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST8S1F1",
-            "options": [
-              {
-                "value": 1001,
-                "text": "DEBIT",
-                "id": "ST8S2F101"
-              },
-              {
-                "value": 2,
-                "text": "CREDIT",
-                "id": "ST8S2F102"
-              }
-            ]
-          },
-          {
-            "name": "cardNo",
-            "label": "Card Number",
-            "type": "text",
-            "id": "ST8S2F2"
-          },
-          {
-            "name": "ced",
-            "label": "Card Expiry",
-            "type": "date",
-            "id": "ST8S2F3"
-          },
-          {
-            "name": "cw",
-            "label": "CVV",
-            "type": "text",
-            "id": "ST8S2F4"
-          },
-          {
-            "name": "postalCode",
-            "label": "Postal Code",
-            "type": "text",
-            "id": "ST8S2F5"
-          }
-        ],
-        "sectionTitle": "Payment By Card",
-        "id": "ST8S2"
+        "id": "ST8-Payment"
       }
     ]
   }
