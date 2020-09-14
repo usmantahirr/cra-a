@@ -5,6 +5,7 @@ import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
+  const [componentMounted, setComponentMounted] = useState(false);
   const { form, country, city, state, zipCode, isDesitination, applicationFormData, setApplicationFormData } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -71,6 +72,7 @@ const CountryStateCity = props => {
   };
 
   useEffect(() => {
+    setComponentMounted(true);
     async function fetchInitialLists() {
       const countryList = await fetchCountries();
 
@@ -117,7 +119,13 @@ const CountryStateCity = props => {
       }
     }
 
-    fetchInitialLists();
+    if (componentMounted) {
+      fetchInitialLists();
+    }
+
+    return () => {
+      setComponentMounted(false);
+    };
   }, []);
 
   const onCountryChange = e => {
