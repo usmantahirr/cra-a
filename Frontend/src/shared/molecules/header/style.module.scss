@@ -6,11 +6,23 @@
   padding: 0;
   line-height: normal;
 
+  @media screen and (max-width: 1400px) {
+    height: 85px;
+  }
+
   .headerbg {
     background-color: rgba($primary, .37);
     padding: 25px;
     height: 100px;
     color: $white;
+
+    @media screen and (max-width: 1400px) {
+      padding: 15px 25px;
+    }
+
+    @media screen and (max-width: 1400px) {
+      height: 85px;
+    }
 
     .counterLeft {
       float: left;
@@ -38,10 +50,14 @@
 
 .appSummery {
   background-color: #F5F5F5;
-  padding: 20px 50px;
+  padding: 20px 25px;
   font-size: 0.8125rem;
   @include shadow(0 6px 12px -9px rgba(0, 0, 0, .1));
   border-bottom: 1px solid rgba($gray, .1);
+
+  @media screen and (max-width: 1400px) {
+    padding: 15px 25px;
+  }
 
   span,
   strong {
@@ -52,5 +68,9 @@
     font-weight: 600;
     color: $primary;
     margin-top: 10px;
+
+    @media screen and (max-width: 1400px) {
+      margin-top: 5px;
+    }
   }
 }

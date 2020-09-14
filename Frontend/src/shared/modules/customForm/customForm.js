@@ -17,6 +17,12 @@ function CustomForm(props) {
     return fieldArray.map(field => <CustomFormItem key={field.id} {...field} form={form}></CustomFormItem>);
   };
 
+  const _renderRowArray = (rowArray, form) => {
+    return rowArray.map(row => {
+      return `${row.fieldArray && _renderFieldArray(row.fieldArray, form)}<br />`;
+    });
+  };
+
   const _renderSection = (section, form) => {
     // Each div represents a form section
     // Form sections can be aligned horionztally or vertically
@@ -25,7 +31,8 @@ function CustomForm(props) {
     return (
       <div key={section.id}>
         <h3>{section.sectionTitle}</h3>
-        {_renderFieldArray(section.fieldArray, form)}
+        {(section.fieldArray && _renderFieldArray(section.fieldArray, form)) ||
+          (section.rowArray && _renderRowArray(section.rowArray, form))}
       </div>
     );
   };

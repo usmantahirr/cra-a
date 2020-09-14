@@ -5,6 +5,11 @@
   font-weight: 600;
   margin-top: 6px;
 
+  @media screen and (max-width: 1400px) {
+    font-size: 1.125rem;
+    margin-top: 10px;
+  }
+
   .count {
     background-color: #0086D3;
     border-radius: 50%;
@@ -16,6 +21,12 @@
     vertical-align: middle;
     text-align: center;
     line-height: 34px;
+
+    @media screen and (max-width: 1400px) {
+      width: 38px;
+      height: 38px;
+      line-height: 29px;
+    }
   }
 
   .text {
@@ -25,6 +36,12 @@
     margin-left: 10px;
     display: inline-block;
     vertical-align: middle;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 1.25rem;
+    }
+
+
   }
 
 }

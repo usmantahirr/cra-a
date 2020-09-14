@@ -22,16 +22,12 @@ const SidebarFooter = () => {
           <Form.Item>
             <CustomSelect
               name="language"
+              defaultValue="en"
               options={[
                 {
                   text: 'English',
                   value: 'en',
                   id: '1',
-                },
-                {
-                  text: 'Arabic',
-                  value: 'ar',
-                  id: '2',
                 },
               ]}
             />

@@ -12,6 +12,10 @@
                 >td {
                     padding-bottom: 0;
                     padding-right: 30px;
+
+                    .ant-form-item {
+                        margin: 0;
+                    }
                 }
             }
         }
@@ -26,12 +30,21 @@
 
             .ant-descriptions-item-label {
                 margin-bottom: 8px;
+
+                @media screen and (max-width: 1400px) {
+                    font-size: 0.75rem;
+                }
             }
 
             .ant-descriptions-item-content {
                 font-size: 0.8125rem;
                 color: $primary;
                 font-weight: 600;
+
+                @media screen and (max-width: 1400px) {
+                    font-size: 0.8125rem;
+                }
+
 
                 .custom-control-sm {
                     .ant-select-selector {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button as AntButton, Badge, Image } from 'antd';
 // import { UserOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -8,9 +8,26 @@ import MSALService from '../../../modules/auth/services/msal.service';
 import styles from './style.module.scss';
 
 const ProfileCard = () => {
+  const [user, setUser] = useState(null);
   const logout = () => {
     localStorage.clear();
     MSALService.logout();
+  };
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, []);
+
+  const getNameInitial = name => {
+    if (name) {
+      return name
+        .match(/(\b\S)?/g)
+        .join('')
+        .match(/(^\S|\S$)?/g)
+        .join('')
+        .toUpperCase();
+    }
+    return '';
   };
 
   // const menu = (
@@ -37,10 +54,10 @@ const ProfileCard = () => {
   return (
     <div className={styles.profileCard}>
       <div className={styles.initials}>
-        <div className={styles.inName}>AS</div>
+        <div className={styles.inName}>{user && getNameInitial(user.name)}</div>
       </div>
       <div className={styles.name}>
-        Ahmed Saeed Hashmi
+        {user && user.name}
         {/* <Dropdown overlay={menu} placement="bottomCenter">
           <AntButton shape="circle" className={styles.dropdownButton} onClick={e => e.preventDefault()}>
             <DownOutlined className={styles.caret} />

@@ -1,7 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
+import { RED_PIN, BLUE_PIN } from './mapConfig';
 
 const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerClickHandler }) => {
+  // Fit map bounds to contain all markers
+  const [places, setPlaces] = useState(null);
+
   // The things we need to track in state
   // eslint-disable-next-line
   const [mapRef, setMapRef] = useState(null);
@@ -17,20 +21,25 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
   // This could be a data-driven prop.
 
   // Iterate myPlaces to size, center, and zoom map to contain all markers
-  const fitBounds = map => {
-    const bounds = new window.google.maps.LatLngBounds();
-    myPlaces.map(place => {
-      bounds.extend(place.pos);
-      return place.id;
-    });
-    map.fitBounds(bounds);
+  const fitBounds = () => {
+    if (places !== myPlaces && myPlaces.length && myPlaces.length > 1 && window.google) {
+      setPlaces(myPlaces);
+      const bounds = new window.google.maps.LatLngBounds();
+      myPlaces.map(place => {
+        bounds.extend(place.pos);
+        return place.id;
+      });
+      if (mapRef) {
+        // setTimeout(() => {
+        mapRef.fitBounds(bounds);
+        // }, 1000);
+      }
+    }
   };
 
   const loadHandler = map => {
     // Store a reference to the google map instance in state
     setMapRef(map);
-    // Fit map bounds to contain all markers
-    fitBounds(map);
   };
 
   // We have to create a mapping of our places to actual Marker objects
@@ -44,13 +53,18 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
     return (
       <Fragment>
         <GoogleMap
+          // ref={map => map && map.fitBounds(bounds)}
           // Do stuff on map initial laod
+          options={{ mapTypeControl: false }}
           onLoad={loadHandler}
           center={center}
           zoom={zoom}
           mapContainerStyle={{
             height: '70vh',
             width: '100%',
+          }}
+          onTilesLoaded={() => {
+            fitBounds();
           }}
         >
           {myPlaces.map(place => (
@@ -60,14 +74,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
               onLoad={marker => markerLoadHandler(marker, place)}
               onClick={event => markerClickHandler(event, place)}
               // Not required, but if you want a custom icon:
-              //   icon={{
-              //     path:
-              //       'M12.75 0l-2.25 2.25 2.25 2.25-5.25 6h-5.25l4.125 4.125-6.375 8.452v0.923h0.923l8.452-6.375 4.125 4.125v-5.25l6-5.25 2.25 2.25 2.25-2.25-11.25-11.25zM10.5 12.75l-1.5-1.5 5.25-5.25 1.5 1.5-5.25 5.25z',
-              //     fillColor: '#0000ff',
-              //     fillOpacity: 1.0,
-              //     strokeWeight: 0,
-              //     scale: 1.25,
-              //   }}
+              icon={selectedPlace && selectedPlace.id === place.id ? BLUE_PIN : RED_PIN}
             />
           ))}
 
@@ -83,7 +90,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
     );
   };
 
-  return isLoaded ? renderMap() : null;
+  return isLoaded && myPlaces.length ? renderMap() : null;
 };
 
 export default MapContainer;

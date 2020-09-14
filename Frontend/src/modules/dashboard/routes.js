@@ -7,12 +7,12 @@ const DashboardRoutes = [
     path: APPLICATION_HOME,
   },
   {
-    Component: lazy(() => import('../../shared/pages/FormPage')),
-    path: '/dynamic-form',
+    Component: lazy(() => import('./container')),
+    path: `${APPLICATION_HOME}/:uid`,
   },
   {
-    Component: lazy(() => import('../../shared/organisms/grid/index')),
-    path: '/grid',
+    Component: lazy(() => import('./container')),
+    path: `${APPLICATION_HOME}/:uid/:stepId`,
   },
 ];
 

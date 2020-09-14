@@ -20,7 +20,11 @@ const termsAndConditions = ({ name }) => {
         >
           <CustomCheckbox>
             I Have Read And Accepted The{' '}
-            <a href="#" onClick={e => e.preventDefault()}>
+            <a
+              href="https://screening.purehealth.ae/sapi/images/TermsandConditions.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Terms & Conditions
             </a>
           </CustomCheckbox>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Radio } from 'antd';
+import { Card, Radio, Form } from 'antd';
 
 const CardRadio = props => {
   const { cartOptions, ...restProps } = props;
@@ -21,9 +21,11 @@ const CardRadio = props => {
     ));
 
   return (
-    <Radio.Group {...restProps} className="ant-radio-withoutLable">
-      {listItems}
-    </Radio.Group>
+    <Form.Item name="lab">
+      <Radio.Group {...restProps} className="ant-radio-withoutLable">
+        {listItems}
+      </Radio.Group>
+    </Form.Item>
   );
 };
 

@@ -3,23 +3,10 @@ import { Card, Col, Row } from 'antd';
 import * as moment from 'moment';
 
 const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
-  const merge = objs => {
-    const target = {};
-    const merger = obj => {
-      Object.keys(obj).forEach(prop => {
-        target[prop] = obj[prop];
-      });
-    };
-    Object.keys(objs).forEach(key => {
-      merger(objs[key]);
-    });
-    return target;
-  };
-
   const data =
     Object.keys(applicationFormData).length === 0 && applicationFormData.constructor === Object
       ? {}
-      : merge(applicationFormData);
+      : applicationFormData;
   const fields = fieldsToDisplay.sort((a, b) => a - b);
 
   const formatData = formData => {
@@ -37,9 +24,9 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
             fields.map(({ name, label }) => {
               return (
                 data[name] && (
-                  <Col span={6} className="cardinfo-box">
+                  <Col key={`${name}`} span={6} className="cardinfo-box">
                     <p className="label">{label}</p>
-                    <p className="info">{formatData(data[name])}</p>
+                    <p className="info">{formatData(data[name].label || formatData(data[name]))}</p>
                   </Col>
                 )
               );

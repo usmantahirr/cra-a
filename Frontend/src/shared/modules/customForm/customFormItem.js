@@ -13,7 +13,7 @@ import {
   CustomTextAreaInput,
 } from '../../atoms/forms';
 import { RadioGroup } from '../../atoms/radio/index';
-import ImageRadio from '../../molecules/imageRadio/index';
+// import ImageRadio from '../../molecules/imageRadio/index';
 
 import TestNickName from '../../molecules/relatedFormFields/testNickName';
 import CountryStateCity from '../../molecules/relatedFormFields/countryStateCity';
@@ -21,6 +21,7 @@ import PassengerAndVisaType from '../../molecules/relatedFormFields/passengerAnd
 import TermsAndConditions from '../../molecules/termsAndConditions';
 import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
+import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -36,7 +37,7 @@ class CustomFormItem extends React.PureComponent {
       case 'radioGroup':
         return <RadioGroup {...fieldProps} />;
       case 'imageRadio':
-        return <ImageRadio {...fieldProps} />;
+        return <ImgRadioCarusol {...fieldProps} />;
       case 'text':
         return <CustomTextInput {...fieldProps} />;
       case 'password':
@@ -54,7 +55,7 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
-  _renderCustomComponent = fieldProps => {
+  _renderCustomComponent = (fieldProps, applicationFormData) => {
     const componentName = fieldProps.name || '';
 
     switch (componentName) {
@@ -63,7 +64,7 @@ class CustomFormItem extends React.PureComponent {
       case 'testNickName':
         return <TestNickName {...fieldProps} />;
       case 'fileUpload':
-        return <CustomUpload {...fieldProps} />;
+        return <CustomUpload applicationFormData={applicationFormData} {...fieldProps} />;
       case 'countryStateCity':
         return <CountryStateCity {...fieldProps} />;
       case 'passengerAndVisaType':
@@ -89,16 +90,13 @@ class CustomFormItem extends React.PureComponent {
     hideField.forEach(field => {
       const { fieldName } = field;
       const { fieldValue } = field;
+      const { isEqual } = field;
 
-      Object.keys(applicationFormData).forEach(form => {
-        if (Object.prototype.hasOwnProperty.call(applicationFormData, form)) {
-          Object.keys(applicationFormData[form]).forEach(formField => {
-            if (Object.prototype.hasOwnProperty.call(applicationFormData[form], formField)) {
-              if (fieldName === formField && fieldValue === applicationFormData[form][formField]) {
-                hidden = true;
-              }
-            }
-          });
+      Object.keys(applicationFormData).forEach(formField => {
+        if (isEqual && fieldName === formField && fieldValue === applicationFormData[formField]) {
+          hidden = true;
+        } else if (!isEqual && fieldName === formField && fieldValue !== applicationFormData[formField]) {
+          hidden = true;
         }
       });
     });
@@ -113,9 +111,9 @@ class CustomFormItem extends React.PureComponent {
 
     return (
       <>
-        {!isCustomComponent && (
+        {!isCustomComponent && !this.isHidden(hideField, applicationFormData) && (
           <Form.Item
-            hidden={this.isHidden(hideField, applicationFormData)}
+            // hidden={this.isHidden(hideField, applicationFormData)}
             label={label}
             className="custom-item"
             name={name}
@@ -125,7 +123,7 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent({ applicationFormData, ...restOfProps })}
+        {isCustomComponent && this._renderCustomComponent(this.props, applicationFormData)}
       </>
     );
   }

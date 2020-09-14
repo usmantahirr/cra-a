@@ -22,7 +22,7 @@ export default class API {
       baseURL: config.baseURL || API_BASE_URL,
       headers: {
         Authorization: token ? `Bearer ${token}` : null,
-        'Content-Type': config.headers.contentType || contentType.json,
+        'Content-Type': config.headers && config.headers.contentType ? config.headers.contentType : contentType.json,
       },
       timeout: 20000,
     };

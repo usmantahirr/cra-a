@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import CustomScroll from 'react-custom-scroll';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import GroupBox from '../../modules/groupCheckbox/index';
-import Header from '../../molecules/header';
+
 // TODO: Move to modules
 const GridView = ({
   onGridReady,
@@ -17,13 +18,11 @@ const GridView = ({
   const [columnsVisible, setColumnsVisible] = useState(false);
   return (
     <>
-      <Header pageHeader />
       <div
         className="ag-theme-alpine custom-table"
         style={{
           height: '100%',
           width: '100%',
-          background: 'white',
         }}
       >
         <div className="custom-columns">
@@ -40,12 +39,16 @@ const GridView = ({
           {columnsVisible ? (
             <div className="column-options">
               <h5 className="column-title">Column Options</h5>
-              <GroupBox
-                {...columnsSelected}
-                options={columnsOptions}
-                handleChange={handleFormGroupChange}
-                className="small-buttons"
-              />
+              <div className="column-scroll">
+                <CustomScroll heightRelativeToParent="100%">
+                  <GroupBox
+                    {...columnsSelected}
+                    options={columnsOptions}
+                    handleChange={handleFormGroupChange}
+                    className="small-buttons"
+                  />
+                </CustomScroll>
+              </div>
             </div>
           ) : null}
         </div>

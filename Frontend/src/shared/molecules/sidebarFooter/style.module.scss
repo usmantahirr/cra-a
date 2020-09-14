@@ -1,6 +1,10 @@
 .sidebarFooter {
   padding: 20px 30px;
 
+  @media screen and (max-width: 1400px) {
+    padding: 15px;
+  }
+
   form,
   button {
     width: 100%;
@@ -16,7 +20,7 @@
   button {
     padding: 8px 25px;
 
-    span{
+    span {
       margin-left: 15px;
       text-transform: none;
     }

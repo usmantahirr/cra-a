@@ -17,10 +17,16 @@ const Footer = props => {
       <Button type="primary" className={styles.antBtn} onClick={goBack}>
         Prev
       </Button>
-      <Button type="primary" className={styles.antBtn} htmlType="submit">
-        Next
-      </Button>
-      {isLastStep && <Button onClick={onAllStepsCompleted}>Finish</Button>}
+      {!isLastStep && (
+        <Button type="primary" className={styles.antBtn} htmlType="submit">
+          Next
+        </Button>
+      )}
+      {isLastStep && (
+        <Button type="primary" className={styles.antBtn} onClick={onAllStepsCompleted}>
+          Pay
+        </Button>
+      )}
     </AntFooter>
   );
 };

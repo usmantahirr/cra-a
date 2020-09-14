@@ -5,4 +5,9 @@
   text-transform: uppercase;
   font-weight: 600;
   border-radius: 0;
+
+  @media screen and (max-width: 1400px) {
+    padding: 10px 25px;
+  }
+
 }
