@@ -19,22 +19,25 @@ export function cityResponseMapper(inputCities) {
 }
 
 export function labsResponseMapper(inputLabs) {
-  const labs = inputLabs.labs.map(data => {
-    return {
-      id: data._id,
-      name: data.name,
-      currency: data.currency,
-      feesAmount: data.feesAmount,
-      feesTax: data.feesTax,
-      labId: data.labId,
-      // city: data.city,
-      services: data.serviceTypes,
-      pos: {
-        lat: Number(data.latitude),
-        lng: Number(data.logitude),
-      },
-    };
-  });
+  const labs =
+    inputLabs &&
+    inputLabs.labs &&
+    inputLabs.labs.map(data => {
+      return {
+        id: data._id,
+        name: data.name,
+        currency: data.currency,
+        feesAmount: data.feesAmount,
+        feesTax: data.feesTax,
+        labId: data.labId,
+        // city: data.city,
+        services: data.serviceTypes,
+        pos: {
+          lat: Number(data.latitude),
+          lng: Number(data.logitude),
+        },
+      };
+    });
   return (labs && labs.length && labs) || [];
 }
 
@@ -119,10 +122,10 @@ export function getCardOptionObject(place) {
 
 export function getFormField(local, formData) {
   if (local === 'lab') {
-    if (formData.lab && Object.keys(formData.lab)) {
-      return formData.lab.name;
+    if (formData && formData.lab && Object.keys(formData.lab)) {
+      return formData.lab.name || '';
     }
     return '';
   }
-  return formData[local];
+  return (formData && formData[local]) || '';
 }

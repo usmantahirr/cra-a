@@ -35,10 +35,7 @@ class MSALService {
       if (error.errorMessage.indexOf('AADB2C90118') > -1) {
         try {
           // Password reset policy/authority
-          this.userAgentApplication.loginRedirect({
-            authority:
-              'https://asadsystemsltdb2c.b2clogin.com/asadsystemsltdb2c.onmicrosoft.com/B2C_1_reset_password_b2c',
-          });
+          this.userAgentApplication.loginRedirect(b2cPolicies.authorities.forgotPassword);
         } catch (err) {
           // do something
         }

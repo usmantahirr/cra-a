@@ -4,6 +4,7 @@ export const AUTH_SEND_OTP = 'auth/send-otp';
 export const AUTH_RESEND_OTP = 'auth/resend-otp';
 export const AUTH_RESEND_PIN = 'auth/resend-pin';
 export const AUTH_VERIFY_OTP = 'auth/verify-otp';
+export const CHANGE_PASSWORD = 'user/change-password';
 export const GET_JSON_SCHEMA = 'staticFormSchemaMock.json';
 
 export const GET_COUNTRIES = 'country';
