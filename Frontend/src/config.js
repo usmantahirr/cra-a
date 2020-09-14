@@ -37,3 +37,10 @@ export const TEST_RESULT_TYPES = {
 };
 
 export const MAP_KEY = 'AIzaSyC5wzEBHV_vzzybukHvJDqp0XsglftJvUY';
+
+export const ContextMenuCmd = {
+  edit: 'edit',
+  view: 'view',
+};
+
+export const ApplicationFormUrl = '/register/{0}';
