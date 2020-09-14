@@ -160,43 +160,43 @@
             "id": "VIET",
             "options": [
               {
-                "value": "1",
+                "value": "VIETO1",
                 "text": "Abu Dhabi",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
               {
-                "value": "2",
+                "value": "VIETO2",
                 "text": "Ajman",
                 "src": "/assets/img/ajman.png",
                 "id": "VIET2"
               },
               {
-                "value": "3",
+                "value": "VIETO3",
                 "text": "Dubai",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET3"
               },
               {
-                "value": "4",
+                "value": "VIETO4",
                 "text": "Fujairah",
                 "src": "/assets/img/fujairah.png",
                 "id": "VIET4"
               },
               {
-                "value": "5",
+                "value": "VIETO5",
                 "text": "Ras al-Khaimah",
                 "src": "/assets/img/rasalkhiamh.png",
                 "id": "VIET5"
               },
               {
-                "value": "6",
+                "value": "VIETO6",
                 "text": "Sharjah",
                 "src": "/assets/img/sharjah.png",
                 "id": "VIET6"
               },
               {
-                "value": "7",
+                "value": "VIETO7",
                 "text": "Umm al-Quwain",
                 "src": "/assets/img/ummulqawaain.png",
                 "id": "VIET7"

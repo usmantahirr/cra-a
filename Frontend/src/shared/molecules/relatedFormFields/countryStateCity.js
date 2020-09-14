@@ -21,21 +21,24 @@ const CountryStateCity = props => {
               return c.isDestination === true;
             })
           );
-        } else {
-          setCountries(data);
+          return data.filter(c => {
+            return c.isDestination === true;
+          });
         }
-      } else setCountries([]);
+        setCountries(data);
+        return data;
+      }
+      setCountries([]);
+      return [];
+
       // form.setFieldsValue({
       //   [country.name]: { value: '5f589189175c69424c936728' },
       // });
     } catch (error) {
       setCountries([]);
+      return [];
     }
   };
-
-  useEffect(() => {
-    fetchCountries();
-  }, []);
 
   const fetchStates = async id => {
     try {
@@ -66,6 +69,56 @@ const CountryStateCity = props => {
       setCities([]);
     }
   };
+
+  useEffect(() => {
+    async function fetchInitialLists() {
+      const countryList = await fetchCountries();
+
+      if (props && props.country && props.country.name === 'sourceCountry') {
+        if (props && props.applicationFormData && props.applicationFormData.sourceCountry) {
+          const selected = countryList.find(c => c._id === props.applicationFormData.sourceCountry.value);
+          if (selected && selected.isoCode === 'US') {
+            setShowState(true);
+            fetchStates(props.applicationFormData.sourceCountry.value);
+            fetchCitiesByState(props.applicationFormData.sourceState.value);
+          } else {
+            setShowState(false);
+            fetchCities(props.applicationFormData.sourceCountry.value);
+          }
+        }
+      }
+
+      if (props && props.country && props.country.name === 'destCountry') {
+        if (props && props.applicationFormData && props.applicationFormData.destCountry) {
+          const selected = countryList.find(c => c._id === props.applicationFormData.destCountry.value);
+          if (selected && selected.isoCode === 'US') {
+            setShowState(true);
+            fetchStates(props.applicationFormData.destCountry.value);
+            fetchCitiesByState(props.applicationFormData.destState.value);
+          } else {
+            setShowState(false);
+            fetchCities(props.applicationFormData.destCountry.value);
+          }
+        }
+      }
+
+      if (props && props.country && props.country.name === 'country') {
+        if (props && props.applicationFormData && props.applicationFormData.country) {
+          const selected = countryList.find(c => c._id === props.applicationFormData.country.value);
+          if (selected && selected.isoCode === 'US') {
+            setShowState(true);
+            fetchStates(props.applicationFormData.country.value);
+            fetchCitiesByState(props.applicationFormData.state.value);
+          } else {
+            setShowState(false);
+            fetchCities(props.applicationFormData.country.value);
+          }
+        }
+      }
+    }
+
+    fetchInitialLists();
+  }, []);
 
   const onCountryChange = e => {
     form.setFieldsValue({

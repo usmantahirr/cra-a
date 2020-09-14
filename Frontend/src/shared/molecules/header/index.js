@@ -79,11 +79,11 @@ const Header = props => {
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Source:</span>
           <strong>{_renderSourceLocation()}</strong>
         </Col>
-        <Col span={4}>
+        <Col span={6}>
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
@@ -103,15 +103,7 @@ const Header = props => {
             return (
               <Col span={6}>
                 <span>{control}</span>
-<<<<<<< HEAD
-                <strong>
-                  {moment.isMoment(applicationSummaryData[control])
-                    ? applicationSummaryData[control].toString()
-                    : applicationSummaryData[control]}
-                </strong>
-=======
                 <strong>{applicationFormData[control]}</strong>
->>>>>>> 459e6b97457a616eadfd05cc476868a9da088050
               </Col>
             );
           return null;
