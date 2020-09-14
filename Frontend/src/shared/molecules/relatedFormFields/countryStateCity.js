@@ -5,7 +5,6 @@ import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
-  console.log('CS APD = ', props);
   const { form, country, city, state, zipCode, isDesitination } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
