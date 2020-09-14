@@ -5,7 +5,8 @@ import { CustomSelectSmall } from '../../atoms/forms';
 // import styles from './style.module.scss';
 
 const MapFilter = props => {
-  const { countryCode, country, visaType, filterState, onStateChange, onCityChange, onServiceChange } = props;
+  // const {onServiceChange } = props;
+  const { countryCode, country, filterState, onStateChange, onCityChange } = props;
 
   const stateDropddown = (
     <Descriptions.Item label="State">
@@ -32,7 +33,6 @@ const MapFilter = props => {
     <PageHeader ghost={false} className="map-filter">
       <Descriptions size="small" column={5}>
         <Descriptions.Item label="Country">{country}</Descriptions.Item>
-        <Descriptions.Item label="Visa Type">{visaType}</Descriptions.Item>
         {countryCode ? stateDropddown : ''}
         <Descriptions.Item label="City">
           <Form.Item
@@ -52,7 +52,7 @@ const MapFilter = props => {
             />
           </Form.Item>
         </Descriptions.Item>
-        <Descriptions.Item label="Lab Type">
+        {/* <Descriptions.Item label="Lab Type">
           <Form.Item name="serviceType">
             <CustomSelectSmall
               labelInValue
@@ -61,7 +61,7 @@ const MapFilter = props => {
               onChange={onServiceChange}
             />
           </Form.Item>
-        </Descriptions.Item>
+        </Descriptions.Item> */}
       </Descriptions>
     </PageHeader>
   );

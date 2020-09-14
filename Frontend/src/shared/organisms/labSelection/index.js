@@ -1,5 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Row, Col } from 'antd';
+import CustomScroll from 'react-custom-scroll';
 import {
   stateResponseMapper,
   cityResponseMapper,
@@ -10,14 +11,17 @@ import {
   getState,
   getCity,
   getCardOptionObject,
+  getFormField,
+  getLab,
 } from './mapper';
 import MapFilter from '../../molecules/map/mapFilter';
 import Map from '../../molecules/map';
 import CardRadio from '../../molecules/cardRadio';
 import MapService from './labselectionService';
+import CustomSpinner from '../../atoms/spinner';
 
 const LabSelection = props => {
-  const { form } = props;
+  const { form, applicationFormData } = props;
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   // form.setFieldsValue({ "serviceType": stateId })
@@ -61,16 +65,30 @@ const LabSelection = props => {
 
   useEffect(() => {
     async function Init() {
-      let { data: statesResponse = [] } = stateId ? await MapService.getStatesByCountry(countryId) : {};
-      let { data: citiesResponse = [] } = stateId
-        ? await MapService.getCitiesByState(stateId)
+      const formState = getFormField('labState', applicationFormData);
+      const currentState = formState ? formState.value : stateId;
+      let { data: statesResponse = [] } = currentState ? await MapService.getStatesByCountry(countryId) : {};
+
+      // cities by country
+      let { data: citiesResponse = [] } = currentState
+        ? await MapService.getCitiesByState(currentState)
         : countryId && (await MapService.getCitiesByCountry(countryId));
-      let { data: labsResponse = [] } = cityId ? await MapService.getLabsByCity(cityId) : { labs: [] };
+
+      // labs by city
+      const currentCityState = getFormField('labCity', applicationFormData);
+      const currentCity = currentCityState ? currentCityState.value : cityId;
+
+      let { data: labsResponse = [] } = currentCity ? await MapService.getLabsByCity(currentCity) : { labs: [] };
 
       statesResponse = stateResponseMapper(statesResponse);
       citiesResponse = cityResponseMapper(citiesResponse);
       labsResponse = labsResponseMapper(labsResponse);
-      const serviceTypes = labsResponse[0] ? serviceTypesMapper(labsResponse) : [];
+
+      const serviceTypes = []; // labsResponse[0] ? serviceTypesMapper(labsResponse) : [];
+
+      // checking selected lab if exist other wise select default
+      const currentLabId = getFormField('lab', applicationFormData);
+      const currentLab = currentLabId ? getLab(labsResponse, currentLabId) : labsResponse[0];
 
       setFilterState({
         allLabs: labsResponse,
@@ -78,17 +96,17 @@ const LabSelection = props => {
         cities: citiesResponse,
         cityLabs: labsResponse,
         serviceTypes,
-        selectedState: stateId,
-        selectedCity: cityId,
+        selectedState: currentState,
+        selectedCity: currentCity,
         selectedService: '',
       });
 
-      if (labsResponse[0]) {
-        markerClickHandler(null, labsResponse[0]);
+      if (currentLab) {
+        markerClickHandler(null, currentLab);
       }
 
-      form.setFieldsValue({ labState: getState(statesResponse, stateId) });
-      form.setFieldsValue({ labCity: getCity(citiesResponse, cityId) });
+      form.setFieldsValue({ labState: getState(statesResponse, currentState) });
+      form.setFieldsValue({ labCity: getCity(citiesResponse, currentCity) });
       form.setFieldsValue({ serviceType: undefined });
     }
     Init();
@@ -153,7 +171,7 @@ const LabSelection = props => {
     form.setFieldsValue({ labCity: value });
     form.setFieldsValue({ serviceType: '' });
   };
-
+  // eslint-disable-next-line
   const onServiceChange = async selected => {
     let filteredLabs = [];
     setFilterState(prevState => {
@@ -182,17 +200,18 @@ const LabSelection = props => {
 
   return countryId && cityId ? (
     <Fragment>
+      {filterState && filterState.cityLabs.length === 0 ? <CustomSpinner /> : ''}
       <MapFilter
         countryCode={stateId}
         country={country}
         visaType={visaType}
         onStateChange={onStateChange}
         onCityChange={onCityChange}
-        onServiceChange={onServiceChange}
+        // onServiceChange={onServiceChange}
         filterState={filterState}
       />
       <div className="card-section">
-        <Row gutter={[32, 32]}>
+        <Row className="ant-row-padding">
           <Col span={16}>
             <Map
               infoOpen={infoOpen}
@@ -204,11 +223,15 @@ const LabSelection = props => {
             />
           </Col>
           <Col span={8}>
-            <CardRadio
-              cartOptions={filterState.cityLabs}
-              value={(selectedLab && selectedLab.id) || ''}
-              onChange={onCardChange}
-            />
+            <div className="filter-state">
+              <CustomScroll heightRelativeToParent="100%">
+                <CardRadio
+                  cartOptions={filterState.cityLabs}
+                  // value={(selectedLab && selectedLab.id) || ''}
+                  onChange={onCardChange}
+                />
+              </CustomScroll>
+            </div>
           </Col>
         </Row>
       </div>

@@ -5,8 +5,8 @@ import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
 
 const CountryStateCity = props => {
-  const { form, country, city, state, zipCode, isDesitination } = props;
   const [componentMounted, setComponentMounted] = useState(false);
+  const { form, country, city, state, zipCode, isDesitination, applicationFormData, setApplicationFormData } = props;
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
@@ -136,6 +136,11 @@ const CountryStateCity = props => {
     setStates([]);
     setCities([]);
     if (e && e.value) {
+      if (props && props.country && props.country.name === 'sourceCountry') {
+        const labData = { lab: undefined, labCity: '', labState: '' };
+        setApplicationFormData({ ...applicationFormData, ...labData });
+      }
+
       const selected = countries.find(c => c._id === e.value);
       if (selected && selected.isoCode === 'US') {
         setShowState(true);
