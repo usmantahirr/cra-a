@@ -1,12 +1,14 @@
-// export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
-// export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
-// export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
+// DEV
+
+export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
+export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
+export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
 
 // QA
 
-export const API_BASE_URL = 'https://purehealth-dynamics-forms-file-upload.azurewebsites.net/api/';
-export const API_BASE_URL3 = 'https://purehealth-app-submission.azurewebsites.net/api/';
-export const API_AUTH_BASE_URL = 'https://purehealth-user-registration.azurewebsites.net/api/';
+// export const API_BASE_URL = 'https://purehealth-dynamics-forms-file-upload.azurewebsites.net/api/';
+// export const API_BASE_URL3 = 'https://purehealth-app-submission.azurewebsites.net/api/';
+// export const API_AUTH_BASE_URL = 'https://purehealth-user-registration.azurewebsites.net/api/';
 
 export const LOGGING = {
   enabled: true,
