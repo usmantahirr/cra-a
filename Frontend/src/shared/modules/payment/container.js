@@ -35,7 +35,7 @@ const PaymentContainer = props => {
   const history = useHistory();
   const match = useRouteMatch();
 
-  const [applicationId] = props;
+  const { applicationId } = props;
 
   useEffect(() => {
     const {
@@ -77,6 +77,7 @@ const PaymentContainer = props => {
             userId: user.accountIdentifier,
           };
           const res = await getPaymentStatus(query);
+          console.log('res', res);
           setStatus(res);
           setGettingStatus(false);
         } catch (e) {
@@ -104,13 +105,14 @@ const PaymentContainer = props => {
     return <CustomSpinner />;
   }
 
+  console.log(paymentProcessed, refCode, status);
   if (paymentProcessed && refCode) {
     if (gettingStatus) {
       return <div>Fetching Status...</div>;
     }
     if (status && status.status === 'SUCCESS') {
       return (
-        <Modal centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
+        <Modal visible centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
           <div className="custompopup-text">Submitted Successfully For Test</div>
           <div className="custom-content-holder">
             <div className="text-holder">
@@ -130,7 +132,7 @@ const PaymentContainer = props => {
     }
 
     return (
-      <Modal centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
+      <Modal visible centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
         <div className="custompopup-text">Application Failed</div>
         <div className="custom-content-holder">
           <div className="text-holder">
