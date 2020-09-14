@@ -227,7 +227,7 @@ const LabSelection = props => {
               <CustomScroll heightRelativeToParent="100%">
                 <CardRadio
                   cartOptions={filterState.cityLabs}
-                  value={(selectedLab && selectedLab.id) || ''}
+                  // value={(selectedLab && selectedLab.id) || ''}
                   onChange={onCardChange}
                 />
               </CustomScroll>

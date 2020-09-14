@@ -99,6 +99,9 @@ const Dashboard = () => {
     const formData = { ...applicationFormData, ...values };
     setShowLoader(true);
 
+    if (formData.lab && typeof formData.lab === 'string') {
+      formData.lab = JSON.parse(formData.lab);
+    }
     try {
       const user = JSON.parse(localStorage.getItem('user'));
 
