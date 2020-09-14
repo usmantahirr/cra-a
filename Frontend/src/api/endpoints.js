@@ -15,5 +15,6 @@ export const FILE_UPLOAD = 'file-upload/provide-links';
 export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission/get-all';
 
 export const PAYMENT_INTERNATIONAL = 'payment';
+export const PAYMENT_STATUS = 'payment/status';
 
 export const APPLICATION = 'application-submission';
