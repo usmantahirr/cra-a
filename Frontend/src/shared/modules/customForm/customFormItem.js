@@ -22,6 +22,7 @@ import TermsAndConditions from '../../molecules/termsAndConditions';
 import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
 import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
+import PaymentContainer from '../payment/container';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -55,7 +56,7 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
-  _renderCustomComponent = (fieldProps, applicationFormData, setApplicationFormData) => {
+  _renderCustomComponent = (fieldProps, applicationFormData, applicationId, setApplicationFormData) => {
     const componentName = fieldProps.name || '';
 
     switch (componentName) {
@@ -81,6 +82,9 @@ class CustomFormItem extends React.PureComponent {
         return <ReviewApplication {...fieldProps} />;
       case 'googleMapComponent':
         return <LabSelection {...fieldProps} />;
+      case 'paymentModule':
+        return <PaymentContainer {...fieldProps} applicationId={applicationId} />;
+
       default:
         return null;
     }
@@ -112,7 +116,7 @@ class CustomFormItem extends React.PureComponent {
 
   render() {
     const { label, name, rules, type } = this.props;
-    const { hideField, applicationFormData, setApplicationFormData, ...restOfProps } = this.props;
+    const { hideField, applicationFormData, setApplicationFormData, applicationId, ...restOfProps } = this.props;
     const isCustomComponent = type === 'customComponent';
 
     return (
@@ -129,7 +133,8 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent(this.props, applicationFormData, setApplicationFormData)}
+        {isCustomComponent &&
+          this._renderCustomComponent(this.props, applicationFormData, applicationId, setApplicationFormData)}
       </>
     );
   }
