@@ -11,17 +11,29 @@ import CustomFormItem from '../modules/customForm/customFormItem';
 const { Content } = Layout;
 
 const Dashboard = props => {
-  const { goBack, formSchema, pageState, applicationFormData, applicationId } = props;
+  const { goBack, formSchema, pageState, applicationFormData, applicationId, setApplicationFormData } = props;
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
     if (colSize)
       return fieldArray.map(field => (
         <Col span={colSize}>
-          <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
+          <CustomFormItem
+            key={field.id}
+            {...field}
+            form={form}
+            setApplicationFormData={setApplicationFormData}
+            applicationFormData={applicationFormData}
+          />
         </Col>
       ));
     return fieldArray.map(field => (
-      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
+      <CustomFormItem
+        key={field.id}
+        {...field}
+        form={form}
+        setApplicationFormData={setApplicationFormData}
+        applicationFormData={applicationFormData}
+      />
     ));
   };
 
