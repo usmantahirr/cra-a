@@ -129,7 +129,7 @@ const CountryStateCity = props => {
     setCities([]);
     if (e && e.value) {
       if (props && props.country && props.country.name === 'sourceCountry') {
-        const labData = { lab: undefined, labCity: '', labState: '' };
+        const labData = { lab: undefined, labCity: '', labState: '', serviceType: '' };
         setApplicationFormData({ ...applicationFormData, ...labData });
       }
 
