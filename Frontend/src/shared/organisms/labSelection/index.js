@@ -1,5 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { Row, Col } from 'antd';
+import CustomScroll from 'react-custom-scroll';
 import {
   stateResponseMapper,
   cityResponseMapper,
@@ -192,7 +193,7 @@ const LabSelection = props => {
         filterState={filterState}
       />
       <div className="card-section">
-        <Row gutter={[32, 32]}>
+        <Row className="ant-row-padding">
           <Col span={16}>
             <Map
               infoOpen={infoOpen}
@@ -204,11 +205,15 @@ const LabSelection = props => {
             />
           </Col>
           <Col span={8}>
-            <CardRadio
-              cartOptions={filterState.cityLabs}
-              value={(selectedLab && selectedLab.id) || ''}
-              onChange={onCardChange}
-            />
+            <div className="filter-state">
+              <CustomScroll heightRelativeToParent="100%">
+                <CardRadio
+                  cartOptions={filterState.cityLabs}
+                  value={(selectedLab && selectedLab.id) || ''}
+                  onChange={onCardChange}
+                />
+              </CustomScroll>
+            </div>
           </Col>
         </Row>
       </div>

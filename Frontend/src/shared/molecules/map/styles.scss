@@ -2,7 +2,7 @@
     background-color: rgba($white, .72);
     @include shadow(0 6px 12px -9px rgba(0, 0, 0, .1));
     border-bottom: 1px solid rgba($gray, .1);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
     .ant-page-header-content {
         padding: 0;
@@ -12,6 +12,12 @@
                 >td {
                     padding-bottom: 0;
                     padding-right: 30px;
+                    width: 25%;
+                    display: inline-block;
+
+                    vertical-align: top &:last-child {
+                        padding-right: 0;
+                    }
 
                     .ant-form-item {
                         margin: 0;
@@ -61,6 +67,10 @@
 }
 
 .card-section {
+    .gm-ui-hover-effect {
+        display: none !important;
+    }
+
     .ant-radio-withoutLable {
         width: 100%;
 
@@ -69,8 +79,17 @@
             margin: 0 0 25px;
             background-color: rgba($white, .72);
             position: relative;
+            @include shadow(0px 0px 12px -6px rgba(0, 0, 0, 0.75));
 
-            @include shadow(0px 0px 12px -6px rgba(0, 0, 0, 0.75)) .ant-radio {
+            @media screen and (max-width: 1400px) {
+                margin-bottom: 15px;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .ant-radio {
                 width: 33px;
                 height: 31px;
                 position: absolute;
@@ -91,24 +110,64 @@
 
                 .ant-card-body {
                     padding: 20px 15px 45px 15px;
+
+                    @media screen and (max-width: 1400px) {
+                        padding: 15px 15px 45px 15px;
+                    }
                 }
 
                 .title,
                 .description {
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
+                    @extend %text-ellipsis;
                 }
 
                 .title {
                     font-size: 0.875rem;
                     color: $primary;
                     font-weight: 600;
+
+                    @media screen and (max-width: 1400px) {
+                        font-size: 0.8125rem;
+                    }
                 }
 
                 .description {
                     font-size: 0.75rem;
-                    @extend %text-ellipsis;
                 }
             }
         }
     }
+}
+
+.filter-state {
+    height: calc(100vh - 450px);
+    margin-right: -10px;
+
+    @media screen and (max-width: 1400px) {
+        height: calc(100vh - 400px);
+    }
+
+    .ant-form-item {
+        margin-bottom: 0;
+    }
+}
+
+.facility-map {
+    height: calc(100vh - 450px);
+
+    @media screen and (max-width: 1400px) {
+        height: calc(100vh - 400px);
+    }
+
+    .gm-ui-hover-effect {
+        display: none !important;
+    }
+
+    .gm-style-iw-d {
+        h3 {
+            font-size: 0.8125rem;
+        }
+    }
+
 }

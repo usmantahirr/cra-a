@@ -59,8 +59,8 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
           onLoad={loadHandler}
           center={center}
           zoom={zoom}
+          mapContainerClassName="facility-map"
           mapContainerStyle={{
-            height: '70vh',
             width: '100%',
           }}
           onTilesLoaded={() => {
