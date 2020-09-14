@@ -34,7 +34,7 @@ const content = [
 const SidebarNavigation = () => {
   return (
     <div className={styles.sidebarNavigation}>
-      <CustomScroll heightRelativeToParent="100%">
+      <CustomScroll addScrolledClass="test" heightRelativeToParent="100%">
         {content.map(item => (
           <SideNavItem
             key={item.link}

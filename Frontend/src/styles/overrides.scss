@@ -193,8 +193,20 @@ h3 {
 }
 
 .content-scroll {
-  padding: 25px;
+  padding: 20px 0 20px 25px;
   height: calc(100vh - 290px);
+
+  .rcs-custom-scroll {
+    .rcs-inner-container {
+      padding-right: 25px;
+    }
+
+    .rcs-outer-container {
+      .rcs-positioning {
+        right: 5px;
+      }
+    }
+  }
 
   @media screen and (max-width: 1400px) {
     height: calc(100vh - 246px);
