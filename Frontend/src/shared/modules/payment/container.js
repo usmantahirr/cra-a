@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import qs from 'querystring';
 import { Modal } from 'antd';
-import { useHistory, useLocation, useRouteMatch } from 'react-router';
+import { useHistory, useRouteMatch } from 'react-router';
 import { getPaymentUrl, getPaymentStatus } from './service';
 import ErrorContext from '../error/context';
 import CustomSpinner from '../../atoms/spinner';
@@ -34,7 +34,6 @@ const PaymentContainer = props => {
 
   const history = useHistory();
   const match = useRouteMatch();
-  const location = useLocation();
 
   const { applicationId } = props;
 
@@ -143,8 +142,6 @@ const PaymentContainer = props => {
       );
     }
 
-    console.log(match, location);
-
     return (
       <Modal
         visible
@@ -168,7 +165,7 @@ const PaymentContainer = props => {
               e.preventDefault();
               let step = match.params.stepId;
               step = parseInt(step, 10) - 1;
-              history.push(`/${applicationId}/${step}`);
+              history.push(`/register/${match.params.uid}/${step}`);
             }}
           >
             Take a step back
