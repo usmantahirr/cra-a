@@ -1,8 +1,12 @@
-export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
-export const API_BASE_URL2 = 'https://purehealthpoc.azurewebsites.net/api/';
-export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
-// export const API_AUTH_BASE_URL = 'https://purehealthuserregistration.azurewebsites.net/';
-export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
+// export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
+// export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
+// export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
+
+// QA
+
+export const API_BASE_URL = 'https://purehealth-dynamics-forms-file-upload.azurewebsites.net/api/';
+export const API_BASE_URL3 = 'https://purehealth-app-submission.azurewebsites.net/api/';
+export const API_AUTH_BASE_URL = 'https://purehealth-user-registration.azurewebsites.net/api/';
 
 export const LOGGING = {
   enabled: true,
@@ -12,6 +16,7 @@ export const LOGGING = {
 export const AUTH_PAGE = '/account/login';
 export const SIGNUP_PAGE = '/account/signup';
 export const APPLICATION_HOME = '/register';
+export const CHANGE_PASSWORD = '/change-password';
 export const LOGGED_IN_HOME = APPLICATION_HOME;
 
 export const STATE_SKIP_BY_COUNTRY = 'USA';

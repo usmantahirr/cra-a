@@ -23,6 +23,7 @@ export default class API {
       headers: {
         Authorization: token ? `Bearer ${token}` : null,
         'Content-Type': config.headers && config.headers.contentType ? config.headers.contentType : contentType.json,
+        userId: JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).accountIdentifier,
       },
       timeout: 20000,
     };
