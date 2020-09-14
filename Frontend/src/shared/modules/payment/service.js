@@ -9,7 +9,7 @@ export const getPaymentUrl = data => {
 
   return api
     .post(`${API_BASE_URL3}${PAYMENT_INTERNATIONAL}`, data)
-    .then(res => res)
+    .then(res => res.data)
     .catch(e => {
       throw errorObject(e);
     });

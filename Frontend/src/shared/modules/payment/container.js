@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
-import Logger from '../logger';
+import React, { useContext, useEffect, useState } from 'react';
+import qs from 'querystring';
 import { getPaymentUrl } from './service';
+import ErrorContext from '../error/context';
+import CustomSpinner from '../../atoms/spinner';
 
 const structure = {
   action: 'SALE',
@@ -9,36 +11,62 @@ const structure = {
     value: '175',
   },
   merchant_attributes: {
-    redirect_url: 'http://localhost:3000/payment-redirect',
+    redirect_url: 'https://usmanstorage.z23.web.core.windows.net/',
     skip_confirmation_page: true,
   },
 };
 
 const getUserIdentifier = () => {
   const user = localStorage.getItem('user');
-  return JSON.parse(user).accountIdentifier;
+  return JSON.parse(user);
 };
 
 const PaymentContainer = props => {
+  const [url, setUrl] = useState('');
+  const [refCode, setRefCode] = useState('');
+  const [paymentProcessed, setPaymentProcessed] = useState(false);
+  const errorContext = useContext(ErrorContext);
+
   useEffect(() => {
-    Logger.info(props);
+    const user = getUserIdentifier();
+    console.log(props);
+
     getPaymentUrl({
       ...structure,
-      email_address: `${getUserIdentifier()}@email.com`,
+      email_address: user.idTokenClaims.emails[0],
     })
-      .then(data => console.log(data))
-      .catch(e => console.log(e));
+      .then(data => setUrl(data))
+      .catch(e => errorContext.setError(e, true));
   }, []);
 
-  /**
-   * 0) fix url at top to get data
-   * 1) Read user data from state (redux)
-   * 2) fetch payment link from service
-   * 3) show iFrame
-   * 4) on payment success, redirect it to our own page
-   * 5) Check if the payment passed through or not, if yes, show payment success
-   */
-  return <div>This is PaymentContainer</div>;
+  window.onmessage = function(e) {
+    if (e && e.data && e.data.ref) {
+      const ref = qs.parse(e.data.ref);
+      setRefCode(ref['?ref']);
+      setPaymentProcessed(true);
+    }
+  };
+
+  if (!url) {
+    return <CustomSpinner />;
+  }
+
+  if (paymentProcessed && refCode) {
+    return <div>Payment Complete</div>;
+  }
+
+  return (
+    <div>
+      <iframe
+        title="payment"
+        src={url}
+        style={{
+          height: '-webkit-fill-available',
+          width: '100%',
+        }}
+      />
+    </div>
+  );
 };
 
 export default PaymentContainer;
