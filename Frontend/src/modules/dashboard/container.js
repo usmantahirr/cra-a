@@ -168,6 +168,7 @@ const Dashboard = () => {
           onAllStepsCompleted={onAllStepsCompleted}
           applicationFormData={applicationFormData}
           onFormValueChanges={onFormValueChanges}
+          setApplicationFormData={setApplicationFormData}
         />
       )}
     </Fragment>

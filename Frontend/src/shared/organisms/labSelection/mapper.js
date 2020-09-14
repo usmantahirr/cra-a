@@ -119,7 +119,10 @@ export function getCardOptionObject(place) {
 
 export function getFormField(local, formData) {
   if (local === 'lab') {
-    return formData.lab.name;
+    if (formData.lab && Object.keys(formData.lab)) {
+      return formData.lab.name;
+    }
+    return '';
   }
   return formData[local];
 }
