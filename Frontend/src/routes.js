@@ -5,6 +5,7 @@ import { AuthContext } from './modules/auth/authContext';
 import AuthRoutes from './modules/auth/routes';
 import DashboardRoutes from './modules/dashboard/routes';
 import ManageApplicationRoutes from './modules/manageApplication/routes';
+import ChangePasswordRoutes from './modules/user/routes';
 import MoreOnCovidRoutes from './modules/moreOnCovid/routes';
 import FaqRoutes from './modules/faq/routes';
 
@@ -36,6 +37,7 @@ const Routes = () => (
       {AuthRoutes.map(renderRouteFromList())}
       {DashboardRoutes.map(renderRouteFromList(true))}
       {ManageApplicationRoutes.map(renderRouteFromList(true))}
+      {ChangePasswordRoutes.map(renderRouteFromList(true))}
       {MoreOnCovidRoutes.map(renderRouteFromList(true))}
       {FaqRoutes.map(renderRouteFromList(true))}
     </Switch>
