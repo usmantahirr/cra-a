@@ -7,24 +7,21 @@ import styles from './style.module.scss';
 const { Footer: AntFooter } = Layout;
 
 const Footer = props => {
-  const { goBack, onAllStepsCompleted, isLastStep } = props;
+  const { goBack, isLastStep } = props;
 
   return (
     <AntFooter className={styles.footer}>
-      <Button type="default" className={styles.antBtn}>
-        Save as Draft
-      </Button>
+      {!isLastStep && (
+        <Button type="default" className={styles.antBtn}>
+          Save as Draft
+        </Button>
+      )}
       <Button type="primary" className={styles.antBtn} onClick={goBack}>
         Prev
       </Button>
       {!isLastStep && (
         <Button type="primary" className={styles.antBtn} htmlType="submit">
           Next
-        </Button>
-      )}
-      {isLastStep && (
-        <Button type="primary" className={styles.antBtn} onClick={onAllStepsCompleted}>
-          Pay
         </Button>
       )}
     </AntFooter>
