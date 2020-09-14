@@ -12,6 +12,6 @@ export const menuItemListByApplicationStatus = {
 };
 
 export const getMenuList = status => {
-  const key = status.toUpperCase().replace(' ', '_');
+  const key = status && status.toUpperCase().replace(' ', '_');
   return menuItemListByApplicationStatus[key];
 };

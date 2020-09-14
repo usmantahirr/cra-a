@@ -160,43 +160,43 @@
             "id": "VIET",
             "options": [
               {
-                "value": "1",
+                "value": "VIETO1",
                 "text": "Abu Dhabi",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
               {
-                "value": "2",
+                "value": "VIETO2",
                 "text": "Ajman",
                 "src": "/assets/img/ajman.png",
                 "id": "VIET2"
               },
               {
-                "value": "3",
+                "value": "VIETO3",
                 "text": "Dubai",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET3"
               },
               {
-                "value": "4",
+                "value": "VIETO4",
                 "text": "Fujairah",
                 "src": "/assets/img/fujairah.png",
                 "id": "VIET4"
               },
               {
-                "value": "5",
+                "value": "VIETO5",
                 "text": "Ras al-Khaimah",
                 "src": "/assets/img/rasalkhiamh.png",
                 "id": "VIET5"
               },
               {
-                "value": "6",
+                "value": "VIETO6",
                 "text": "Sharjah",
                 "src": "/assets/img/sharjah.png",
                 "id": "VIET6"
               },
               {
-                "value": "7",
+                "value": "VIETO7",
                 "text": "Umm al-Quwain",
                 "src": "/assets/img/ummulqawaain.png",
                 "id": "VIET7"
@@ -575,7 +575,7 @@
                 "name": "gender",
                 "order": 8,
                 "type": "text"
-              }, 
+              },
               {
                 "label": "Country",
                 "name": "country",
@@ -617,76 +617,15 @@
       {
         "fieldArray": [
           {
-            "name": "payment",
+            "name": "paymentModule",
             "label": "Payment Type",
             "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST7S1F1asdasdasd",
-            "options": [
-              {
-                "value": 1001,
-                "text": "Cash",
-                "id": "ST8S1F101"
-              },
-              {
-                "value": 2,
-                "text": "Paypal",
-                "id": "ST8S1F102"
-              }
-            ]
+            "type": "customComponent",
+            "id": "ST8Payment"
           }
         ],
         "sectionTitle": "",
-        "id": "ST8S1"
-      },
-      {
-        "fieldArray": [
-          {
-            "name": "cardType",
-            "label": "Card Type",
-            "placeholder": "Please Select",
-            "type": "select",
-            "id": "ST8S1F1",
-            "options": [
-              {
-                "value": 1001,
-                "text": "DEBIT",
-                "id": "ST8S2F101"
-              },
-              {
-                "value": 2,
-                "text": "CREDIT",
-                "id": "ST8S2F102"
-              }
-            ]
-          },
-          {
-            "name": "cardNo",
-            "label": "Card Number",
-            "type": "text",
-            "id": "ST8S2F2"
-          },
-          {
-            "name": "ced",
-            "label": "Card Expiry",
-            "type": "date",
-            "id": "ST8S2F3"
-          },
-          {
-            "name": "cw",
-            "label": "CVV",
-            "type": "text",
-            "id": "ST8S2F4"
-          },
-          {
-            "name": "postalCode",
-            "label": "Postal Code",
-            "type": "text",
-            "id": "ST8S2F5"
-          }
-        ],
-        "sectionTitle": "Payment By Card",
-        "id": "ST8S2"
+        "id": "ST8-Payment"
       }
     ]
   }

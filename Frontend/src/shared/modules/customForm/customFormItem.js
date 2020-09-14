@@ -22,6 +22,7 @@ import TermsAndConditions from '../../molecules/termsAndConditions';
 import ReviewApplication from '../../organisms/reviewApplication';
 import LabSelection from '../../organisms/labSelection';
 import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
+import PaymentContainer from '../payment/container';
 
 class CustomFormItem extends React.PureComponent {
   _renderField = fieldProps => {
@@ -75,6 +76,9 @@ class CustomFormItem extends React.PureComponent {
         return <ReviewApplication {...fieldProps} />;
       case 'googleMapComponent':
         return <LabSelection {...fieldProps} />;
+      case 'paymentModule':
+        return <PaymentContainer {...fieldProps} />;
+
       default:
         return null;
     }

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
+import Button from '../../atoms/buttons';
+import { SidebarContext } from '../../templates/sidebarContext';
 
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
+  const sidebarContext = useContext(SidebarContext);
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
   const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
 
@@ -27,6 +30,7 @@ const Header = props => {
   if (pageHeader) {
     return (
       <AntHeader className={`${styles.header} ${styles.headerText}`}>
+        <Button onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>Hide</Button>
         <div className={styles.text}>Manage Application</div>
       </AntHeader>
     );
@@ -103,15 +107,7 @@ const Header = props => {
             return (
               <Col span={6}>
                 <span>{control}</span>
-<<<<<<< HEAD
-                <strong>
-                  {moment.isMoment(applicationSummaryData[control])
-                    ? applicationSummaryData[control].toString()
-                    : applicationSummaryData[control]}
-                </strong>
-=======
                 <strong>{applicationFormData[control]}</strong>
->>>>>>> 459e6b97457a616eadfd05cc476868a9da088050
               </Col>
             );
           return null;
