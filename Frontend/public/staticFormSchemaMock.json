@@ -160,43 +160,43 @@
             "id": "VIET",
             "options": [
               {
-                "value": "VIETO1",
+                "value": "Abu Dhabi",
                 "text": "Abu Dhabi",
                 "src": "/assets/img/abudhabi.png",
                 "id": "VIET1"
               },
               {
-                "value": "VIETO2",
+                "value": "Ajman",
                 "text": "Ajman",
                 "src": "/assets/img/ajman.png",
                 "id": "VIET2"
               },
               {
-                "value": "VIETO3",
+                "value": "Dubai",
                 "text": "Dubai",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET3"
               },
               {
-                "value": "VIETO4",
+                "value": "Fujairah",
                 "text": "Fujairah",
                 "src": "/assets/img/fujairah.png",
                 "id": "VIET4"
               },
               {
-                "value": "VIETO5",
+                "value": "Ras al-Khaimah",
                 "text": "Ras al-Khaimah",
                 "src": "/assets/img/rasalkhiamh.png",
                 "id": "VIET5"
               },
               {
-                "value": "VIETO6",
+                "value": "Sharjah",
                 "text": "Sharjah",
                 "src": "/assets/img/sharjah.png",
                 "id": "VIET6"
               },
               {
-                "value": "VIETO7",
+                "value": "Umm al-Quwain",
                 "text": "Umm al-Quwain",
                 "src": "/assets/img/ummulqawaain.png",
                 "id": "VIET7"
@@ -299,12 +299,12 @@
                 "id": "ST01F005",
                 "options": [
                   {
-                    "value": 1001,
+                    "value": "MALE",
                     "text": "MALE",
                     "id": "ST01F005O001"
                   },
                   {
-                    "value": 2,
+                    "value": "FEMALE",
                     "text": "FEMALE",
                     "id": "ST01F005O002"
                   }
