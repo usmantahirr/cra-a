@@ -23,6 +23,10 @@ export function labsResponseMapper(inputLabs) {
     return {
       id: data._id,
       name: data.name,
+      currency: data.currency,
+      feesAmount: data.feesAmount,
+      feesTax: data.feesTax,
+      labId: data.labId,
       // city: data.city,
       services: data.serviceTypes,
       pos: {
@@ -90,7 +94,7 @@ export function getCity(cities, selectedCity) {
 
 export function getLab(labs, selectedLab) {
   if (labs.length) {
-    return labs.filter(x => x.id === selectedLab)[0];
+    return labs.find(x => x.id === selectedLab);
   }
   return undefined;
 }
@@ -103,5 +107,22 @@ export function getServiceType(servicTypes, selectedServiceType) {
 }
 
 export function getCardOptionObject(place) {
-  return place.id;
+  const item = {
+    labId: place.labId,
+    name: place.name,
+    currency: place.currency,
+    feesAmount: place.feesAmount,
+    feesTax: place.feesTax,
+  };
+  return JSON.stringify(item);
+}
+
+export function getFormField(local, formData) {
+  if (local === 'lab') {
+    if (formData.lab && Object.keys(formData.lab)) {
+      return formData.lab.name;
+    }
+    return '';
+  }
+  return formData[local];
 }

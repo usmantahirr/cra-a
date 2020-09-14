@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { RED_PIN, BLUE_PIN } from './mapConfig';
+import { MAP_KEY } from '../../../config';
 
 const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerClickHandler }) => {
   // Fit map bounds to contain all markers
@@ -14,7 +15,7 @@ const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerC
   // Load the Google maps scripts
   const { isLoaded } = useLoadScript({
     // Enter your own Google Maps API key
-    googleMapsApiKey: 'AIzaSyC5wzEBHV_vzzybukHvJDqp0XsglftJvUY',
+    googleMapsApiKey: MAP_KEY,
   });
 
   // The places I want to create markers for.

@@ -56,7 +56,7 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
-  _renderCustomComponent = (fieldProps, applicationFormData) => {
+  _renderCustomComponent = (fieldProps, applicationFormData, setApplicationFormData) => {
     const componentName = fieldProps.name || '';
 
     switch (componentName) {
@@ -67,7 +67,13 @@ class CustomFormItem extends React.PureComponent {
       case 'fileUpload':
         return <CustomUpload applicationFormData={applicationFormData} {...fieldProps} />;
       case 'countryStateCity':
-        return <CountryStateCity {...fieldProps} />;
+        return (
+          <CountryStateCity
+            applicationFormData={applicationFormData}
+            setApplicationFormData={setApplicationFormData}
+            {...fieldProps}
+          />
+        );
       case 'passengerAndVisaType':
         return <PassengerAndVisaType {...fieldProps} />;
       case 'termsAndConditions':
@@ -110,7 +116,7 @@ class CustomFormItem extends React.PureComponent {
 
   render() {
     const { label, name, rules, type } = this.props;
-    const { hideField, applicationFormData, ...restOfProps } = this.props;
+    const { hideField, applicationFormData, setApplicationFormData, ...restOfProps } = this.props;
     const isCustomComponent = type === 'customComponent';
 
     return (
@@ -127,7 +133,7 @@ class CustomFormItem extends React.PureComponent {
             {this._renderField(restOfProps)}
           </Form.Item>
         )}
-        {isCustomComponent && this._renderCustomComponent(this.props, applicationFormData)}
+        {isCustomComponent && this._renderCustomComponent(this.props, applicationFormData, setApplicationFormData)}
       </>
     );
   }

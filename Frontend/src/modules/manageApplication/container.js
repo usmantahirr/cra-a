@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import { useTranslation } from 'react-i18next';
 import Header from '../../shared/molecules/header';
 import CustomBreadcrumb from '../../shared/molecules/breadcrumb';
 import GridOptions from '../../shared/organisms/grid/gridOptions';
@@ -9,6 +10,7 @@ import ManageApplicationSerivce from './services/manage.service';
 
 const ManageApplication = () => {
   const [gridReference, setGridReference] = useState(initialState);
+  // const [t, i18n] = useTranslation();
   // eslint-disable-next-line
   // const [rowDataSource, setRowDataSource] = useState([]);
 
