@@ -102,6 +102,20 @@ const CountryStateCity = props => {
           }
         }
       }
+
+      if (props && props.country && props.country.name === 'country') {
+        if (props && props.applicationFormData && props.applicationFormData.country) {
+          const selected = countryList.find(c => c._id === props.applicationFormData.country.value);
+          if (selected && selected.isoCode === 'US') {
+            setShowState(true);
+            fetchStates(props.applicationFormData.country.value);
+            fetchCitiesByState(props.applicationFormData.state.value);
+          } else {
+            setShowState(false);
+            fetchCities(props.applicationFormData.country.value);
+          }
+        }
+      }
     }
 
     fetchInitialLists();
