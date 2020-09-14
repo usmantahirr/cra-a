@@ -49,7 +49,7 @@ const PaymentContainer = props => {
         lab.feesAmount.indexOf('.') === -1 ? `${lab.feesAmount}00` : lab.feesAmount.replace('.', '');
     }
 
-    if (lab) {
+    if (lab && user && user.idTokenClaims && user.idTokenClaims.emails && user.idTokenClaims.emails[0]) {
       getPaymentUrl({
         ...structure,
         email_address: user.idTokenClaims.emails[0],
