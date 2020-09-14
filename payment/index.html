@@ -3,17 +3,14 @@
     <title>Payment Processor</title>
   </head>
   <script>
-    setTimeout(function () {
+    window.onload((env) => {
       window.parent.postMessage(
         {
           ref: location && location.search,
         },
         "*"
       );
-    }, 1000);
-    console.log(document);
+    });
   </script>
-  <body>
-    <h1>Processing your payment!!</h1>
-  </body>
+  <body></body>
 </html>

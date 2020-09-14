@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import qs from 'querystring';
 import { Modal } from 'antd';
-import { useHistory, useRouteMatch } from 'react-router';
+import { useHistory, useLocation, useRouteMatch } from 'react-router';
 import { getPaymentUrl, getPaymentStatus } from './service';
 import ErrorContext from '../error/context';
 import CustomSpinner from '../../atoms/spinner';
@@ -34,6 +34,7 @@ const PaymentContainer = props => {
 
   const history = useHistory();
   const match = useRouteMatch();
+  const location = useLocation();
 
   const { applicationId } = props;
 
@@ -77,7 +78,6 @@ const PaymentContainer = props => {
             userId: user.accountIdentifier,
           };
           const res = await getPaymentStatus(query);
-          console.log('res', res);
           setStatus(res);
           setGettingStatus(false);
         } catch (e) {
@@ -105,14 +105,21 @@ const PaymentContainer = props => {
     return <CustomSpinner />;
   }
 
-  console.log(paymentProcessed, refCode, status);
   if (paymentProcessed && refCode) {
     if (gettingStatus) {
       return <div>Fetching Status...</div>;
     }
     if (status && status.status === 'SUCCESS') {
       return (
-        <Modal visible centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
+        <Modal
+          visible
+          centered
+          destroyOnClose
+          closable={false}
+          footer={null}
+          className="custom-popup text-popup"
+          width={590}
+        >
           <div className="custompopup-text">Submitted Successfully For Test</div>
           <div className="custom-content-holder">
             <div className="text-holder">
@@ -123,7 +130,12 @@ const PaymentContainer = props => {
                 bring a copy of your application to the appointment.
               </p>
             </div>
-            <Button type="primary" htmlType="submit" className="ant-btn-block ant-btn-lg">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="ant-btn-block ant-btn-lg"
+              onClick={() => history.push('/register')}
+            >
               Go back to home page
             </Button>
           </div>
@@ -131,9 +143,19 @@ const PaymentContainer = props => {
       );
     }
 
+    console.log(match, location);
+
     return (
-      <Modal visible centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
-        <div className="custompopup-text">Application Failed</div>
+      <Modal
+        visible
+        centered
+        destroyOnClose
+        closable={false}
+        footer={null}
+        className="custom-popup text-popup"
+        width={590}
+      >
+        <div className="custompopup-text">Payment Failed</div>
         <div className="custom-content-holder">
           <div className="text-holder">
             <h3 className="title">Medical Test REGISTRATION Application NO. ${applicationId}</h3>
@@ -149,7 +171,7 @@ const PaymentContainer = props => {
               history.push(`/${applicationId}/${step}`);
             }}
           >
-            Go back to home page
+            Take a step back
           </Button>
         </div>
       </Modal>
