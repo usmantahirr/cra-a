@@ -8,7 +8,14 @@ const { Header: AntHeader } = Layout;
 
 const Header = props => {
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
-  const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
+  const {
+    formSchema,
+    pageState,
+    pageHeader,
+    applicationFormData,
+    applicationId,
+    heading = 'Manage Application',
+  } = props;
 
   useEffect(() => {
     // const newApplicationSummary = {};
@@ -27,7 +34,7 @@ const Header = props => {
   if (pageHeader) {
     return (
       <AntHeader className={`${styles.header} ${styles.headerText}`}>
-        <div className={styles.text}>Manage Application</div>
+        <div className={styles.text}>{heading}</div>
       </AntHeader>
     );
   }

@@ -1,47 +1,65 @@
 import * as moment from 'moment';
 import { DATE_FORMATE } from '../../../config';
 
-export const parseDetailView = data => {
-  return data;
+const getFieldValues = (data, objectProp, prop) => {
+  if (!data) {
+    return '';
+  }
+
+  if (!prop) {
+    return (data && data[objectProp]) || '';
+  }
+
+  // eslint-disable-next-line
+  return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
 };
 
-export const data = {
-  visaInfo: {
-    sourceCountry: 'USA',
-    sourceState: 'USA',
-    sourceCity: 'USA',
-    destinationCountry: 'USA',
-    destinationState: 'USA',
-    destinationCity: 'USA',
-    emirate: 'USA',
-    visaType: 'USA',
-  },
-  appInfo: {
-    fullName: 'Asad',
-    sureName: 'hussain',
-    dateOfBirth: '12/12/1947',
-    nationality: 'pakistani',
-    passportNo: '23423424',
-    passportExpiry: 'asda',
-    nationalIdNumber: 'adad',
-    nationalIdExpiry: 'adsad',
-    gender: 'Male',
-    country: 'pakistan',
-    state: 'pakistan',
-    city: 'pakistan',
-    zipCode: 'pakistan',
-    address: 'pakistan',
-  },
-
-  labInfo: {
-    labName: 'DOW ME',
-    labType: 'afasdf',
-    labAddress: 'asdfasdf',
-    serviceType: 'asdfa',
-    appointmentDate: 'asdfasd',
-    slot: 'asdfasf',
-    sampleCollectionData: 'fasd',
-  },
+export const parseDetailView = data => {
+  if (!data) {
+    return {};
+  }
+  return {
+    applicationId: data.applicationId || '',
+    status: data.status || '',
+    testResult: data.testResult || '',
+    attachments: data.attachments,
+    visaInfo: {
+      sourceCountry: getFieldValues(data.application_data, 'sourceCountry', 'value'),
+      sourceState: getFieldValues(data.application_data, 'sourceState', 'value'),
+      sourceCity: getFieldValues(data.application_data, 'sourceCity', 'value'),
+      destinationCountry: getFieldValues(data.application_data, 'destCountry', 'value'),
+      destinationState: getFieldValues(data.application_data, 'destState', 'value'),
+      destinationCity: getFieldValues(data.application_data, 'destCity', 'value'),
+      emirate: getFieldValues(data.application_data, 'emiratesId'),
+      visaType: getFieldValues(data.application_data, 'visaType'),
+    },
+    appInfo: {
+      fullName: getFieldValues(data.application_data, 'name'),
+      sureName: getFieldValues(data.application_data, 'surName'),
+      dateOfBirth: getFieldValues(data.application_data, 'dob'),
+      nationality: getFieldValues(data.application_data, 'nationality', 'value'),
+      passportNo: getFieldValues(data.application_data, 'passportId'),
+      passportExpiry: getFieldValues(data.application_data, 'passportExpiry'),
+      nationalIdNumber: getFieldValues(data.application_data, 'nationalId'),
+      nationalIdExpiry: getFieldValues(data.application_data, 'nationalIdExpiry'),
+      gender: getFieldValues(data.application_data, 'gender'),
+      country: getFieldValues(data.application_data, 'country', 'value'),
+      state: getFieldValues(data.application_data, 'state', 'value'),
+      city: getFieldValues(data.application_data, 'city', 'value'),
+      zipCode: getFieldValues(data.application_data, 'zipCode'),
+      address: getFieldValues(data.application_data, 'address'),
+    },
+    labInfo: {
+      labName: getFieldValues(data.application_data, 'lab', 'name'),
+      labAddress: getFieldValues(data.application_data, 'labCity', 'text'),
+      serviceType: getFieldValues(data.application_data, 'serviceType'),
+      appointmentDate: '-',
+      slot: '-',
+      sampleCollectionData: '-',
+    },
+    labFees: getFieldValues(data.application_data, 'lab', 'feesAmount'),
+    labCurrency: getFieldValues(data.application_data, 'lab', 'currency'),
+  };
 };
 
 export const viewFields = {

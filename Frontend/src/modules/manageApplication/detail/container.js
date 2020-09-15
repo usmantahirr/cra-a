@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ManageApplicationDetailView from './detail';
-import { parseDetailView, getField, viewFields, data } from './mapper';
+import { parseDetailView, getField, viewFields } from './mapper';
 import CustomSpinner from '../../../shared/atoms/spinner';
 import DashboardTemplate from '../../../shared/templates/dashboardTemplate';
 import Header from '../../../shared/molecules/header';
-// import ManageApplicationSerivce from '../services/manage.service';
+import ManageApplicationSerivce from '../services/manage.service';
 
 const ManageApplicationDetailContainer = props => {
   const [viewData, setViewData] = useState({});
@@ -13,9 +13,8 @@ const ManageApplicationDetailContainer = props => {
   useEffect(() => {
     async function Init() {
       setShowLoader(true);
-      // const { data } = await ManageApplicationSerivce.getManageApplicationDetail('');
-      const reponse = data;
-      const mappedData = parseDetailView(reponse);
+      const { data } = await ManageApplicationSerivce.getManageApplicationDetail('55');
+      const mappedData = parseDetailView(data);
       setViewData(mappedData);
       setShowLoader(false);
     }
@@ -28,7 +27,7 @@ const ManageApplicationDetailContainer = props => {
 
   return (
     <DashboardTemplate>
-      <Header pageHeader />
+      <Header pageHeader heading="Manage Application" />
       {showLoader ? <CustomSpinner /> : ''}
       <ManageApplicationDetailView viewFields={viewFields} data={viewData} getField={getField} {...props} />
     </DashboardTemplate>
