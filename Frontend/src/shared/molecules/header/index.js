@@ -4,6 +4,7 @@ import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
 import Button from '../../atoms/buttons';
+import Logo from '../../atoms/logo';
 import { SidebarContext } from '../../templates/sidebarContext';
 
 const { Header: AntHeader } = Layout;
@@ -29,10 +30,15 @@ const Header = props => {
 
   if (pageHeader) {
     return (
-      <AntHeader className={`${styles.header} ${styles.headerText}`}>
-        <Button onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>Hide</Button>
-        <div className={styles.text}>Manage Application</div>
-      </AntHeader>
+      <>
+        <AntHeader className={`${styles.header} ${styles.headerText} desktop-header`}>
+          <div className={styles.text}>Manage Application</div>
+        </AntHeader>
+        <AntHeader className="mobile-header">
+          <Button onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>Mobile Menu</Button>
+          <Logo />
+        </AntHeader>
+      </>
     );
   }
 
@@ -125,7 +131,24 @@ const Header = props => {
 
   return (
     <>
-      <AntHeader className={styles.header}>
+      <div className="mobile-header-holder">
+        <AntHeader className="mobile-header">
+          <Button className="ant-btn-mb" onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>
+            Mobile Menu
+          </Button>
+          <Logo />
+        </AntHeader>
+        <div className="mobile-counter">
+          <StepCounter
+            title={formSchema[pageState.curr] ? formSchema[pageState.curr].stepTitle : ''}
+            number={pageState.curr + 1}
+            total={formSchema.length}
+            className="stepcounter"
+          />
+          {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className="nextstep" />}
+        </div>
+      </div>
+      <AntHeader className={`${styles.header} desktop-header`}>
         <div className={styles.headerbg}>
           <StepCounter
             title={formSchema[pageState.curr] ? formSchema[pageState.curr].stepTitle : ''}

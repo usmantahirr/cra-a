@@ -14,7 +14,7 @@ const Sidebar = () => {
   const sidebarContext = useContext(SidebarContext);
 
   return (
-    <Sider collapsible collapsed={sidebarContext.isCollapsed} className={styles.sidebar}>
+    <Sider collapsible collapsed={sidebarContext.isCollapsed} className={`${styles.sidebar} sidebar`}>
       <div className={styles.logo}>
         <Logo />
       </div>

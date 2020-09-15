@@ -13,8 +13,17 @@
     }
   }
 
+  @media screen and (max-width: 767px) {
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+  }
+
   .ant-form-item-label {
     color: $primary;
+
+    @media screen and (max-width: 767px) {
+      padding-bottom: 3px;
+    }
   }
 
   .custom-control,
@@ -133,6 +142,10 @@
 
       @media screen and (max-width: 1400px) {
         font-size: 0.8125rem;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 0.75rem;
       }
 
       &.ant-form-item-required:not(.ant-form-item-required-mark-optional) {
