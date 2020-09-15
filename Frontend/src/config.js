@@ -44,3 +44,5 @@ export const ContextMenuCmd = {
 };
 
 export const ApplicationFormUrl = '/register/{0}';
+
+export const DATE_FORMATE = 'DD/MM/YYYY';
