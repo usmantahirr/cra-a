@@ -35,10 +35,14 @@ const Header = props => {
         <AntHeader className={`${styles.header} ${styles.headerText} desktop-header`}>
           <div className={styles.text}>Manage Application</div>
         </AntHeader>
-        <AntHeader className="mobile-header">
-          <Button onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>Mobile Menu</Button>
-          <Logo />
-        </AntHeader>
+        <div className="mobile-header-holder">
+          <AntHeader className="mobile-header">
+            <Button className="ant-btn-mb" onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>
+              Mobile Menu
+            </Button>
+            <Logo />
+          </AntHeader>
+        </div>
       </>
     );
   }
