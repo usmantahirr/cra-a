@@ -4,8 +4,7 @@ import { CHANGE_PASSWORD } from '../../../api/endpoints';
 
 class UserService {
   constructor() {
-    this.userId =
-      JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).accountIdentifier;
+    this.userId = JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).id;
     this.http = new API({
       headers: {
         contentType: contentType.json,

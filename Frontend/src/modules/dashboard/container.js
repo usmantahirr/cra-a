@@ -107,7 +107,7 @@ const Dashboard = () => {
       // If Application doesn't exist
       if (!applicationData._id) {
         const res = await dashboardService.createApplication({
-          user_id: user.accountIdentifier,
+          user_id: user.id,
           status: 'Drafted',
           application_data: formData,
         });
@@ -152,7 +152,7 @@ const Dashboard = () => {
       // If Application doesn't exist
       if (!applicationData._id) {
         const res = await dashboardService.createApplication({
-          user_id: user.accountIdentifier,
+          user_id: user.id,
           status: 'Drafted',
           application_data: formData,
         });

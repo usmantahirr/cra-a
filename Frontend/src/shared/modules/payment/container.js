@@ -49,10 +49,10 @@ const PaymentContainer = props => {
         lab.feesAmount.indexOf('.') === -1 ? `${lab.feesAmount}00` : lab.feesAmount.replace('.', '');
     }
 
-    if (lab && user && user.idTokenClaims && user.idTokenClaims.emails && user.idTokenClaims.emails[0]) {
+    if (lab && user && user.email) {
       getPaymentUrl({
         ...structure,
-        email_address: user.idTokenClaims.emails[0],
+        email_address: user.email,
       })
         .then(data => {
           setUrl(data);
@@ -75,7 +75,7 @@ const PaymentContainer = props => {
           const query = {
             ref: refCode,
             applicationId,
-            userId: user.accountIdentifier,
+            userId: user.id,
           };
           const res = await getPaymentStatus(query);
           setStatus(res);
@@ -126,8 +126,8 @@ const PaymentContainer = props => {
               <h3 className="title">Medical Test REGISTRATION Application NO. {applicationId}</h3>
               <p>
                 Kindly visit the selected facility to proceed with the test. a copy of the application has been emailed
-                to you on your email address. {user.idTokenClaims.emails[0]} and downloaded on your system. please bring
-                a copy of your application to the appointment.
+                to you on your email address. {user.email} and downloaded on your system. please bring a copy of your
+                application to the appointment.
               </p>
             </div>
             <Button

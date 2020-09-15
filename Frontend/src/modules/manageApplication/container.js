@@ -23,7 +23,7 @@ const ManageApplication = () => {
     async function Init() {
       setShowLoader(true);
       // NEED REFECTOR
-      const user = JSON.parse(localStorage.getItem('user')).accountIdentifier;
+      const user = JSON.parse(localStorage.getItem('user')).id;
       const { data } = await ManageApplicationSerivce.getManageApplications(user);
       if (data && data.length) {
         gridReference.gridApiRef.setRowData(data);

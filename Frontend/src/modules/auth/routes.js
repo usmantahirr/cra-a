@@ -3,7 +3,7 @@ import { AUTH_PAGE, SIGNUP_PAGE, FORGOT_PASSWORD_PAGE } from '../../config';
 
 const AuthRoutes = [
   {
-    Component: lazy(() => import('./container')),
+    Component: lazy(() => import('./login/loginContainer')),
     path: AUTH_PAGE,
   },
   {

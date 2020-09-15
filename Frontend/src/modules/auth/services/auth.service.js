@@ -9,6 +9,7 @@ import {
   FORGOT_PASSWORD_RESEND_PIN,
   FORGOT_PASSWORD_VERIFY_PIN,
   RESET_PASSWORD,
+  LOGIN,
 } from '../../../api/endpoints';
 
 class AuthService {
@@ -49,6 +50,10 @@ class AuthService {
 
   resetPassword = payload => {
     return this.http.post(RESET_PASSWORD, payload);
+  };
+
+  login = payload => {
+    return this.http.post(LOGIN, payload);
   };
 }
 export default new AuthService();
