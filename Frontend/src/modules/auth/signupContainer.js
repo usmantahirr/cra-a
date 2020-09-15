@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import SignupPage from '../../shared/pages/signupPage';
 import service from './services/auth.service';
 import NotificationContext from '../../shared/modules/notification/context';
-import { AUTH_PAGE } from '../../config';
+import { APPLICATION_HOME } from '../../config';
 
 const SIGNUP_FORM_VALIDATION_RULES = {
   firstName: {
@@ -181,7 +181,7 @@ const SignupContainer = ({ history }) => {
     };
     try {
       const { data, message } = await service.verifyOTP(payload);
-      if (data) {
+      if (data.token && data.user) {
         notification.setNotification(
           {
             type: 'success',
@@ -189,7 +189,10 @@ const SignupContainer = ({ history }) => {
           },
           true
         );
-        history.push(AUTH_PAGE);
+        localStorage.setItem('token', data.token.access_token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('id_token', data.token.id_token);
+        history.push(APPLICATION_HOME);
       }
       setShowVerifyLoader(false);
       setShowOTPModal(false);
