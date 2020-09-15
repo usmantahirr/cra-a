@@ -83,8 +83,8 @@
                 "id": "PTO2"
               },
               {
-                "value": "UAE-Resident",
-                "text": "UAE-Resident",
+                "value": "Resident",
+                "text": "Resident",
                 "id": "PTO3"
               }
             ],

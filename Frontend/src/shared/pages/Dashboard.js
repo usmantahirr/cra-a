@@ -42,7 +42,11 @@ const Dashboard = props => {
   const _renderRowArray = (rowArray, form) => {
     return rowArray.map(row => {
       const colSize = 24 / row.fieldArray.length;
-      return <Row gutter={24}>{row.fieldArray && _renderFieldArray(row.fieldArray, form, colSize)}</Row>;
+      return (
+        <Row className="ant-row-padding ant-row-resposnive">
+          {row.fieldArray && _renderFieldArray(row.fieldArray, form, colSize)}
+        </Row>
+      );
     });
   };
 

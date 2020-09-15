@@ -11,6 +11,7 @@ const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const sidebarContext = useContext(SidebarContext);
+
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
   const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
 
@@ -85,20 +86,20 @@ const Header = props => {
 
     return (
       <Row>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Source:</span>
           <strong>{_renderSourceLocation()}</strong>
         </Col>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
         {applicationFormData.lab && applicationFormData.lab.name && (
-          <Col span={6}>
+          <Col xs={12} md={6}>
             <span>Lab Name:</span>
             <strong>{applicationFormData.lab.name}</strong>
           </Col>

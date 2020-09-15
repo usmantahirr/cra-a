@@ -43,6 +43,10 @@
       @media screen and (max-width: 1400px) {
         font-size: 0.8125rem;
       }
+
+      @media screen and (max-width: 767px) {
+        font-size: 0.75rem;
+      }
     }
 
     .ant-input-number-input {
@@ -53,6 +57,11 @@
     @media screen and (max-width: 1400px) {
       padding: 8px 15px;
       font-size: 0.8125rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 0.75rem;
+      padding: 5px 10px;
     }
 
     &::placeholder,

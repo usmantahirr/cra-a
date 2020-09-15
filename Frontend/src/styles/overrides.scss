@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   color: #545B64;
+}
+
+html,
+body{
   overflow: hidden;
 }
 
@@ -200,11 +204,19 @@ h3 {
   .rcs-custom-scroll {
     .rcs-inner-container {
       padding-right: 25px;
+
+      @media screen and (max-width: 767px) {
+        padding-right: 0;
+      }
     }
 
     .rcs-outer-container {
       .rcs-positioning {
         right: 5px;
+
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
       }
     }
   }
@@ -226,7 +238,7 @@ h3 {
   }
 
   @media screen and (max-width: 767px) {
-    min-width: 320px;
+    height: calc(100vh - 188.2px);
   }
 }
 
@@ -235,6 +247,16 @@ h3 {
 
   >.ant-col {
     padding: 0 15px;
+  }
+}
+
+.ant-row-resposnive {
+  >.ant-col {
+    @media screen and (max-width: 767px) {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   }
 }
 
@@ -431,6 +453,60 @@ h3 {
       }
     }
 
+    @media screen and (max-width: 767px) {
+      width: 65%;
+      margin: 0 auto;
+      display: block;
+
+      .radio-holder {
+        height: 200px;
+
+        .radiocontent-holder,
+        .ant-radio+* {
+          height: 200px;
+
+          .ant-image {
+            height: 200px
+          }
+        }
+
+        .ant-radio-inner {
+          width: 40px;
+          height: 40px;
+          margin-left: -20px;
+
+          &::after {
+            width: 10px;
+            height: 22px;
+            margin-top: -3px;
+            margin-left: -8px;
+          }
+        }
+
+        .radiocontent-holder {
+          h5 {
+            font-size: 1.25rem;
+          }
+        }
+
+        &:hover {
+          .ant-radio-inner {
+            margin-left: -61px;
+
+            &::before {
+              left: 40px;
+              height: 40px;
+              line-height: 40px;
+              width: 80px;
+              padding-left: 10px;
+            }
+          }
+        }
+
+      }
+
+    }
+
     .radio-holder {
       width: 100%;
     }
@@ -554,7 +630,10 @@ h3 {
         left: 0;
         top: 50%;
         margin-top: -19px;
-        color: $white;
+        color: $primary;
+        background-color: $white;
+        border: 2px solid $blueCounterLight;
+        line-height: 24px;
       }
 
       .text {
@@ -594,4 +673,34 @@ h3 {
   @media screen and (max-width: 767px) {
     display: none !important;
   }
+}
+
+.desktop-footer {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.mobile-footer {
+  display: none;
+
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
+
+  .footer {
+    padding: 10px 15px;
+    justify-content: space-between;
+
+    button {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .ant-btn-default {
+      min-width: 48px;
+    }
+  }
+
 }

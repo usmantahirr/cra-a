@@ -4,6 +4,10 @@
     width: 80%;
     margin: 0 auto;
 
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+
     .ant-upload-select {
         display: block;
         @include shadow(0 0 10px rgba(0, 0, 0, 0.1));
