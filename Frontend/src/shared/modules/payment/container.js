@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import qs from 'querystring';
 import { Modal } from 'antd';
 import { useHistory, useRouteMatch } from 'react-router';
+
 import { getPaymentUrl, getPaymentStatus } from './service';
 import ErrorContext from '../error/context';
 import CustomSpinner from '../../atoms/spinner';
@@ -122,11 +123,11 @@ const PaymentContainer = props => {
           <div className="custompopup-text">Submitted Successfully For Test</div>
           <div className="custom-content-holder">
             <div className="text-holder">
-              <h3 className="title">Medical Test REGISTRATION Application NO. ${applicationId}</h3>
+              <h3 className="title">Medical Test REGISTRATION Application NO. {applicationId}</h3>
               <p>
                 Kindly visit the selected facility to proceed with the test. a copy of the application has been emailed
-                to you on your email address. ${user.idTokenClaims.emails[0]} and downloaded on your system. please
-                bring a copy of your application to the appointment.
+                to you on your email address. {user.idTokenClaims.emails[0]} and downloaded on your system. please bring
+                a copy of your application to the appointment.
               </p>
             </div>
             <Button
@@ -155,7 +156,7 @@ const PaymentContainer = props => {
         <div className="custompopup-text">Payment Failed</div>
         <div className="custom-content-holder">
           <div className="text-holder">
-            <h3 className="title">Medical Test REGISTRATION Application NO. ${applicationId}</h3>
+            <h3 className="title">Medical Test REGISTRATION Application NO. {applicationId}</h3>
             <p>Please retry the payment</p>
           </div>
           <Button
@@ -165,7 +166,9 @@ const PaymentContainer = props => {
               e.preventDefault();
               let step = match.params.stepId;
               step = parseInt(step, 10) - 1;
+              setError('');
               history.push(`/register/${match.params.uid}/${step}`);
+              window.location.reload(true);
             }}
           >
             Take a step back
