@@ -18,7 +18,26 @@ const GridViewContainer = ({
     const columns = gridColumnApiRef.getAllColumns();
     const valueColumn = columns.filter(column => column.getColDef().headerName === columnName)[0];
     gridColumnApiRef.setColumnVisible(valueColumn, isVisible);
-    gridApiRef.sizeColumnsToFit();
+
+    const allColumnIds = [];
+    columns.forEach(column => {
+      allColumnIds.push(column.colId);
+    });
+
+    if (columnsSelected) {
+      const keys = Object.keys(columnsSelected);
+      let count = 0;
+      keys.forEach(key => {
+        if (columnsSelected[key]) {
+          count += 1;
+        }
+      });
+      if (count > 3) {
+        gridColumnApiRef.autoSizeColumns(allColumnIds, false);
+      } else {
+        gridApiRef.sizeColumnsToFit();
+      }
+    }
   };
 
   const handleFormGroupChange = ({ target: { label, checked } }) => {

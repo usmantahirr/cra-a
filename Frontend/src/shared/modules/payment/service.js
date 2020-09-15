@@ -1,5 +1,5 @@
 import API from '../../../api';
-import { PAYMENT_INTERNATIONAL } from '../../../api/endpoints';
+import { PAYMENT_INTERNATIONAL, PAYMENT_STATUS } from '../../../api/endpoints';
 import { API_BASE_URL3 } from '../../../config';
 import errorObject from '../../../api/errorObject';
 
@@ -9,7 +9,18 @@ export const getPaymentUrl = data => {
 
   return api
     .post(`${API_BASE_URL3}${PAYMENT_INTERNATIONAL}`, data)
-    .then(res => res)
+    .then(res => res.data)
+    .catch(e => {
+      throw errorObject(e);
+    });
+};
+
+export const getPaymentStatus = data => {
+  const api = new API();
+
+  return api
+    .post(`${API_BASE_URL3}${PAYMENT_STATUS}`, data)
+    .then(res => res.data)
     .catch(e => {
       throw errorObject(e);
     });

@@ -11,17 +11,31 @@ import CustomFormItem from '../modules/customForm/customFormItem';
 const { Content } = Layout;
 
 const Dashboard = props => {
-  const { goBack, formSchema, pageState, applicationFormData, applicationId } = props;
+  const { goBack, formSchema, pageState, applicationFormData, applicationId, setApplicationFormData } = props;
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
     if (colSize)
       return fieldArray.map(field => (
         <Col span={colSize}>
-          <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
+          <CustomFormItem
+            key={field.id}
+            {...field}
+            form={form}
+            applicationId={applicationId}
+            setApplicationFormData={setApplicationFormData}
+            applicationFormData={applicationFormData}
+          />
         </Col>
       ));
     return fieldArray.map(field => (
-      <CustomFormItem key={field.id} {...field} form={form} applicationFormData={applicationFormData} />
+      <CustomFormItem
+        key={field.id}
+        {...field}
+        form={form}
+        applicationId={applicationId}
+        setApplicationFormData={setApplicationFormData}
+        applicationFormData={applicationFormData}
+      />
     ));
   };
 
@@ -42,9 +56,16 @@ const Dashboard = props => {
     );
   };
 
-  const _renderFormButtons = isLastStep => {
-    const { onAllStepsCompleted } = props;
-    return <Footer goBack={goBack} onAllStepsCompleted={onAllStepsCompleted} isLastStep={isLastStep} />;
+  const _renderFormButtons = (isLastStep, form) => {
+    const { onAllStepsCompleted, saveAsDraft } = props;
+    return (
+      <Footer
+        goBack={goBack}
+        onAllStepsCompleted={onAllStepsCompleted}
+        saveAsDraft={() => saveAsDraft(form)}
+        isLastStep={isLastStep}
+      />
+    );
   };
 
   const _renderStepForm = (step, stepsCount, currStep) => {
@@ -70,7 +91,7 @@ const Dashboard = props => {
             {step.sections && step.sections.map(section => _renderSection(section, form))}
           </CustomScroll>
         </div>
-        {_renderFormButtons(currStep === stepsCount - 1)}
+        {_renderFormButtons(currStep === stepsCount - 1, form)}
 
         <Modal centered destroyOnClose footer={null} className="custom-popup text-popup" width={590}>
           <div className="custompopup-text">Submitted Successfully For Test</div>

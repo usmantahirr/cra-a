@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Button as AntButton, Badge, Image } from 'antd';
+import { Button as AntButton, Badge, Image, Dropdown, Menu } from 'antd';
+import { useHistory } from 'react-router';
+
 // import { UserOutlined, DownOutlined } from '@ant-design/icons';
 
 // import Logger from '../../modules/logger';
 import MSALService from '../../../modules/auth/services/msal.service';
 
 import styles from './style.module.scss';
+import { CHANGE_PASSWORD } from '../../../config';
 
 const ProfileCard = () => {
   const [user, setUser] = useState(null);
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
     MSALService.logout();
@@ -30,26 +34,19 @@ const ProfileCard = () => {
     return '';
   };
 
-  // const menu = (
-  //   <Menu>
-  //     <Menu.Item key="1">
-  //       <AntButton
-  //         type="link"
-  //         rel="noopener noreferrer"
-  //         onClick={() => {
-  //           Logger.info('Profile Button');
-  //         }}
-  //       >
-  //         Profile
-  //       </AntButton>
-  //     </Menu.Item>
-  //     <Menu.Item key="0">
-  //       <AntButton type="link" rel="noopener noreferrer" onClick={logout}>
-  //         Logout
-  //       </AntButton>
-  //     </Menu.Item>
-  //   </Menu>
-  // );
+  const menu = (
+    <Menu>
+      <Menu.Item key="1">
+        <AntButton
+          onClick={() => {
+            history.push(CHANGE_PASSWORD);
+          }}
+        >
+          Change Password
+        </AntButton>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className={styles.profileCard}>
@@ -70,9 +67,14 @@ const ProfileCard = () => {
             <Image src="/assets/icons/notification-icon.png" alt="Notification" preview={false} />
           </AntButton>
         </Badge>
-        <AntButton className={styles.actionButton} shape="circle">
+        {/* <AntButton className={styles.actionButton} shape="circle">
           <Image src="/assets/icons/cog-icon.png" alt="Settings" preview={false} />
-        </AntButton>
+        </AntButton> */}
+        <Dropdown overlay={menu} placement="bottomCenter">
+          <AntButton className={styles.actionButton} shape="circle">
+            <Image src="/assets/icons/cog-icon.png" alt="Settings" preview={false} />
+          </AntButton>
+        </Dropdown>
         <AntButton className={styles.actionButton} shape="circle" rel="noopener noreferrer" onClick={logout}>
           <Image src="/assets/icons/logout-icon.png" alt="Logout" preview={false} />
         </AntButton>

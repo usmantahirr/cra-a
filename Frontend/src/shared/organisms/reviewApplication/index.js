@@ -26,7 +26,9 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
                 data[name] && (
                   <Col key={`${name}`} span={6} className="cardinfo-box">
                     <p className="label">{label}</p>
-                    <p className="info">{formatData(data[name].label || formatData(data[name]))}</p>
+                    <p className="info">
+                      {formatData(data[name].value || data[name].name || data[name].label || data[name])}
+                    </p>
                   </Col>
                 )
               );
@@ -40,7 +42,9 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
             <p className="label">Screening Test (Inclusive of Tax)</p>
           </Col>
           <Col span={12}>
-            <p className="info">410 AED (111.63 USD Approx) </p>
+            <p className="info">
+              {applicationFormData.lab && `${applicationFormData.lab.feesAmount} ${applicationFormData.lab.currency}`}{' '}
+            </p>
           </Col>
         </Row>
       </Card>

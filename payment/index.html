@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Payment Processor</title>
+  </head>
+  <script>
+    window.onload = (env) => {
+      window.parent.postMessage(
+        {
+          ref: location && location.search,
+        },
+        "*"
+      );
+    };
+  </script>
+  <body></body>
+</html>

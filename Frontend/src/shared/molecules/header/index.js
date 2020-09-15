@@ -85,7 +85,7 @@ const Header = props => {
 
     return (
       <Row>
-        <Col span={4}>
+        <Col span={6}>
           <span>Application ID:</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
@@ -97,7 +97,13 @@ const Header = props => {
           <span>Destination:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
-        <Col span={4}>
+        {applicationFormData.lab && applicationFormData.lab.name && (
+          <Col span={6}>
+            <span>Lab Name:</span>
+            <strong>{applicationFormData.lab.name}</strong>
+          </Col>
+        )}
+        {/* <Col span={4}>
           <span>Visa Type:</span>
           <strong>
             {applicationFormData.passengerType +
@@ -107,7 +113,7 @@ const Header = props => {
         <Col span={4}>
           <span>Applicant Name:</span>
           <strong>{applicationFormData.name}</strong>
-        </Col>
+        </Col> */}
         {/* {scopeArray.map(control => {
           if (applicationFormData[control])
             return (

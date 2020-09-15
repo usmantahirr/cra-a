@@ -34,7 +34,6 @@ const Dashboard = () => {
   });
   const [applicationFormData, setApplicationFormData] = useState({});
   const [showLoader, setShowLoader] = useState(false);
-
   const [applicationData, setApplicationData] = useState({});
 
   useEffect(() => {
@@ -99,6 +98,9 @@ const Dashboard = () => {
     const formData = { ...applicationFormData, ...values };
     setShowLoader(true);
 
+    if (formData.lab && typeof formData.lab === 'string') {
+      formData.lab = JSON.parse(formData.lab);
+    }
     try {
       const user = JSON.parse(localStorage.getItem('user'));
 
@@ -138,6 +140,62 @@ const Dashboard = () => {
     setShowLoader(false);
   };
 
+  const saveAsDraft = async form => {
+    const formData = { ...applicationFormData, ...form.getFieldsValue() };
+    setShowLoader(true);
+
+    if (formData.lab && typeof formData.lab === 'string') {
+      formData.lab = JSON.parse(formData.lab);
+    }
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      // If Application doesn't exist
+      if (!applicationData._id) {
+        const res = await dashboardService.createApplication({
+          user_id: user.accountIdentifier,
+          status: 'Drafted',
+          application_data: formData,
+        });
+        setApplicationFormData(formData);
+        setApplicationData(res);
+        setShowLoader(false);
+        // goForward(res._id);
+        if (pageState.curr === 0) {
+          const newState = {
+            prev: null,
+            curr: 0,
+            next: null,
+          };
+          if (res._id) {
+            setPageState(newState);
+            history.push(`/register/${res._id}/${newState.curr}`);
+          }
+        }
+      } else {
+        await dashboardService.updateApplication(match.params.uid, {
+          status: 'Drafted',
+          application_data: formData,
+          applicationId: applicationData.applicationId,
+        });
+        setApplicationFormData(formData);
+        setApplicationData(prev => ({
+          ...prev,
+          application_data: {
+            ...prev.applicationData,
+            ...formData,
+          },
+        }));
+        setShowLoader(false);
+        // goForward(match.params.uid);
+      }
+    } catch (e) {
+      setShowLoader(false);
+      errorContext.setError(e, true);
+    }
+
+    setShowLoader(false);
+  };
+
   const onFinishFailed = (errorInfo, formIndex) => {
     Logger.info('Failed:', errorInfo, formIndex);
   };
@@ -165,6 +223,8 @@ const Dashboard = () => {
           onAllStepsCompleted={onAllStepsCompleted}
           applicationFormData={applicationFormData}
           onFormValueChanges={onFormValueChanges}
+          setApplicationFormData={setApplicationFormData}
+          saveAsDraft={saveAsDraft}
         />
       )}
     </Fragment>
