@@ -142,16 +142,16 @@ const SignupContainer = ({ history }) => {
       mobile_number: values.mobile,
     };
     try {
-      const { data, message } = await service.sendOTP(payload);
+      const { data } = await service.sendOTP(payload);
       if (data && data.ref_id) {
         setUser({ ...values, ref_id: data.ref_id });
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
       setShowLoader(false);
       setShowOTPModal(true);
@@ -210,15 +210,15 @@ const SignupContainer = ({ history }) => {
       ref_id: user.ref_id,
     };
     try {
-      const { data, message } = await service.resendOTP(payload);
+      const { data } = await service.resendOTP(payload);
       if (data) {
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
     } catch (error) {
       notification.setNotification(
@@ -236,15 +236,15 @@ const SignupContainer = ({ history }) => {
       ref_id: user.ref_id,
     };
     try {
-      const { data, message } = await service.resendPin(payload);
+      const { data } = await service.resendPin(payload);
       if (data) {
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
     } catch (error) {
       notification.setNotification(

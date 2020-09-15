@@ -4,6 +4,10 @@ export const AUTH_SEND_OTP = 'auth/send-otp';
 export const AUTH_RESEND_OTP = 'auth/resend-otp';
 export const AUTH_RESEND_PIN = 'auth/resend-pin';
 export const AUTH_VERIFY_OTP = 'auth/verify-otp';
+export const FORGOT_PASSWORD_SEND_PIN = 'auth/forget-pass-send-pin';
+export const FORGOT_PASSWORD_RESEND_PIN = 'auth/forget-pass-resend-pin';
+export const FORGOT_PASSWORD_VERIFY_PIN = 'auth/forget-pass-verify-pin';
+export const RESET_PASSWORD = 'auth/reset-password';
 export const CHANGE_PASSWORD = 'user/change-password';
 export const GET_JSON_SCHEMA = 'staticFormSchemaMock.json';
 
