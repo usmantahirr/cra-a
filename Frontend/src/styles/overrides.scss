@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 0.9375rem;
   color: #545B64;
+  overflow: hidden;
 }
 
 .app-portal {
@@ -211,6 +212,10 @@ h3 {
   @media screen and (max-width: 1400px) {
     height: calc(100vh - 246px);
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 15px;
+  }
 }
 
 .contentNSummeryScroll {
@@ -218,6 +223,10 @@ h3 {
 
   @media screen and (max-width: 1400px) {
     height: calc(100vh - 178px);
+  }
+
+  @media screen and (max-width: 767px) {
+    min-width: 320px;
   }
 }
 
@@ -454,4 +463,135 @@ h3 {
   z-index: 5;
   width: 100%;
   height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/*Responsive Styles*/
+
+.sidebar {
+  &.ant-layout-sider-has-trigger {
+    padding-bottom: 0;
+  }
+
+  .ant-layout-sider-children {
+    min-width: 200px;
+  }
+
+  .ant-layout-sider-trigger {
+    display: none;
+  }
+
+  &.ant-layout-sider-collapsed {
+    @media screen and (max-width: 767px) {
+      width: 0 !important;
+      flex: 0 0 0 !important;
+      max-width: 0 !important;
+      min-width: 0 !important;
+      overflow: hidden;
+    }
+  }
+}
+
+.mobile-header-holder {
+  display: none;
+
+  .mobile-header {
+    @extend %mbgradient-full;
+    padding: 0 20px;
+    position: relative;
+    min-width: 320px;
+
+    .ant-btn-mb {
+      position: absolute;
+      font-size: 0;
+      background: url(/assets/img/icon-mobile.svg) no-repeat left center;
+      background-size: 26px;
+      width: 35px;
+      height: 24px;
+      padding: 0;
+      top: 50%;
+      margin-top: -12px;
+      z-index: 1;
+    }
+
+    .app-link {
+      width: 150px;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .logo-holder {
+      .ant-image-img {
+        max-height: 45px;
+      }
+    }
+
+  }
+
+  .mobile-counter {
+    background-color: rgba($blueCounterLight, .16);
+    padding: 10px 15px;
+    position: relative;
+
+    .stepCounter,
+    .nextStep {
+      float: none;
+      text-align: right;
+      color: #3E3E3E;
+    }
+
+    .stepCounter {
+      margin: 0;
+      font-size: 0;
+
+      .count {
+        font-size: 1.125rem;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -19px;
+        color: $white;
+      }
+
+      .text {
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+      }
+    }
+
+    .nextStep {
+      padding: 0;
+
+      .title,
+      .text {
+        font-size: 0.75rem;
+        font-weight: 400;
+        display: inline;
+      }
+
+      .title {
+        &::after {
+          content: " : ";
+        }
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
+
+}
+
+.desktop-header {
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
 }
