@@ -7,7 +7,7 @@ const ManageApplicationRoutes = [
   },
   {
     Component: lazy(() => import('./detail/container')),
-    path: '/manage-application/view',
+    path: '/manage-application/view/:appId',
   },
 ];
 

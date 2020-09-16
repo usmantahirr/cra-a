@@ -1,5 +1,5 @@
 import API, { contentType } from '../../../api';
-import { API_BASE_URL3 } from '../../../config';
+import { API_BASE_URL3, API_BASE_URL } from '../../../config';
 import {
   GET_MANAGE_APPLICATION_SERVICE,
   GET_MANAGE_APPLICATION_SERVICE_DETAILS,
@@ -10,7 +10,7 @@ class ManageApplicationSerivce {
   constructor() {
     this.http = new API({
       headers: { contentType: contentType.json },
-      baseURL: API_BASE_URL3,
+      baseURL: '',
     });
   }
 
@@ -19,11 +19,11 @@ class ManageApplicationSerivce {
   };
 
   getManageApplicationDetail = id => {
-    return this.http.get(GET_MANAGE_APPLICATION_SERVICE_DETAILS, id);
+    return this.http.get(API_BASE_URL3 + GET_MANAGE_APPLICATION_SERVICE_DETAILS, id);
   };
 
-  getFile = id => {
-    return this.http.get(GET_FILE_MANAGE_APPLICATION, id);
+  getFile = model => {
+    return this.http.post(API_BASE_URL + GET_FILE_MANAGE_APPLICATION, model);
   };
 }
 export default new ManageApplicationSerivce();

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Card, Col, Row } from 'antd';
 import CustomScroll from 'react-custom-scroll';
 import { useTranslation } from 'react-i18next';
+import FileViewer from './fileViewer';
 
 const ApplicationViewHeader = ({ data }) => {
   const [t] = useTranslation();
@@ -64,7 +65,7 @@ const ManageApplicationDetailView = props => {
 
       <h3 className="sub-heading">{t('Document')}</h3>
       <Card className="card-holder">
-        <Row></Row>
+        <FileViewer name="length.png"> </FileViewer>
       </Card>
 
       <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>

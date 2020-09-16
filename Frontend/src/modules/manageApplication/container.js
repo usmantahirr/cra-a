@@ -8,7 +8,7 @@ import GridView from '../../shared/organisms/grid/container';
 import DashboardTemplate from '../../shared/templates/dashboardTemplate';
 import { initialState, columnDefs } from './manageApplicationGridColDefs';
 import ManageApplicationSerivce from './services/manage.service';
-import { ContextMenuCmd, ApplicationFormUrl } from '../../config';
+import { ContextMenuCmd, ApplicationFormUrl, ApplicationFormDetailUrl } from '../../config';
 import CustomSpinner from '../../shared/atoms/spinner';
 
 const ManageApplication = () => {
@@ -20,27 +20,39 @@ const ManageApplication = () => {
   // const [rowDataSource, setRowDataSource] = useState([]);
 
   useEffect(() => {
-    async function Init() {
+    function Init() {
       setShowLoader(true);
       // NEED REFECTOR
       const user = JSON.parse(localStorage.getItem('user')).accountIdentifier;
-      const { data } = await ManageApplicationSerivce.getManageApplications(user);
-      if (data && data.length) {
-        gridReference.gridApiRef.setRowData(data);
-      }
-      setShowLoader(false);
+      ManageApplicationSerivce.getManageApplications(user)
+        .then(data => {
+          if (data && data.length) {
+            gridReference.gridApiRef.setRowData(data);
+          }
+          setShowLoader(false);
+        })
+        .catch(() => {
+          gridReference.gridApiRef.setRowData([]);
+          setShowLoader(false);
+        });
     }
     try {
       if (gridReference.gridApiRef) {
         Init();
       }
     } catch (error) {
+      console.log(error);
       setShowLoader(false);
     }
   }, [gridReference]);
 
   const redirectToApplicationForm = data => {
-    const url = ApplicationFormUrl.replace('{0}', data._id);
+    const url = ApplicationFormUrl.replace('{0}', data.applicationId);
+    history.push(url);
+  };
+
+  const redirectToDetailApplicationForm = data => {
+    const url = ApplicationFormDetailUrl.replace('{0}', data.applicationId);
     history.push(url);
   };
 
@@ -48,6 +60,8 @@ const ManageApplication = () => {
   const actionClick = (e, type, data) => {
     if (type === ContextMenuCmd.edit) {
       redirectToApplicationForm(data);
+    } else if (type === ContextMenuCmd.view) {
+      redirectToDetailApplicationForm(data);
     }
   };
 
