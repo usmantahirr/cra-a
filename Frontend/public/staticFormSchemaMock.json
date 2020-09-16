@@ -566,7 +566,7 @@
               },
               {
                 "label": "Emirates ID Expiry",
-                "name": "nationalId",
+                "name": "emiratesIdExpiry",
                 "order": 7,
                 "type": "text"
               },

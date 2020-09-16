@@ -13,7 +13,14 @@ const Header = props => {
   const sidebarContext = useContext(SidebarContext);
   const [toggle, setToggle] = useState(false);
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
-  const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
+  const {
+    formSchema,
+    pageState,
+    pageHeader,
+    applicationFormData,
+    applicationId,
+    heading = 'Manage Application',
+  } = props;
 
   useEffect(() => {
     // const newApplicationSummary = {};
@@ -33,7 +40,7 @@ const Header = props => {
     return (
       <>
         <AntHeader className={`${styles.header} ${styles.headerText} desktop-header`}>
-          <div className={styles.text}>Manage Application</div>
+          <div className={styles.text}>{heading}</div>
         </AntHeader>
         <div className="mobile-header-holder">
           <AntHeader className="mobile-header">
