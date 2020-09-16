@@ -74,7 +74,7 @@ export function parsePropData(props) {
   const { applicationFormData } = props;
   return {
     country: getFieldValues(applicationFormData, 'sourceCountry', 'label'),
-    visaType: 'Visit',
+    visaType: applicationFormData.visaType,
     countryId: getFieldValues(applicationFormData, 'sourceCountry', 'value'),
     stateId: getFieldValues(applicationFormData, 'sourceState', 'value'),
     cityId: getFieldValues(applicationFormData, 'sourceCity', 'value'),

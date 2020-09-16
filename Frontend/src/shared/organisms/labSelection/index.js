@@ -25,7 +25,7 @@ const LabSelection = props => {
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   // form.setFieldsValue({ "serviceType": stateId })
-
+  const [mapRef, setMapRef] = useState(null);
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
   const [zoom, setZoom] = useState(13);
@@ -42,7 +42,7 @@ const LabSelection = props => {
   });
 
   // map handlers
-  const markerClickHandler = (event, place) => {
+  const markerClickHandler = (event, place, isFirstLoad = false) => {
     // Remember which place was clicked
     setSelectedLab(place);
 
@@ -58,8 +58,10 @@ const LabSelection = props => {
 
     setCenter(place.pos);
     // If you want to zoom in a little on marker click
-    if (zoom < 13) {
-      setZoom(13);
+    if (!isFirstLoad && mapRef && mapRef.zoom !== 13) {
+      setTimeout(() => {
+        setZoom(13);
+      }, 1000);
     }
   };
 
@@ -214,6 +216,8 @@ const LabSelection = props => {
         <Row className="ant-row-padding">
           <Col span={16}>
             <Map
+              mapRef={mapRef}
+              setMapRef={setMapRef}
               infoOpen={infoOpen}
               myPlaces={filterState.cityLabs}
               zoom={zoom}

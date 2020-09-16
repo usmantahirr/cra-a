@@ -65,7 +65,11 @@ const ManageApplicationDetailView = props => {
 
       <h3 className="sub-heading">{t('Document')}</h3>
       <Card className="card-holder">
-        <FileViewer name="length.png"> </FileViewer>
+        {data &&
+          data.attachments &&
+          data.attachments.map(item => {
+            return <FileViewer data={item}> </FileViewer>;
+          })}
       </Card>
 
       <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>

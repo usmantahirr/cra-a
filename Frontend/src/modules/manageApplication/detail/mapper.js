@@ -22,7 +22,7 @@ export const parseDetailView = (data, lab) => {
     applicationId: data.applicationId || '',
     status: data.status || '',
     testResult: data.testResult || '',
-    attachments: data.attachments || [],
+    attachments: getFieldValues(data.application_data, 'attachments'),
     visaInfo: {
       sourceCountry: getFieldValues(data.application_data, 'sourceCountry', 'value'),
       sourceState: getFieldValues(data.application_data, 'sourceState', 'value'),

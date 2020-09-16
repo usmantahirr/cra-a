@@ -104,23 +104,41 @@ const Dashboard = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       // If Application doesn't exist
+      const appFormData = { ...formData };
+      if (appFormData.fileUpload && appFormData.fileUpload.fileList && appFormData.fileUpload.fileList.length) {
+        const file = appFormData.fileUpload.fileList[0];
+        appFormData.attachments = [
+          {
+            uid: file.uid,
+            name: file.name,
+            path: file.path,
+          },
+        ];
+        delete appFormData.fileUpload;
+      }
       if (!applicationData.applicationId) {
         const res = await dashboardService.createApplication({
           user_id: user.id,
           status: 'Drafted',
-          application_data: formData,
+          application_data: appFormData,
         });
-        setApplicationFormData(formData);
+        appFormData.fileUpload = {
+          fileList: appFormData.attachments,
+        };
+        setApplicationFormData(appFormData);
         setApplicationData(res);
         setShowLoader(false);
         goForward(res.applicationId);
       } else {
         await dashboardService.updateApplication(match.params.uid, {
           status: 'Drafted',
-          application_data: formData,
+          application_data: appFormData,
           // applicationId: applicationData.applicationId,
         });
-        setApplicationFormData(formData);
+        appFormData.fileUpload = {
+          fileList: appFormData.attachments,
+        };
+        setApplicationFormData(appFormData);
         setApplicationData(prev => ({
           ...prev,
           application_data: {
