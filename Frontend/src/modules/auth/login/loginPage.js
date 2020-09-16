@@ -27,9 +27,9 @@ const Login = ({ validationRules, handleSubmit, showLoader }) => {
           className="custom-control"
         />
         <Row className="checkbox-options">
-          <Col offset={16} span={12} className="forgot-link">
+          <Col span={24} className="forgot-link">
             {/* <Button type="link" rel="noopener noreferrer" onClick={() => history.push(FORGOT_PASSWORD_PAGE)} >Forgot password</Button> */}
-            <Link to={FORGOT_PASSWORD_PAGE}>forgot your password?</Link>
+            <Link to={FORGOT_PASSWORD_PAGE}>Forgot password?</Link>
           </Col>
         </Row>
         <Form.Item>

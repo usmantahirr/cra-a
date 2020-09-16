@@ -11,10 +11,6 @@
     height: 100%;
     max-width: 1400px;
     margin: 0 auto;
-
-    .mgrow {
-      margin-bottom: 45px;
-    }
   }
 
   .subheading {
@@ -39,6 +35,9 @@
     background: rgb(234, 242, 250);
     background: linear-gradient(90deg, rgba(234, 242, 250, 1) 0%, rgba(251, 253, 254, 1) 90%, rgba(255, 255, 255, 1) 100%);
     padding: 50px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 
     @media screen and (max-width: 767px) {
       padding: 25px 15px;
@@ -63,12 +62,29 @@
       @include align-content(center);
       @include flex-wrap(wrap);
     }
+
+    .smalInfo {
+      font-size: 1.125rem;
+      display: block;
+      color: $white;
+      width: 100%;
+      margin-bottom: 25px;
+
+      @media screen and (max-width: 1400px) {
+        font-size: 1rem;
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   .logobox {
     display: block;
     text-align: center;
     margin-bottom: 35px;
+    width: 100%;
 
     img {
       margin: 0 auto;
@@ -96,4 +112,6 @@
   input {
     background-color: transparent;
   }
+
+
 }

@@ -179,6 +179,8 @@
 
 
 .transbg-form {
+  width: 100%;
+
   .custom-item {
 
     .intl-tel-input.allow-dropdown input[type=tel],
@@ -186,6 +188,17 @@
       background-color: transparent;
     }
   }
+
+  .forgot-link {
+    text-align: right;
+    margin-bottom: 25px;
+
+    a {
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+
 }
 
 .otp-timer {
