@@ -30,6 +30,11 @@
   background: linear-gradient(180deg, rgba(239, 247, 255, 1) 0%, rgba(251, 253, 254, 1) 80%, rgba(255, 255, 255, 1) 100%);
 }
 
+%mbgradient-full {
+  background: rgb(234, 244, 253);
+  background: linear-gradient(180deg, rgba(234, 244, 253, 1) 0%, rgba(240, 249, 253, 1) 70%, rgba(255, 255, 255, 1) 100%);
+}
+
 %text-ellipsis {
   white-space: nowrap;
   overflow: hidden;

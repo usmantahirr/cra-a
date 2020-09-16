@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Row, Col, Image } from 'antd';
 import { useHistory } from 'react-router';
 import styles from './authPageTemplate.module.scss';
 import Button from '../atoms/buttons';
+import { AUTH_PAGE, SIGNUP_PAGE } from '../../config';
 
-const AuthPageTemplate = ({ children, showSalutationContainer = true }) => {
+const AuthPageTemplate = ({
+  children,
+  showSalutationContainer = true,
+  showLoginButton = true,
+  showSignUpButton = false,
+}) => {
   const history = useHistory();
   return (
     <div className={styles.authcontainer}>
@@ -25,9 +31,19 @@ const AuthPageTemplate = ({ children, showSalutationContainer = true }) => {
                       <br /> REGISTRATION Portal
                     </strong>
                   </h2>
-                  <Button className={styles.registerButton} onClick={() => history.push('/account/login')}>
-                    Back to login
-                  </Button>
+                  {showLoginButton && (
+                    <Button className={styles.registerButton} onClick={() => history.push(AUTH_PAGE)}>
+                      Back to login
+                    </Button>
+                  )}
+                  {showSignUpButton && (
+                    <Fragment>
+                      <p className="small-info">Don’t have an account?</p>
+                      <Button className={styles.registerButton} onClick={() => history.push(SIGNUP_PAGE)}>
+                        Register
+                      </Button>
+                    </Fragment>
+                  )}
                 </div>
               </Col>
             )}

@@ -6,8 +6,13 @@
     padding: 15px;
   }
 
+  @media screen and (max-width: 767px) {
+    padding: 10px 15px;
+  }
+
   .initials {
     text-align: center;
+
 
     .inName {
       width: 60px;
@@ -28,6 +33,13 @@
         line-height: 41px;
         font-size: 1.25rem;
       }
+
+      @media screen and (max-width: 767px) {
+        width: 40px;
+        height: 40px;
+        line-height: 31px;
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -36,9 +48,14 @@
     margin: 10px 0;
     color: $darkGray;
     font-size: 1.0625rem;
+    @extend %text-ellipsis;
 
     @media screen and (max-width: 1400px) {
       font-size: 0.9375rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 0.8125rem;
     }
   }
 
@@ -62,10 +79,24 @@
     display: flex;
     justify-content: space-between;
 
+    @media screen and (max-width: 767px){
+      margin-top: 10px;
+    }
+
     .actionButton {
       height: 40px;
       width: 40px;
       border: 1px solid rgba($gray, .3);
+
+      @media screen and (max-width: 767px) {
+        height: 35px;
+        width: 35px;
+        line-height: 20px;
+
+        img {
+          max-width: 95%;
+        }
+      }
     }
   }
 }

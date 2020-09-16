@@ -3,7 +3,7 @@ import { Image } from 'antd';
 
 const Logo = () => (
   <a className="app-link" href="/" rel="noopener noreferrer" title="Pure Health">
-    <Image src="/assets/img/logo.svg" className="logo-holder" alt="Pure Health" />
+    <Image src="/assets/img/logo.png" className="logo-holder" alt="Pure Health" />
   </a>
 );
 

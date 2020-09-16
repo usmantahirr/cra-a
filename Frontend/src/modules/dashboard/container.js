@@ -105,21 +105,21 @@ const Dashboard = () => {
       const user = JSON.parse(localStorage.getItem('user'));
 
       // If Application doesn't exist
-      if (!applicationData._id) {
+      if (!applicationData.applicationId) {
         const res = await dashboardService.createApplication({
-          user_id: user.accountIdentifier,
+          user_id: user.id,
           status: 'Drafted',
           application_data: formData,
         });
         setApplicationFormData(formData);
         setApplicationData(res);
         setShowLoader(false);
-        goForward(res._id);
+        goForward(res.applicationId);
       } else {
         await dashboardService.updateApplication(match.params.uid, {
           status: 'Drafted',
           application_data: formData,
-          applicationId: applicationData.applicationId,
+          // applicationId: applicationData.applicationId,
         });
         setApplicationFormData(formData);
         setApplicationData(prev => ({
@@ -150,9 +150,9 @@ const Dashboard = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       // If Application doesn't exist
-      if (!applicationData._id) {
+      if (!applicationData.applicationId) {
         const res = await dashboardService.createApplication({
-          user_id: user.accountIdentifier,
+          user_id: user.id,
           status: 'Drafted',
           application_data: formData,
         });
@@ -166,16 +166,16 @@ const Dashboard = () => {
             curr: 0,
             next: null,
           };
-          if (res._id) {
+          if (res.applicationId) {
             setPageState(newState);
-            history.push(`/register/${res._id}/${newState.curr}`);
+            history.push(`/register/${res.applicationId}/${newState.curr}`);
           }
         }
       } else {
         await dashboardService.updateApplication(match.params.uid, {
           status: 'Drafted',
           application_data: formData,
-          applicationId: applicationData.applicationId,
+          // applicationId: applicationData.applicationId,
         });
         setApplicationFormData(formData);
         setApplicationData(prev => ({

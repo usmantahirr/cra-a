@@ -170,7 +170,7 @@ const CountryStateCity = props => {
   const renderCountries = () => {
     const { name, placeholder } = country;
     return (
-      <Col span={12}>
+      <Col xs={24} md={12}>
         <Form.Item
           className="custom-item"
           name={name}
@@ -201,7 +201,7 @@ const CountryStateCity = props => {
     const { name, placeholder } = state;
     return (
       showState && (
-        <Col span={12}>
+        <Col xs={24} md={12}>
           <Form.Item
             className="custom-item"
             name={name}
@@ -233,7 +233,7 @@ const CountryStateCity = props => {
     const { name, placeholder } = zipCode;
     return (
       showState && (
-        <Col span={12}>
+        <Col xs={24} md={12}>
           <Form.Item
             className="custom-item"
             name={name}
@@ -255,7 +255,7 @@ const CountryStateCity = props => {
   const renderCities = () => {
     const { placeholder, dependencies } = city;
     return (
-      <Col span={12}>
+      <Col xs={24} md={12}>
         <Form.Item
           className="custom-item"
           {...city}

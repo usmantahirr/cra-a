@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import SignupPage from '../../shared/pages/signupPage';
 import service from './services/auth.service';
 import NotificationContext from '../../shared/modules/notification/context';
-import { AUTH_PAGE } from '../../config';
+import { APPLICATION_HOME } from '../../config';
 
 const SIGNUP_FORM_VALIDATION_RULES = {
   firstName: {
@@ -142,16 +142,16 @@ const SignupContainer = ({ history }) => {
       mobile_number: values.mobile,
     };
     try {
-      const { data, message } = await service.sendOTP(payload);
+      const { data } = await service.sendOTP(payload);
       if (data && data.ref_id) {
         setUser({ ...values, ref_id: data.ref_id });
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
       setShowLoader(false);
       setShowOTPModal(true);
@@ -181,7 +181,7 @@ const SignupContainer = ({ history }) => {
     };
     try {
       const { data, message } = await service.verifyOTP(payload);
-      if (data) {
+      if (data.token && data.user) {
         notification.setNotification(
           {
             type: 'success',
@@ -189,7 +189,10 @@ const SignupContainer = ({ history }) => {
           },
           true
         );
-        history.push(AUTH_PAGE);
+        localStorage.setItem('token', data.token.access_token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('id_token', data.token.id_token);
+        history.push(APPLICATION_HOME);
       }
       setShowVerifyLoader(false);
       setShowOTPModal(false);
@@ -210,15 +213,15 @@ const SignupContainer = ({ history }) => {
       ref_id: user.ref_id,
     };
     try {
-      const { data, message } = await service.resendOTP(payload);
+      const { data } = await service.resendOTP(payload);
       if (data) {
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
     } catch (error) {
       notification.setNotification(
@@ -236,15 +239,15 @@ const SignupContainer = ({ history }) => {
       ref_id: user.ref_id,
     };
     try {
-      const { data, message } = await service.resendPin(payload);
+      const { data } = await service.resendPin(payload);
       if (data) {
-        notification.setNotification(
-          {
-            type: 'success',
-            message,
-          },
-          true
-        );
+        // notification.setNotification(
+        //   {
+        //     type: 'success',
+        //     message,
+        //   },
+        //   true
+        // );
       }
     } catch (error) {
       notification.setNotification(
