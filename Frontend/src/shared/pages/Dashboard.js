@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Form, Row, Col, Modal } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import CustomScroll from 'react-custom-scroll';
 import Button from '../atoms/buttons';
@@ -7,36 +8,48 @@ import DashboardTemplate from '../templates/dashboardTemplate';
 import Header from '../molecules/header';
 import Footer from '../molecules/footer';
 import CustomFormItem from '../modules/customForm/customFormItem';
+import { getTranslation } from '../utilities/index';
 
 const { Content } = Layout;
 
 const Dashboard = props => {
   const { goBack, formSchema, pageState, applicationFormData, applicationId, setApplicationFormData } = props;
+  const { t } = useTranslation();
 
   const _renderFieldArray = (fieldArray, form, colSize) => {
     if (colSize)
-      return fieldArray.map(field => (
-        <Col span={colSize}>
-          <CustomFormItem
-            key={field.id}
-            {...field}
-            form={form}
-            applicationId={applicationId}
-            setApplicationFormData={setApplicationFormData}
-            applicationFormData={applicationFormData}
-          />
-        </Col>
-      ));
-    return fieldArray.map(field => (
-      <CustomFormItem
-        key={field.id}
-        {...field}
-        form={form}
-        applicationId={applicationId}
-        setApplicationFormData={setApplicationFormData}
-        applicationFormData={applicationFormData}
-      />
-    ));
+      return fieldArray.map(field => {
+        field.label = getTranslation(field.label, t);
+        field.placeholder = getTranslation(field.placeholder, t);
+        field.text = getTranslation(field.text, t);
+
+        return (
+          <Col span={colSize}>
+            <CustomFormItem
+              key={field.id}
+              {...field}
+              form={form}
+              setApplicationFormData={setApplicationFormData}
+              applicationFormData={applicationFormData}
+            />
+          </Col>
+        );
+      });
+    return fieldArray.map(field => {
+      field.label = getTranslation(field.label, t);
+      field.placeholder = getTranslation(field.placeholder, t);
+      field.text = getTranslation(field.text, t);
+
+      return (
+        <CustomFormItem
+          key={field.id}
+          {...field}
+          form={form}
+          setApplicationFormData={setApplicationFormData}
+          applicationFormData={applicationFormData}
+        />
+      );
+    });
   };
 
   const _renderRowArray = (rowArray, form) => {
@@ -53,7 +66,7 @@ const Dashboard = props => {
   const _renderSection = (section, form) => {
     return (
       <div key={section.id}>
-        <h3>{section.sectionTitle}</h3>
+        <h3>{getTranslation(section.sectionTitle, t)}</h3>
         {(section.fieldArray && _renderFieldArray(section.fieldArray, form)) ||
           (section.rowArray && _renderRowArray(section.rowArray, form))}
       </div>
