@@ -103,7 +103,6 @@ const Dashboard = () => {
     }
     try {
       const user = JSON.parse(localStorage.getItem('user'));
-
       // If Application doesn't exist
       if (!applicationData.applicationId) {
         const res = await dashboardService.createApplication({

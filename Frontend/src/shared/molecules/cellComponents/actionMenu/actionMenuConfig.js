@@ -8,7 +8,10 @@ const iconChange = '/assets/img/icon-change.svg';
 // const iconLab = '/assets/img/icon-lab.svg';
 
 export const menuItemListByApplicationStatus = {
-  DRAFTED: [{ id: '1', icon: iconTrack, label: 'Edit Application', cmd: ContextMenuCmd.edit }],
+  DRAFTED: [
+    { id: '1', icon: iconTrack, label: 'Edit Application', cmd: ContextMenuCmd.edit },
+    // { id: '2', icon: iconChange, label: 'View Application', cmd: ContextMenuCmd.view },
+  ],
   SUBMITTED: [{ id: '2', icon: iconChange, label: 'View Application', cmd: ContextMenuCmd.view }],
 };
 
