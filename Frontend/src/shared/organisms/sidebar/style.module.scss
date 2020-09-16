@@ -5,6 +5,8 @@
   @extend %gradient-full;
   @include shadow(6px 1px 7px -6px rgba(0, 0, 0, 0.2));
 
+  
+
   @media screen and (max-width: 1400px) {
     width: 220px !important;
     flex: 0 0 220px !important;
@@ -21,5 +23,15 @@
       height: 85px;
       padding: 10px 20px;
     }
+
+    @media screen and (max-width: 767px) {
+      height: 65px;
+      padding: 13px 20px;
+
+      img {
+        max-height: 40px;
+      }
+    }
+
   }
 }

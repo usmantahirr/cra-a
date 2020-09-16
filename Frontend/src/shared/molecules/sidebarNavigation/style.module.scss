@@ -7,4 +7,9 @@
     padding: 15px 0;
     height: calc(100% - 384px);
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 10px 0;
+    height: calc(100% - 298px);
+  }
 }

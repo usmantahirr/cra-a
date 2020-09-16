@@ -5,17 +5,18 @@ import { useHistory } from 'react-router';
 // import { UserOutlined, DownOutlined } from '@ant-design/icons';
 
 // import Logger from '../../modules/logger';
-import MSALService from '../../../modules/auth/services/msal.service';
+// import MSALService from '../../../modules/auth/services/msal.service';
 
 import styles from './style.module.scss';
-import { CHANGE_PASSWORD } from '../../../config';
+import { CHANGE_PASSWORD, AUTH_PAGE } from '../../../config';
 
 const ProfileCard = () => {
   const [user, setUser] = useState(null);
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    MSALService.logout();
+    // MSALService.logout();
+    history.push(AUTH_PAGE);
   };
 
   useEffect(() => {
@@ -51,10 +52,10 @@ const ProfileCard = () => {
   return (
     <div className={styles.profileCard}>
       <div className={styles.initials}>
-        <div className={styles.inName}>{user && getNameInitial(user.name)}</div>
+        <div className={styles.inName}>{user && getNameInitial(user.fullName)}</div>
       </div>
       <div className={styles.name}>
-        {user && user.name}
+        {user && user.fullName}
         {/* <Dropdown overlay={menu} placement="bottomCenter">
           <AntButton shape="circle" className={styles.dropdownButton} onClick={e => e.preventDefault()}>
             <DownOutlined className={styles.caret} />

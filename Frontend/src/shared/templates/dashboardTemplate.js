@@ -6,20 +6,20 @@ import styles from './dashboardTemplate.module.scss';
 import { SidebarContextProvider } from './sidebarContext';
 
 const DashboardTemplate = ({ children }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
-    <Layout className={styles.mainSection}>
-      <SidebarContextProvider
-        value={{
-          isCollapsed,
-          setIsCollapsed,
-        }}
-      >
+    <SidebarContextProvider
+      value={{
+        isCollapsed,
+        setIsCollapsed,
+      }}
+    >
+      <Layout className={styles.mainSection}>
         <Sidebar />
         <Layout className={styles.layoutSection}>{children}</Layout>
-      </SidebarContextProvider>
-    </Layout>
+      </Layout>
+    </SidebarContextProvider>
   );
 };
 

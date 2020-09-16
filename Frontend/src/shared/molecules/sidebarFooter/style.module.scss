@@ -5,6 +5,10 @@
     padding: 15px;
   }
 
+  @media screen and (max-width: 767px) {
+    padding: 10px 15px;
+  }
+
   form,
   button {
     width: 100%;
@@ -14,11 +18,21 @@
   form {
     >div {
       margin-bottom: 14px;
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 10px;
+      }
     }
   }
 
   button {
     padding: 8px 25px;
+
+    @media screen and (max-width: 767px) {
+      img {
+        max-height: 20px;
+      }
+    }
 
     span {
       margin-left: 15px;
