@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import ManageApplicationDetailView from './detail';
 import { parseDetailView, getField, viewFields } from './mapper';
 import CustomSpinner from '../../../shared/atoms/spinner';
@@ -12,6 +13,7 @@ const ManageApplicationDetailContainer = props => {
   const [showLoader, setShowLoader] = useState(false);
   const history = useHistory();
   const match = useRouteMatch();
+  const [t] = useTranslation();
 
   useEffect(() => {
     async function Init() {
@@ -37,7 +39,7 @@ const ManageApplicationDetailContainer = props => {
 
   return (
     <DashboardTemplate>
-      <Header pageHeader heading="Manage Application" />
+      <Header pageHeader heading={t('Manage Application')} />
       {showLoader ? <CustomSpinner /> : ''}
       <ManageApplicationDetailView viewFields={viewFields} data={viewData} getField={getField} {...props} />
     </DashboardTemplate>

@@ -56,7 +56,7 @@ const ManageApplicationDetailView = props => {
       {<Slab heading="Visa Information" data={data.visaInfo || {}} fields={visaFields} getField={getField}></Slab>}
       {
         <Slab
-          heading="Application Information"
+          heading={t('Application Information')}
           data={data.appInfo || {}}
           fields={appInfoFields}
           getField={getField}
