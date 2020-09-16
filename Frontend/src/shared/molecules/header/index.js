@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Layout, Row, Col } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
@@ -11,7 +11,7 @@ const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const sidebarContext = useContext(SidebarContext);
-
+  const [toggle, setToggle] = useState(false);
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
   const { formSchema, pageState, pageHeader, applicationFormData, applicationId } = props;
 
@@ -170,7 +170,12 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      {pageState.curr !== 0 && <div className={styles.appSummery}>{_renderApplicationSummary()}</div>}
+      {pageState.curr !== 0 && (
+        <div className={`appSummary ${toggle && 'open'}`}>
+          {_renderApplicationSummary()}
+          <Button onClick={() => setToggle(!toggle)}>Click</Button>
+        </div>
+      )}
     </>
   );
 };
