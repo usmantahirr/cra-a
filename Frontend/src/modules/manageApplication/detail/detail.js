@@ -23,13 +23,13 @@ const Slab = ({ heading, data, fields, getField }) => {
     <Fragment>
       <h3 className="sub-heading">{t(heading)}</h3>
       <Card className="card-holder">
-        <Row>
+        <Row className="ant-row-padding">
           {data &&
             fields &&
             fields.map(({ name, label }) => {
               return (
                 data[name] && (
-                  <Col key={`${name}`} span={6} className="cardinfo-box">
+                  <Col key={`${name}`} xs={12} lg={6} className="cardinfo-box">
                     <p className="label">{t(label)}</p>
                     <p className="info">{getField(data[name])}</p>
                   </Col>

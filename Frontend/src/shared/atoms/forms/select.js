@@ -24,7 +24,7 @@ function CustomSelect({ options, ...props }) {
   const renderSelect = ({ url, ...ownProps }, ownOptions) => {
     if (url) ownProps.labelInValue = true;
     return (
-      <Select {...ownProps} className="custom-control">
+      <Select {...ownProps} className="custom-control" getPopupContainer={node => node.parentNode}>
         {ownOptions &&
           ownOptions.map(option => (
             <Select.Option key={option.id} value={option.value}>

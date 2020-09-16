@@ -2,6 +2,10 @@
     @media screen and (max-width: 1400px) {
         font-size: 0.8125rem;
     }
+
+    @media screen and (max-width: 767px) {
+        font-size: 0.75rem;
+    }
 }
 
 .ant-radio-lg {
@@ -15,6 +19,11 @@
         @media screen and (max-width: 1400px) {
             height: 38px;
             width: 38px;
+        }
+
+        @media screen and (max-width: 767px) {
+            height: 25px;
+            width: 25px;
         }
 
         &::after {
@@ -56,6 +65,17 @@
             min-width: 160px;
             font-size: 0.8125rem;
         }
+
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            min-width: 90px;
+        }
+
+        @media screen and (max-width: 767px) {
+            height: 25px;
+            line-height: 25px;
+            font-size: 0.75rem;
+            min-width: 60px;
+        }
     }
 
     .ant-radio-checked {
@@ -86,6 +106,11 @@
             @media screen and (max-width: 1400px) {
                 height: 42px;
             }
+
+            @media screen and (max-width: 767px) {
+                height: 29px;
+                margin: 0 0 5px;
+            }
         }
     }
 }
@@ -99,6 +124,12 @@
         min-width: 120px;
         -webkit-transition: all 0.3s;
         transition: all 0.3s;
+
+        @media screen and (max-width: 767px) {
+            padding: 6px 15px;
+            font-size: 0.75rem;
+            margin: 0 0 5px;
+        }
 
         .ant-radio {
             display: none;
@@ -197,5 +228,12 @@
     &.ant-radio-center {
         display: block;
         text-align: center;
+
+        @media screen and (max-width: 767px) {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
     }
 }
