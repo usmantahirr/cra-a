@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Component library for PH",
   "author": "usmantahirr",
-  "license": "MIT",
   "repository": "usmantahirr/ph-dls-lib",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -26,12 +25,16 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "animate.css": "^4.1.1",
+    "antd": "^4.6.4",
     "react": "^16.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-knobs": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.21",
@@ -56,12 +59,15 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "sass-resources-loader": "^2.1.0"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "@ant-design/icons": "^4.2.2"
+    "@ant-design/icons": "^4.2.2",
+    "animate.css": "^4.1.1",
+    "antd": "^4.6.4"
   }
 }

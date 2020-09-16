@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Button as AntButton } from 'antd';
 
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
-const Button = ({ onChange, children, ...props }) => {
+const Button = ({ onClick, children, ...props }) => {
   return (
-    <button className={styles.button} onChange={onChange} {...props}>
+    <AntButton className={styles.button} onClick={onClick} {...props}>
       {children}
-    </button>
-  )
-}
+    </AntButton>
+  );
+};
 
-export default Button
+export default Button;

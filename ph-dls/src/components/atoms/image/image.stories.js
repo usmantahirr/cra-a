@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { storiesOf } from '@storybook/react';
 
-import Image from './index'
+import Image from './index';
 
-export const RegularImage = () => (
-  <Image src='https://www.w3schools.com/w3css/img_lights.jpg' />
-)
-
-export default {
-  title: 'Atoms/Image',
-  component: Image
-}
+storiesOf('Atoms/Image', module).add('Simple', () => (
+  <Image
+    src='https://www.w3schools.com/w3css/img_lights.jpg'
+    alt='Sample Image'
+  />
+));
