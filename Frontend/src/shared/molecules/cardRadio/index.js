@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Radio, Form } from 'antd';
+import { Card, Radio, Form, Tooltip } from 'antd';
 
 const CardRadio = props => {
   const { cartOptions, ...restProps } = props;
@@ -19,7 +19,10 @@ const CardRadio = props => {
           <div className="radiocontent-holder">
             <Card>
               <h5 className="title">{cardOption.name}</h5>
-              <p className="description">{cardOption.address}</p>
+              <Tooltip title={cardOption.address}>
+                <p className="description">{cardOption.address}</p>
+              </Tooltip>
+              ,
             </Card>
           </div>
         </Radio>
