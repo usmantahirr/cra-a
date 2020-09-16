@@ -54,6 +54,7 @@ const GridViewContainer = ({
       columnsSelected={columnsSelected} // marking checkboxes selected, if is for groupbox
       columnsOptions={columnsOptions} // for populating columns to dynamically show hide columns, it is for groupbox
       handleFormGroupChange={handleFormGroupChange} // for columns filter
+      overlayNoRowsTemplate="No Records Found"
     />
   );
 };
