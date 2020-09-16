@@ -42,7 +42,7 @@ const LabSelection = props => {
   });
 
   // map handlers
-  const markerClickHandler = (event, place, isFirstLoad = false) => {
+  const markerClickHandler = (event, place) => {
     // Remember which place was clicked
     setSelectedLab(place);
 
@@ -58,9 +58,11 @@ const LabSelection = props => {
 
     setCenter(place.pos);
     // If you want to zoom in a little on marker click
-    if (!isFirstLoad && mapRef && mapRef.zoom !== 13) {
+    if (mapRef && mapRef.zoom !== 13) {
       setTimeout(() => {
-        setZoom(13);
+        // eslint-disable-next-line
+        const cZoom = zoom === 13 ? 12 : 13;
+        setZoom(cZoom);
       }, 1000);
     }
   };

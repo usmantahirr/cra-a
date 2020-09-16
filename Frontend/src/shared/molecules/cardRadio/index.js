@@ -19,10 +19,7 @@ const CardRadio = props => {
           <div className="radiocontent-holder">
             <Card>
               <h5 className="title">{cardOption.name}</h5>
-              <p className="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.{' '}
-              </p>
+              <p className="description">{cardOption.address}</p>
             </Card>
           </div>
         </Radio>

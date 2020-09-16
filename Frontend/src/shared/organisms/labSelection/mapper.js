@@ -32,6 +32,7 @@ export function labsResponseMapper(inputLabs) {
         labId: data.labId,
         // city: data.city,
         services: data.serviceTypes,
+        address: data.address,
         pos: {
           lat: Number(data.latitude),
           lng: Number(data.logitude),

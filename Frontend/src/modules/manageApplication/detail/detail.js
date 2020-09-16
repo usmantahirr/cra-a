@@ -9,7 +9,7 @@ const ApplicationViewHeader = ({ data }) => {
   return (
     <Fragment>
       <h3>
-        {t('Application Id')}: {data.id || 'I am here'}{' '}
+        {t('Application Id')}: {data.applicationId}{' '}
       </h3>
       <h3> (ICON here) {t('Request Resubmit')} </h3>
       <h3> (ICON here) {t('Negative')} </h3>
