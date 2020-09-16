@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row, Col, Tooltip } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
@@ -99,20 +99,28 @@ const Header = props => {
       <Row>
         <Col xs={12} md={6}>
           <span>Application ID:</span>
-          <strong>{_renderApplicationId()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderApplicationId()}>
+            <strong>{_renderApplicationId()}</strong>
+          </Tooltip>
         </Col>
         <Col xs={12} md={6}>
           <span>Source:</span>
-          <strong>{_renderSourceLocation()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderSourceLocation()}>
+            <strong>{_renderSourceLocation()}</strong>
+          </Tooltip>
         </Col>
         <Col xs={12} md={6}>
           <span>Destination:</span>
-          <strong>{_renderDestinationLocation()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderDestinationLocation()}>
+            <strong>{_renderDestinationLocation()}</strong>
+          </Tooltip>
         </Col>
         {applicationFormData.lab && applicationFormData.lab.name && (
           <Col xs={12} md={6}>
             <span>Lab Name:</span>
-            <strong>{applicationFormData.lab.name}</strong>
+            <Tooltip placement="bottomLeft" title={applicationFormData.lab.name}>
+              <strong>{applicationFormData.lab.name}</strong>
+            </Tooltip>
           </Col>
         )}
         {/* <Col span={4}>
@@ -178,9 +186,13 @@ const Header = props => {
         </div>
       </AntHeader>
       {pageState.curr !== 0 && (
-        <div className={`appSummary ${toggle && 'open'}`}>
-          {_renderApplicationSummary()}
-          <Button onClick={() => setToggle(!toggle)}>Click</Button>
+        <div className={`${styles.appSummery} ${toggle && 'open'} appSummery`}>
+          <div className="appSummery-holder">
+            {_renderApplicationSummary()}
+            <Button onClick={() => setToggle(!toggle)} className="openBtn">
+              Click
+            </Button>
+          </div>
         </div>
       )}
     </>

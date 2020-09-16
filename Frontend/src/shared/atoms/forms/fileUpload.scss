@@ -22,6 +22,11 @@
                 margin-top: 30px;
             }
 
+            @media screen and (max-width: 767px) {
+                padding: 15px;
+                margin-top: 15px;
+            }
+
             .upload-img {
                 margin-bottom: 25px;
 
@@ -30,6 +35,15 @@
 
                     img {
                         max-height: 70px;
+                    }
+
+                }
+
+                @media screen and (max-width: 1400px) {
+                    margin-bottom: 10px;
+
+                    img {
+                        max-height: 50px;
                     }
 
                 }
@@ -44,6 +58,11 @@
                 @media screen and (max-width: 1400px) {
                     font-size: 1rem;
                     margin-bottom: 5px;
+                }
+
+                @media screen and (max-width: 767px) {
+                    font-size: 0.8125rem;
+                    margin-bottom: 0;
                 }
 
                 &.text-gray {
@@ -85,9 +104,19 @@
                 height: auto;
                 @extend %position-center;
 
+                @media screen and (max-width: 767px) {
+                    margin-right: 0;
+                    width: 100%;
+                }
+
                 .ant-upload-list-item-card-actions {
                     right: -15px;
                     top: -10px;
+
+                    @media screen and (max-width: 767px) {
+                        right: 5px;
+                        top: -30px;
+                    }
 
                     .ant-btn {
                         width: 29px;
@@ -130,6 +159,12 @@
             border-radius: 10px;
             border: 1px solid #E8E8E8;
 
+            @media screen and (max-width: 767px) {
+                width: 50px;
+                height: 50px;
+                margin: 0 auto;
+            }
+
             .anticon-paper-clip {
                 background-image: url(/assets/img/icon-file.svg);
                 display: block;
@@ -137,6 +172,13 @@
                 height: 100px;
                 background-repeat: no-repeat;
                 background-position: center;
+
+                @media screen and (max-width: 767px) {
+                    width: 50px;
+                    height: 50px;
+                    background-size: 30px;
+                    top: 0;
+                }
 
                 svg {
                     display: none;
@@ -152,6 +194,10 @@
             word-break: break-word;
             padding: 10px 0;
             color: #808080;
+
+            @media screen and (max-width: 767px) {
+                font-size: 0.75rem;
+            }
         }
     }
 }

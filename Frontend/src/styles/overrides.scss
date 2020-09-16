@@ -122,6 +122,11 @@ h3 {
   color: $primary;
   font-weight: 600;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 0.9375rem;
+    margin-bottom: 15px;
+  }
 }
 
 .custom-popup {
@@ -227,6 +232,7 @@ h3 {
 
   @media screen and (max-width: 767px) {
     padding: 15px;
+    height: calc(100vh - 278px);
   }
 }
 
@@ -288,11 +294,19 @@ h3 {
       padding: 25px 40px 0;
     }
 
+    @media screen and (max-width: 767px) {
+      padding: 15px 15px 0;
+    }
+
     .cardinfo-box {
       margin-bottom: 50px;
 
       @media screen and (max-width: 1400px) {
         margin-bottom: 25px;
+      }
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 20px;
       }
     }
   }
@@ -302,6 +316,10 @@ h3 {
   .info {
     margin: 0;
     font-size: 0.8125rem;
+
+    @media screen and (max-width: 767px){
+      font-size: 0.6875rem;
+    }
   }
 
   .label {
@@ -316,6 +334,10 @@ h3 {
   &-single {
     .ant-card-body {
       padding: 25px 40px;
+
+      @media screen and (max-width: 767px){
+        padding: 15px;
+      }
 
       .label {
         margin-bottom: 0;
@@ -379,6 +401,10 @@ h3 {
       height: 40px;
     }
 
+    @media screen and (max-width: 767px) {
+      width: 30px;
+      height: 30px;
+    }
 
     &.arrow-left {
       background-image: url(/assets/img/icon-slick-left.svg);
@@ -454,51 +480,48 @@ h3 {
     }
 
     @media screen and (max-width: 767px) {
-      width: 65%;
+      width: 55%;
       margin: 0 auto;
       display: block;
 
       .radio-holder {
-        height: 200px;
+        height: 190px;
+        margin-bottom: 0;
 
         .radiocontent-holder,
         .ant-radio+* {
-          height: 200px;
+          height: 190px;
 
           .ant-image {
-            height: 200px
+            height: 190px
           }
         }
 
         .ant-radio-inner {
-          width: 40px;
-          height: 40px;
-          margin-left: -20px;
+          width: 30px;
+          height: 30px;
+          margin-left: -15px;
 
           &::after {
-            width: 10px;
-            height: 22px;
-            margin-top: -3px;
-            margin-left: -8px;
+            width: 8px;
+            height: 18px;
+            margin-top: -2px;
+            margin-left: -7px;
           }
         }
 
         .radiocontent-holder {
           h5 {
-            font-size: 1.25rem;
+            font-size: 1rem;
           }
         }
 
         &:hover {
           .ant-radio-inner {
-            margin-left: -61px;
+            margin-left: -15px;
 
             &::before {
-              left: 40px;
-              height: 40px;
-              line-height: 40px;
-              width: 80px;
-              padding-left: 10px;
+              content: none;
             }
           }
         }
@@ -526,6 +549,10 @@ h3 {
       bottom: -30px;
     }
 
+    @media screen and (max-width: 767px) {
+      bottom: -40px;
+    }
+
   }
 
 }
@@ -543,37 +570,6 @@ h3 {
   right: 0;
   top: 0;
   bottom: 0;
-}
-
-.appSummary {
-  background-color: #F5F5F5;
-  padding: 20px 25px;
-  font-size: 0.8125rem;
-  @include shadow(0 6px 12px -9px rgba(0, 0, 0, .1));
-  border-bottom: 1px solid rgba($gray, .1);
-
-  @media screen and (max-width: 1400px) {
-    padding: 15px 25px;
-  }
-
-  @media screen and (max-width: 767px) {
-    padding: 10px 15px;
-  }
-
-  span,
-  strong {
-    display: block;
-  }
-
-  strong {
-    font-weight: 600;
-    color: $primary;
-    margin-top: 10px;
-
-    @media screen and (max-width: 1400px) {
-      margin-top: 5px;
-    }
-  }
 }
 
 /*Responsive Styles*/
@@ -649,6 +645,7 @@ h3 {
       float: none;
       text-align: right;
       color: #3E3E3E;
+      border: 0;
     }
 
     .stepCounter {
@@ -731,6 +728,71 @@ h3 {
 
     .ant-btn-default {
       min-width: 48px;
+    }
+  }
+
+}
+
+.appSummery {
+
+  .openBtn {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    position: relative;
+    height: 90px;
+
+    .appSummery-holder {
+      background-color: #F5F5F5;
+      padding: 10px 15px;
+      font-size: 0.75rem;
+      box-shadow: none;
+      border-bottom: 1px solid rgba($gray, .05);
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+
+      .ant-row {
+        height: 65px;
+        overflow: hidden;
+      }
+
+      strong {
+        height: 36px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+
+    }
+
+    .openBtn {
+      font-size: 0;
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: url(/assets/img/dropdown-arrow.svg) no-repeat center 8px #F3F6F8;
+      background-size: 10px;
+      padding: 0;
+      border: 1px solid $white;
+      right: 50%;
+      margin-right: -11px;
+      display: block;
+    }
+  }
+
+  &.open {
+    .appSummery-holder {
+      .ant-row {
+        height: auto;
+      }
+
+      .openBtn {
+        background: url(/assets/img/arrow-up.svg) no-repeat center 8px #F3F6F8;
+        background-size: 10px;
+      }
     }
   }
 
