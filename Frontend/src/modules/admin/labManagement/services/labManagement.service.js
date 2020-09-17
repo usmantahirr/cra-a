@@ -1,6 +1,6 @@
 import API, { contentType } from '../../../../api';
 import { API_BASE_URL_ADMIN_PORTAL } from '../../../../config';
-import { GET_LAB_GROUP, GET_LABS } from '../../../../api/endpoints';
+import { GET_LAB_GROUP, GET_LABS, GET_TESTS, GET_USERS } from '../../../../api/endpoints';
 
 class LabManagementService {
   constructor() {
@@ -40,6 +40,14 @@ class LabManagementService {
 
   getLabs = () => {
     return this.http.get(GET_LABS);
+  };
+
+  getUsers = () => {
+    return this.http.get(GET_USERS);
+  };
+
+  getTests = id => {
+    return this.http.get(GET_TESTS, id);
   };
 }
 export default new LabManagementService();

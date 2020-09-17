@@ -21,6 +21,14 @@ const AdminRoutes = [
     Component: lazy(() => import('./lab/labListing/container')),
     path: '/admin/lab',
   },
+  {
+    Component: lazy(() => import('./test/testListing/container')),
+    path: '/admin/test/:labId',
+  },
+  {
+    Component: lazy(() => import('./user/userListing/container')),
+    path: '/admin/user/:labId',
+  },
 ];
 
 export default AdminRoutes;
