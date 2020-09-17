@@ -25,6 +25,7 @@ const LabSelection = props => {
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   // form.setFieldsValue({ "serviceType": stateId })
+  const [showLoader, setShowLoader] = useState(false);
   const [mapRef, setMapRef] = useState(null);
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
@@ -69,6 +70,7 @@ const LabSelection = props => {
 
   useEffect(() => {
     async function Init() {
+      setShowLoader(true);
       const formState = getFormField('labState', applicationFormData);
       const currentState = formState ? formState.value : stateId;
       let { data: statesResponse = [] } = currentState ? await MapService.getStatesByCountry(countryId) : {};
@@ -93,7 +95,7 @@ const LabSelection = props => {
       // checking selected lab if exist other wise select default
       const currentLabId = getFormField('lab', applicationFormData);
       const currentLab = currentLabId ? getLab(labsResponse, currentLabId) : labsResponse[0];
-
+      setShowLoader(false);
       setFilterState({
         allLabs: labsResponse,
         states: statesResponse,
@@ -204,7 +206,7 @@ const LabSelection = props => {
 
   return countryId && cityId ? (
     <Fragment>
-      {filterState && filterState.cityLabs.length === 0 ? <CustomSpinner /> : ''}
+      {showLoader ? <CustomSpinner /> : ''}
       <MapFilter
         countryCode={stateId}
         country={country}
