@@ -317,7 +317,7 @@ h3 {
     margin: 0;
     font-size: 0.8125rem;
 
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       font-size: 0.6875rem;
     }
   }
@@ -335,7 +335,7 @@ h3 {
     .ant-card-body {
       padding: 25px 40px;
 
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         padding: 15px;
       }
 
@@ -379,7 +379,27 @@ h3 {
 
 .content-scrollbar {
   height: calc(100vh - 85px);
-  padding: 25px;
+  padding: 25px 0 25px 25px;
+
+  .rcs-custom-scroll {
+    .rcs-inner-container {
+      padding-right: 25px;
+
+      @media screen and (max-width: 767px) {
+        padding-right: 0;
+      }
+    }
+
+    .rcs-outer-container {
+      .rcs-positioning {
+        right: 5px;
+
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 .slickArrows {

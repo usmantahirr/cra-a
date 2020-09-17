@@ -50,39 +50,39 @@ const ManageApplicationDetailView = props => {
   const labInfoFields = viewFields.labInformation.sort((a, b) => a - b);
 
   return (
-    // <div className="contentNF-scroll">
-    <CustomScroll heightRelativeToParent="100%">
-      <ApplicationViewHeader data={data} />
-      {<Slab heading="Visa Information" data={data.visaInfo || {}} fields={visaFields} getField={getField}></Slab>}
-      {
-        <Slab
-          heading="Application Information"
-          data={data.appInfo || {}}
-          fields={appInfoFields}
-          getField={getField}
-        ></Slab>
-      }
+    <div className="content-scrollbar">
+      <CustomScroll heightRelativeToParent="100%">
+        <ApplicationViewHeader data={data} />
+        {<Slab heading="Visa Information" data={data.visaInfo || {}} fields={visaFields} getField={getField}></Slab>}
+        {
+          <Slab
+            heading="Application Information"
+            data={data.appInfo || {}}
+            fields={appInfoFields}
+            getField={getField}
+          ></Slab>
+        }
 
-      <h3 className="sub-heading">{t('Document')}</h3>
-      <Card className="card-holder">
-        <FileViewer name="length.png"> </FileViewer>
-      </Card>
+        <h3 className="sub-heading">{t('Document')}</h3>
+        <Card className="card-holder">
+          <FileViewer name="length.png"> </FileViewer>
+        </Card>
 
-      <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>
+        <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>
 
-      <h3 className="sub-heading">{t('Payment')}</h3>
-      <Card className="card-holder card-holder-single">
-        <Row>
-          <Col span={6}>
-            <p className="label">{t('Screening Test (Inclusive of Tax')}</p>
-          </Col>
-          <Col span={6}>
-            <p className="info">{data && `${data.labFees} ${data.labCurrency}`} </p>
-          </Col>
-        </Row>
-      </Card>
-    </CustomScroll>
-    // </div>
+        <h3 className="sub-heading">{t('Payment')}</h3>
+        <Card className="card-holder card-holder-single">
+          <Row>
+            <Col span={6}>
+              <p className="label">{t('Screening Test (Inclusive of Tax')}</p>
+            </Col>
+            <Col span={6}>
+              <p className="info">{data && `${data.labFees} ${data.labCurrency}`} </p>
+            </Col>
+          </Row>
+        </Card>
+      </CustomScroll>
+    </div>
   );
 };
 
