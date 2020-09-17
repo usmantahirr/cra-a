@@ -39,9 +39,9 @@ const ManageApplication = () => {
       if (gridReference.gridApiRef) {
         Init();
       }
+      // eslint-disable-next-line
     } catch (error) {
       setShowLoader(false);
-      console.log(error);
     }
   }, [gridReference]);
 

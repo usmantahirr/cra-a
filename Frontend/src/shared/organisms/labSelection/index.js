@@ -237,6 +237,7 @@ const LabSelection = props => {
           <Col xs={24} md={12} lg={8}>
             <div className="filter-state">
               <CustomScroll heightRelativeToParent="100%">
+                {filterState && filterState.cityLabs.length === 0 ? 'No Lab Found' : ''}
                 <CardRadio
                   cartOptions={filterState.cityLabs}
                   // value={(selectedLab && selectedLab.id) || ''}

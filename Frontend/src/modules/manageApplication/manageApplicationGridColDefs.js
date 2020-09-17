@@ -6,7 +6,7 @@ export const initialState = {
 export const columnDefs = actionParam => {
   return [
     {
-      headerName: 'Application Name',
+      headerName: 'Applicant Name',
       field: 'applicant_name',
       headerClass: 'resizable-header',
     },
