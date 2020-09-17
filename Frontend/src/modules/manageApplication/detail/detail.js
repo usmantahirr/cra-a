@@ -11,13 +11,13 @@ const ApplicationViewHeader = ({ data }) => {
       <Row className="ant-row-padding manageapp-head">
         <Col xs={24} lg={12}>
           <h3 className="sub-heading">
-            {t('Application Id')}: {data.id || 'I am here'}{' '}
+            {t('Application Id')}: {data.applicationId}
           </h3>
         </Col>
         <Col xs={24} lg={12} className="align-right">
           <div className="record-holder submit">
             {' '}
-            <img src="/assets/img/icon-submit.svg" alt="" /> <span>{t('Request Resubmit')} </span>
+            <img src="/assets/img/icon-submit.svg" alt="" /> <span>{data.status} </span>
           </div>
         </Col>
       </Row>
@@ -31,7 +31,7 @@ const Slab = ({ heading, data, fields, getField, showTestResult = false }) => {
     <Fragment>
       <h3 className="sub-sm-heading">
         {t(heading)}
-        {showTestResult ? <div className="status negative"> {t('Negative')} </div> : ''}
+        {showTestResult ? <div className="status negative"> {data.testResult || t('Pending')} </div> : ''}
       </h3>
       <Card className="card-holder">
         <Row className="ant-row-padding">
