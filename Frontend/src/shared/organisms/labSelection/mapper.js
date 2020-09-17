@@ -117,6 +117,7 @@ export function getCardOptionObject(place) {
     currency: place.currency,
     feesAmount: place.feesAmount,
     feesTax: place.feesTax,
+    address: place.address,
   };
   return JSON.stringify(item);
 }

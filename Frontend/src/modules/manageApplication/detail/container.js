@@ -19,10 +19,10 @@ const ManageApplicationDetailContainer = props => {
     async function Init() {
       setShowLoader(true);
       const { data } = await ManageApplicationSerivce.getManageApplicationDetail(match.params.appId);
-      const currentLab = data && data.application_data && data.application_data.lab;
-      const { data: lab = null } =
-        currentLab && currentLab.labId ? await ManageApplicationSerivce.getLabByLabId(currentLab.labId) : {};
-      const mappedData = parseDetailView(data, lab);
+      // const currentLab = data && data.application_data && data.application_data.lab;
+      // const { data: lab = null } =
+      //   currentLab && currentLab.labId ? await ManageApplicationSerivce.getLabByLabId(currentLab.labId) : {};
+      const mappedData = parseDetailView(data);
       setViewData(mappedData);
       setShowLoader(false);
     }

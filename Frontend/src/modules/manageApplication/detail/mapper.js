@@ -14,7 +14,7 @@ const getFieldValues = (data, objectProp, prop) => {
   return data ? (data[objectProp] ? data[objectProp][prop] || '' : '') : '';
 };
 
-export const parseDetailView = (data, lab) => {
+export const parseDetailView = data => {
   if (!data) {
     return {};
   }
@@ -51,7 +51,7 @@ export const parseDetailView = (data, lab) => {
     },
     labInfo: {
       labName: getFieldValues(data.application_data, 'lab', 'name'),
-      labAddress: (lab && lab.address) || '',
+      labAddress: getFieldValues(data.application_data, 'lab', 'address'),
       serviceType: getFieldValues(data.application_data, 'serviceType'),
       appointmentDate: '',
       slot: '',
