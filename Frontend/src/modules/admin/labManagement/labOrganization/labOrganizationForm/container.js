@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Fragment } from 'react';
 import { useRouteMatch, useHistory } from 'react-router';
 import service from '../../services/labManagement.service';
-import NotificationContext from '../../../../../shared/modules/notification';
+import NotificationContext from '../../../../../shared/modules/notification/context';
 import LabOrganizationPage from './page';
+import CustomSpinner from '../../../../../shared/atoms/spinner';
 
 const VALIDATION_RULES = {
   labName: {
@@ -160,33 +161,98 @@ const VALIDATION_RULES = {
 
 const LabOrganizationFormContainer = () => {
   const [showLoader, setShowLoader] = useState(false);
+  const [showPageLoader, setShowPageLoader] = useState(false);
+  const [formData, setFormData] = useState(null);
   const notification = useContext(NotificationContext);
   const match = useRouteMatch();
   const history = useHistory();
 
+  const labOrganizationFormDataToModel = values => {
+    const model = {
+      name: values.labName,
+      businessContact: {
+        contactName: values.bussinessContactName,
+        designation: values.bussinessDesignation,
+        phone: values.bussinessPhone,
+        email: values.bussinessEmail,
+      },
+      technicalContact: {
+        contactName: values.technicalContactName,
+        designation: values.technicalDesignation,
+        phone: values.technicalPhone,
+        email: values.technicalEmail,
+      },
+      financeContact: {
+        contactName: values.financeContactName,
+        designation: values.financeDesignation,
+        phone: values.financePhone,
+        email: values.financeEmail,
+      },
+    };
+    if (match.params.id) model.labOrgId = formData.labOrgId;
+    return model;
+  };
+
+  const labOrganizationModelToFormData = data => {
+    const model = {
+      labOrgId: data._id,
+      labName: data.name,
+      bussinessContactName: data.businessContact.contactName,
+      bussinessDesignation: data.businessContact.designation,
+      bussinessPhone: data.businessContact.phone,
+      bussinessEmail: data.businessContact.email,
+      technicalContactName: data.technicalContact.contactName,
+      technicalDesignation: data.technicalContact.designation,
+      technicalPhone: data.technicalContact.phone,
+      technicalEmail: data.technicalContact.email,
+      financeContactName: data.financeContact.contactName,
+      financeDesignation: data.financeContact.designation,
+      financePhone: data.financeContact.phone,
+      financeEmail: data.financeContact.email,
+    };
+    setFormData(model);
+  };
+
+  const getLaborganizationById = async id => {
+    setShowPageLoader(true);
+    try {
+      const { data } = await service.getLabOrganizationById(id);
+      if (data && data._id) {
+        labOrganizationModelToFormData(data);
+      }
+      setShowPageLoader(false);
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+      setShowPageLoader(false);
+    }
+  };
+
   useEffect(() => {
     // applicationContext.setHeading('Bla');
     if (match.params && match.params.id) {
-      history.push('/');
+      getLaborganizationById(match.params.id);
     }
   }, [match.params.id]);
 
-  const handleSubmit = async values => {
-    setShowLoader(true);
-    const payload = {
-      email: values.email,
-      mobile_number: values.mobile,
-    };
+  const createOrganization = async values => {
+    const payload = labOrganizationFormDataToModel(values);
     try {
-      const { data } = await service.sendOTP(payload);
-      if (data) {
+      const { data, message } = await service.createLabOrganization(payload);
+      if (data && data._id) {
         notification.setNotification(
           {
             type: 'success',
-            message: 'haha',
+            message,
           },
           true
         );
+        history.push('/');
       }
       setShowLoader(false);
     } catch (error) {
@@ -201,7 +267,53 @@ const LabOrganizationFormContainer = () => {
     }
   };
 
-  return <LabOrganizationPage validationRules={VALIDATION_RULES} handleSubmit={handleSubmit} showLoader={showLoader} />;
+  const updateOrganization = async values => {
+    const payload = labOrganizationFormDataToModel(values);
+    try {
+      const { message } = await service.updateLabOrganization(payload);
+      notification.setNotification(
+        {
+          type: 'success',
+          message,
+        },
+        true
+      );
+      history.push('/');
+      setShowLoader(false);
+    } catch (error) {
+      notification.setNotification(
+        {
+          type: 'error',
+          message: error.data && error.data.message ? error.data.message : error.message,
+        },
+        true
+      );
+      setShowLoader(false);
+    }
+  };
+
+  const handleSubmit = async values => {
+    setShowLoader(true);
+    if (match.params.id) {
+      await updateOrganization(values);
+    } else {
+      await createOrganization(values);
+    }
+  };
+
+  return (
+    <Fragment>
+      {showPageLoader && <CustomSpinner />}
+      {!showPageLoader && (
+        <LabOrganizationPage
+          formData={formData}
+          validationRules={VALIDATION_RULES}
+          handleSubmit={handleSubmit}
+          showLoader={showLoader}
+        />
+      )}
+    </Fragment>
+  );
 };
 
 export default LabOrganizationFormContainer;

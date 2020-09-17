@@ -1,11 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-for */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 
 import 'react-intl-tel-input/dist/main.css';
 
-const CustomTelInput = ({ onChange, placeholder, label, required, id }) => {
+const CustomTelInput = ({ onChange, placeholder, label, required, id, value: fieldValue }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    if (fieldValue) setInputValue(fieldValue);
+  }, [fieldValue]);
+
   const triggerChange = changedValue => {
     if (onChange) {
       onChange(changedValue);
@@ -13,7 +19,9 @@ const CustomTelInput = ({ onChange, placeholder, label, required, id }) => {
   };
 
   const validateInput = (valid, value, countryObject, formattedValue) => {
-    if (!valid && !value) {
+    if (valid && value && !formattedValue) {
+      triggerChange(value);
+    } else if (!valid && !value) {
       triggerChange(null);
     } else if (valid && value && formattedValue) {
       triggerChange(formattedValue.replace(/\s/g, ''));
@@ -51,6 +59,7 @@ const CustomTelInput = ({ onChange, placeholder, label, required, id }) => {
         onPhoneNumberBlur={onNumberBlur}
         onSelectFlag={onCountryChanged}
         format
+        defaultValue={inputValue}
         nationalMode={false}
         telInputProps={{
           onKeyPress: event => {

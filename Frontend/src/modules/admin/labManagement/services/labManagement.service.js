@@ -1,11 +1,10 @@
 import API, { contentType } from '../../../../api';
-import { API_AUTH_BASE_URL } from '../../../../config';
 
 class LabManagementService {
   constructor() {
     this.http = new API({
       headers: { contentType: contentType.json },
-      baseURL: API_AUTH_BASE_URL,
+      baseURL: 'https://phadminportal.azurewebsites.net/api/',
     });
   }
 
