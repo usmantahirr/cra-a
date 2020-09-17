@@ -31,22 +31,36 @@ const FileViewer = props => {
 
   return (
     <Fragment>
-      <div>
-        <Button
-          onClick={() => {
-            getFile(true);
-          }}
-        >
-          download here
-        </Button>
+      <div className="doc-mainholder">
+        <div className="doc-holder">
+          <i>
+            <img src="/assets/img/icon-files.svg" alt="" />
+          </i>
+          <strong>Passport.pdf</strong>
+        </div>
+        <div className="doc-btnholder">
+          <Button
+            onClick={() => {
+              getFile(true);
+            }}
+          >
+            <i>
+              <img src="/assets/img/icon-sdownload.svg" alt="" />
+            </i>
+            <span>Download</span>
+          </Button>
 
-        <Button
-          onClick={() => {
-            getFile();
-          }}
-        >
-          View File
-        </Button>
+          <Button
+            onClick={() => {
+              getFile();
+            }}
+          >
+            <i>
+              <img src="/assets/img/icon-view.svg" alt="" />
+            </i>
+            <span>View</span>
+          </Button>
+        </div>
       </div>
     </Fragment>
   );
