@@ -115,7 +115,11 @@ const LabSelection = props => {
       form.setFieldsValue({ labCity: getCity(citiesResponse, currentCity) });
       form.setFieldsValue({ serviceType: undefined });
     }
-    Init();
+    try {
+      Init();
+    } catch (error) {
+      setShowLoader(false);
+    }
   }, [countryId, stateId, cityId]);
 
   // dropdown handlers
