@@ -34,8 +34,14 @@ const ManageApplication = () => {
           setShowLoader(false);
         });
     }
-    if (gridReference.gridApiRef) {
-      Init();
+    try {
+      // need revisit
+      if (gridReference.gridApiRef) {
+        Init();
+      }
+    } catch (error) {
+      setShowLoader(false);
+      console.log(error);
     }
   }, [gridReference]);
 

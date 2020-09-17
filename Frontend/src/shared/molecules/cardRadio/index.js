@@ -6,6 +6,7 @@ const CardRadio = props => {
 
   const listItems =
     cartOptions &&
+    cartOptions.length &&
     cartOptions.map(cardOption => {
       const key = JSON.stringify({
         labId: cardOption.labId,
