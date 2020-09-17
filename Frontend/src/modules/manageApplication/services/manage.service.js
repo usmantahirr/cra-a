@@ -4,6 +4,7 @@ import {
   GET_MANAGE_APPLICATION_SERVICE,
   GET_MANAGE_APPLICATION_SERVICE_DETAILS,
   GET_FILE_MANAGE_APPLICATION,
+  GET_LAB_BY_LAB_ID,
 } from '../../../api/endpoints';
 
 class ManageApplicationSerivce {
@@ -15,7 +16,7 @@ class ManageApplicationSerivce {
   }
 
   getManageApplications = id => {
-    return this.http.get(GET_MANAGE_APPLICATION_SERVICE, id);
+    return this.http.get(API_BASE_URL3 + GET_MANAGE_APPLICATION_SERVICE, id);
   };
 
   getManageApplicationDetail = id => {
@@ -24,6 +25,10 @@ class ManageApplicationSerivce {
 
   getFile = model => {
     return this.http.post(API_BASE_URL + GET_FILE_MANAGE_APPLICATION, model);
+  };
+
+  getLabByLabId = id => {
+    return this.http.get(API_BASE_URL + GET_LAB_BY_LAB_ID, id);
   };
 }
 export default new ManageApplicationSerivce();

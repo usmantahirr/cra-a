@@ -19,12 +19,12 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
     <Fragment>
       <h3 className="sub-heading">Personal Information</h3>
       <Card className="card-holder">
-        <Row>
+        <Row className="ant-row-padding">
           {fields &&
             fields.map(({ name, label }) => {
               return (
                 data[name] && (
-                  <Col key={`${name}`} span={6} className="cardinfo-box">
+                  <Col key={`${name}`} xs={12} lg={6} className="cardinfo-box">
                     <p className="label">{label}</p>
                     <p className="info">
                       {formatData(data[name].value || data[name].name || data[name].label || data[name])}

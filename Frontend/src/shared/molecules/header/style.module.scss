@@ -59,6 +59,13 @@
     padding: 15px 25px;
   }
 
+  @media screen and (max-width: 767px) {
+    padding: 0;
+    box-shadow: none;
+    border-bottom: 0;
+    background-color: transparent;
+  }
+
   span,
   strong {
     display: block;
@@ -68,6 +75,7 @@
     font-weight: 600;
     color: $primary;
     margin-top: 10px;
+    @extend %text-ellipsis;
 
     @media screen and (max-width: 1400px) {
       margin-top: 5px;

@@ -4,6 +4,10 @@
     border-bottom: 1px solid rgba($gray, .1);
     margin-bottom: 20px;
 
+    @media screen and (max-width: 767px) {
+        padding: 10px;
+    }
+
     .ant-page-header-content {
         padding: 0;
 
@@ -15,7 +19,14 @@
                     width: 25%;
                     display: inline-block;
 
-                    vertical-align: top &:last-child {
+                    @media screen and (max-width: 767px) {
+                        width: 50%;
+                        padding-right: 5px;
+                    }
+
+                    vertical-align: top;
+
+                    &:last-child {
                         padding-right: 0;
                     }
 
@@ -57,6 +68,10 @@
                         .ant-select-selection-item {
                             font-weight: normal;
                             font-size: 0.75rem;
+
+                            @media screen and (max-width: 767px) {
+                                padding-right: 33px;
+                            }
                         }
                     }
                 }
@@ -148,6 +163,21 @@
         height: calc(100vh - 400px);
     }
 
+    @media screen and (max-width: 767px) {
+        height: 100%;
+
+        .ant-radio-group {
+            overflow-x: auto;
+            white-space: nowrap;
+
+            .ant-radio-wrapper {
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+
+    }
+
     .ant-form-item {
         margin-bottom: 0;
     }
@@ -158,6 +188,11 @@
 
     @media screen and (max-width: 1400px) {
         height: calc(100vh - 400px);
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 20px;
+        height: 200px;
     }
 
     .gm-ui-hover-effect {

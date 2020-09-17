@@ -25,7 +25,7 @@ const LabSelection = props => {
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   // form.setFieldsValue({ "serviceType": stateId })
-
+  const [mapRef, setMapRef] = useState(null);
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
   const [zoom, setZoom] = useState(13);
@@ -58,8 +58,12 @@ const LabSelection = props => {
 
     setCenter(place.pos);
     // If you want to zoom in a little on marker click
-    if (zoom < 13) {
-      setZoom(13);
+    if (mapRef && mapRef.zoom !== 13) {
+      setTimeout(() => {
+        // eslint-disable-next-line
+        const cZoom = zoom === 13 ? 12 : 13;
+        setZoom(cZoom);
+      }, 1000);
     }
   };
 
@@ -212,8 +216,10 @@ const LabSelection = props => {
       />
       <div className="card-section">
         <Row className="ant-row-padding">
-          <Col span={16}>
+          <Col xs={24} md={12} lg={16}>
             <Map
+              mapRef={mapRef}
+              setMapRef={setMapRef}
               infoOpen={infoOpen}
               myPlaces={filterState.cityLabs}
               zoom={zoom}
@@ -222,7 +228,7 @@ const LabSelection = props => {
               markerClickHandler={markerClickHandler}
             />
           </Col>
-          <Col span={8}>
+          <Col xs={24} md={12} lg={8}>
             <div className="filter-state">
               <CustomScroll heightRelativeToParent="100%">
                 <CardRadio

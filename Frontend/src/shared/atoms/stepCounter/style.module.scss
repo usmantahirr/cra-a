@@ -10,6 +10,10 @@
     margin-top: 10px;
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1rem;
+  }
+
   .count {
     background-color: #0086D3;
     border-radius: 50%;
@@ -27,6 +31,12 @@
       height: 38px;
       line-height: 29px;
     }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      width: 30px;
+      height: 30px;
+      line-height: 19px;
+    }
   }
 
   .text {
@@ -41,6 +51,9 @@
       font-size: 1.25rem;
     }
 
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 1rem;
+    }
 
   }
 

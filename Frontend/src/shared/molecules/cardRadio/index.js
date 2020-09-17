@@ -13,16 +13,14 @@ const CardRadio = props => {
         currency: cardOption.currency,
         feesAmount: cardOption.feesAmount,
         feesTax: cardOption.feesTax,
+        address: cardOption.address,
       });
       return (
         <Radio id={cardOption.id} value={key} key={cardOption.id} className="">
           <div className="radiocontent-holder">
             <Card>
               <h5 className="title">{cardOption.name}</h5>
-              <p className="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.{' '}
-              </p>
+              <p className="description"></p>
             </Card>
           </div>
         </Radio>
