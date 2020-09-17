@@ -32,6 +32,7 @@ export function labsResponseMapper(inputLabs) {
         labId: data.labId,
         // city: data.city,
         services: data.serviceTypes,
+        address: data.address,
         pos: {
           lat: Number(data.latitude),
           lng: Number(data.logitude),
@@ -74,7 +75,7 @@ export function parsePropData(props) {
   const { applicationFormData } = props;
   return {
     country: getFieldValues(applicationFormData, 'sourceCountry', 'label'),
-    visaType: 'Visit',
+    visaType: applicationFormData.visaType,
     countryId: getFieldValues(applicationFormData, 'sourceCountry', 'value'),
     stateId: getFieldValues(applicationFormData, 'sourceState', 'value'),
     cityId: getFieldValues(applicationFormData, 'sourceCity', 'value'),
@@ -116,6 +117,7 @@ export function getCardOptionObject(place) {
     currency: place.currency,
     feesAmount: place.feesAmount,
     feesTax: place.feesTax,
+    address: place.address,
   };
   return JSON.stringify(item);
 }

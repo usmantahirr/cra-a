@@ -3,13 +3,13 @@ import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps
 import { RED_PIN, BLUE_PIN } from './mapConfig';
 import { MAP_KEY } from '../../../config';
 
-const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerClickHandler }) => {
+const MapContainer = ({ myPlaces, center, zoom, infoOpen, selectedPlace, markerClickHandler, mapRef, setMapRef }) => {
   // Fit map bounds to contain all markers
   const [places, setPlaces] = useState(null);
 
   // The things we need to track in state
   // eslint-disable-next-line
-  const [mapRef, setMapRef] = useState(null);
+  // const [mapRef, setMapRef] = useState(null);
   const [markerMap, setMarkerMap] = useState({});
 
   // Load the Google maps scripts

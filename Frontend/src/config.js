@@ -1,5 +1,5 @@
 // DEV
-
+export const API_BASE_URL_ADMIN_PORTAL = 'https://phadminportal.azurewebsites.net/api/';
 export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
 export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
 export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
@@ -47,4 +47,4 @@ export const ContextMenuCmd = {
 export const ApplicationFormUrl = '/register/{0}';
 export const ApplicationFormDetailUrl = '/manage-application/view/{0}';
 
-export const DATE_FORMATE = 'DD/MM/YYYY';
+export const DATE_FORMATE = 'YYYY-MM-DD';

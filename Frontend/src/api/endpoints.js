@@ -21,8 +21,14 @@ export const FILE_UPLOAD = 'file-upload/provide-links';
 export const GET_MANAGE_APPLICATION_SERVICE = 'application-submission/get-all';
 export const GET_MANAGE_APPLICATION_SERVICE_DETAILS = 'application-submission';
 export const GET_FILE_MANAGE_APPLICATION = 'file-upload/get-access-link';
+export const GET_LAB_BY_LAB_ID = 'lab';
 
 export const PAYMENT_INTERNATIONAL = 'payment';
 export const PAYMENT_STATUS = 'payment/status';
 
 export const APPLICATION = 'application-submission';
+
+export const GET_LAB_GROUP = 'lab-org';
+export const GET_LABS = 'lab';
+export const GET_TESTS = '/lab-test/all';
+export const GET_USERS = 'lab-users';

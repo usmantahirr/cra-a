@@ -4,10 +4,10 @@ import { saveAs } from 'file-saver';
 import ManageApplicationSerivce from '../services/manage.service';
 
 const FileViewer = props => {
-  const { name } = props;
+  const { data } = props;
 
   const save = url => {
-    saveAs(url, name);
+    saveAs(url, data.name);
   };
 
   const view = url => {
@@ -16,7 +16,7 @@ const FileViewer = props => {
 
   const getFile = async (isSave = false) => {
     const payload = {
-      fileName: name,
+      fileName: data.path,
     };
 
     ManageApplicationSerivce.getFile(payload)

@@ -6,7 +6,7 @@ import { CustomSelectSmall } from '../../atoms/forms';
 
 const MapFilter = props => {
   // const {onServiceChange } = props;
-  const { countryCode, country, filterState, onStateChange, onCityChange } = props;
+  const { countryCode, country, filterState, onStateChange, onCityChange, visaType } = props;
 
   const stateDropddown = (
     <Descriptions.Item label="State">
@@ -33,6 +33,7 @@ const MapFilter = props => {
     <PageHeader ghost={false} className="map-filter">
       <Descriptions size="small" column={5}>
         <Descriptions.Item label="Country">{country}</Descriptions.Item>
+        <Descriptions.Item label="Visa Type">{visaType}</Descriptions.Item>
         {countryCode ? stateDropddown : ''}
         <Descriptions.Item label="City">
           <Form.Item

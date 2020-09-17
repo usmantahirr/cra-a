@@ -22,13 +22,11 @@ const ManageApplication = () => {
   useEffect(() => {
     function Init() {
       setShowLoader(true);
-      // NEED REFECTOR
-      const user = JSON.parse(localStorage.getItem('user')).accountIdentifier;
+      const user = JSON.parse(localStorage.getItem('user')).id; // NEED REFECTOR
       ManageApplicationSerivce.getManageApplications(user)
         .then(data => {
-          if (data && data.length) {
-            gridReference.gridApiRef.setRowData(data);
-          }
+          const response = data.data || [];
+          gridReference.gridApiRef.setRowData(response);
           setShowLoader(false);
         })
         .catch(() => {
@@ -37,11 +35,12 @@ const ManageApplication = () => {
         });
     }
     try {
+      // need revisit
       if (gridReference.gridApiRef) {
         Init();
       }
+      // eslint-disable-next-line
     } catch (error) {
-      console.log(error);
       setShowLoader(false);
     }
   }, [gridReference]);
@@ -56,8 +55,8 @@ const ManageApplication = () => {
     history.push(url);
   };
 
-  // eslint-disable-next-line
   const actionClick = (e, type, data) => {
+    e.preventDefault();
     if (type === ContextMenuCmd.edit) {
       redirectToApplicationForm(data);
     } else if (type === ContextMenuCmd.view) {

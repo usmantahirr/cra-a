@@ -25,7 +25,8 @@ const LabSelection = props => {
   const { country, countryId, visaType, stateId, cityId } = parsePropData(props);
 
   // form.setFieldsValue({ "serviceType": stateId })
-
+  const [showLoader, setShowLoader] = useState(false);
+  const [mapRef, setMapRef] = useState(null);
   const [selectedLab, setSelectedLab] = useState({});
   const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 });
   const [zoom, setZoom] = useState(13);
@@ -58,13 +59,18 @@ const LabSelection = props => {
 
     setCenter(place.pos);
     // If you want to zoom in a little on marker click
-    if (zoom < 13) {
-      setZoom(13);
+    if (mapRef && mapRef.zoom !== 13) {
+      setTimeout(() => {
+        // eslint-disable-next-line
+        const cZoom = zoom === 13 ? 12 : 13;
+        setZoom(cZoom);
+      }, 1000);
     }
   };
 
   useEffect(() => {
     async function Init() {
+      setShowLoader(true);
       const formState = getFormField('labState', applicationFormData);
       const currentState = formState ? formState.value : stateId;
       let { data: statesResponse = [] } = currentState ? await MapService.getStatesByCountry(countryId) : {};
@@ -89,7 +95,7 @@ const LabSelection = props => {
       // checking selected lab if exist other wise select default
       const currentLabId = getFormField('lab', applicationFormData);
       const currentLab = currentLabId ? getLab(labsResponse, currentLabId) : labsResponse[0];
-
+      setShowLoader(false);
       setFilterState({
         allLabs: labsResponse,
         states: statesResponse,
@@ -109,7 +115,11 @@ const LabSelection = props => {
       form.setFieldsValue({ labCity: getCity(citiesResponse, currentCity) });
       form.setFieldsValue({ serviceType: undefined });
     }
-    Init();
+    try {
+      Init();
+    } catch (error) {
+      setShowLoader(false);
+    }
   }, [countryId, stateId, cityId]);
 
   // dropdown handlers
@@ -200,7 +210,7 @@ const LabSelection = props => {
 
   return countryId && cityId ? (
     <Fragment>
-      {filterState && filterState.cityLabs.length === 0 ? <CustomSpinner /> : ''}
+      {showLoader ? <CustomSpinner /> : ''}
       <MapFilter
         countryCode={stateId}
         country={country}
@@ -214,6 +224,8 @@ const LabSelection = props => {
         <Row className="ant-row-padding">
           <Col xs={24} md={12} lg={16}>
             <Map
+              mapRef={mapRef}
+              setMapRef={setMapRef}
               infoOpen={infoOpen}
               myPlaces={filterState.cityLabs}
               zoom={zoom}
@@ -225,6 +237,7 @@ const LabSelection = props => {
           <Col xs={24} md={12} lg={8}>
             <div className="filter-state">
               <CustomScroll heightRelativeToParent="100%">
+                {filterState && filterState.cityLabs.length === 0 ? 'No Lab Found' : ''}
                 <CardRadio
                   cartOptions={filterState.cityLabs}
                   // value={(selectedLab && selectedLab.id) || ''}

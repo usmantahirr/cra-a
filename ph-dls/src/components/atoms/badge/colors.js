@@ -11,7 +11,7 @@ const color = {
   magenta: 'magenta',
   volcano: 'volcano',
   gold: 'gold',
-  lime: 'lime',
+  lime: 'lime'
 };
 
 export default color;
