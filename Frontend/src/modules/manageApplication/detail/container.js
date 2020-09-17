@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import ManageApplicationDetailView from './detail';
 import { parseDetailView, getField, viewFields } from './mapper';
 import CustomSpinner from '../../../shared/atoms/spinner';
@@ -12,11 +13,15 @@ const ManageApplicationDetailContainer = props => {
   const [showLoader, setShowLoader] = useState(false);
   const history = useHistory();
   const match = useRouteMatch();
+  const [t] = useTranslation();
 
   useEffect(() => {
     async function Init() {
       setShowLoader(true);
       const { data } = await ManageApplicationSerivce.getManageApplicationDetail(match.params.appId);
+      // const currentLab = data && data.application_data && data.application_data.lab;
+      // const { data: lab = null } =
+      //   currentLab && currentLab.labId ? await ManageApplicationSerivce.getLabByLabId(currentLab.labId) : {};
       const mappedData = parseDetailView(data);
       setViewData(mappedData);
       setShowLoader(false);
@@ -34,7 +39,7 @@ const ManageApplicationDetailContainer = props => {
 
   return (
     <DashboardTemplate>
-      <Header pageHeader heading="Manage Application" />
+      <Header pageHeader heading={t('Manage Application')} />
       {showLoader ? <CustomSpinner /> : ''}
       <ManageApplicationDetailView viewFields={viewFields} data={viewData} getField={getField} {...props} />
     </DashboardTemplate>

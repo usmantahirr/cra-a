@@ -9,7 +9,7 @@ const ApplicationViewHeader = ({ data }) => {
   return (
     <Fragment>
       <h3>
-        {t('Application Id')}: {data.id || 'I am here'}{' '}
+        {t('Application Id')}: {data.applicationId}{' '}
       </h3>
       <h3> (ICON here) {t('Request Resubmit')} </h3>
       <h3> (ICON here) {t('Negative')} </h3>
@@ -56,7 +56,7 @@ const ManageApplicationDetailView = props => {
       {<Slab heading="Visa Information" data={data.visaInfo || {}} fields={visaFields} getField={getField}></Slab>}
       {
         <Slab
-          heading="Application Information"
+          heading={t('Application Information')}
           data={data.appInfo || {}}
           fields={appInfoFields}
           getField={getField}
@@ -65,7 +65,11 @@ const ManageApplicationDetailView = props => {
 
       <h3 className="sub-heading">{t('Document')}</h3>
       <Card className="card-holder">
-        <FileViewer name="length.png"> </FileViewer>
+        {data &&
+          data.attachments &&
+          data.attachments.map(item => {
+            return <FileViewer data={item}> </FileViewer>;
+          })}
       </Card>
 
       <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>
