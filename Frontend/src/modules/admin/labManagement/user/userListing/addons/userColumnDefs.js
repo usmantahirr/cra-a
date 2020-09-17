@@ -6,33 +6,23 @@ export const initialState = {
 export const columnDefs = actionParam => {
   return [
     {
-      headerName: 'Test Type',
-      field: 'testType',
+      headerName: 'Lab Name',
+      field: 'labId.name',
       headerClass: 'resizable-header',
     },
     {
-      headerName: 'Service Type',
-      field: 'serviceType',
+      headerName: 'First Name',
+      field: 'firstName',
       headerClass: 'resizable-header',
     },
     {
-      headerName: 'Test Fee Amount',
-      field: 'feesAmount',
+      headerName: 'Last Name',
+      field: 'lastName',
       headerClass: 'resizable-header',
     },
     {
-      headerName: 'Fee Tax',
-      field: 'feesTax',
-      headerClass: 'resizable-header',
-    },
-    {
-      headerName: 'Currency',
-      field: 'currency',
-      headerClass: 'resizable-header',
-    },
-    {
-      headerName: 'Payment Mode',
-      field: 'paymentMode',
+      headerName: 'User Name',
+      field: 'userName',
       headerClass: 'resizable-header',
     },
     {

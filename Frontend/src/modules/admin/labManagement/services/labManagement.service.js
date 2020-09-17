@@ -42,8 +42,8 @@ class LabManagementService {
     return this.http.get(GET_LABS);
   };
 
-  getUsers = () => {
-    return this.http.get(GET_USERS);
+  getUsers = id => {
+    return this.http.get(GET_USERS, id);
   };
 
   getTests = id => {

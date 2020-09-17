@@ -24,6 +24,7 @@ export const columnDefs = actionParam => {
       headerName: 'Lab Address',
       field: 'address',
       headerClass: 'resizable-header',
+      tooltip: params => params.value,
     },
     {
       headerName: 'Phone',
