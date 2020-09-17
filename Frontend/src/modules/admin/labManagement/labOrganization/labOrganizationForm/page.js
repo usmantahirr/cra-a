@@ -6,10 +6,12 @@ import InputCustom from '../../../../../shared/atoms/forms/input';
 import DashboardPageTemplate from '../../../../../shared/templates/dashboardTemplate';
 import CustomTelInput from '../../../../../shared/atoms/inputs/customTelInput';
 
-const LabOrganization = ({ validationRules, handleSubmit, showLoader }) => {
+const LabOrganization = ({ validationRules, handleSubmit, showLoader, formData }) => {
   const [form] = Form.useForm();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    form.setFieldsValue({ ...formData });
+  }, [formData]);
 
   return (
     <DashboardPageTemplate>
@@ -58,6 +60,7 @@ const LabOrganization = ({ validationRules, handleSubmit, showLoader }) => {
                     id="bussinessPhone"
                     placeholder="Phone"
                     label="Phone"
+                    value={form.getFieldValue('bussinessPhone')}
                     className="custom-control"
                     required
                   />
@@ -104,6 +107,7 @@ const LabOrganization = ({ validationRules, handleSubmit, showLoader }) => {
                     id="technicalPhone"
                     placeholder="Phone"
                     label="Phone"
+                    value={form.getFieldValue('technicalPhone')}
                     className="custom-control"
                     required
                   />
@@ -150,6 +154,7 @@ const LabOrganization = ({ validationRules, handleSubmit, showLoader }) => {
                     id="financePhone"
                     placeholder="Phone"
                     label="Phone"
+                    value={form.getFieldValue('financePhone')}
                     className="custom-control"
                     required
                   />
