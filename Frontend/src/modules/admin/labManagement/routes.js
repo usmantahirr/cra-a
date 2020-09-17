@@ -23,11 +23,11 @@ const AdminRoutes = [
   },
   {
     Component: lazy(() => import('./test/testListing/container')),
-    path: '/admin/test/:labId',
+    path: '/admin/lab-test/:labId',
   },
   {
     Component: lazy(() => import('./user/userListing/container')),
-    path: '/admin/user/:labId',
+    path: '/admin/lab-user/:labId',
   },
 ];
 
