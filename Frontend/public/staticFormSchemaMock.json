@@ -299,13 +299,13 @@
                 "id": "ST01F005",
                 "options": [
                   {
-                    "value": "MALE",
-                    "text": "MALE",
+                    "value": "Male",
+                    "text": "Male",
                     "id": "ST01F005O001"
                   },
                   {
-                    "value": "FEMALE",
-                    "text": "FEMALE",
+                    "value": "Female",
+                    "text": "Female",
                     "id": "ST01F005O002"
                   }
                 ],
@@ -656,7 +656,7 @@
               },
               {
                 "label": "Address",
-                "name": "city",
+                "name": "address",
                 "order": 21,
                 "type": "text"
               }
