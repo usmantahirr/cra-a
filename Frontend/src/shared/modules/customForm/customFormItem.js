@@ -24,8 +24,8 @@ import LabSelection from '../../organisms/labSelection';
 import ImgRadioCarusol from '../../molecules/imgRadioCarusol/carusol';
 import PaymentContainer from '../payment/container';
 
-class CustomFormItem extends React.PureComponent {
-  _renderField = fieldProps => {
+const CustomFormItem = props => {
+  const _renderField = fieldProps => {
     const fieldType = fieldProps.type || '';
 
     switch (fieldType) {
@@ -56,7 +56,7 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
-  _renderCustomComponent = (fieldProps, applicationFormData, applicationId, setApplicationFormData) => {
+  const _renderCustomComponent = (fieldProps, applicationFormData, applicationId, setApplicationFormData) => {
     const componentName = fieldProps.name || '';
 
     switch (componentName) {
@@ -90,7 +90,7 @@ class CustomFormItem extends React.PureComponent {
     }
   };
 
-  isHidden = (hideField, applicationFormData) => {
+  const isHidden = (hideField, applicationFormData) => {
     let hidden = false;
 
     if (!hideField) {
@@ -114,30 +114,27 @@ class CustomFormItem extends React.PureComponent {
     return hidden;
   };
 
-  render() {
-    const { label, name, rules, type } = this.props;
-    const { hideField, applicationFormData, setApplicationFormData, applicationId, ...restOfProps } = this.props;
-    const isCustomComponent = type === 'customComponent';
+  const { label, name, rules, type } = props;
+  const { hideField, applicationFormData, setApplicationFormData, applicationId, ...restOfProps } = props;
+  const isCustomComponent = type === 'customComponent';
 
-    return (
-      <>
-        {!isCustomComponent && !this.isHidden(hideField, applicationFormData) && (
-          <Form.Item
-            // hidden={this.isHidden(hideField, applicationFormData)}
-            label={label}
-            className="custom-item"
-            name={name}
-            rules={rules}
-            valuePropName={type === 'checkbox' ? 'checked' : 'value'}
-          >
-            {this._renderField(restOfProps)}
-          </Form.Item>
-        )}
-        {isCustomComponent &&
-          this._renderCustomComponent(this.props, applicationFormData, applicationId, setApplicationFormData)}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {!isCustomComponent && !isHidden(hideField, applicationFormData) && (
+        <Form.Item
+          // hidden={isHidden(hideField, applicationFormData)}
+          label={label}
+          className="custom-item"
+          name={name}
+          rules={rules}
+          valuePropName={type === 'checkbox' ? 'checked' : 'value'}
+        >
+          {_renderField(restOfProps)}
+        </Form.Item>
+      )}
+      {isCustomComponent && _renderCustomComponent(props, applicationFormData, applicationId, setApplicationFormData)}
+    </>
+  );
+};
 
 export default CustomFormItem;

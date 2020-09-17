@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Row, Col } from 'antd';
+import { useTranslation } from 'react-i18next';
 import service from '../../services/shared.service';
 import CustomSelect from '../../atoms/forms/select';
 import { CustomTextInput } from '../../atoms/forms';
+import { getTranslation } from '../../utilities/index';
 
 const CountryStateCity = props => {
   const [componentMounted, setComponentMounted] = useState(false);
@@ -11,6 +13,7 @@ const CountryStateCity = props => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [showState, setShowState] = useState(false);
+  const { t } = useTranslation();
 
   const fetchCountries = async () => {
     try {
@@ -171,11 +174,11 @@ const CountryStateCity = props => {
         <Form.Item
           className="custom-item"
           name={name}
-          label={placeholder}
+          label={getTranslation(placeholder, t)}
           rules={[
             {
               required: true,
-              message: 'Please select your country',
+              message: getTranslation('Please select your country', t),
             },
           ]}
         >
@@ -183,7 +186,7 @@ const CountryStateCity = props => {
             showSearch
             allowClear
             labelInValue
-            placeholder={placeholder}
+            placeholder={getTranslation(placeholder, t)}
             optionFilterProp="children"
             onChange={onCountryChange}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
@@ -202,11 +205,11 @@ const CountryStateCity = props => {
           <Form.Item
             className="custom-item"
             name={name}
-            label={placeholder}
+            label={getTranslation(placeholder, t)}
             rules={[
               {
                 required: true,
-                message: 'Please select your state',
+                message: getTranslation('Please select your state', t),
               },
             ]}
           >
@@ -214,7 +217,7 @@ const CountryStateCity = props => {
               showSearch
               allowClear
               labelInValue
-              placeholder={placeholder}
+              placeholder={getTranslation(placeholder, t)}
               optionFilterProp="children"
               onChange={onStateChange}
               filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
@@ -234,15 +237,15 @@ const CountryStateCity = props => {
           <Form.Item
             className="custom-item"
             name={name}
-            label={placeholder}
+            label={getTranslation(placeholder, t)}
             rules={[
               {
                 required: true,
-                message: 'Please select your zip code',
+                message: getTranslation('Please select your zip code', t),
               },
             ]}
           >
-            <CustomTextInput placeholder={placeholder} type="number" />
+            <CustomTextInput placeholder={getTranslation(placeholder, t)} type="number" />
           </Form.Item>
         </Col>
       )
@@ -256,11 +259,11 @@ const CountryStateCity = props => {
         <Form.Item
           className="custom-item"
           {...city}
-          label={placeholder}
+          label={getTranslation(placeholder, t)}
           rules={[
             {
               required: true,
-              message: 'Please select your city',
+              message: getTranslation('Please select your city', t),
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
@@ -285,7 +288,7 @@ const CountryStateCity = props => {
             showSearch
             allowClear
             labelInValue
-            placeholder={placeholder}
+            placeholder={getTranslation(placeholder, t)}
             optionFilterProp="children"
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
             options={cities.map(c => ({ id: c._id, text: c.name, value: c._id }))}

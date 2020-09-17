@@ -216,7 +216,7 @@ const LabSelection = props => {
       />
       <div className="card-section">
         <Row className="ant-row-padding">
-          <Col span={16}>
+          <Col xs={24} md={12} lg={16}>
             <Map
               mapRef={mapRef}
               setMapRef={setMapRef}
@@ -228,7 +228,7 @@ const LabSelection = props => {
               markerClickHandler={markerClickHandler}
             />
           </Col>
-          <Col span={8}>
+          <Col xs={24} md={12} lg={8}>
             <div className="filter-state">
               <CustomScroll heightRelativeToParent="100%">
                 <CardRadio

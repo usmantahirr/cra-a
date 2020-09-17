@@ -83,8 +83,8 @@
                 "id": "PTO2"
               },
               {
-                "value": "UAE-Resident",
-                "text": "UAE-Resident",
+                "value": "Resident",
+                "text": "Resident",
                 "id": "PTO3"
               }
             ],
@@ -166,17 +166,17 @@
                 "id": "VIET1"
               },
               {
-                "value": "Ajman",
-                "text": "Ajman",
-                "src": "/assets/img/ajman.png",
-                "id": "VIET2"
-              },
-              {
                 "value": "Dubai",
                 "text": "Dubai",
                 "src": "/assets/img/dubai.png",
                 "id": "VIET3"
               },
+              {
+                "value": "Ajman",
+                "text": "Ajman",
+                "src": "/assets/img/ajman.png",
+                "id": "VIET2"
+              },              
               {
                 "value": "Fujairah",
                 "text": "Fujairah",

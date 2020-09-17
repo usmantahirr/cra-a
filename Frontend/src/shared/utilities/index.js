@@ -39,3 +39,8 @@ export function mergeObjects(objects) {
   });
   return target;
 }
+
+export function getTranslation(text, t) {
+  if (text) return t(text);
+  return text;
+}

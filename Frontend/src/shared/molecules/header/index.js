@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { Layout, Row, Col } from 'antd';
+import React, { useContext, useEffect, useState } from 'react';
+import { Layout, Row, Col, Tooltip } from 'antd';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
@@ -11,6 +11,7 @@ const { Header: AntHeader } = Layout;
 
 const Header = props => {
   const sidebarContext = useContext(SidebarContext);
+  const [toggle, setToggle] = useState(false);
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
   const {
     formSchema,
@@ -41,10 +42,14 @@ const Header = props => {
         <AntHeader className={`${styles.header} ${styles.headerText} desktop-header`}>
           <div className={styles.text}>{heading}</div>
         </AntHeader>
-        <AntHeader className="mobile-header">
-          <Button onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>Mobile Menu</Button>
-          <Logo />
-        </AntHeader>
+        <div className="mobile-header-holder">
+          <AntHeader className="mobile-header">
+            <Button className="ant-btn-mb" onClick={() => sidebarContext.setIsCollapsed(!sidebarContext.isCollapsed)}>
+              Mobile Menu
+            </Button>
+            <Logo />
+          </AntHeader>
+        </div>
       </>
     );
   }
@@ -92,22 +97,30 @@ const Header = props => {
 
     return (
       <Row>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Application ID:</span>
-          <strong>{_renderApplicationId()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderApplicationId()}>
+            <strong>{_renderApplicationId()}</strong>
+          </Tooltip>
         </Col>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Source:</span>
-          <strong>{_renderSourceLocation()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderSourceLocation()}>
+            <strong>{_renderSourceLocation()}</strong>
+          </Tooltip>
         </Col>
-        <Col span={6}>
+        <Col xs={12} md={6}>
           <span>Destination:</span>
-          <strong>{_renderDestinationLocation()}</strong>
+          <Tooltip placement="bottomLeft" title={_renderDestinationLocation()}>
+            <strong>{_renderDestinationLocation()}</strong>
+          </Tooltip>
         </Col>
         {applicationFormData.lab && applicationFormData.lab.name && (
-          <Col span={6}>
+          <Col xs={12} md={6}>
             <span>Lab Name:</span>
-            <strong>{applicationFormData.lab.name}</strong>
+            <Tooltip placement="bottomLeft" title={applicationFormData.lab.name}>
+              <strong>{applicationFormData.lab.name}</strong>
+            </Tooltip>
           </Col>
         )}
         {/* <Col span={4}>
@@ -172,7 +185,16 @@ const Header = props => {
           {nextStepTitle() !== false && <NextStep nextStepTitle={nextStepTitle()} className={styles.nextstep} />}
         </div>
       </AntHeader>
-      {pageState.curr !== 0 && <div className={styles.appSummery}>{_renderApplicationSummary()}</div>}
+      {pageState.curr !== 0 && (
+        <div className={`${styles.appSummery} ${toggle && 'open'} appSummery`}>
+          <div className="appSummery-holder">
+            {_renderApplicationSummary()}
+            <Button onClick={() => setToggle(!toggle)} className="openBtn">
+              Click
+            </Button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

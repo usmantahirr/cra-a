@@ -38,7 +38,7 @@ const AuthPageTemplate = ({
                   )}
                   {showSignUpButton && (
                     <Fragment>
-                      <p className="small-info">Don’t have an account?</p>
+                      <p className={styles.smalInfo}>Don’t have an account?</p>
                       <Button className={styles.registerButton} onClick={() => history.push(SIGNUP_PAGE)}>
                         Register
                       </Button>
