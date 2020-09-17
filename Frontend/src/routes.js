@@ -9,6 +9,7 @@ import ChangePasswordRoutes from './modules/user/routes';
 
 import { AUTH_PAGE } from './config';
 import CustomSpinner from './shared/atoms/spinner';
+import AdminRoutes from './modules/admin/labManagement/routes';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
@@ -36,6 +37,7 @@ const Routes = () => (
       {DashboardRoutes.map(renderRouteFromList(true))}
       {ManageApplicationRoutes.map(renderRouteFromList(true))}
       {ChangePasswordRoutes.map(renderRouteFromList(true))}
+      {AdminRoutes.map(renderRouteFromList(true))}
     </Switch>
   </Suspense>
 );

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Card, Col, Row } from 'antd';
 import * as moment from 'moment';
+import { DATE_FORMATE } from '../../../config';
 
 const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
   const data =
@@ -11,7 +12,7 @@ const ReviewApplication = ({ fieldsToDisplay, applicationFormData }) => {
 
   const formatData = formData => {
     if (moment.isMoment(formData)) {
-      return formData.format('DD/MM/YYYY');
+      return formData.format(DATE_FORMATE);
     }
     return formData;
   };
