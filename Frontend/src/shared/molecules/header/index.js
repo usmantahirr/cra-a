@@ -1,15 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { Layout, Row, Col } from 'antd';
+import { useTranslation } from 'react-i18next';
 import StepCounter from '../../atoms/stepCounter';
 import NextStep from '../../atoms/nextStep';
 import styles from './style.module.scss';
 import Button from '../../atoms/buttons';
 import Logo from '../../atoms/logo';
 import { SidebarContext } from '../../templates/sidebarContext';
+import { getTranslation } from '../../utilities/index';
 
 const { Header: AntHeader } = Layout;
 
 const Header = props => {
+  const { t } = useTranslation();
   const sidebarContext = useContext(SidebarContext);
   // const [applicationSummaryData, setApplicationSummaryData] = React.useState({});
   const {
@@ -80,57 +83,26 @@ const Header = props => {
   };
 
   const _renderApplicationSummary = () => {
-    // const scopeArray = [
-    //   'name',
-    //   'passportId',
-    //   'labCountryName',
-    //   'labStateName',
-    //   'labCityName',
-    //   'labServiceType',
-    //   'labName',
-    // ];
-
     return (
       <Row>
         <Col span={6}>
-          <span>Application ID:</span>
+          <span>{getTranslation('Application ID', t)}</span>
           <strong>{_renderApplicationId()}</strong>
         </Col>
         <Col span={6}>
-          <span>Source:</span>
+          <span>{getTranslation('Source', t)}</span>
           <strong>{_renderSourceLocation()}</strong>
         </Col>
         <Col span={6}>
-          <span>Destination:</span>
+          <span>{getTranslation('Destination', t)}:</span>
           <strong>{_renderDestinationLocation()}</strong>
         </Col>
         {applicationFormData.lab && applicationFormData.lab.name && (
           <Col span={6}>
-            <span>Lab Name:</span>
+            <span>{getTranslation('Lab Name', t)}</span>
             <strong>{applicationFormData.lab.name}</strong>
           </Col>
         )}
-        {/* <Col span={4}>
-          <span>Visa Type:</span>
-          <strong>
-            {applicationFormData.passengerType +
-              (applicationFormData.visaType ? `, ${applicationFormData.visaType}` : '')}
-          </strong>
-        </Col>
-        <Col span={4}>
-          <span>Applicant Name:</span>
-          <strong>{applicationFormData.name}</strong>
-        </Col> */}
-        {/* {scopeArray.map(control => {
-          if (applicationFormData[control])
-            return (
-              <Col span={6}>
-                <span>{control}</span>
-                <strong>{applicationFormData[control]}</strong>
-              </Col>
-            );
-          return null;
-        })} */}
       </Row>
     );
   };

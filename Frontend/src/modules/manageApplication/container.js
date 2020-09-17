@@ -41,7 +41,7 @@ const ManageApplication = () => {
         Init();
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setShowLoader(false);
     }
   }, [gridReference]);
