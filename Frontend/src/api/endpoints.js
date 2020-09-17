@@ -29,3 +29,4 @@ export const PAYMENT_STATUS = 'payment/status';
 export const APPLICATION = 'application-submission';
 
 export const GET_LAB_GROUP = 'lab-org';
+export const GET_LABS = 'lab';

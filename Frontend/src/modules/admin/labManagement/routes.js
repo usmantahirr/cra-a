@@ -17,6 +17,10 @@ const AdminRoutes = [
     Component: lazy(() => import('./labOrganization/labOrganizationForm/container')),
     path: '/admin/lab-group/:id',
   },
+  {
+    Component: lazy(() => import('./lab/labListing/container')),
+    path: '/admin/lab',
+  },
 ];
 
 export default AdminRoutes;

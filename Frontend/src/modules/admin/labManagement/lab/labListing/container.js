@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 // import { useTranslation } from 'react-i18next';
 // import { useHistory } from 'react-router-dom';
 import GridOptions from '../../../../../shared/organisms/grid/gridOptions';
-import { initialState, columnDefs } from './addons/labGroupColumnDefs';
+import { initialState, columnDefs } from './addons/labColumnDefs';
 import labSerivce from '../../services/labManagement.service';
-import LabOrgPage from '.';
+import LabPage from '.';
 import { ContextMenuCmd } from '../../../../../config';
 
-const LabOrgContainer = () => {
+const LabContainer = () => {
   const [showLoader, setShowLoader] = useState(false);
   const [gridReference, setGridReference] = useState(initialState);
   // const history = useHistory();
@@ -16,7 +16,7 @@ const LabOrgContainer = () => {
     function Init() {
       setShowLoader(true);
       labSerivce
-        .getLabGroups()
+        .getLabs()
         .then(data => {
           const response = data.data || [];
           gridReference.gridApiRef.setRowData(response);
@@ -62,7 +62,7 @@ const LabOrgContainer = () => {
   const gridOptions = GridOptions.createGridOptions({ columnDefs: columnDefs(actionClick) });
   const frameworkComponents = GridOptions.createFrameworkComponentsOptions();
   return (
-    <LabOrgPage
+    <LabPage
       onGridReady={onGridReady}
       gridOptions={gridOptions}
       frameworkComponents={frameworkComponents}
@@ -73,4 +73,4 @@ const LabOrgContainer = () => {
   );
 };
 
-export default LabOrgContainer;
+export default LabContainer;

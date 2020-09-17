@@ -1,10 +1,12 @@
 import API, { contentType } from '../../../../api';
+import { API_BASE_URL_ADMIN_PORTAL } from '../../../../config';
+import { GET_LAB_GROUP, GET_LABS } from '../../../../api/endpoints';
 
 class LabManagementService {
   constructor() {
     this.http = new API({
       headers: { contentType: contentType.json },
-      baseURL: 'https://phadminportal.azurewebsites.net/api/',
+      baseURL: API_BASE_URL_ADMIN_PORTAL,
     });
   }
 
@@ -30,6 +32,14 @@ class LabManagementService {
 
   activateDeactivateOrganization = payload => {
     return this.http.get('lab-org/active-deactive', payload);
+  };
+
+  getLabGroups = () => {
+    return this.http.get(GET_LAB_GROUP);
+  };
+
+  getLabs = () => {
+    return this.http.get(GET_LABS);
   };
 }
 export default new LabManagementService();
