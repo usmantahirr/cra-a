@@ -6,6 +6,10 @@ const AdminRoutes = [
   //   path: AUTH_PAGE,
   // }
   {
+    Component: lazy(() => import('./labOrganization/labOrganizationListing/container')),
+    path: '/admin/lab-group',
+  },
+  {
     Component: lazy(() => import('./labOrganization/labOrganizationForm/container')),
     path: '/admin/lab-group/create',
   },
