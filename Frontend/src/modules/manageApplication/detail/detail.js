@@ -8,20 +8,31 @@ const ApplicationViewHeader = ({ data }) => {
   const [t] = useTranslation();
   return (
     <Fragment>
-      <h3>
-        {t('Application Id')}: {data.applicationId}{' '}
-      </h3>
-      <h3> (ICON here) {t('Request Resubmit')} </h3>
-      <h3> (ICON here) {t('Negative')} </h3>
+      <Row className="ant-row-padding manageapp-head">
+        <Col xs={24} lg={12}>
+          <h3 className="sub-heading">
+            {t('Application Id')}: {data.applicationId}
+          </h3>
+        </Col>
+        <Col xs={24} lg={12} className="align-right">
+          <div className="record-holder submit">
+            {' '}
+            <img src="/assets/img/icon-submit.svg" alt="" /> <span>{data.status} </span>
+          </div>
+        </Col>
+      </Row>
     </Fragment>
   );
 };
 
-const Slab = ({ heading, data, fields, getField }) => {
+const Slab = ({ heading, data, fields, getField, showTestResult = false }) => {
   const [t] = useTranslation();
   return (
     <Fragment>
-      <h3 className="sub-heading">{t(heading)}</h3>
+      <h3 className="sub-sm-heading">
+        {t(heading)}
+        {showTestResult ? <div className="status negative"> {data.testResult || t('Pending')} </div> : ''}
+      </h3>
       <Card className="card-holder">
         <Row className="ant-row-padding">
           {data &&
@@ -48,45 +59,54 @@ const ManageApplicationDetailView = props => {
   const visaFields = viewFields.visaInformation.sort((a, b) => a - b);
   const appInfoFields = viewFields.applicationInformation.sort((a, b) => a - b);
   const labInfoFields = viewFields.labInformation.sort((a, b) => a - b);
+  const showTestResult = true;
 
   return (
-    // <div className="contentNF-scroll">
-    <CustomScroll heightRelativeToParent="100%">
-      <ApplicationViewHeader data={data} />
-      {<Slab heading="Visa Information" data={data.visaInfo || {}} fields={visaFields} getField={getField}></Slab>}
-      {
-        <Slab
-          heading={t('Application Information')}
-          data={data.appInfo || {}}
-          fields={appInfoFields}
-          getField={getField}
-        ></Slab>
-      }
+    <div className="content-scrollbar">
+      <CustomScroll heightRelativeToParent="100%">
+        <ApplicationViewHeader data={data} />
+        {
+          <Slab
+            heading="Visa Information"
+            data={data.visaInfo || {}}
+            fields={visaFields}
+            getField={getField}
+            showTestResult={showTestResult}
+          ></Slab>
+        }
+        {
+          <Slab
+            heading="Application Information"
+            data={data.appInfo || {}}
+            fields={appInfoFields}
+            getField={getField}
+          ></Slab>
+        }
 
-      <h3 className="sub-heading">{t('Document')}</h3>
-      <Card className="card-holder">
-        {data &&
-          data.attachments &&
-          data.attachments.map(item => {
-            return <FileViewer data={item}> </FileViewer>;
-          })}
-      </Card>
+        <h3 className="sub-sm-heading">{t('Document')}</h3>
+        <Card className="card-holder card-btm-holder">
+          {data &&
+            data.attachments &&
+            data.attachments.map(item => {
+              return <FileViewer data={item}> </FileViewer>;
+            })}
+        </Card>
 
-      <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>
+        <Slab heading="Lab Information" data={data.labInfo || {}} fields={labInfoFields} getField={getField}></Slab>
 
-      <h3 className="sub-heading">{t('Payment')}</h3>
-      <Card className="card-holder card-holder-single">
-        <Row>
-          <Col span={6}>
-            <p className="label">{t('Screening Test (Inclusive of Tax')}</p>
-          </Col>
-          <Col span={6}>
-            <p className="info">{data && `${data.labFees} ${data.labCurrency}`} </p>
-          </Col>
-        </Row>
-      </Card>
-    </CustomScroll>
-    // </div>
+        <h3 className="sub-sm-heading">{t('Payment')}</h3>
+        <Card className="card-holder card-holder-single">
+          <Row>
+            <Col span={12}>
+              <p className="label">{t('Screening Test (Inclusive of Tax')}</p>
+            </Col>
+            <Col span={12}>
+              <p className="info info-large">{data && `${data.labFees} ${data.labCurrency}`} </p>
+            </Col>
+          </Row>
+        </Card>
+      </CustomScroll>
+    </div>
   );
 };
 

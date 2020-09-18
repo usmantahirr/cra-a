@@ -1,5 +1,5 @@
 // DEV
-
+// export const API_BASE_URL_ADMIN_PORTAL = 'https://ph-admin-portal.azurewebsites.net/api/';
 // export const API_BASE_URL = 'https://purehealthpoc1.azurewebsites.net/api/';
 // export const API_BASE_URL3 = 'https://purehealthpoc2.azurewebsites.net/api/';
 // export const API_AUTH_BASE_URL = 'https://purehealth.azurewebsites.net/api/';
@@ -19,6 +19,7 @@
 export const API_BASE_URL = 'https://ph-dynamic-forms.azurewebsites.net/api/';
 export const API_BASE_URL3 = 'https://ph-app-submission.azurewebsites.net/api/';
 export const API_AUTH_BASE_URL = 'https://ph-user-registeration.azurewebsites.net/api/';
+export const API_BASE_URL_ADMIN_PORTAL = 'https://ph-admin-portal.azurewebsites.net/api/';
 
 export const LOGGING = {
   enabled: true,

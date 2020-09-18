@@ -14,6 +14,7 @@ const GridView = ({
   columnsSelected,
   columnsOptions,
   handleFormGroupChange,
+  showSideBar = true,
 }) => {
   const [columnsVisible, setColumnsVisible] = useState(false);
   return (
@@ -25,34 +26,41 @@ const GridView = ({
           width: '100%',
         }}
       >
-        <div className="custom-columns">
-          <div className="column-btnbox">
-            <button type="button" className="ag-side-button-button" onClick={() => setColumnsVisible(!columnsVisible)}>
-              <div className="ag-side-button-icon-wrapper">
-                <span className="ag-icon" unselectable="on">
-                  <img src="/assets/img/icon-column.svg" alt="" />
-                </span>
-                <span className="ag-side-button-label">Columns</span>
-              </div>
-            </button>
-          </div>
-          {columnsVisible ? (
-            <div className="column-options">
-              <h5 className="column-title">Column Options</h5>
-              <div className="column-scroll">
-                <CustomScroll heightRelativeToParent="100%">
-                  <GroupBox
-                    {...columnsSelected}
-                    options={columnsOptions}
-                    handleChange={handleFormGroupChange}
-                    className="small-buttons"
-                  />
-                </CustomScroll>
-              </div>
+        {showSideBar ? (
+          <div className="custom-columns">
+            <div className="column-btnbox">
+              <button
+                type="button"
+                className="ag-side-button-button"
+                onClick={() => setColumnsVisible(!columnsVisible)}
+              >
+                <div className="ag-side-button-icon-wrapper">
+                  <span className="ag-icon" unselectable="on">
+                    <img src="/assets/img/icon-column.svg" alt="" />
+                  </span>
+                  <span className="ag-side-button-label">Columns</span>
+                </div>
+              </button>
             </div>
-          ) : null}
-        </div>
-
+            {columnsVisible ? (
+              <div className="column-options">
+                <h5 className="column-title">Column Options</h5>
+                <div className="column-scroll">
+                  <CustomScroll heightRelativeToParent="100%">
+                    <GroupBox
+                      {...columnsSelected}
+                      options={columnsOptions}
+                      handleChange={handleFormGroupChange}
+                      className="small-buttons"
+                    />
+                  </CustomScroll>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          ''
+        )}
         <AgGridReact
           gridOptions={gridOptions}
           rowData={rowDataSource}

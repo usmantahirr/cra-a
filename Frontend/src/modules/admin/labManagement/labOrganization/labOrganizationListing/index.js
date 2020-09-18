@@ -4,7 +4,7 @@ import GridView from '../../../../../shared/organisms/grid/container';
 import DashboardTemplate from '../../../../../shared/templates/dashboardTemplate';
 import CustomSpinner from '../../../../../shared/atoms/spinner';
 
-const UserPage = props => {
+const LabOrgPage = props => {
   const { gridReference, gridOptions, frameworkComponents, onGridReady, showLoader } = props;
   return (
     <DashboardTemplate>
@@ -25,4 +25,4 @@ const UserPage = props => {
   );
 };
 
-export default UserPage;
+export default LabOrgPage;

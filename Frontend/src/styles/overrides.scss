@@ -117,7 +117,8 @@ h3 {
   color: $primary;
 }
 
-.sub-heading {
+.sub-heading,
+.sub-sm-heading {
   font-size: 1.0625rem;
   color: $primary;
   font-weight: 600;
@@ -127,6 +128,10 @@ h3 {
     font-size: 0.9375rem;
     margin-bottom: 15px;
   }
+}
+
+.sub-sm-heading {
+  font-size: 0.8125rem;
 }
 
 .custom-popup {
@@ -266,6 +271,10 @@ h3 {
   }
 }
 
+.align-right {
+  text-align: right;
+}
+
 .align-center {
   text-align: center;
 
@@ -284,7 +293,7 @@ h3 {
 
 .card-holder {
   background-color: rgba($white, .72);
-  @include shadow(0px 0px 12px -6px rgba(0, 0, 0, 0.75));
+  @include shadow(0px 0px 12px -6px rgba(0, 0, 0, .1));
   margin-bottom: 25px;
 
   .ant-card-body {
@@ -311,13 +320,28 @@ h3 {
     }
   }
 
+  &.card-btm-holder {
+    .ant-card-body {
+      padding-bottom: 50px;
+
+      @media screen and (max-width: 1400px) {
+        padding-bottom: 25px;
+      }
+
+      @media screen and (max-width: 767px) {
+        padding-bottom: 15px;
+      }
+
+    }
+  }
+
 
   .label,
   .info {
     margin: 0;
     font-size: 0.8125rem;
 
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       font-size: 0.6875rem;
     }
   }
@@ -331,11 +355,13 @@ h3 {
     color: $primary;
   }
 
+
+
   &-single {
     .ant-card-body {
       padding: 25px 40px;
 
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         padding: 15px;
       }
 
@@ -345,6 +371,11 @@ h3 {
 
       .info {
         text-align: right;
+      }
+
+      .info-large {
+        font-size: 1rem;
+        font-weight: 700;
       }
     }
   }
@@ -379,7 +410,33 @@ h3 {
 
 .content-scrollbar {
   height: calc(100vh - 85px);
-  padding: 25px;
+  padding: 25px 0 25px 25px;
+
+  .rcs-custom-scroll {
+    .rcs-inner-container {
+      padding-right: 25px;
+
+      @media screen and (max-width: 767px) {
+        padding-right: 0;
+      }
+    }
+
+    .rcs-outer-container {
+      .rcs-positioning {
+        right: 5px;
+
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 15px;
+    height: calc(100vh - 64px);
+  }
+
 }
 
 .slickArrows {
@@ -570,6 +627,165 @@ h3 {
   right: 0;
   top: 0;
   bottom: 0;
+}
+
+.record-holder {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: $primary;
+
+  @media screen and (max-width: 767px) {
+    text-align: left;
+    font-size: 0.8125rem;
+  }
+
+  &.submit {
+
+    @media screen and (max-width: 767px) {
+      img {
+        max-height: 20px;
+      }
+    }
+
+    span {
+      width: 80px;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 19px;
+      margin-left: 10px;
+      text-align: left;
+
+      @media screen and (max-width: 767px) {
+        width: auto;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+
+.status {
+  color: #6B7077;
+  font-size: 0.8125rem;
+  position: relative;
+  padding-left: 20px;
+
+  &:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 4px;
+    left: 0;
+  }
+
+  &.negative {
+    &::before {
+      background-color: #6EC174;
+    }
+  }
+
+  &.positive {
+    &::before {
+      background-color: #F84040;
+    }
+  }
+
+  &.borderline {
+    &::before {
+      background-color: #2B6EED;
+    }
+  }
+
+  &.inconclusive {
+    &::before {
+      background-color: #EE27FC;
+    }
+  }
+
+}
+
+.sub-sm-heading {
+  .status {
+    float: right;
+  }
+}
+
+.manageapp-head {
+  margin-bottom: 40px;
+}
+
+.doc-mainholder {
+  float: left;
+}
+
+.doc-holder {
+  text-align: center;
+
+  i {
+    border: 1px solid rgba($gray, .5);
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  strong {
+    display: block;
+    color: $labelGray;
+  }
+}
+
+.doc-btnholder {
+  margin-top: 20px;
+
+  button {
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 0.75rem;
+    color: $primary;
+    padding: 0;
+    height: auto;
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba($gray, .2);
+    border-radius: 0;
+
+    &:last-child {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    i,
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+
+    span {
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: transparent;
+
+      span {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 /*Responsive Styles*/
