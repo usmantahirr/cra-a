@@ -5,7 +5,7 @@
   "description": "Component library for PH",
   "main": "src/index.js",
   "source": "src/index.js",
-  "module": "dist/bundle.js",
+  "module": "dist/index.js",
   "engines": {
     "node": ">=12"
   },
@@ -31,14 +31,15 @@
   },
   "peerDependencies": {
     "@ant-design/icons": "^4.2.2",
-    "react-notification-system": "^0.4.0",
     "antd": "^4.6.4",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "node-sass": "^4.14.1"
+    "react-notification-system": "^0.4.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.2.2",
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@storybook/addon-actions": "^6.0.21",
@@ -67,11 +68,15 @@
     "react-is": "^16.13.1",
     "react-notification-system": "^0.4.0",
     "react-scripts": "^3.4.3",
+    "rollup": "^2.27.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-ignore": "^1.0.9",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "sass-resources-loader": "^2.1.0",
     "styled-components": "^5.2.0"
   },
