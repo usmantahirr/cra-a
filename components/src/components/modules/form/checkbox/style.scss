@@ -1,0 +1,59 @@
+.ant-checkbox-wrapper {
+  .ant-checkbox-inner {
+    background-color: $primaryLight;
+    width: 31px;
+    height: 29px;
+    border: 1px solid rgba($white, 72);
+
+    &::after {
+      width: 7px;
+      height: 14px;
+      top: 50%;
+      left: 50%;
+      margin-top: -1px;
+      margin-left: -5px;
+    }
+
+    @media screen and (max-width: 1400px) {
+      width: 25px;
+      height: 25px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 20px;
+      height: 20px;
+
+      &::after {
+        width: 6px;
+        height: 12px;
+        margin-top: -1px;
+        margin-left: -5px;
+      }
+    }
+  }
+
+  .ant-checkbox {
+    + span {
+      padding-left: 15px;
+
+      a {
+        color: $blueDark;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &.ant-checkbox-checked {
+      .ant-checkbox-inner {
+        background-color: $secondary;
+
+        &:after {
+          border-color: $white;
+        }
+      }
+    }
+  }
+}

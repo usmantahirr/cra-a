@@ -1,0 +1,58 @@
+.ant-btn {
+  border: 0;
+
+  &-primary {
+    background: $primary;
+    color: #fff;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $primaryHover;
+    }
+  }
+
+  &-secondary {
+    background: $secondary;
+    color: $primary;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $secondaryHover;
+      color: $primary;
+    }
+  }
+
+  &-default {
+    background: transparent;
+    border: 1px solid $primary;
+    color: $primary;
+    min-width: 140px;
+
+    &:hover,
+    &:focus {
+      background-color: $primary;
+      color: $white;
+      border-color: $primary;
+    }
+  }
+
+  &-lg {
+    font-size: 1.125rem !important;
+    padding: 22px 25px !important;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 1rem !important;
+      padding: 15px 25px !important;
+    }
+  }
+}
+
+.ant-btn-link {
+  &.ant-btn {
+    line-height: 1.5715;
+    padding-top: 13px;
+  }
+}
+
