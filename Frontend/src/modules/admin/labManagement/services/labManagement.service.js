@@ -14,8 +14,16 @@ class LabManagementService {
     return this.http.post('lab-org', payload);
   };
 
+  createLab = payload => {
+    return this.http.post('lab', payload);
+  };
+
   updateLabOrganization = payload => {
     return this.http.put('lab-org', payload);
+  };
+
+  updateLab = payload => {
+    return this.http.put('lab', payload);
   };
 
   getLabOrganizations = () => {
@@ -26,8 +34,12 @@ class LabManagementService {
     return this.http.get('lab-org', id);
   };
 
-  getLabOrganizationByLookup = id => {
-    return this.http.get('lab-org/lookup', id);
+  getLabById = id => {
+    return this.http.get('lab', id);
+  };
+
+  getLabOrganizationByLookup = () => {
+    return this.http.get('lab-org/lookup/name');
   };
 
   activateDeactivateOrganization = payload => {
@@ -42,8 +54,8 @@ class LabManagementService {
     return this.http.get(GET_LABS);
   };
 
-  getUsers = () => {
-    return this.http.get(GET_USERS);
+  getUsers = id => {
+    return this.http.get(GET_USERS, id);
   };
 
   getTests = id => {

@@ -18,6 +18,14 @@ const AdminRoutes = [
     path: '/admin/lab-group/:id',
   },
   {
+    Component: lazy(() => import('./lab/labForm/container')),
+    path: '/admin/lab/create',
+  },
+  {
+    Component: lazy(() => import('./lab/labForm/container')),
+    path: '/admin/lab/:id',
+  },
+  {
     Component: lazy(() => import('./lab/labListing/container')),
     path: '/admin/lab',
   },

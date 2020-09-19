@@ -9,6 +9,8 @@ import CustomUpload from './fileUpload';
 import CustomPlainTextInput from './plainText';
 import CustomNumberInput from './number';
 import CustomTextAreaInput from './textArea';
+import CustomSwitch from './switch';
+import CustomTimePicker from './timePicker';
 
 export {
   CustomDatePicker,
@@ -22,4 +24,6 @@ export {
   CustomPlainTextInput,
   CustomNumberInput,
   CustomTextAreaInput,
+  CustomSwitch,
+  CustomTimePicker,
 };
